@@ -7,14 +7,14 @@ const Contact = () => {
     {
       icon: <Mail className="h-6 w-6" />,
       label: "E-mail",
-      value: "contato@nexumtecnologia.com",
-      href: "mailto:contato@nexumtecnologia.com"
+      value: "flavio.de.souza10@gmail.com",
+      href: "mailto:flavio.de.souza10@gmail.com"
     },
     {
       icon: <Phone className="h-6 w-6" />,
       label: "Telefone",
-      value: "+55 (21) 99999-9999",
-      href: "tel:+5521999999999"
+      value: "+55 (21) 98146-6912",
+      href: "tel:+5521981466912"
     }
   ];
 
@@ -34,7 +34,7 @@ const Contact = () => {
     {
       icon: <Mail className="h-6 w-6" />,
       label: "E-mail",
-      href: "mailto:contato@nexumtecnologia.com",
+      href: "mailto:flavio.de.souza10@gmail.com",
       color: "hover:text-red-600"
     }
   ];
