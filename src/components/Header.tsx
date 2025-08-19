@@ -34,7 +34,7 @@ const Header = () => {
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-smooth ${
-        isScrolled ? "glass shadow-md" : "bg-transparent"
+        isScrolled ? "glass shadow-md" : "bg-background/95 backdrop-blur-sm shadow-sm"
       }`}
     >
       <nav className="container mx-auto px-6 py-4">
