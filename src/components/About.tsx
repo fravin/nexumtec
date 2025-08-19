@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import flavioPhoto from "@/assets/flavio-photo.png";
+import flavioProfessionalPhoto from "@/assets/flavio-professional-photo.png";
 
 const About = () => {
   const philosophyItems = [
@@ -35,7 +35,7 @@ const About = () => {
           <div className="text-center">
             <div className="relative inline-block">
               <img 
-                src={flavioPhoto} 
+                src={flavioProfessionalPhoto} 
                 alt="Flávio Admilson - Analista de Sistemas"
                 className="w-80 h-80 object-cover rounded-full shadow-glow mx-auto"
               />
