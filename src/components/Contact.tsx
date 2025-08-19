@@ -15,12 +15,6 @@ const Contact = () => {
       label: "Telefone",
       value: "+55 (21) 99999-9999",
       href: "tel:+5521999999999"
-    },
-    {
-      icon: <MapPin className="h-6 w-6" />,
-      label: "Localização",
-      value: "Rio de Janeiro, RJ",
-      href: "#"
     }
   ];
 
