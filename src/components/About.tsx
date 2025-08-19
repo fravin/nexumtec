@@ -32,13 +32,28 @@ const About = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
           {/* Portrait */}
           <div className="text-center">
-            <div className="relative inline-block">
-              <img 
-                src="/lovable-uploads/cf1acf7f-d7ed-4815-a9f7-7d0b5cd91483.png" 
-                alt="Flávio Admilson - Analista de Sistemas"
-                className="w-80 h-80 object-cover rounded-full shadow-glow mx-auto"
-              />
-              <div className="absolute inset-0 rounded-full bg-gradient-hero opacity-20 animate-pulse"></div>
+            <div className="relative inline-block group">
+              {/* Animated ring border */}
+              <div className="absolute -inset-4 bg-gradient-to-r from-primary via-accent to-primary rounded-full opacity-75 group-hover:opacity-100 animate-spin transition-opacity duration-1000" 
+                   style={{animationDuration: '8s'}}></div>
+              
+              {/* Static outer ring */}
+              <div className="absolute -inset-2 bg-gradient-to-r from-primary/50 via-transparent to-accent/50 rounded-full"></div>
+              
+              {/* Inner glow */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary/30 to-accent/30 rounded-full blur-sm"></div>
+              
+              {/* Main image */}
+              <div className="relative">
+                <img 
+                  src="/lovable-uploads/cf1acf7f-d7ed-4815-a9f7-7d0b5cd91483.png" 
+                  alt="Flávio Admilson - Analista de Sistemas"
+                  className="w-80 h-80 object-cover rounded-full border-4 border-background shadow-2xl group-hover:scale-105 transition-transform duration-500 mx-auto relative z-10"
+                />
+                
+                {/* Overlay effect */}
+                <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/10 via-transparent to-accent/10 group-hover:from-primary/20 group-hover:to-accent/20 transition-all duration-500"></div>
+              </div>
             </div>
           </div>
 
