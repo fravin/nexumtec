@@ -34,7 +34,7 @@ const About = () => {
           <div className="text-center">
             <div className="relative inline-block group">
               {/* Animated ring border */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-primary via-accent to-primary rounded-full opacity-75 group-hover:opacity-100 animate-spin transition-opacity duration-1000" 
+              <div className="absolute -inset-6 bg-gradient-to-r from-primary via-accent to-primary rounded-full opacity-75 group-hover:opacity-100 animate-spin transition-opacity duration-1000" 
                    style={{animationDuration: '8s'}}></div>
               
               {/* Static outer ring */}
