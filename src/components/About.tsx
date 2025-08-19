@@ -34,7 +34,7 @@ const About = () => {
           <div className="text-center">
             <div className="relative inline-block">
               <img 
-                src="/lovable-uploads/8324bd6c-d8fb-41fc-adfb-1bf567ce6984.png" 
+                src="/lovable-uploads/cf1acf7f-d7ed-4815-a9f7-7d0b5cd91483.png" 
                 alt="Flávio Admilson - Analista de Sistemas"
                 className="w-80 h-80 object-cover rounded-full shadow-glow mx-auto"
               />
