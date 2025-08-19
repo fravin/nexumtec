@@ -46,7 +46,7 @@ const About = () => {
               {/* Main image */}
               <div className="relative">
                 <img 
-                  src="/flavio-corporate-headshot.png" 
+                  src="/flavio-enhanced-headshot.png" 
                   alt="Flávio Admilson - Analista de Sistemas"
                   className="w-80 h-80 object-cover rounded-full border-4 border-background shadow-2xl group-hover:scale-105 transition-transform duration-500 mx-auto relative z-10"
                 />
