@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import nexumLogo from "@/assets/nexum-logo.png";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -40,10 +41,12 @@ const Header = () => {
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-hero rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">N</span>
-            </div>
+          <div className="flex items-center space-x-3">
+            <img 
+              src={nexumLogo} 
+              alt="Nexum Technology Logo" 
+              className="h-10 w-auto"
+            />
             <span className="text-xl font-bold gradient-text">Nexum Tecnologia</span>
           </div>
 
