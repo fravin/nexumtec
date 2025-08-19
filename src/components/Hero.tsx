@@ -20,7 +20,7 @@ const Hero = () => {
   return (
     <section 
       id="inicio"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20"
       style={{
         backgroundImage: `url(${techHeroBg})`,
         backgroundSize: "cover",
