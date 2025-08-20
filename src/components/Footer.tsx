@@ -1,10 +1,7 @@
 import { Heart, Code, Zap } from "lucide-react";
-
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-
-  return (
-    <footer className="bg-gradient-to-br from-primary/10 to-accent/10 border-t border-border">
+  return <footer className="bg-gradient-to-br from-primary/10 to-accent/10 border-t border-border">
       <div className="container mx-auto px-6 py-12">
         <div className="grid md:grid-cols-3 gap-8 text-center md:text-left">
           {/* Brand */}
@@ -24,22 +21,28 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="font-semibold text-lg">Navegação</h3>
             <ul className="space-y-2">
-              {[
-                { label: "Início", href: "#inicio" },
-                { label: "Sobre Mim", href: "#sobre" },
-                { label: "Serviços", href: "#servicos" },
-                { label: "Projetos", href: "#projetos" },
-                { label: "Contato", href: "#contato" }
-              ].map((link) => (
-                <li key={link.label}>
-                  <button
-                    onClick={() => document.querySelector(link.href)?.scrollIntoView({ behavior: "smooth" })}
-                    className="text-muted-foreground hover:text-primary transition-smooth"
-                  >
+              {[{
+              label: "Início",
+              href: "#inicio"
+            }, {
+              label: "Sobre Mim",
+              href: "#sobre"
+            }, {
+              label: "Serviços",
+              href: "#servicos"
+            }, {
+              label: "Projetos",
+              href: "#projetos"
+            }, {
+              label: "Contato",
+              href: "#contato"
+            }].map(link => <li key={link.label}>
+                  <button onClick={() => document.querySelector(link.href)?.scrollIntoView({
+                behavior: "smooth"
+              })} className="text-muted-foreground hover:text-primary transition-smooth">
                     {link.label}
                   </button>
-                </li>
-              ))}
+                </li>)}
             </ul>
           </div>
 
@@ -48,20 +51,10 @@ const Footer = () => {
             <h3 className="font-semibold text-lg">Contato</h3>
             <div className="space-y-2 text-muted-foreground">
               <p>
-                <a 
-                  href="mailto:contato@nexumtecnologia.com"
-                  className="hover:text-primary transition-smooth"
-                >
-                  contato@nexumtecnologia.com
-                </a>
+                <a href="mailto:contato@nexumtecnologia.com" className="hover:text-primary transition-smooth">flavio.de.souza10@gmail.com</a>
               </p>
               <p>
-                <a 
-                  href="tel:+5521981466912"
-                  className="hover:text-primary transition-smooth"
-                >
-                  +55 (21) 9 81466912
-                </a>
+                <a href="tel:+5521981466912" className="hover:text-primary transition-smooth">+55 (21) 98146-6912</a>
               </p>
               <p>Rio de Janeiro, RJ</p>
             </div>
@@ -86,8 +79,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
