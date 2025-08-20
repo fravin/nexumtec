@@ -33,9 +33,6 @@ const Footer = () => {
             }, {
               label: "Projetos",
               href: "#projetos"
-            }, {
-              label: "Contato",
-              href: "#contato"
             }].map(link => <li key={link.label}>
                   <button onClick={() => document.querySelector(link.href)?.scrollIntoView({
                 behavior: "smooth"
