@@ -47,7 +47,7 @@ const About = () => {
                 <img 
                   src="/lovable-uploads/f99c685c-3957-4643-a4d6-0abf73d8f016.png" 
                   alt="Flávio Admilson - Analista de Sistemas"
-                  className="w-80 h-96 object-cover object-top rounded-lg border-4 border-background shadow-2xl group-hover:scale-105 transition-transform duration-500 mx-auto relative z-10"
+                  className="w-full max-w-md h-[500px] object-cover object-top rounded-lg border-4 border-background shadow-2xl group-hover:scale-105 transition-transform duration-500 mx-auto relative z-10"
                 />
                 
                 {/* Overlay effect */}
