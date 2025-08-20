@@ -57,10 +57,10 @@ const Footer = () => {
               </p>
               <p>
                 <a 
-                  href="tel:+5521999999999"
+                  href="tel:+5521981466912"
                   className="hover:text-primary transition-smooth"
                 >
-                  +55 (21) 99999-9999
+                  +55 (21) 9 81466912
                 </a>
               </p>
               <p>Rio de Janeiro, RJ</p>
