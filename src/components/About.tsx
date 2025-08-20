@@ -34,25 +34,24 @@ const About = () => {
           <div className="text-center">
             <div className="relative inline-block group">
               {/* Animated ring border */}
-              <div className="absolute -inset-6 bg-gradient-to-r from-primary via-accent to-primary rounded-full opacity-75 group-hover:opacity-100 animate-spin transition-opacity duration-1000" 
-                   style={{animationDuration: '8s'}}></div>
+              <div className="absolute -inset-6 bg-gradient-to-r from-primary via-accent to-primary rounded-lg opacity-75 group-hover:opacity-100 animate-pulse transition-opacity duration-1000"></div>
               
               {/* Static outer ring */}
-              <div className="absolute -inset-2 bg-gradient-to-r from-primary/50 via-transparent to-accent/50 rounded-full"></div>
+              <div className="absolute -inset-2 bg-gradient-to-r from-primary/50 via-transparent to-accent/50 rounded-lg"></div>
               
               {/* Inner glow */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary/30 to-accent/30 rounded-full blur-sm"></div>
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary/30 to-accent/30 rounded-lg blur-sm"></div>
               
               {/* Main image */}
               <div className="relative">
                 <img 
                   src="/lovable-uploads/f99c685c-3957-4643-a4d6-0abf73d8f016.png" 
                   alt="Flávio Admilson - Analista de Sistemas"
-                  className="w-96 h-96 object-cover object-top rounded-full border-4 border-background shadow-2xl group-hover:scale-105 transition-transform duration-500 mx-auto relative z-10"
+                  className="w-80 h-96 object-cover object-top rounded-lg border-4 border-background shadow-2xl group-hover:scale-105 transition-transform duration-500 mx-auto relative z-10"
                 />
                 
                 {/* Overlay effect */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/10 via-transparent to-accent/10 group-hover:from-primary/20 group-hover:to-accent/20 transition-all duration-500"></div>
+                <div className="absolute inset-0 rounded-lg bg-gradient-to-tr from-primary/10 via-transparent to-accent/10 group-hover:from-primary/20 group-hover:to-accent/20 transition-all duration-500"></div>
               </div>
             </div>
           </div>
