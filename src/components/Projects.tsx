@@ -1,42 +1,56 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, BarChart3, Code, Workflow } from "lucide-react";
-import projectExcel from "@/assets/project-excel.jpg";
-import projectClinical from "@/assets/project-clinical.jpg";
+import { ExternalLink, BarChart3, Code, Workflow, Users } from "lucide-react";
 
 const Projects = () => {
   const projects = [
     {
       title: "Sistema de Controle de Estoque e Análise de Materiais em Excel",
-      description: "A clínica necessitava de um controle preciso e visual do estoque de materiais ortopédicos para evitar faltas, otimizar compras e entender o padrão de consumo. Desenvolvi uma solução completa em Excel com banco de dados para cadastro de produtos, fornecedores e controle de entradas/saídas, culminando em um Dashboard dinâmico com gráficos interativos.",
-      image: projectExcel,
+      description: "A clínica necessitava de um controle preciso e visual do estoque de materiais ortopédicos para evitar faltas, otimizar compras e entender o padrão de consumo. O processo manual era suscetível a erros e não fornecia insights rápidos.",
+      image: "/lovable-uploads/33181e0a-fc74-4de3-bca7-dc7dcdfded9d.png",
       category: "Análise de Dados",
       technologies: ["Excel Avançado", "VBA", "Dashboard", "Banco de Dados"],
       icon: <BarChart3 className="h-6 w-6" />,
-      challenge: "Processo manual suscetível a erros e sem insights rápidos para gestão estratégica do estoque.",
-      solution: "Solução completa em Excel com banco de dados para produtos e fornecedores, Dashboard dinâmico com gráficos interativos mostrando valor total, quantidade de itens, status e histórico de movimentações.",
+      challenge: "A clínica necessitava de um controle preciso e visual do estoque de materiais ortopédicos para evitar faltas, otimizar compras e entender o padrão de consumo. O processo manual era suscetível a erros e não fornecia insights rápidos.",
+      solution: "Desenvolvi uma solução completa em Excel com um banco de dados para cadastro de produtos, fornecedores e controle de entradas/saídas. O sistema culmina em um Dashboard dinâmico com gráficos interativos que mostram o valor total em estoque, a quantidade de itens, o status dos materiais e o histórico de movimentações.",
       results: [
         "Visão clara e em tempo real do estoque",
-        "Facilitação na tomada de decisão",
+        "Gestão mais estratégica dos materiais",
         "Otimização do processo de compras",
         "Redução de custos e desperdícios"
       ]
     },
     {
       title: "Pesquisa de Satisfação e Avaliação de Pacientes",
-      description: "A clínica precisava de dados estruturados sobre a percepção dos pacientes para identificar pontos de melhoria no atendimento. Conduzi um projeto de extensão para criar, aplicar e analisar uma pesquisa de satisfação, transformando feedback qualitativo em dados quantitativos.",
-      image: projectClinical,
+      description: "A clínica precisava de dados estruturados sobre a percepção dos pacientes para identificar pontos de melhoria no atendimento.",
+      image: "/lovable-uploads/ede7c479-7ced-4377-a83f-bc56b6d8300d.png",
       category: "Pesquisa & Análise",
       technologies: ["Pesquisa Quantitativa", "Análise de Dados", "Google Forms", "Relatórios"],
       icon: <Workflow className="h-6 w-6" />,
-      challenge: "Necessidade de dados estruturados sobre percepção dos pacientes para melhorar o atendimento.",
-      solution: "Projeto de extensão para criar, aplicar e analisar pesquisa de satisfação, transformando feedback qualitativo em dados quantitativos estruturados.",
+      challenge: "A clínica precisava de dados estruturados sobre a percepção dos pacientes para identificar pontos de melhoria no atendimento.",
+      solution: "Conduzi um projeto de extensão para criar, aplicar e analisar uma pesquisa de satisfação, transformando o feedback qualitativo em dados quantitativos.",
       results: [
-        "Identificação de 3 pontos-chave de melhoria",
+        "Identificação de 3 pontos-chave de melhoria no fluxo de atendimento",
         "Base para projeto de otimização de processos",
         "Dados estruturados para tomada de decisão",
-        "Melhoria no fluxo de atendimento"
+        "Melhoria na qualidade do atendimento"
+      ]
+    },
+    {
+      title: "Alinhamento Estratégico e Otimização de Processos Intersetoriais",
+      description: "A falta de uma comunicação fluida e de processos padronizados entre os setores (Recepção, Enfermagem, Faturamento) gerava retrabalho, erros no faturamento e impactava a agilidade do atendimento ao paciente.",
+      image: "/lovable-uploads/2f7340e6-ea0b-421d-8d8a-7ae210866e46.png",
+      category: "Gestão de Processos",
+      technologies: ["Trello", "Mapeamento de Processos", "Gestão de Projetos", "Treinamentos"],
+      icon: <Users className="h-6 w-6" />,
+      challenge: "A falta de uma comunicação fluida e de processos padronizados entre os setores (Recepção, Enfermagem, Faturamento) gerava retrabalho, erros no faturamento e impactava a agilidade do atendimento ao paciente.",
+      solution: "Liderei um projeto de alinhamento estratégico para mapear e otimizar os fluxos de trabalho. Apresentei e implementei um plano de ação que incluía treinamentos periódicos, criação de checklists padronizados e a implementação de canais de comunicação diretos para agilizar a resolução de problemas. A gestão do projeto foi realizada através do Trello para garantir a transparência e o acompanhamento das melhorias.",
+      results: [
+        "Redução significativa de erros e retrabalho",
+        "Maior agilidade nos processos internos",
+        "Aumento na satisfação dos pacientes",
+        "Ambiente de trabalho mais organizado e colaborativo"
       ]
     }
   ];
