@@ -5,34 +5,40 @@ import { BarChart3, Brain, Workflow, TrendingUp, Database, Settings } from "luci
 const Services = () => {
   const services = [
     {
-      category: "Ciência de Dados Aplicada",
-      icon: <BarChart3 className="h-8 w-8" />,
-      services: [
+      title: "Consultoria em Otimização de Processos",
+      icon: <Workflow className="h-8 w-8" />,
+      target: "Para empresas que enfrentam gargalos operacionais, comunicação ineficiente entre setores, retrabalho constante e falta de padronização nos fluxos de trabalho.",
+      offerings: [
         {
-          title: "Análise e Visualização de Dados",
-          description: "Transformo dados brutos em informações estratégicas através de dashboards interativos e relatórios claros, facilitando a tomada de decisão.",
-          skills: ["Power BI", "Excel Avançado", "Python", "SQL"]
+          title: "Diagnóstico e Mapeamento de Processos",
+          description: "Análise completa dos seus fluxos de trabalho atuais para identificar pontos de atrito e oportunidades de melhoria."
         },
         {
-          title: "Modelagem Preditiva e Machine Learning",
-          description: "Desenvolvo modelos para prever tendências, otimizar recursos e antecipar demandas, gerando uma vantagem competitiva para o seu negócio.",
-          skills: ["Python", "Scikit-learn", "Pandas", "Machine Learning"]
+          title: "Desenvolvimento de Estratégias de Alinhamento",
+          description: "Criação de um plano de ação claro para alinhar equipes, definir responsabilidades e garantir que todos trabalhem em sinergia."
+        },
+        {
+          title: "Implementação de Ferramentas e Metodologias",
+          description: "Suporte na implementação de checklists, canais de comunicação eficientes e uma cultura de feedback contínuo para garantir mudanças duradouras."
         }
       ]
     },
     {
-      category: "Gestão e Otimização de Processos",
-      icon: <Workflow className="h-8 w-8" />,
-      services: [
+      title: "Análise de Dados para Tomada de Decisão",
+      icon: <BarChart3 className="h-8 w-8" />,
+      target: "Para gestores que precisam de uma visão clara dos seus dados, mas se sentem perdidos em planilhas complexas ou não conseguem extrair insights valiosos de suas operações.",
+      offerings: [
         {
-          title: "Mapeamento e Análise de Processos",
-          description: "Identifico gargalos, ineficiências e oportunidades de melhoria nos fluxos de trabalho da sua empresa.",
-          skills: ["BPMN", "Análise de Processos", "Lean Six Sigma", "Documentação"]
+          title: "Criação de Dashboards Personalizados",
+          description: "Transformo seus dados (estoque, vendas, satisfação do cliente, etc.) em painéis visuais e interativos em Excel ou outras ferramentas de BI, permitindo uma análise rápida e intuitiva."
         },
         {
-          title: "Implementação de Melhorias e Aumento de Eficiência",
-          description: "Desenvolvo e implemento soluções práticas que resultam em processos mais ágeis, organizados e com maior produtividade.",
-          skills: ["Automação", "VBA", "Gestão de Projetos", "KPIs"]
+          title: "Análise de Dados e Relatórios Estratégicos",
+          description: "Gero relatórios que não apenas mostram 'o quê' está acontecendo, mas também ajudam a entender 'o porquê', fornecendo uma base sólida para decisões estratégicas."
+        },
+        {
+          title: "Estruturação de Coleta de Dados",
+          description: "Ajudo sua empresa a organizar a coleta de informações importantes, como pesquisas de satisfação, para garantir que você tenha os dados certos para crescer."
         }
       ]
     }
@@ -45,60 +51,59 @@ const Services = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Como Posso Ajudar a <span className="gradient-text">Sua Empresa</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ofereço soluções especializadas em duas áreas principais para maximizar a eficiência e os resultados do seu negócio.
+          <p className="text-xl text-muted-foreground mb-6">
+            Transformando Desafios em Oportunidades com Soluções Sob Medida
+          </p>
+          <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+            Com mais de uma década de experiência na otimização de processos no setor da saúde e uma especialização em Ciência de Dados, ofereço serviços de consultoria focados em gerar eficiência, clareza e resultados mensuráveis para o seu negócio.
           </p>
         </div>
 
         <div className="space-y-12">
-          {services.map((category, categoryIndex) => (
-            <div key={categoryIndex} className="space-y-8">
-              {/* Category Header */}
+          <h3 className="text-3xl font-bold text-center mb-12">Nossos Serviços</h3>
+          
+          {services.map((service, serviceIndex) => (
+            <div key={serviceIndex} className="space-y-8">
+              {/* Service Header */}
               <div className="flex items-center justify-center mb-8">
-                <Card className="bg-gradient-hero text-white shadow-glow">
+                <Card className="bg-gradient-hero text-white shadow-glow max-w-4xl">
                   <CardContent className="flex items-center space-x-4 p-6">
-                    {category.icon}
-                    <h3 className="text-2xl font-bold">{category.category}</h3>
+                    {service.icon}
+                    <div>
+                      <h3 className="text-2xl font-bold mb-2">{service.title}</h3>
+                      <p className="text-white/90 text-sm leading-relaxed">{service.target}</p>
+                    </div>
                   </CardContent>
                 </Card>
               </div>
 
-              {/* Services Grid */}
-              <div className="grid md:grid-cols-2 gap-8">
-                {category.services.map((service, serviceIndex) => (
+              {/* Offerings Grid */}
+              <div className="grid md:grid-cols-3 gap-6">
+                {service.offerings.map((offering, offeringIndex) => (
                   <Card 
-                    key={serviceIndex}
+                    key={offeringIndex}
                     className="group hover:shadow-glow transition-smooth h-full"
                   >
                     <CardHeader>
                       <CardTitle className="flex items-start space-x-3">
                         <div className="bg-gradient-hero text-white p-3 rounded-lg">
-                          {categoryIndex === 0 ? (
-                            serviceIndex === 0 ? <Database className="h-6 w-6" /> : <Brain className="h-6 w-6" />
+                          {serviceIndex === 0 ? (
+                            offeringIndex === 0 ? <TrendingUp className="h-6 w-6" /> :
+                            offeringIndex === 1 ? <Settings className="h-6 w-6" /> : <Workflow className="h-6 w-6" />
                           ) : (
-                            serviceIndex === 0 ? <TrendingUp className="h-6 w-6" /> : <Settings className="h-6 w-6" />
+                            offeringIndex === 0 ? <Database className="h-6 w-6" /> :
+                            offeringIndex === 1 ? <Brain className="h-6 w-6" /> : <BarChart3 className="h-6 w-6" />
                           )}
                         </div>
-                        <span className="group-hover:text-primary transition-colors">
-                          {service.title}
+                        <span className="group-hover:text-primary transition-colors text-lg">
+                          {offering.title}
                         </span>
                       </CardTitle>
                     </CardHeader>
-                    <CardContent className="space-y-4">
+                    <CardContent>
                       <p className="text-muted-foreground leading-relaxed">
-                        {service.description}
+                        {offering.description}
                       </p>
-                      <div className="flex flex-wrap gap-2">
-                        {service.skills.map((skill, skillIndex) => (
-                          <Badge 
-                            key={skillIndex} 
-                            variant="secondary"
-                            className="bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
-                          >
-                            {skill}
-                          </Badge>
-                        ))}
-                      </div>
                     </CardContent>
                   </Card>
                 ))}
@@ -112,10 +117,10 @@ const Services = () => {
           <Card className="bg-gradient-card shadow-lg max-w-2xl mx-auto">
             <CardContent className="p-8">
               <h3 className="text-2xl font-bold mb-4 gradient-text">
-                Pronto para Transformar Seus Dados em Resultados?
+                Vamos Conversar?
               </h3>
               <p className="text-muted-foreground mb-6">
-                Vamos conversar sobre como posso ajudar sua empresa a otimizar processos e tomar decisões mais inteligentes.
+                Se você acredita que sua empresa pode se beneficiar de processos mais inteligentes e decisões baseadas em dados, entre em contato. Vamos agendar uma conversa para um diagnóstico inicial sem compromisso.
               </p>
               <button 
                 onClick={() => document.querySelector("#contato")?.scrollIntoView({ behavior: "smooth" })}
