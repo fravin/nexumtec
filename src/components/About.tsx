@@ -1,27 +1,19 @@
 import { Card, CardContent } from "@/components/ui/card";
-
 const About = () => {
-  const philosophyItems = [
-    {
-      title: "Dados para Pessoas",
-      description: "Acredito que a tecnologia deve servir para simplificar a vida das pessoas e tornar as empresas mais humanas e eficientes."
-    },
-    {
-      title: "Eficiência com Alegria",
-      description: "Trago a mesma energia e otimismo da feira para o ambiente corporativo. Um time motivado e com boa comunicação resolve qualquer desafio."
-    },
-    {
-      title: "Soluções Simples para Problemas Complexos",
-      description: "Minha meta é traduzir desafios complexos em soluções práticas e fáceis de implementar, seja em uma planilha de Excel ou em um modelo de dados."
-    },
-    {
-      title: "A Curiosidade como Guia",
-      description: "Estou sempre aprendendo, questionando e buscando novas formas de otimizar. Acredito que a pergunta certa é o primeiro passo para a inovação."
-    }
-  ];
-
-  return (
-    <section id="sobre" className="py-20 bg-gradient-to-br from-background to-secondary/20">
+  const philosophyItems = [{
+    title: "Dados para Pessoas",
+    description: "Acredito que a tecnologia deve servir para simplificar a vida das pessoas e tornar as empresas mais humanas e eficientes."
+  }, {
+    title: "Eficiência com Alegria",
+    description: "Trago a mesma energia e otimismo da feira para o ambiente corporativo. Um time motivado e com boa comunicação resolve qualquer desafio."
+  }, {
+    title: "Soluções Simples para Problemas Complexos",
+    description: "Minha meta é traduzir desafios complexos em soluções práticas e fáceis de implementar, seja em uma planilha de Excel ou em um modelo de dados."
+  }, {
+    title: "A Curiosidade como Guia",
+    description: "Estou sempre aprendendo, questionando e buscando novas formas de otimizar. Acredito que a pergunta certa é o primeiro passo para a inovação."
+  }];
+  return <section id="sobre" className="py-20 bg-gradient-to-br from-background to-secondary/20">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -44,11 +36,7 @@ const About = () => {
               
               {/* Main image */}
               <div className="relative">
-                <img 
-                  src="/lovable-uploads/f99c685c-3957-4643-a4d6-0abf73d8f016.png" 
-                  alt="Flávio Admilson - Analista de Sistemas"
-                  className="w-full max-w-md h-[500px] object-cover object-top rounded-lg border-4 border-background shadow-2xl group-hover:scale-105 transition-transform duration-500 mx-auto relative z-10"
-                />
+                <img src="/lovable-uploads/f99c685c-3957-4643-a4d6-0abf73d8f016.png" alt="Flávio Admilson - Analista de Sistemas" className="w-full max-w-md h-[500px] object-cover object-top rounded-lg border-4 border-background shadow-2xl group-hover:scale-105 transition-transform duration-500 mx-auto relative z-10" />
                 
                 {/* Overlay effect */}
                 <div className="absolute inset-0 rounded-lg bg-gradient-to-tr from-primary/10 via-transparent to-accent/10 group-hover:from-primary/20 group-hover:to-accent/20 transition-all duration-500"></div>
@@ -60,12 +48,7 @@ const About = () => {
           <div className="space-y-6">
             <Card className="glass shadow-md hover:shadow-lg transition-smooth">
               <CardContent className="p-6">
-                <p className="text-lg leading-relaxed text-foreground/90">
-                  Minha carreira começou de uma forma que me ensinou o valor de cada negociação: em uma feira livre no Andaraí. 
-                  Ali, entre laranjas, mangas e melancias, aprendi na prática os fundamentos do comércio. Minha rotina era ir ao 
-                  CEASA RJ de madrugada para comprar as melhores mercadorias, gerenciar o estoque e, o mais importante, criar 
-                  conexões genuínas com os clientes através de um contato sincero e alegre.
-                </p>
+                <p className="text-lg leading-relaxed text-foreground/90">Minhas primeiras lições de carreira vieram de uma feira livre no bairro da Tijuca-RJ, onde entendi que o verdadeiro motor de qualquer negócio é o cliente. Minha rotina não se resumia a comprar no CEASA-RJ e vender frutas, mas sim em criar conexões autênticas e proporcionar uma experiência de compra positiva. Essa vivência me ensinou que a confiança e a satisfação do cliente são a chave para a sustentabilidade e o crescimento.</p>
               </CardContent>
             </Card>
 
@@ -120,11 +103,7 @@ const About = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {philosophyItems.map((item, index) => (
-            <Card 
-              key={index} 
-              className="group hover:shadow-glow transition-smooth cursor-pointer h-full"
-            >
+          {philosophyItems.map((item, index) => <Card key={index} className="group hover:shadow-glow transition-smooth cursor-pointer h-full">
               <CardContent className="p-6 h-full">
                 <h4 className="text-lg font-semibold mb-4 gradient-text group-hover:scale-105 transition-transform">
                   {item.title}
@@ -133,12 +112,9 @@ const About = () => {
                   {item.description}
                 </p>
               </CardContent>
-            </Card>
-          ))}
+            </Card>)}
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default About;
