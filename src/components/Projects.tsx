@@ -8,45 +8,35 @@ import projectClinical from "@/assets/project-clinical.jpg";
 const Projects = () => {
   const projects = [
     {
-      title: "Otimização do Controle de Estoque de Materiais Ortopédicos",
-      description: "Desenvolvi um sistema de gerenciamento dinâmico em Excel, com dashboards e gráficos para análise visual do estoque, compras e consumo, solucionando problemas de controle manual.",
+      title: "Sistema de Controle de Estoque e Análise de Materiais em Excel",
+      description: "A clínica necessitava de um controle preciso e visual do estoque de materiais ortopédicos para evitar faltas, otimizar compras e entender o padrão de consumo. Desenvolvi uma solução completa em Excel com banco de dados para cadastro de produtos, fornecedores e controle de entradas/saídas, culminando em um Dashboard dinâmico com gráficos interativos.",
       image: projectExcel,
       category: "Análise de Dados",
-      technologies: ["Excel Avançado", "VBA", "Dashboard", "Análise de Dados"],
+      technologies: ["Excel Avançado", "VBA", "Dashboard", "Banco de Dados"],
       icon: <BarChart3 className="h-6 w-6" />,
+      challenge: "Processo manual suscetível a erros e sem insights rápidos para gestão estratégica do estoque.",
+      solution: "Solução completa em Excel com banco de dados para produtos e fornecedores, Dashboard dinâmico com gráficos interativos mostrando valor total, quantidade de itens, status e histórico de movimentações.",
       results: [
-        "Redução de 30% no tempo de controle de estoque",
-        "Eliminação de erros manuais",
-        "Visualização em tempo real do consumo",
-        "Otimização de compras e redução de custos"
+        "Visão clara e em tempo real do estoque",
+        "Facilitação na tomada de decisão",
+        "Otimização do processo de compras",
+        "Redução de custos e desperdícios"
       ]
     },
     {
-      title: "Software de Gestão de Atendimentos Clínicos",
-      description: "Desenvolvimento de sistema completo para gestão de atendimentos, agendamentos e controle de pacientes, otimizando o fluxo de trabalho da clínica.",
+      title: "Pesquisa de Satisfação e Avaliação de Pacientes",
+      description: "A clínica precisava de dados estruturados sobre a percepção dos pacientes para identificar pontos de melhoria no atendimento. Conduzi um projeto de extensão para criar, aplicar e analisar uma pesquisa de satisfação, transformando feedback qualitativo em dados quantitativos.",
       image: projectClinical,
-      category: "Desenvolvimento",
-      technologies: ["Sistema Web", "Banco de Dados", "Gestão de Processos", "Interface de Usuário"],
-      icon: <Code className="h-6 w-6" />,
-      results: [
-        "Automatização completa do agendamento",
-        "Redução de 50% no tempo de atendimento",
-        "Melhoria na experiência do paciente",
-        "Controle eficiente de histórico médico"
-      ]
-    },
-    {
-      title: "Análise e Redução de Glosas Hospitalares",
-      description: "Sistema de monitoramento e análise de glosas para identificar padrões, reduzir perdas financeiras e otimizar o faturamento hospitalar.",
-      image: projectExcel,
-      category: "Análise de Dados",
-      technologies: ["Power BI", "SQL", "Excel", "Análise Estatística"],
+      category: "Pesquisa & Análise",
+      technologies: ["Pesquisa Quantitativa", "Análise de Dados", "Google Forms", "Relatórios"],
       icon: <Workflow className="h-6 w-6" />,
+      challenge: "Necessidade de dados estruturados sobre percepção dos pacientes para melhorar o atendimento.",
+      solution: "Projeto de extensão para criar, aplicar e analisar pesquisa de satisfação, transformando feedback qualitativo em dados quantitativos estruturados.",
       results: [
-        "Redução de 40% nas glosas hospitalares",
-        "Identificação de padrões críticos",
-        "Melhoria no faturamento mensal",
-        "Processo de auditoria otimizado"
+        "Identificação de 3 pontos-chave de melhoria",
+        "Base para projeto de otimização de processos",
+        "Dados estruturados para tomada de decisão",
+        "Melhoria no fluxo de atendimento"
       ]
     }
   ];
@@ -56,10 +46,10 @@ const Projects = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Projetos em <span className="gradient-text">Destaque</span>
+            Projetos em <span className="gradient-text">Destaque</span>: Soluções na Prática
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Conheça os principais projetos que desenvolvi aplicando tecnologia e análise de dados para otimização de processos.
+            Estudos de caso reais demonstrando como transformo desafios em soluções práticas através da análise de dados.
           </p>
         </div>
 
