@@ -22,7 +22,7 @@ const Contact = () => {
     {
       icon: <Linkedin className="h-6 w-6" />,
       label: "LinkedIn",
-      href: "https://linkedin.com/in/flavio-admilson",
+      href: "https://www.linkedin.com/in/fl%C3%A1viodesouza10/",
       color: "hover:text-blue-600"
     },
     {
