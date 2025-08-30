@@ -8,7 +8,7 @@ const Projects = () => {
   const projects = [
     {
       title: "Sistema de Controle de Estoque e Análise de Materiais em Excel",
-      description: "A clínica necessitava de um controle preciso e visual do estoque de materiais ortopédicos para evitar faltas, otimizar compras e entender o padrão de consumo. O processo manual era suscetível a erros e não fornecia insights rápidos.",
+      description: "A clínica necessitava de um controle preciso e visual do estoque de materiais ortopédicos para evitar faltas, otimizar compras e entender o padrão de consumo. O processo manual era suscetível a erros e não fornecia insights rápidos. Desenvolvi uma solução completa em Excel com banco de dados integrado para cadastro de produtos e fornecedores, sistema automatizado de controle de entradas e saídas, e um dashboard dinâmico com gráficos interativos. A ferramenta oferece visão em tempo real do valor total em estoque, quantidade de itens, status dos materiais e histórico completo de movimentações. O sistema também gera alertas automáticos para itens com baixo estoque e relatórios gerenciais para tomada de decisão estratégica. Esta solução transformou completamente a gestão de materiais da clínica, proporcionando controle total e otimização dos recursos.",
       image: "/lovable-uploads/33181e0a-fc74-4de3-bca7-dc7dcdfded9d.png",
       category: "Análise de Dados",
       technologies: ["Excel Avançado", "VBA", "Dashboard", "Banco de Dados"],
@@ -24,7 +24,7 @@ const Projects = () => {
     },
     {
       title: "Pesquisa de Satisfação e Avaliação de Pacientes",
-      description: "A clínica precisava de dados estruturados sobre a percepção dos pacientes para identificar pontos de melhoria no atendimento.",
+      description: "A clínica precisava de dados estruturados sobre a percepção dos pacientes para identificar pontos de melhoria no atendimento e elevar a qualidade dos serviços prestados. Conduzi um projeto completo de pesquisa de satisfação, desenvolvendo metodologia quantitativa para transformar feedback qualitativo em dados mensuráveis. O projeto envolveu a criação de questionário estruturado, aplicação com amostra representativa e análise estatística rigorosa dos resultados. Utilizei ferramentas como Google Forms para coleta de dados e técnicas de análise quantitativa para interpretar as informações coletadas. Os resultados foram apresentados em relatórios executivos com recomendações práticas para melhoria dos processos. Esta iniciativa estabeleceu uma base sólida de dados para decisões estratégicas e melhorias contínuas no atendimento.",
       image: "/lovable-uploads/ede7c479-7ced-4377-a83f-bc56b6d8300d.png",
       category: "Pesquisa & Análise",
       technologies: ["Pesquisa Quantitativa", "Análise de Dados", "Google Forms", "Relatórios"],
@@ -40,7 +40,7 @@ const Projects = () => {
     },
     {
       title: "Alinhamento Estratégico e Otimização de Processos Intersetoriais",
-      description: "A falta de uma comunicação fluida e de processos padronizados entre os setores (Recepção, Enfermagem, Faturamento) gerava retrabalho, erros no faturamento e impactava a agilidade do atendimento ao paciente.",
+      description: "A falta de uma comunicação fluida e de processos padronizados entre os setores (Recepção, Enfermagem, Faturamento) gerava retrabalho, erros no faturamento e impactava a agilidade do atendimento ao paciente. Como Analista de TI, liderei um projeto abrangente de alinhamento estratégico que envolveu mapeamento completo dos fluxos de trabalho de cada setor para identificar gargalos e oportunidades de melhoria. Desenvolvi e apresentei um plano de ação estruturado para toda a equipe, focando nos benefícios da colaboração intersetorial e na padronização de processos. A implementação incluiu a criação de checklists padronizados, estabelecimento de canais de comunicação diretos e treinamentos periódicos para garantir a aderência às novas práticas. Utilizei o Trello como ferramenta central de gestão, proporcionando transparência e acompanhamento contínuo das melhorias propostas. O projeto resultou em transformações mensuráveis na eficiência operacional e no ambiente de trabalho da clínica.",
       image: "/lovable-uploads/2f7340e6-ea0b-421d-8d8a-7ae210866e46.png",
       category: "Gestão de Processos",
       technologies: ["Trello", "Mapeamento de Processos", "Gestão de Projetos", "Treinamentos"],
