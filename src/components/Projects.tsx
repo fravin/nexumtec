@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink, BarChart3, Code, Workflow, Users } from "lucide-react";
+import ProjectModal from "./ProjectModal";
 
 const Projects = () => {
   const projects = [
@@ -130,14 +131,15 @@ const Projects = () => {
                   </div>
                 </div>
 
-                <Button 
-                  variant="outline" 
-                  className="w-full group/btn hover:bg-primary hover:text-primary-foreground"
-                  onClick={() => document.querySelector("#contato")?.scrollIntoView({ behavior: "smooth" })}
-                >
-                  <ExternalLink className="mr-2 h-4 w-4 group-hover/btn:scale-110 transition-transform" />
-                  Ver Detalhes
-                </Button>
+                <ProjectModal project={project}>
+                  <Button 
+                    variant="outline" 
+                    className="w-full group/btn hover:bg-primary hover:text-primary-foreground"
+                  >
+                    <ExternalLink className="mr-2 h-4 w-4 group-hover/btn:scale-110 transition-transform" />
+                    Ver Detalhes
+                  </Button>
+                </ProjectModal>
               </CardContent>
             </Card>
           ))}
