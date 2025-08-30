@@ -1,13 +1,12 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Quote } from "lucide-react";
-import centroTraumaLogo from "@/assets/centro-trauma-logo.png";
 
 const Testimonials = () => {
   const testimonial = {
     text: "O Flávio tem uma capacidade única de entender os desafios do negócio e traduzi-los em soluções tecnológicas práticas. Sua proatividade na otimização de processos e sua habilidade em gerenciar o sistema ERP foram fundamentais para a nossa operação. Além de tudo, sua atitude positiva contagia a equipe.",
     author: "Wellington Xavier",
     position: "Centro Trauma",
-    avatar: centroTraumaLogo
+    avatar: "/lovable-uploads/a541acc1-0504-4ec6-872c-8e79e5919821.png"
   };
 
   return (
