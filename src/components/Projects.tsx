@@ -7,9 +7,9 @@ import ProjectModal from "./ProjectModal";
 const Projects = () => {
   const projects = [
     {
-      title: "Sistema de Controle de Estoque e Análise de Materiais em Excel",
-      description: "Sistema completo em Excel para controle de estoque de materiais ortopédicos com dashboard interativo, alertas automáticos e relatórios gerenciais. Transformou a gestão manual em uma solução eficiente.",
-      image: "/lovable-uploads/33181e0a-fc74-4de3-bca7-dc7dcdfded9d.png",
+      title: "Sistema de Controle de Estoque com Dashboard Dinâmico",
+      description: "Sistema completo em Excel com banco de dados centralizado, controle automatizado de entradas/saídas e dashboard interativo. Oferece visão em tempo real do estoque e análise estratégica.",
+      image: "/lovable-uploads/b24acb9c-0aed-47f2-a007-54b657dd77db.png",
       category: "Análise de Dados",
       technologies: ["Excel Avançado", "VBA", "Dashboard", "Banco de Dados"],
       icon: <BarChart3 className="h-6 w-6" />,

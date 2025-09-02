@@ -50,27 +50,27 @@ const ProjectModal = ({ project, children }: ProjectModalProps) => {
         "Análise de Processos"
       ]
     },
-    "Sistema de Controle de Estoque e Análise de Materiais em Excel": {
-      fullTitle: "Sistema de Controle de Estoque e Análise de Materiais - Centro Trauma",
-      challenge: "A clínica necessitava de um controle preciso e visual do estoque de materiais ortopédicos para evitar faltas, otimizar compras e entender o padrão de consumo. O processo manual era suscetível a erros e não fornecia insights rápidos.",
-      solution: `Desenvolvi uma solução completa em Excel com:
+    "Sistema de Controle de Estoque com Dashboard Dinâmico": {
+      fullTitle: "Sistema de Controle de Estoque com Dashboard Dinâmico - Centro Trauma",
+      challenge: "A gestão de materiais ortopédicos era realizada de forma manual, o que dificultava a visibilidade em tempo real do estoque, gerava risco de falta de itens essenciais e não permitia uma análise estratégica do consumo. Era necessário um sistema que centralizasse as informações e fornecesse insights rápidos para otimizar as compras.",
+      solution: `Desenvolvi uma solução completa e automatizada em Excel, que funciona como um verdadeiro sistema de gestão. A ferramenta inclui:
 
-• Banco de dados para cadastro de produtos e fornecedores
+• Banco de Dados Centralizado: Para cadastro de produtos, fornecedores e controle de movimentações.
 
-• Sistema de controle de entradas e saídas automatizado
+• Sistema de Entradas e Saídas Automatizado: Simplifica o registro diário, minimizando erros manuais.
 
-• Dashboard dinâmico com gráficos interativos
+• Dashboard Dinâmico e Interativo: O coração do projeto, que consolida todos os dados e apresenta, através de gráficos e cartões de KPI, métricas essenciais como:
+  - Valor Total do Estoque
+  - Quantidade de Itens e Produtos Únicos  
+  - Histórico Mensal de Entradas e Saídas
+  - Análise de Consumo por tipo de material`,
+      results: `A implementação da ferramenta transformou a gestão de estoque em um processo orientado por dados. Os resultados foram:
 
-• Relatórios em tempo real de valor total em estoque e status dos materiais`,
-      results: `A implementação trouxe transformações significativas:
+• Visão Clara e em Tempo Real: A diretoria passou a ter acesso imediato ao status do estoque, permitindo uma tomada de decisão mais ágil.
 
-• Visão clara e em tempo real do estoque
+• Gestão Estratégica: A análise do Dashboard permitiu identificar padrões de consumo, otimizar o processo de compras e negociar melhor com fornecedores.
 
-• Gestão mais estratégica dos materiais
-
-• Otimização do processo de compras
-
-• Redução de custos e desperdícios`,
+• Redução de Custos: O controle preciso evitou compras desnecessárias e reduziu o desperdício de materiais, gerando economia para a clínica.`,
       tools: [
         "Excel Avançado",
         "VBA (Visual Basic for Applications)",
