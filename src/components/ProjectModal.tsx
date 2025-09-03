@@ -37,14 +37,14 @@ const ProjectModal = ({ project, children }: ProjectModalProps) => {
         description: "Gráficos detalhados de procedimentos e análise por médico"
       },
       {
-        src: "/lovable-uploads/2f7340e6-ea0b-421d-8d8a-7ae210866e46.png",
-        title: "Controle de Imobilizadores",
-        description: "Dashboard específico para gestão de materiais ortopédicos"
+        src: "/lovable-uploads/0a58a768-7332-41b8-95b2-cebaa34e92a6.png",
+        title: "Controle de Imobilizadores e Estoque Geral",
+        description: "Dashboard completo para gestão de materiais ortopédicos e análise de procedimentos"
       },
       {
-        src: "/lovable-uploads/cf1acf7f-d7ed-4815-a9f7-7d0b5cd91483.png",
-        title: "Análise de Convênios",
-        description: "Relatório detalhado de procedimentos por convênio"
+        src: "/lovable-uploads/4602f0c8-937d-46d3-8686-f814d89a8367.png",
+        title: "Análise de Procedimentos por Convênios",
+        description: "Estudo dinâmico com análise detalhada de procedimentos utilizados por convênios"
       }
     ]
   };
