@@ -63,7 +63,7 @@ const About = () => {
 
             <Card className="glass shadow-md hover:shadow-lg transition-smooth">
               <CardContent className="p-6">
-                <p className="text-lg leading-relaxed text-foreground/90">
+                <p className="text-lg leading-relaxed text-foreground/90 text-justify">
                   Em 2011, essa jornada me levou à área da saúde, iniciando como estagiário na recepção da clínica Centro Trauma. 
                   A dedicação me abriu portas e, em 2012, fui contratado e direcionado para o setor de faturamento, onde mergulhei 
                   no universo do faturamento hospitalar, auditoria de glosas e gestão de estoque.
