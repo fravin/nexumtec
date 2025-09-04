@@ -48,7 +48,7 @@ const About = () => {
           <div className="space-y-6">
             <Card className="glass shadow-md hover:shadow-lg transition-smooth">
               <CardContent className="p-6">
-                <p className="text-lg leading-relaxed text-foreground/90">Minhas primeiras lições de carreira vieram de uma feira livre no bairro da Tijuca-RJ, onde entendi que o verdadeiro motor de qualquer negócio é o cliente. Minha rotina não se resumia a comprar no CEASA-RJ e vender frutas, mas sim em criar conexões autênticas e proporcionar uma experiência de compra positiva. Essa vivência me ensinou que a confiança e a satisfação do cliente são a chave para a sustentabilidade e o crescimento.</p>
+                <p className="text-lg leading-relaxed text-foreground/90 text-justify">Minhas primeiras lições de carreira vieram de uma feira livre no bairro da Tijuca-RJ, onde entendi que o verdadeiro motor de qualquer negócio é o cliente. Minha rotina não se resumia a comprar no CEASA-RJ e vender frutas, mas sim em criar conexões autênticas e proporcionar uma experiência de compra positiva. Essa vivência me ensinou que a confiança e a satisfação do cliente são a chave para a sustentabilidade e o crescimento.</p>
               </CardContent>
             </Card>
 
