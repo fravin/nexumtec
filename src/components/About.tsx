@@ -83,7 +83,7 @@ const About = () => {
 
             <Card className="glass shadow-md hover:shadow-lg transition-smooth">
               <CardContent className="p-6">
-                <p className="text-lg leading-relaxed text-foreground/90">
+                <p className="text-lg leading-relaxed text-foreground/90 text-justify">
                   Em 2017 fui crescendo dentro da empresa e fui de auxiliar de escritório virei assistente administrativo, 
                   após eu concluir minha graduação no final de 2024 assumi a posição de Analista de tecnologia, combinando 
                   minha experiência de negócio com a paixão por tecnologia. Hoje, graduado em Sistemas de Informação e 
