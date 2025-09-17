@@ -291,27 +291,30 @@ const ProjectModal = ({ project, children }: ProjectModalProps) => {
               </div>
             </div>
           ) : (
-            // Layout responsivo para Pesquisa de Satisfação e Alinhamento Estratégico
-            <div className="grid lg:grid-cols-2 gap-8">
-              {/* Left column - Image */}
-              <div className="order-1 lg:order-1">
-                <div className="relative rounded-lg overflow-hidden shadow-lg bg-white">
-                  <img 
-                    src={projectImages[project.title as keyof typeof projectImages] || project.image} 
-                    alt={project.title}
-                    className="w-full h-64 lg:h-80 object-contain p-4"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <Badge className="bg-gradient-hero text-white">
-                      {project.category}
-                    </Badge>
+            // Layout padrão para outros projetos (mesmo padrão do Sistema de Controle de Estoque)
+            <div className="space-y-8">
+              {/* Image Section */}
+              <div className="space-y-4">
+                <div className="relative group">
+                  <div className="relative rounded-xl overflow-hidden shadow-2xl bg-gradient-to-br from-primary/10 to-secondary/10 p-4">
+                    <img 
+                      src={projectImages[project.title as keyof typeof projectImages] || project.image} 
+                      alt={project.title}
+                      className="w-full h-96 lg:h-[500px] object-contain rounded-lg bg-white/90"
+                    />
+                    
+                    {/* Category badge overlay */}
+                    <div className="absolute top-6 left-6">
+                      <Badge className="bg-gradient-hero text-white">
+                        {project.category}
+                      </Badge>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Right column - Content */}
-              <div className="order-2 lg:order-2 space-y-6">
-                
+              {/* Content sections in cards */}
+              <div className="grid md:grid-cols-2 gap-6">
                 {/* Challenge Section */}
                 <div className="bg-gradient-to-br from-background to-muted/30 rounded-xl p-6 border border-border/50 shadow-sm">
                   <h3 className="text-xl font-bold text-primary mb-4 flex items-center gap-2">
@@ -363,28 +366,28 @@ const ProjectModal = ({ project, children }: ProjectModalProps) => {
                     ))}
                   </div>
                 </div>
+              </div>
 
-                {/* Contact CTA */}
-                <div className="bg-gradient-to-r from-primary/5 to-secondary/5 rounded-xl p-6 border border-primary/20 text-center">
-                  <p className="text-muted-foreground mb-4 text-lg">
-                    Interessado em discutir este projeto ou implementar soluções similares?
-                  </p>
-                  <Button 
-                    variant="hero" 
-                    size="lg"
-                    onClick={() => {
-                      setOpen(false);
-                      setTimeout(() => {
-                        document.querySelector("#contato")?.scrollIntoView({ behavior: "smooth" });
-                      }, 300);
-                    }}
-                    className="px-8 py-3"
-                  >
-                  <ExternalLink className="mr-2 h-4 w-4" />
+              {/* Contact CTA */}
+              <div className="bg-gradient-to-r from-primary/5 to-secondary/5 rounded-xl p-6 border border-primary/20 text-center">
+                <p className="text-muted-foreground mb-4 text-lg">
+                  Interessado em discutir este projeto ou implementar soluções similares?
+                </p>
+                <Button 
+                  variant="hero" 
+                  size="lg"
+                  onClick={() => {
+                    setOpen(false);
+                    setTimeout(() => {
+                      document.querySelector("#contato")?.scrollIntoView({ behavior: "smooth" });
+                    }, 300);
+                  }}
+                  className="px-8 py-3"
+                >
+                  <ExternalLink className="mr-2 h-5 w-5" />
                   Vamos Conversar
                 </Button>
               </div>
-            </div>
             </div>
           )}
         </div>
