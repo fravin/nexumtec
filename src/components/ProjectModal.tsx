@@ -1,8 +1,10 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
+import { ExternalLink, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useState } from "react";
+import pesquisaSatisfacaoGrafico from "@/assets/pesquisa-satisfacao-grafico.png";
+import alinhamentoEstrategicoSlide from "@/assets/alinhamento-estrategico-slide.png";
 
 interface ProjectModalProps {
   project: {
@@ -63,31 +65,22 @@ const ProjectModal = ({ project, children }: ProjectModalProps) => {
     }
   };
 
-  // Dados específicos do projeto Alinhamento Estratégico
+  // Dados específicos dos projetos com imagens personalizadas
+  const projectImages = {
+    "Pesquisa de Satisfação e Avaliação de Pacientes": pesquisaSatisfacaoGrafico,
+    "Alinhamento Estratégico e Otimização de Processos Intersetoriais": alinhamentoEstrategicoSlide
+  };
+
   const projectDetails = {
     "Alinhamento Estratégico e Otimização de Processos Intersetoriais": {
-      fullTitle: "Projeto de Alinhamento Estratégico - Centro Trauma",
-      challenge: "A comunicação entre os setores da clínica (Recepção, Enfermagem, Faturamento) apresentava ruídos, resultando em retrabalho, erros no faturamento e um fluxo de trabalho desalinhado, o que impactava a eficiência geral e o ambiente de trabalho.",
-      solution: `Como Analista de TI e responsável pela otimização de processos, liderei a iniciativa de ponta a ponta. Minhas ações incluíram:
-
-• Mapeamento completo dos fluxos de trabalho de cada setor para identificar gargalos.
-
-• Criação e apresentação de um plano de ação para toda a equipe, focando nos benefícios da colaboração.
-
-• Implementação de checklists padronizados e canais de comunicação diretos.
-
-• Utilização do Trello como ferramenta central para gestão das tarefas e acompanhamento das melhorias propostas.`,
-      results: `O projeto resultou em um ambiente de trabalho mais coeso e eficiente. Os principais impactos mensuráveis foram:
-
-• Redução significativa de erros e necessidade de reprocessamento nas contas hospitalares.
-
-• Maior agilidade na comunicação e resolução de pendências entre os setores.
-
-• Criação de um ambiente com feedback contínuo, permitindo a identificação e correção rápida de novas falhas.`,
+      fullTitle: "Alinhamento Estratégico e Otimização de Processos Intersetoriais",
+      challenge: "A falta de uma comunicação fluida e de processos padronizados entre os setores (Recepção, Enfermagem, Faturamento) gerava retrabalho, erros no faturamento e impactava a agilidade do atendimento ao paciente.",
+      solution: "Liderei um projeto de alinhamento estratégico para mapear e otimizar os fluxos de trabalho. Apresentei e implementei um plano de ação que incluía treinamentos periódicos, criação de checklists padronizados e a implementação de canais de comunicação diretos. A gestão do projeto foi realizada através do Trello para garantir a transparência e o acompanhamento das melhorias.",
+      results: "O projeto resultou em uma redução significativa de erros e retrabalho, maior agilidade nos processos internos e, consequentemente, um aumento na satisfação dos pacientes e um ambiente de trabalho mais organizado e colaborativo para os funcionários.",
       tools: [
-        "Trello (Gestão de Projetos)",
-        "Microsoft PowerPoint (Apresentação e Comunicação)", 
-        "Metodologias Ágeis (Organização e Execução)",
+        "Trello",
+        "Microsoft PowerPoint", 
+        "Metodologias Ágeis",
         "Análise de Processos"
       ]
     },
@@ -120,33 +113,14 @@ const ProjectModal = ({ project, children }: ProjectModalProps) => {
       ]
     },
     "Pesquisa de Satisfação e Avaliação de Pacientes": {
-      fullTitle: "Pesquisa de Satisfação e Avaliação de Pacientes - Centro Trauma",
-      challenge: "A clínica precisava de dados estruturados sobre a percepção dos pacientes para identificar pontos de melhoria no atendimento e elevar a qualidade dos serviços prestados.",
-      solution: `Conduzi um projeto completo de pesquisa que envolveu:
-
-• Criação de metodologia de pesquisa quantitativa
-
-• Desenvolvimento de questionário estruturado
-
-• Aplicação da pesquisa com amostra representativa
-
-• Análise estatística dos dados coletados
-
-• Transformação de feedback qualitativo em dados quantitativos`,
-      results: `Os resultados geraram impactos mensuráveis:
-
-• Identificação de 3 pontos-chave de melhoria no fluxo de atendimento
-
-• Base sólida para projeto de otimização de processos
-
-• Dados estruturados para tomada de decisão estratégica
-
-• Melhoria comprovada na qualidade do atendimento`,
+      fullTitle: "Pesquisa de Satisfação e Avaliação de Pacientes",
+      challenge: "A clínica precisava de uma maneira estruturada de coletar e analisar a percepção dos pacientes para identificar, com precisão, os principais pontos de atrito e oportunidades de melhoria no fluxo de atendimento.",
+      solution: "Como um projeto de extensão, liderei a iniciativa desde a concepção até a análise. Criei um questionário objetivo, supervisionei a coleta de dados e centralizei as respostas para análise, transformando feedbacks qualitativos e subjetivos em dados quantitativos e acionáveis.",
+      results: "A análise dos dados revelou de forma clara os 3 principais pontos de melhoria no fluxo de atendimento. Esses insights foram cruciais e serviram como a base para justificar e orientar o \"Projeto de Alinhamento Estratégico\" subsequente.",
       tools: [
-        "Google Forms",
-        "Pesquisa Quantitativa",
-        "Análise Estatística de Dados",
-        "Relatórios Executivos"
+        "Análise de Dados",
+        "Microsoft Excel",
+        "Coleta de Feedback"
       ]
     }
   };
@@ -317,15 +291,15 @@ const ProjectModal = ({ project, children }: ProjectModalProps) => {
               </div>
             </div>
           ) : (
-            // Default layout for other projects
-            <div className="grid lg:grid-cols-5 gap-8">
-              {/* Left column - Image (40%) */}
-              <div className="lg:col-span-2">
-                <div className="relative rounded-lg overflow-hidden shadow-lg">
+            // Layout responsivo para Pesquisa de Satisfação e Alinhamento Estratégico
+            <div className="grid lg:grid-cols-2 gap-8">
+              {/* Left column - Image */}
+              <div className="order-1 lg:order-1">
+                <div className="relative rounded-lg overflow-hidden shadow-lg bg-white">
                   <img 
-                    src={project.image} 
+                    src={projectImages[project.title as keyof typeof projectImages] || project.image} 
                     alt={project.title}
-                    className="w-full h-64 lg:h-80 object-cover"
+                    className="w-full h-64 lg:h-80 object-contain p-4"
                   />
                   <div className="absolute top-4 left-4">
                     <Badge className="bg-gradient-hero text-white">
@@ -335,65 +309,77 @@ const ProjectModal = ({ project, children }: ProjectModalProps) => {
                 </div>
               </div>
 
-            {/* Right column - Content (60%) */}
-            <div className="lg:col-span-3 space-y-6">
-              
-              {/* Challenge Section */}
-              <div>
-                <h3 className="text-xl font-bold text-primary mb-3">O Desafio</h3>
-                <p className="text-foreground leading-relaxed">
-                  {currentProject.challenge}
-                </p>
-              </div>
-
-              {/* Solution Section */}
-              <div>
-                <h3 className="text-xl font-bold text-primary mb-3">Minha Solução</h3>
-                <div className="text-foreground leading-relaxed whitespace-pre-line">
-                  {currentProject.solution}
+              {/* Right column - Content */}
+              <div className="order-2 lg:order-2 space-y-6">
+                
+                {/* Challenge Section */}
+                <div className="bg-gradient-to-br from-background to-muted/30 rounded-xl p-6 border border-border/50 shadow-sm">
+                  <h3 className="text-xl font-bold text-primary mb-4 flex items-center gap-2">
+                    <div className="w-2 h-8 bg-gradient-to-b from-primary to-primary/50 rounded-full"></div>
+                    O Desafio
+                  </h3>
+                  <p className="text-foreground leading-relaxed">
+                    {currentProject.challenge}
+                  </p>
                 </div>
-              </div>
 
-              {/* Results Section */}
-              <div>
-                <h3 className="text-xl font-bold text-primary mb-3">Resultados</h3>
-                <div className="text-foreground leading-relaxed whitespace-pre-line">
-                  {currentProject.results}
+                {/* Solution Section */}
+                <div className="bg-gradient-to-br from-background to-muted/30 rounded-xl p-6 border border-border/50 shadow-sm">
+                  <h3 className="text-xl font-bold text-primary mb-4 flex items-center gap-2">
+                    <div className="w-2 h-8 bg-gradient-to-b from-secondary to-secondary/50 rounded-full"></div>
+                    Minha Solução
+                  </h3>
+                  <div className="text-foreground leading-relaxed whitespace-pre-line">
+                    {currentProject.solution}
+                  </div>
                 </div>
-              </div>
 
-              {/* Tools Section */}
-              <div>
-                <h3 className="text-xl font-bold text-primary mb-3">Ferramentas Utilizadas</h3>
-                <div className="flex flex-wrap gap-2">
-                  {currentProject.tools.map((tool, index) => (
-                    <Badge 
-                      key={index} 
-                      variant="secondary"
-                      className="bg-secondary/50 text-secondary-foreground"
-                    >
-                      {tool}
-                    </Badge>
-                  ))}
+                {/* Results Section */}
+                <div className="bg-gradient-to-br from-background to-muted/30 rounded-xl p-6 border border-border/50 shadow-sm">
+                  <h3 className="text-xl font-bold text-primary mb-4 flex items-center gap-2">
+                    <div className="w-2 h-8 bg-gradient-to-b from-accent to-accent/50 rounded-full"></div>
+                    Resultados
+                  </h3>
+                  <div className="text-foreground leading-relaxed whitespace-pre-line">
+                    {currentProject.results}
+                  </div>
                 </div>
-              </div>
 
-              {/* Contact CTA */}
-              <div className="pt-4 border-t border-border">
-                <p className="text-muted-foreground mb-4">
-                  Interessado em discutir este projeto ou implementar soluções similares?
-                </p>
-                <Button 
-                  variant="hero" 
-                  size="lg"
-                  onClick={() => {
-                    setOpen(false);
-                    setTimeout(() => {
-                      document.querySelector("#contato")?.scrollIntoView({ behavior: "smooth" });
-                    }, 300);
-                  }}
-                  className="w-full sm:w-auto"
-                >
+                {/* Tools Section */}
+                <div className="bg-gradient-to-br from-background to-muted/30 rounded-xl p-6 border border-border/50 shadow-sm">
+                  <h3 className="text-xl font-bold text-primary mb-4 flex items-center gap-2">
+                    <div className="w-2 h-8 bg-gradient-to-b from-primary to-secondary rounded-full"></div>
+                    Ferramentas Utilizadas
+                  </h3>
+                  <div className="flex flex-wrap gap-3">
+                    {currentProject.tools.map((tool, index) => (
+                      <Badge 
+                        key={index} 
+                        variant="secondary"
+                        className="bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-colors px-3 py-1"
+                      >
+                        {tool}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Contact CTA */}
+                <div className="bg-gradient-to-r from-primary/5 to-secondary/5 rounded-xl p-6 border border-primary/20 text-center">
+                  <p className="text-muted-foreground mb-4 text-lg">
+                    Interessado em discutir este projeto ou implementar soluções similares?
+                  </p>
+                  <Button 
+                    variant="hero" 
+                    size="lg"
+                    onClick={() => {
+                      setOpen(false);
+                      setTimeout(() => {
+                        document.querySelector("#contato")?.scrollIntoView({ behavior: "smooth" });
+                      }, 300);
+                    }}
+                    className="px-8 py-3"
+                  >
                   <ExternalLink className="mr-2 h-4 w-4" />
                   Vamos Conversar
                 </Button>
