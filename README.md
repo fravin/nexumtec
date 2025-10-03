@@ -1,4 +1,4 @@
-ortfólio Profissional - Flávio Admilson
+Portfólio Profissional - Flávio Admilson
 Este é o repositório do meu portfólio pessoal, um projeto desenvolvido para centralizar e apresentar minha jornada profissional, competências técnicas e os principais projetos que desenvolvi. O site reflete minha transição e expertise combinada: mais de 14 anos de experiência em gestão de processos no setor de saúde, agora alinhados à minha paixão por tecnologia, análise de dados e desenvolvimento de sistemas.
 
 🚀 Acesso ao Site
