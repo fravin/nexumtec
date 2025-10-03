@@ -3,9 +3,27 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink, BarChart3, Code, Workflow, Users } from "lucide-react";
 import ProjectModal from "./ProjectModal";
+import estoqueLogin from "@/assets/estoque-login.png";
+import estoqueDashboard from "@/assets/estoque-dashboard.png";
 
 const Projects = () => {
   const projects = [
+    {
+      title: "Sistema Web de Gestão de Estoque Hospitalar",
+      description: "Sistema web completo desenvolvido do zero para substituir planilhas Excel. Aplicação robusta com interface intuitiva, banco de dados SQL e tela de autenticação, em pleno funcionamento na clínica.",
+      image: estoqueDashboard,
+      category: "Desenvolvimento Web",
+      technologies: ["JavaScript", "HTML5 & CSS3", "SQL", "Git & GitHub"],
+      icon: <Code className="h-6 w-6" />,
+      challenge: "O controle de estoque da clínica era feito em uma planilha de Excel que, devido ao grande volume de dados, se tornou suscetível a erros manuais, gerando retrabalho constante e imprecisão na análise de consumo.",
+      solution: "Desenvolvi do zero um sistema web completo para substituir a planilha. Criei uma aplicação robusta com interface intuitiva utilizando HTML, CSS e JavaScript, conectada a um banco de dados SQL para garantir a integridade dos dados. O sistema possui tela de autenticação para segurança e está em pleno funcionamento na empresa.",
+      results: [
+        "Eliminação completa dos erros de lançamento manual",
+        "Controle de estoque preciso e em tempo real",
+        "Dados confiáveis para análise e otimização de compras",
+        "Aumento significativo da eficiência operacional"
+      ]
+    },
     {
       title: "Sistema de Controle de Estoque com Dashboard Dinâmico",
       description: "Sistema completo em Excel com banco de dados centralizado, controle automatizado de entradas/saídas e dashboard interativo. Oferece visão em tempo real do estoque e análise estratégica.",

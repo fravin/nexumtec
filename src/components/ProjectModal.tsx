@@ -5,6 +5,8 @@ import { ExternalLink, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useState } from "react";
 import pesquisaSatisfacaoGrafico from "@/assets/pesquisa-satisfacao-grafico.png";
 import alinhamentoEstrategicoSlide from "@/assets/alinhamento-estrategico-slide.png";
+import estoqueLogin from "@/assets/estoque-login.png";
+import estoqueDashboard from "@/assets/estoque-dashboard.png";
 
 interface ProjectModalProps {
   project: {
@@ -27,6 +29,18 @@ const ProjectModal = ({ project, children }: ProjectModalProps) => {
   
   // Galeria de dashboards para o projeto de controle de estoque
   const dashboardGallery = {
+    "Sistema Web de Gestão de Estoque Hospitalar": [
+      {
+        src: estoqueLogin,
+        title: "Tela de Login - Sistema de Estoque",
+        description: "Interface de autenticação do sistema web"
+      },
+      {
+        src: estoqueDashboard,
+        title: "Dashboard Principal - Gestão de Estoque",
+        description: "Painel de controle com métricas em tempo real e gestão completa"
+      }
+    ],
     "Sistema de Controle de Estoque com Dashboard Dinâmico": [
       {
         src: "/lovable-uploads/b24acb9c-0aed-47f2-a007-54b657dd77db.png",
@@ -67,11 +81,24 @@ const ProjectModal = ({ project, children }: ProjectModalProps) => {
 
   // Dados específicos dos projetos com imagens personalizadas
   const projectImages = {
+    "Sistema Web de Gestão de Estoque Hospitalar": estoqueDashboard,
     "Pesquisa de Satisfação e Avaliação de Pacientes": pesquisaSatisfacaoGrafico,
     "Alinhamento Estratégico e Otimização de Processos Intersetoriais": alinhamentoEstrategicoSlide
   };
 
   const projectDetails = {
+    "Sistema Web de Gestão de Estoque Hospitalar": {
+      fullTitle: "Sistema Web de Gestão de Estoque Hospitalar",
+      challenge: "O controle de estoque da clínica era feito em uma planilha de Excel que, devido ao grande volume de dados, se tornou suscetível a erros manuais, gerando retrabalho constante e imprecisão na análise de consumo.",
+      solution: "Desenvolvi do zero um sistema web completo para substituir a planilha. Criei uma aplicação robusta com interface intuitiva utilizando HTML, CSS e JavaScript, conectada a um banco de dados SQL para garantir a integridade dos dados. O sistema possui tela de autenticação para segurança e está em pleno funcionamento na empresa.",
+      results: "A implementação eliminou os erros de lançamento manual e o retrabalho. A clínica agora possui um controle de estoque preciso e em tempo real, com dados confiáveis para análise e otimização de compras, aumentando a eficiência operacional.",
+      tools: [
+        "JavaScript",
+        "HTML5 & CSS3",
+        "SQL",
+        "Git & GitHub"
+      ]
+    },
     "Alinhamento Estratégico e Otimização de Processos Intersetoriais": {
       fullTitle: "Alinhamento Estratégico e Otimização de Processos Intersetoriais",
       challenge: "A falta de uma comunicação fluida e de processos padronizados entre os setores (Recepção, Enfermagem, Faturamento) gerava retrabalho, erros no faturamento e impactava a agilidade do atendimento ao paciente.",
