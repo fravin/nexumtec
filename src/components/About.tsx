@@ -22,62 +22,24 @@ const About = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
-          {/* Portrait and Gallery */}
-          <div className="space-y-8">
-            <div className="text-center">
-              <div className="relative inline-block group">
-                {/* Animated ring border */}
-                <div className="absolute -inset-6 bg-gradient-to-r from-primary via-accent to-primary rounded-lg opacity-75 group-hover:opacity-100 animate-pulse transition-opacity duration-1000"></div>
-                
-                {/* Static outer ring */}
-                <div className="absolute -inset-2 bg-gradient-to-r from-primary/50 via-transparent to-accent/50 rounded-lg"></div>
-                
-                {/* Inner glow */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-primary/30 to-accent/30 rounded-lg blur-sm"></div>
-                
-                {/* Main image */}
-                <div className="relative">
-                  <img src="/lovable-uploads/f99c685c-3957-4643-a4d6-0abf73d8f016.png" alt="Flávio Admilson - Analista de Sistemas" className="w-full max-w-md h-[500px] object-cover object-top rounded-lg border-4 border-background shadow-2xl group-hover:scale-105 transition-transform duration-500 mx-auto relative z-10" />
-                  
-                  {/* Overlay effect */}
-                  <div className="absolute inset-0 rounded-lg bg-gradient-to-tr from-primary/10 via-transparent to-accent/10 group-hover:from-primary/20 group-hover:to-accent/20 transition-all duration-500"></div>
-                </div>
-              </div>
-            </div>
-
-            {/* Photo Gallery */}
-            <div className="grid grid-cols-3 gap-4 px-4">
-              <div className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-glow transition-smooth">
-                <img 
-                  src="/flavio-graduation.jpg" 
-                  alt="Flávio - Formatura em Sistemas de Informação" 
-                  className="w-full h-40 object-cover object-top group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                  <p className="text-white text-xs p-2 font-medium">Formatura 2024</p>
-                </div>
-              </div>
+          {/* Portrait */}
+          <div className="text-center">
+            <div className="relative inline-block group">
+              {/* Animated ring border */}
+              <div className="absolute -inset-6 bg-gradient-to-r from-primary via-accent to-primary rounded-lg opacity-75 group-hover:opacity-100 animate-pulse transition-opacity duration-1000"></div>
               
-              <div className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-glow transition-smooth">
-                <img 
-                  src="/flavio-daughter.jpg" 
-                  alt="Flávio e Ana Beatriz" 
-                  className="w-full h-40 object-cover object-center group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                  <p className="text-white text-xs p-2 font-medium">Com Ana Beatriz</p>
-                </div>
-              </div>
+              {/* Static outer ring */}
+              <div className="absolute -inset-2 bg-gradient-to-r from-primary/50 via-transparent to-accent/50 rounded-lg"></div>
               
-              <div className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-glow transition-smooth">
-                <img 
-                  src="/flavio-family.jpg" 
-                  alt="Flávio e família" 
-                  className="w-full h-40 object-cover object-center group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                  <p className="text-white text-xs p-2 font-medium">Em família</p>
-                </div>
+              {/* Inner glow */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary/30 to-accent/30 rounded-lg blur-sm"></div>
+              
+              {/* Main image */}
+              <div className="relative">
+                <img src="/lovable-uploads/f99c685c-3957-4643-a4d6-0abf73d8f016.png" alt="Flávio Admilson - Analista de Sistemas" className="w-full max-w-md h-[500px] object-cover object-top rounded-lg border-4 border-background shadow-2xl group-hover:scale-105 transition-transform duration-500 mx-auto relative z-10" />
+                
+                {/* Overlay effect */}
+                <div className="absolute inset-0 rounded-lg bg-gradient-to-tr from-primary/10 via-transparent to-accent/10 group-hover:from-primary/20 group-hover:to-accent/20 transition-all duration-500"></div>
               </div>
             </div>
           </div>
