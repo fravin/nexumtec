@@ -201,6 +201,11 @@ All colors MUST be HSL.
   .parallax {
     transition: transform 0.2s ease-out;
   }
+
+  /* Smooth transitions */
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
 }
 
 @keyframes gradient {
