@@ -1,13 +1,31 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, BarChart3, Code, Workflow, Users } from "lucide-react";
+import { ExternalLink, BarChart3, Code, Workflow, Users, Globe } from "lucide-react";
 import ProjectModal from "./ProjectModal";
 import estoqueLogin from "@/assets/estoque-login.png";
 import estoqueDashboard from "@/assets/estoque-dashboard.png";
+import vendasDashboard from "@/assets/vendas-dashboard.png";
 
 const Projects = () => {
   const projects = [
+    {
+      title: "Análise Global de Vendas - Pós-Graduação",
+      description: "Projeto acadêmico de análise de dados de vendas globais com dashboard interativo em Power BI. Análise completa de 77,55 milhões em vendas, 204 mil produtos vendidos, identificando padrões de consumo por continente, país e período.",
+      image: vendasDashboard,
+      category: "Análise de Dados",
+      technologies: ["Power BI", "SQL", "Modelagem de Dados", "Análise Estatística"],
+      icon: <Globe className="h-6 w-6" />,
+      challenge: "Analisar um extenso banco de dados de vendas globais para identificar padrões de consumo, tendências de mercado e gerar insights estratégicos que auxiliem gestores na tomada de decisão baseada em dados.",
+      solution: "Desenvolvi um projeto completo de análise de dados, desde a modelagem do banco de dados relacional até a criação de dashboards interativos. Realizei tratamento e transformação de dados, criação de relacionamentos entre tabelas (Sales, Product, Region, Salesperson) e desenvolvimento de visualizações estratégicas em Power BI.",
+      results: [
+        "Análise de 77,55 milhões em vendas totalizando 204 mil produtos",
+        "Identificação de padrões de consumo por continente e país",
+        "Dashboard interativo com análise temporal de desempenho",
+        "Insights valiosos para otimização de estratégias de vendas",
+        "Modelo de dados robusto com relacionamentos estruturados"
+      ]
+    },
     {
       title: "Sistema Web de Gestão de Estoque Hospitalar",
       description: "Sistema web completo desenvolvido do zero para substituir planilhas Excel. Aplicação robusta com interface intuitiva, banco de dados SQL e tela de autenticação, em pleno funcionamento na clínica.",

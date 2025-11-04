@@ -7,6 +7,8 @@ import pesquisaSatisfacaoGrafico from "@/assets/pesquisa-satisfacao-grafico.png"
 import alinhamentoEstrategicoSlide from "@/assets/alinhamento-estrategico-slide.png";
 import estoqueLogin from "@/assets/estoque-login.png";
 import estoqueDashboard from "@/assets/estoque-dashboard.png";
+import vendasDashboard from "@/assets/vendas-dashboard.png";
+import vendasModeloDados from "@/assets/vendas-modelo-dados.png";
 
 interface ProjectModalProps {
   project: {
@@ -29,6 +31,18 @@ const ProjectModal = ({ project, children }: ProjectModalProps) => {
   
   // Galeria de dashboards para o projeto de controle de estoque
   const dashboardGallery = {
+    "Análise Global de Vendas - Pós-Graduação": [
+      {
+        src: vendasDashboard,
+        title: "Dashboard Interativo - Análise de Vendas Globais",
+        description: "Visão completa com KPIs principais: R$ 77,55 Mi em vendas, 204 mil produtos, análise por continente e desempenho temporal"
+      },
+      {
+        src: vendasModeloDados,
+        title: "Modelo de Dados Relacional",
+        description: "Arquitetura do banco de dados com relacionamentos entre tabelas Sales, Product, Region e Salesperson"
+      }
+    ],
     "Sistema Web de Gestão de Estoque Hospitalar": [
       {
         src: estoqueLogin,
@@ -83,10 +97,45 @@ const ProjectModal = ({ project, children }: ProjectModalProps) => {
   const projectImages = {
     "Sistema Web de Gestão de Estoque Hospitalar": estoqueDashboard,
     "Pesquisa de Satisfação e Avaliação de Pacientes": pesquisaSatisfacaoGrafico,
-    "Alinhamento Estratégico e Otimização de Processos Intersetoriais": alinhamentoEstrategicoSlide
+    "Alinhamento Estratégico e Otimização de Processos Intersetoriais": alinhamentoEstrategicoSlide,
+    "Análise Global de Vendas - Pós-Graduação": vendasDashboard
   };
 
   const projectDetails = {
+    "Análise Global de Vendas - Pós-Graduação": {
+      fullTitle: "Análise Global de Vendas - Projeto de Pós-Graduação",
+      challenge: "O desafio era realizar uma análise completa de um extenso banco de dados de vendas globais, identificando padrões de consumo, tendências de mercado por região e gerando insights estratégicos que pudessem ser apresentados de forma clara e interativa para auxiliar gestores na tomada de decisão.",
+      solution: `Desenvolvi um projeto completo de análise de dados, desde a estruturação do banco de dados até a apresentação dos insights:
+
+• Modelagem de Dados: Criei um modelo relacional robusto conectando as tabelas Sales, Product, Region, Table_Region, Salesperson e Table_Salesperson, garantindo integridade e eficiência nas consultas.
+
+• Tratamento e Transformação: Realizei limpeza, padronização e enriquecimento dos dados para análises precisas.
+
+• Dashboards Interativos em Power BI: Desenvolvi visualizações estratégicas incluindo:
+  - KPIs principais (Total de vendas: R$ 77,55 Mi, Produtos vendidos: 204 mil, Ticket médio: R$ 1,34 mil)
+  - Análise geográfica por continente (North America: 84,94%, Europe: 13,21%, Pacific: 1,79%)
+  - Distribuição de vendas por país (Southwest lidera com maior volume)
+  - Análise temporal de desempenho mensal
+  - Mapa interativo de produtos vendidos por continente`,
+      results: `O projeto entregou uma solução completa de Business Intelligence com resultados significativos:
+
+• Insights Estratégicos: Identificação clara dos mercados mais lucrativos e oportunidades de expansão.
+
+• Visualização Interativa: Dashboards que permitem exploração dinâmica dos dados por múltiplas dimensões (tempo, geografia, produtos).
+
+• Base para Decisões: Análises detalhadas que fundamentam decisões estratégicas sobre alocação de recursos, foco em mercados e planejamento de vendas.
+
+• Demonstração de Competências: Projeto acadêmico que demonstra domínio completo do ciclo de análise de dados, desde a modelagem até a apresentação de insights.`,
+      tools: [
+        "Power BI",
+        "SQL",
+        "Modelagem de Dados",
+        "ETL (Extract, Transform, Load)",
+        "Análise Estatística",
+        "Data Visualization",
+        "Business Intelligence"
+      ]
+    },
     "Sistema Web de Gestão de Estoque Hospitalar": {
       fullTitle: "Sistema Web de Gestão de Estoque Hospitalar",
       challenge: "O controle de estoque da clínica era feito em uma planilha de Excel que, devido ao grande volume de dados, se tornou suscetível a erros manuais, gerando retrabalho constante e imprecisão na análise de consumo.",
