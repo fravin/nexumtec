@@ -80,7 +80,7 @@ const Hero = () => {
           {/* Stats */}
           <div className="grid grid-cols-2 gap-8 max-w-md mx-auto">
             <div className="text-center">
-              <div className="text-4xl font-bold mb-2 text-white">14+</div>
+              <div className="text-4xl font-bold mb-2 text-white">15+</div>
               <div className="text-white/80">Anos de Experiência</div>
             </div>
             <div className="text-center">
