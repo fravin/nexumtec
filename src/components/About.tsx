@@ -1,4 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
+import ImpactMetrics from "./ImpactMetrics";
+
 const About = () => {
   const philosophyItems = [{
     title: "Dados para Pessoas",
@@ -95,8 +97,11 @@ const About = () => {
           </div>
         </div>
 
+        {/* Impact Metrics */}
+        <ImpactMetrics />
+
         {/* Philosophy Section */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 mt-20">
           <h3 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
             Minha Filosofia de Trabalho
           </h3>

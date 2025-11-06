@@ -1,8 +1,63 @@
+import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, MapPin, Linkedin, Github, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Github, Send, Loader2 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    company: "",
+    subject: "",
+    message: ""
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const { error } = await supabase.functions.invoke('send-contact-email', {
+        body: formData
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Mensagem enviada com sucesso!",
+        description: "Obrigado pelo contato. Retornarei em breve!",
+      });
+
+      setFormData({
+        name: "",
+        email: "",
+        company: "",
+        subject: "",
+        message: ""
+      });
+    } catch (error) {
+      console.error("Error sending email:", error);
+      toast({
+        title: "Erro ao enviar mensagem",
+        description: "Por favor, tente novamente ou entre em contato diretamente pelo email.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const contactInfo = [
     {
       icon: <Mail className="h-6 w-6" />,
@@ -136,7 +191,7 @@ const Contact = () => {
                 <CardTitle>Envie uma Mensagem</CardTitle>
               </CardHeader>
               <CardContent>
-                <form className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -147,6 +202,8 @@ const Contact = () => {
                         id="name"
                         name="name"
                         required
+                        value={formData.name}
+                        onChange={handleInputChange}
                         className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary transition-smooth"
                         placeholder="Seu nome"
                       />
@@ -160,6 +217,8 @@ const Contact = () => {
                         id="email"
                         name="email"
                         required
+                        value={formData.email}
+                        onChange={handleInputChange}
                         className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary transition-smooth"
                         placeholder="seu@email.com"
                       />
@@ -174,6 +233,8 @@ const Contact = () => {
                       type="text"
                       id="company"
                       name="company"
+                      value={formData.company}
+                      onChange={handleInputChange}
                       className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary transition-smooth"
                       placeholder="Nome da sua empresa"
                     />
@@ -188,6 +249,8 @@ const Contact = () => {
                       id="subject"
                       name="subject"
                       required
+                      value={formData.subject}
+                      onChange={handleInputChange}
                       className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary transition-smooth"
                       placeholder="Como posso ajudá-lo?"
                     />
@@ -202,6 +265,8 @@ const Contact = () => {
                       name="message"
                       rows={5}
                       required
+                      value={formData.message}
+                      onChange={handleInputChange}
                       className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary transition-smooth resize-none"
                       placeholder="Conte-me mais sobre seu projeto ou necessidade..."
                     ></textarea>
@@ -212,9 +277,19 @@ const Contact = () => {
                     variant="hero" 
                     size="lg" 
                     className="w-full group"
+                    disabled={isSubmitting}
                   >
-                    <Send className="mr-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                    Enviar Mensagem
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                        Enviando...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="mr-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                        Enviar Mensagem
+                      </>
+                    )}
                   </Button>
 
                   <p className="text-sm text-muted-foreground text-center">

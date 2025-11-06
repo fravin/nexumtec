@@ -17,32 +17,38 @@ const Skills = () => {
     {
       icon: <Database className="h-8 w-8" />,
       title: "SQL & Bancos de Dados",
-      description: "Modelagem e consultas avançadas para análise de dados"
+      description: "Modelagem e consultas avançadas para análise de dados",
+      proficiency: 90
     },
     {
       icon: <Code2 className="h-8 w-8" />,
       title: "Desenvolvimento Web",
-      description: "HTML, CSS, JavaScript para soluções front-end"
+      description: "HTML, CSS, JavaScript para soluções front-end",
+      proficiency: 75
     },
     {
       icon: <BarChart3 className="h-8 w-8" />,
       title: "Business Intelligence",
-      description: "Power BI, dashboards e visualizações estratégicas"
+      description: "Power BI, dashboards e visualizações estratégicas",
+      proficiency: 95
     },
     {
       icon: <FileSpreadsheet className="h-8 w-8" />,
       title: "Excel Avançado",
-      description: "VBA, fórmulas complexas e automações"
+      description: "VBA, fórmulas complexas e automações",
+      proficiency: 95
     },
     {
       icon: <LineChart className="h-8 w-8" />,
       title: "Análise de Dados",
-      description: "Python, Pandas e técnicas de Data Science"
+      description: "Python, Pandas e técnicas de Data Science",
+      proficiency: 80
     },
     {
       icon: <GitBranch className="h-8 w-8" />,
       title: "Controle de Versão",
-      description: "Git & GitHub para gestão de projetos"
+      description: "Git & GitHub para gestão de projetos",
+      proficiency: 85
     }
   ];
 
@@ -95,17 +101,32 @@ const Skills = () => {
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <CardContent className="p-6">
-                  <div className="flex items-start space-x-4">
+                  <div className="flex items-start space-x-4 mb-4">
                     <div className="bg-gradient-hero text-white p-3 rounded-lg group-hover:scale-110 transition-transform">
                       {skill.icon}
                     </div>
-                    <div>
+                    <div className="flex-1">
                       <h4 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
                         {skill.title}
                       </h4>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-sm text-muted-foreground mb-3">
                         {skill.description}
                       </p>
+                      <div className="space-y-2">
+                        <div className="flex justify-between items-center text-sm">
+                          <span className="text-muted-foreground">Proficiência</span>
+                          <span className="font-semibold gradient-text">{skill.proficiency}%</span>
+                        </div>
+                        <div className="w-full bg-secondary/30 rounded-full h-2 overflow-hidden">
+                          <div 
+                            className="bg-gradient-hero h-full rounded-full transition-all duration-1000 ease-out"
+                            style={{ 
+                              width: `${skill.proficiency}%`,
+                              animationDelay: `${index * 150}ms`
+                            }}
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </CardContent>
