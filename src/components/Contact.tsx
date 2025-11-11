@@ -68,8 +68,8 @@ const Contact = () => {
     {
       icon: <Phone className="h-6 w-6" />,
       label: "Telefone",
-      value: "+55 (21) 98146-6912",
-      href: "tel:+5521981466912"
+      value: "+55 (21) 99999-9999",
+      href: "tel:+5521999999999"
     }
   ];
 
