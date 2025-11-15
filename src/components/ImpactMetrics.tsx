@@ -6,7 +6,7 @@ const ImpactMetrics = () => {
   const metrics = [
     {
       icon: <Clock className="h-8 w-8" />,
-      value: 14,
+      value: 15,
       suffix: "+",
       label: "Anos de Experiência",
       color: "text-blue-500"
