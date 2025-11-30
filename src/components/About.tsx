@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import ImpactMetrics from "./ImpactMetrics";
+import { AnimatedSection } from "@/components/AnimatedSection";
 
 const About = () => {
   const philosophyItems = [{
@@ -17,15 +18,18 @@ const About = () => {
   }];
   return <section id="sobre" className="py-20 bg-gradient-to-br from-background to-secondary/20">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="gradient-text">Minha Jornada:</span> Da Feira à Análise de Dados
-          </h2>
-        </div>
+        <AnimatedSection animation="slideUp" delay={0}>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              <span className="gradient-text">Minha Jornada:</span> Da Feira à Análise de Dados
+            </h2>
+          </div>
+        </AnimatedSection>
 
         <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
           {/* Portrait */}
-          <div className="text-center">
+          <AnimatedSection animation="slideInLeft" delay={100}>
+            <div className="text-center">
             <div className="relative inline-block group">
               {/* Animated ring border */}
               <div className="absolute -inset-6 bg-gradient-to-r from-primary via-accent to-primary rounded-lg opacity-75 group-hover:opacity-100 animate-pulse transition-opacity duration-1000"></div>
@@ -44,17 +48,21 @@ const About = () => {
                 <div className="absolute inset-0 rounded-lg bg-gradient-to-tr from-primary/10 via-transparent to-accent/10 group-hover:from-primary/20 group-hover:to-accent/20 transition-all duration-500"></div>
               </div>
             </div>
-          </div>
+            </div>
+          </AnimatedSection>
 
           {/* Story */}
           <div className="space-y-6">
-            <Card className="glass shadow-md hover:shadow-lg transition-smooth">
+            <AnimatedSection animation="slideInRight" delay={150}>
+              <Card className="glass shadow-md hover:shadow-lg transition-smooth">
               <CardContent className="p-6">
                 <p className="text-lg leading-relaxed text-foreground/90 text-justify">Minhas primeiras lições de carreira vieram de uma feira livre no bairro da Tijuca-RJ, onde entendi que o verdadeiro motor de qualquer negócio é o cliente. Minha rotina não se resumia a comprar no CEASA-RJ e vender frutas, mas sim em criar conexões autênticas e proporcionar uma experiência de compra positiva. Essa vivência me ensinou que a confiança e a satisfação do cliente são a chave para a sustentabilidade e o crescimento.</p>
               </CardContent>
             </Card>
+            </AnimatedSection>
 
-            <Card className="bg-gradient-card border-primary/20 shadow-md">
+            <AnimatedSection animation="slideInRight" delay={250}>
+              <Card className="bg-gradient-card border-primary/20 shadow-md">
               <CardContent className="p-6">
                 <blockquote className="text-lg italic text-primary font-medium border-l-4 border-primary pl-4">
                   "Essa habilidade de negociação e de criar laços, aprendida na feira, é a mesma que aplico hoje ao lidar com 
@@ -62,8 +70,10 @@ const About = () => {
                 </blockquote>
               </CardContent>
             </Card>
+            </AnimatedSection>
 
-            <Card className="glass shadow-md hover:shadow-lg transition-smooth">
+            <AnimatedSection animation="slideInRight" delay={350}>
+              <Card className="glass shadow-md hover:shadow-lg transition-smooth">
               <CardContent className="p-6">
                 <p className="text-lg leading-relaxed text-foreground/90 text-justify">
                   Em 2011, essa jornada me levou à área da saúde, iniciando como estagiário na recepção da clínica Centro Trauma. 
@@ -72,8 +82,10 @@ const About = () => {
                 </p>
               </CardContent>
             </Card>
+            </AnimatedSection>
 
-            <Card className="bg-accent/10 border-accent/30 shadow-md">
+            <AnimatedSection animation="slideInRight" delay={450}>
+              <Card className="bg-accent/10 border-accent/30 shadow-md">
               <CardContent className="p-6">
                 <p className="text-lg leading-relaxed text-foreground/90">
                   A vida, então, me trouxe a maior de todas as motivações: em 2014, o nascimento da minha filha, 
@@ -82,8 +94,10 @@ const About = () => {
                 </p>
               </CardContent>
             </Card>
+            </AnimatedSection>
 
-            <Card className="glass shadow-md hover:shadow-lg transition-smooth">
+            <AnimatedSection animation="slideInRight" delay={550}>
+              <Card className="glass shadow-md hover:shadow-lg transition-smooth">
               <CardContent className="p-6">
                 <p className="text-lg leading-relaxed text-foreground/90 text-justify">
                   Em 2017 fui crescendo dentro da empresa e fui de auxiliar de escritório virei assistente administrativo, 
@@ -94,6 +108,7 @@ const About = () => {
                 </p>
               </CardContent>
             </Card>
+            </AnimatedSection>
           </div>
         </div>
 
@@ -101,23 +116,29 @@ const About = () => {
         <ImpactMetrics />
 
         {/* Philosophy Section */}
-        <div className="text-center mb-12 mt-20">
-          <h3 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
-            Minha Filosofia de Trabalho
-          </h3>
-        </div>
+        <AnimatedSection animation="slideUp" delay={100}>
+          <div className="text-center mb-12 mt-20">
+            <h3 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
+              Minha Filosofia de Trabalho
+            </h3>
+          </div>
+        </AnimatedSection>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {philosophyItems.map((item, index) => <Card key={index} className="group hover:shadow-glow transition-smooth cursor-pointer h-full">
-              <CardContent className="p-6 h-full">
-                <h4 className="text-lg font-semibold mb-4 gradient-text group-hover:scale-105 transition-transform">
-                  {item.title}
-                </h4>
-                <p className="text-muted-foreground leading-relaxed">
-                  {item.description}
-                </p>
-              </CardContent>
-            </Card>)}
+          {philosophyItems.map((item, index) => (
+            <AnimatedSection key={index} animation="scaleIn" delay={200 + index * 100}>
+              <Card className="group hover:shadow-glow transition-smooth cursor-pointer h-full">
+                <CardContent className="p-6 h-full">
+                  <h4 className="text-lg font-semibold mb-4 gradient-text group-hover:scale-105 transition-transform">
+                    {item.title}
+                  </h4>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {item.description}
+                  </p>
+                </CardContent>
+              </Card>
+            </AnimatedSection>
+          ))}
         </div>
       </div>
     </section>;

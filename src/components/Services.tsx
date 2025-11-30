@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { BarChart3, Brain, Workflow, TrendingUp, Database, Settings } from "lucide-react";
+import { AnimatedSection } from "@/components/AnimatedSection";
 
 const Services = () => {
   const services = [
@@ -47,25 +48,30 @@ const Services = () => {
   return (
     <section id="servicos" className="py-20 bg-gradient-to-br from-secondary/20 to-background">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Como Posso Ajudar a <span className="gradient-text">Sua Empresa</span>
-          </h2>
-          <p className="text-xl text-muted-foreground mb-6">
-            Transformando Desafios em Oportunidades com Soluções Sob Medida
-          </p>
-          <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-            Com mais de uma década de experiência na otimização de processos no setor da saúde e uma especialização em Ciência de Dados, ofereço serviços de consultoria focados em gerar eficiência, clareza e resultados mensuráveis para o seu negócio.
-          </p>
-        </div>
+        <AnimatedSection animation="slideUp" delay={0}>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Como Posso Ajudar a <span className="gradient-text">Sua Empresa</span>
+            </h2>
+            <p className="text-xl text-muted-foreground mb-6">
+              Transformando Desafios em Oportunidades com Soluções Sob Medida
+            </p>
+            <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+              Com mais de uma década de experiência na otimização de processos no setor da saúde e uma especialização em Ciência de Dados, ofereço serviços de consultoria focados em gerar eficiência, clareza e resultados mensuráveis para o seu negócio.
+            </p>
+          </div>
+        </AnimatedSection>
 
         <div className="space-y-12">
-          <h3 className="text-3xl font-bold text-center mb-12">Nossos Serviços</h3>
+          <AnimatedSection animation="slideUp" delay={100}>
+            <h3 className="text-3xl font-bold text-center mb-12">Nossos Serviços</h3>
+          </AnimatedSection>
           
           {services.map((service, serviceIndex) => (
             <div key={serviceIndex} className="space-y-8">
               {/* Service Header */}
-              <div className="flex items-center justify-center mb-8">
+              <AnimatedSection animation="scaleIn" delay={150 + serviceIndex * 100}>
+                <div className="flex items-center justify-center mb-8">
                 <Card className="bg-gradient-hero text-white shadow-glow max-w-4xl">
                   <CardContent className="flex items-center space-x-4 p-6">
                     {service.icon}
@@ -76,11 +82,17 @@ const Services = () => {
                   </CardContent>
                 </Card>
               </div>
+              </AnimatedSection>
 
               {/* Offerings Grid */}
               <div className="grid md:grid-cols-3 gap-6">
                 {service.offerings.map((offering, offeringIndex) => (
-                  <Card 
+                  <AnimatedSection 
+                    key={offeringIndex}
+                    animation="slideUp"
+                    delay={250 + serviceIndex * 100 + offeringIndex * 100}
+                  >
+                    <Card
                     key={offeringIndex}
                     className="group hover:shadow-glow transition-smooth h-full"
                   >
@@ -106,6 +118,7 @@ const Services = () => {
                       </p>
                     </CardContent>
                   </Card>
+                  </AnimatedSection>
                 ))}
               </div>
             </div>
@@ -113,24 +126,26 @@ const Services = () => {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center mt-16">
-          <Card className="bg-gradient-card shadow-lg max-w-2xl mx-auto">
-            <CardContent className="p-8">
-              <h3 className="text-2xl font-bold mb-4 gradient-text">
-                Vamos Conversar?
-              </h3>
-              <p className="text-muted-foreground mb-6">
-                Se você acredita que sua empresa pode se beneficiar de processos mais inteligentes e decisões baseadas em dados, entre em contato. Vamos agendar uma conversa para um diagnóstico inicial sem compromisso.
-              </p>
-              <button 
-                onClick={() => document.querySelector("#contato")?.scrollIntoView({ behavior: "smooth" })}
-                className="bg-gradient-hero text-white px-8 py-3 rounded-lg font-semibold hover:shadow-glow transition-smooth transform hover:scale-105"
-              >
-                Fale Comigo Agora
-              </button>
-            </CardContent>
-          </Card>
-        </div>
+        <AnimatedSection animation="scaleIn" delay={400}>
+          <div className="text-center mt-16">
+            <Card className="bg-gradient-card shadow-lg max-w-2xl mx-auto">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold mb-4 gradient-text">
+                  Vamos Conversar?
+                </h3>
+                <p className="text-muted-foreground mb-6">
+                  Se você acredita que sua empresa pode se beneficiar de processos mais inteligentes e decisões baseadas em dados, entre em contato. Vamos agendar uma conversa para um diagnóstico inicial sem compromisso.
+                </p>
+                <button 
+                  onClick={() => document.querySelector("#contato")?.scrollIntoView({ behavior: "smooth" })}
+                  className="bg-gradient-hero text-white px-8 py-3 rounded-lg font-semibold hover:shadow-glow transition-smooth transform hover:scale-105"
+                >
+                  Fale Comigo Agora
+                </button>
+              </CardContent>
+            </Card>
+          </div>
+        </AnimatedSection>
       </div>
     </section>
   );

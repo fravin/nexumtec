@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, Linkedin, Github, Send, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { AnimatedSection } from "@/components/AnimatedSection";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -97,19 +98,22 @@ const Contact = () => {
   return (
     <section id="contato" className="py-20 bg-gradient-to-br from-secondary/20 to-background">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Vamos <span className="gradient-text">Conversar</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Pronto para transformar seus dados em resultados? Entre em contato e vamos discutir como posso ajudar sua empresa.
-          </p>
-        </div>
+        <AnimatedSection animation="slideUp" delay={0}>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Vamos <span className="gradient-text">Conversar</span>
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Pronto para transformar seus dados em resultados? Entre em contato e vamos discutir como posso ajudar sua empresa.
+            </p>
+          </div>
+        </AnimatedSection>
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Information */}
           <div className="space-y-8">
-            <Card className="bg-gradient-card shadow-lg">
+            <AnimatedSection animation="slideInLeft" delay={100}>
+              <Card className="bg-gradient-card shadow-lg">
               <CardHeader>
                 <CardTitle className="flex items-center space-x-3">
                   <div className="bg-gradient-hero text-white p-3 rounded-lg">
@@ -167,9 +171,11 @@ const Contact = () => {
                 </div>
               </CardContent>
             </Card>
+            </AnimatedSection>
 
             {/* Availability */}
-            <Card className="bg-gradient-hero text-white shadow-glow">
+            <AnimatedSection animation="slideInLeft" delay={200}>
+              <Card className="bg-gradient-hero text-white shadow-glow">
               <CardContent className="p-6">
                 <h3 className="text-xl font-bold mb-3">Disponibilidade</h3>
                 <p className="text-white/90 mb-4">
@@ -182,10 +188,12 @@ const Contact = () => {
                 </div>
               </CardContent>
             </Card>
+            </AnimatedSection>
           </div>
 
           {/* Contact Form */}
-          <div>
+          <AnimatedSection animation="slideInRight" delay={100}>
+            <div>
             <Card className="shadow-lg hover:shadow-glow transition-smooth">
               <CardHeader>
                 <CardTitle>Envie uma Mensagem</CardTitle>
@@ -297,10 +305,11 @@ const Contact = () => {
                   </p>
                 </form>
               </CardContent>
-            </Card>
-          </div>
+              </Card>
+            </div>
+          </AnimatedSection>
         </div>
-      </div>
+        </div>
     </section>
   );
 };
