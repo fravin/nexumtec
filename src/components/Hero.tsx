@@ -53,8 +53,8 @@ const Hero = () => {
           <AnimatedSection animation="scaleIn" delay={200}>
             <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 mb-12 border border-white/20">
               <p className="text-lg md:text-xl leading-relaxed text-white/95 italic">
-                "Sou <span className="font-semibold text-white">Flávio Admilson</span>, Especialista em IA e Ciência de Dados. 
-                Transformo dados em crescimento real para o seu negócio."
+                "Sou <span className="font-semibold text-white">Flávio Admilson</span>, Especialista em Inteligência Artificial e Data Science. 
+                Transformo dados em <span className="font-semibold text-white">VALOR</span> real para o seu negócio."
               </p>
             </div>
           </AnimatedSection>
