@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { MessageCircle, X, Send, Loader2 } from "lucide-react";
+import { Bot, X, Send, Loader2 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 
 interface Message {
@@ -20,10 +20,10 @@ const AIChatbot = () => {
   const { toast } = useToast();
 
   const quickQuestions = [
-    "Quais serviços você oferece?",
-    "Qual sua experiência?",
+    "Quais serviços a Nexum oferece?",
+    "Qual a experiência do Flávio?",
     "Como posso entrar em contato?",
-    "Quais projetos já realizou?",
+    "Me fale sobre os projetos realizados",
   ];
 
   useEffect(() => {
@@ -109,28 +109,30 @@ const AIChatbot = () => {
       {/* Floating Button */}
       <Button
         onClick={() => setIsOpen(true)}
-        className={`fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg transition-all duration-300 z-50 ${
+        className={`fixed bottom-24 right-6 h-14 w-14 rounded-full shadow-lg hover:shadow-glow transition-all duration-300 z-50 ${
           isOpen ? "scale-0" : "scale-100"
         }`}
         size="icon"
+        style={{ background: 'linear-gradient(135deg, hsl(225 80% 55%) 0%, hsl(270 60% 60%) 100%)' }}
       >
-        <MessageCircle className="h-6 w-6" />
+        <Bot className="h-6 w-6" />
       </Button>
 
       {/* Chat Window */}
       {isOpen && (
-        <Card className="fixed bottom-6 right-6 w-[380px] h-[600px] shadow-2xl flex flex-col z-50 animate-in slide-in-from-bottom-5 duration-300">
+        <Card className="fixed bottom-6 right-6 w-[380px] h-[600px] shadow-2xl backdrop-blur-sm border-primary/20 flex flex-col z-50 animate-in slide-in-from-bottom-5 duration-300">
           {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b bg-primary text-primary-foreground rounded-t-lg">
+          <div className="flex items-center justify-between p-4 border-b rounded-t-lg text-white"
+               style={{ background: 'linear-gradient(135deg, hsl(225 80% 55%) 0%, hsl(270 60% 60%) 100%)' }}>
             <div className="flex items-center gap-2">
-              <MessageCircle className="h-5 w-5" />
-              <h3 className="font-semibold">Assistente Virtual</h3>
+              <Bot className="h-5 w-5" />
+              <h3 className="font-semibold">Nexum IA</h3>
             </div>
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setIsOpen(false)}
-              className="h-8 w-8 hover:bg-primary-foreground/10"
+              className="h-8 w-8 hover:bg-white/10 text-white"
             >
               <X className="h-4 w-4" />
             </Button>
@@ -140,9 +142,9 @@ const AIChatbot = () => {
           <ScrollArea className="flex-1 p-4" ref={scrollRef}>
             {messages.length === 0 && (
               <div className="space-y-4">
-                <div className="bg-muted p-4 rounded-lg">
+                <div className="bg-muted/80 backdrop-blur-sm p-4 rounded-lg">
                   <p className="text-sm">
-                    👋 Olá! Sou o assistente virtual do Flávio. Como posso ajudá-lo?
+                    👋 Olá! Sou o assistente virtual da Nexum Tecnologia. Como posso ajudá-lo hoje?
                   </p>
                 </div>
                 <div className="space-y-2">
@@ -172,9 +174,10 @@ const AIChatbot = () => {
                 <div
                   className={`rounded-lg p-3 max-w-[85%] ${
                     msg.role === "user"
-                      ? "bg-primary text-primary-foreground ml-auto"
-                      : "bg-muted"
+                      ? "text-white ml-auto"
+                      : "bg-muted/80 backdrop-blur-sm"
                   }`}
+                  style={msg.role === "user" ? { background: 'linear-gradient(135deg, hsl(225 80% 55%) 0%, hsl(270 60% 60%) 100%)' } : {}}
                 >
                   <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
                 </div>
@@ -205,7 +208,13 @@ const AIChatbot = () => {
                 disabled={isLoading}
                 className="flex-1"
               />
-              <Button type="submit" size="icon" disabled={isLoading || !input.trim()}>
+              <Button 
+                type="submit" 
+                size="icon" 
+                disabled={isLoading || !input.trim()}
+                className="hover:shadow-glow transition-all"
+                style={{ background: 'linear-gradient(135deg, hsl(225 80% 55%) 0%, hsl(270 60% 60%) 100%)' }}
+              >
                 <Send className="h-4 w-4" />
               </Button>
             </form>
