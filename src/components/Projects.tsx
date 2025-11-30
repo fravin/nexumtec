@@ -5,6 +5,7 @@ import { ExternalLink, BarChart3, Code, Workflow, Users, Globe } from "lucide-re
 import ProjectModal from "./ProjectModal";
 import estoqueLogin from "@/assets/estoque-login.png";
 import estoqueDashboard from "@/assets/estoque-dashboard.png";
+import estoqueDashboardNovo from "@/assets/estoque-dashboard-novo.png";
 import vendasDashboard from "@/assets/vendas-dashboard.png";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
@@ -30,7 +31,7 @@ const Projects = () => {
     {
       title: "Sistema Web de Gestão de Estoque Hospitalar",
       description: "Sistema web completo desenvolvido do zero para substituir planilhas Excel. Aplicação robusta com interface intuitiva, banco de dados SQL e tela de autenticação, em pleno funcionamento na clínica.",
-      image: estoqueDashboard,
+      image: estoqueDashboardNovo,
       category: "Desenvolvimento Web",
       technologies: ["JavaScript", "HTML5 & CSS3", "SQL", "Git & GitHub"],
       icon: <Code className="h-6 w-6" />,
