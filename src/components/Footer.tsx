@@ -13,7 +13,7 @@ const Footer = () => {
               <span className="text-xl font-bold gradient-text">Nexum Tecnologia</span>
             </div>
             <p className="text-muted-foreground max-w-xs mx-auto md:mx-0">
-              Conectando pessoas, dados e processos para gerar resultados excepcionais.
+              TI Estratégica: conectando tecnologia aos objetivos do seu negócio. Prepare a sua empresa para o futuro com inteligência artificial.
             </p>
           </div>
 
