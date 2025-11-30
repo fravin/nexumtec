@@ -45,7 +45,7 @@ const Hero = () => {
           {/* Subtitle */}
           <AnimatedSection animation="slideUp" delay={100}>
             <p className="text-xl md:text-2xl mb-8 text-white/90 font-light">
-              Conectando Pessoas, Dados e Processos para Gerar Resultados
+              Transformação Digital e IA Estratégica para Impulsionar o Seu Negócio
             </p>
           </AnimatedSection>
 
