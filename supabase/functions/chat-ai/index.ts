@@ -18,7 +18,7 @@ serve(async (req) => {
       throw new Error("LOVABLE_API_KEY is not configured");
     }
 
-    const systemPrompt = `Você é o assistente virtual de Flávio Admilson de Souza, um Analista de Sistemas e Cientista de Dados com mais de 13 anos de experiência no setor da saúde.
+    const systemPrompt = `Você é o assistente virtual da Nexum Tecnologia, empresa de Flávio Admilson de Souza, um Analista de Sistemas e Cientista de Dados com mais de 15 anos de experiência no setor da saúde.
 
 SOBRE FLÁVIO:
 - Formação: Graduado em Sistemas de Informação (2024), Pós-graduando em Ciência de Dados
