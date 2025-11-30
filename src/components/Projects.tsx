@@ -43,7 +43,7 @@ const Projects = () => {
       challenge: "Clínicas de fisioterapia frequentemente dependem de sistemas fragmentados ou planilhas para gerenciar agendamentos, prontuários e pacotes de sessões, o que gera retrabalho, perda de informações e dificuldade no controle financeiro.",
       solution: "Desenvolvi um sistema web completo e integrado para gestão da clínica, incluindo: dashboard intuitivo com visão geral da agenda e alertas de pacotes terminando, calendário semanal para agendamentos com diferentes tipos de serviço (Fisioterapia, RPG), cadastro completo de pacientes com histórico, prontuário eletrônico com campos detalhados de história clínica e exportação para PDF, além de sistema de autenticação seguro com diferentes níveis de acesso.",
       results: [
-        "Sistema em produção acessível em sistemafisiokim.lovable.app",
+        "Sistema em produção e funcionamento",
         "Eliminação de planilhas e controles manuais",
         "Prontuário eletrônico completo com exportação para PDF",
         "Gestão de pacotes de sessões com alertas automáticos",
