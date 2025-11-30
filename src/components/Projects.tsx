@@ -1,12 +1,17 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, BarChart3, Code, Workflow, Users, Globe } from "lucide-react";
+import { ExternalLink, BarChart3, Code, Workflow, Users, Globe, Stethoscope } from "lucide-react";
 import ProjectModal from "./ProjectModal";
 import estoqueLogin from "@/assets/estoque-login.png";
 import estoqueDashboard from "@/assets/estoque-dashboard.png";
 import estoqueDashboardNovo from "@/assets/estoque-dashboard-novo.png";
 import vendasDashboard from "@/assets/vendas-dashboard.png";
+import fisiokimDashboard from "@/assets/fisiokim-dashboard.png";
+import fisiokimAgenda from "@/assets/fisiokim-agenda.png";
+import fisiokimPacientes from "@/assets/fisiokim-pacientes.png";
+import fisiokimProntuario from "@/assets/fisiokim-prontuario.png";
+import fisiokimLogin from "@/assets/fisiokim-login.png";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
 const Projects = () => {
@@ -27,6 +32,25 @@ const Projects = () => {
         "Insights valiosos para otimização de estratégias de vendas",
         "Modelo de dados robusto com relacionamentos estruturados"
       ]
+    },
+    {
+      title: "Sistema de Gestão para Clínica de Fisioterapia - FISIOKIM",
+      description: "Sistema web completo desenvolvido para gestão de clínicas de fisioterapia. Inclui controle de agenda, cadastro de pacientes, prontuário médico eletrônico, gestão de pacotes de sessões e relatórios gerenciais.",
+      image: fisiokimDashboard,
+      category: "Desenvolvimento Web",
+      technologies: ["React", "TypeScript", "Supabase", "Tailwind CSS", "PostgreSQL"],
+      icon: <Stethoscope className="h-6 w-6" />,
+      challenge: "Clínicas de fisioterapia frequentemente dependem de sistemas fragmentados ou planilhas para gerenciar agendamentos, prontuários e pacotes de sessões, o que gera retrabalho, perda de informações e dificuldade no controle financeiro.",
+      solution: "Desenvolvi um sistema web completo e integrado para gestão da clínica, incluindo: dashboard intuitivo com visão geral da agenda e alertas de pacotes terminando, calendário semanal para agendamentos com diferentes tipos de serviço (Fisioterapia, RPG), cadastro completo de pacientes com histórico, prontuário eletrônico com campos detalhados de história clínica e exportação para PDF, além de sistema de autenticação seguro com diferentes níveis de acesso.",
+      results: [
+        "Sistema em produção acessível em sistemafisiokim.lovable.app",
+        "Eliminação de planilhas e controles manuais",
+        "Prontuário eletrônico completo com exportação para PDF",
+        "Gestão de pacotes de sessões com alertas automáticos",
+        "Agendamento visual e intuitivo por calendário semanal",
+        "Controle de acesso seguro com autenticação de usuários"
+      ],
+      link: "https://sistemafisiokim.lovable.app"
     },
     {
       title: "Sistema Web de Gestão de Estoque Hospitalar",

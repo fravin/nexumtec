@@ -19,6 +19,11 @@ import estoqueAnalytics1 from "@/assets/estoque-analytics-1.png";
 import estoqueAnalytics2 from "@/assets/estoque-analytics-2.png";
 import estoqueAnalyticsGraficos from "@/assets/estoque-analytics-graficos.png";
 import estoqueCadastroProdutos from "@/assets/estoque-cadastro-produtos.png";
+import fisiokimDashboard from "@/assets/fisiokim-dashboard.png";
+import fisiokimAgenda from "@/assets/fisiokim-agenda.png";
+import fisiokimPacientes from "@/assets/fisiokim-pacientes.png";
+import fisiokimProntuario from "@/assets/fisiokim-prontuario.png";
+import fisiokimLogin from "@/assets/fisiokim-login.png";
 
 interface ProjectModalProps {
   project: {
@@ -51,6 +56,33 @@ const ProjectModal = ({ project, children }: ProjectModalProps) => {
         src: vendasModeloDados,
         title: "Modelo de Dados Relacional",
         description: "Arquitetura do banco de dados com relacionamentos entre tabelas Sales, Product, Region e Salesperson"
+      }
+    ],
+    "Sistema de Gestão para Clínica de Fisioterapia - FISIOKIM": [
+      {
+        src: fisiokimDashboard,
+        title: "Dashboard - Visão Geral",
+        description: "Painel de controle com visão geral da agenda, alertas de pacotes terminando e acesso rápido às funcionalidades"
+      },
+      {
+        src: fisiokimAgenda,
+        title: "Agenda Semanal",
+        description: "Calendário visual para agendamentos com diferentes tipos de serviço (Fisioterapia, RPG) e controle de horários"
+      },
+      {
+        src: fisiokimPacientes,
+        title: "Cadastro de Pacientes",
+        description: "Gerenciamento completo de pacientes com histórico de atendimentos e dados cadastrais"
+      },
+      {
+        src: fisiokimProntuario,
+        title: "Prontuário Eletrônico",
+        description: "Prontuário médico completo com história clínica detalhada e exportação para PDF"
+      },
+      {
+        src: fisiokimLogin,
+        title: "Tela de Login",
+        description: "Sistema de autenticação seguro com diferentes níveis de acesso"
       }
     ],
     "Sistema Web de Gestão de Estoque Hospitalar": [
@@ -184,6 +216,49 @@ const ProjectModal = ({ project, children }: ProjectModalProps) => {
         "Análise Estatística",
         "Data Visualization",
         "Business Intelligence"
+      ]
+    },
+    "Sistema de Gestão para Clínica de Fisioterapia - FISIOKIM": {
+      fullTitle: "Sistema de Gestão para Clínica de Fisioterapia - FISIOKIM",
+      challenge: "Clínicas de fisioterapia frequentemente dependem de sistemas fragmentados ou planilhas para gerenciar agendamentos, prontuários e pacotes de sessões, o que gera retrabalho, perda de informações e dificuldade no controle financeiro.",
+      solution: `Desenvolvi um sistema web completo e integrado para gestão da clínica, utilizando tecnologias modernas:
+
+• Dashboard Intuitivo: Painel de controle com visão geral da agenda, alertas de pacotes terminando e acesso rápido às funcionalidades principais.
+
+• Calendário de Agendamentos: Sistema visual de agenda semanal que permite agendar diferentes tipos de serviço (Fisioterapia, RPG) com controle de horários e disponibilidade.
+
+• Gestão de Pacientes: Cadastro completo de pacientes com histórico de atendimentos, informações de contato e controle de pacotes de sessões.
+
+• Prontuário Eletrônico: Prontuário médico completo com campos detalhados de história clínica, anamnese, diagnóstico e exportação para PDF.
+
+• Sistema de Autenticação: Controle de acesso seguro com diferentes níveis de permissão para garantir a privacidade dos dados dos pacientes.
+
+• Tecnologia: React + TypeScript no frontend, Supabase (PostgreSQL) no backend, Tailwind CSS para interface responsiva.`,
+      results: `O sistema está em produção e trouxe melhorias significativas para a gestão da clínica:
+
+• Sistema acessível publicamente em sistemafisiokim.lovable.app
+
+• Eliminação completa de planilhas e controles manuais
+
+• Prontuário eletrônico completo com exportação para PDF
+
+• Gestão automatizada de pacotes de sessões com alertas quando estão terminando
+
+• Agendamento visual e intuitivo através de calendário semanal
+
+• Controle de acesso seguro com autenticação de usuários
+
+• Interface responsiva funcionando em desktop, tablet e celular
+
+• Banco de dados robusto com backup automático e segurança de dados`,
+      tools: [
+        "React",
+        "TypeScript",
+        "Supabase",
+        "PostgreSQL",
+        "Tailwind CSS",
+        "Autenticação JWT",
+        "Git & GitHub"
       ]
     },
     "Sistema Web de Gestão de Estoque Hospitalar": {
