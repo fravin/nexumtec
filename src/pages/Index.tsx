@@ -12,6 +12,7 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ScrollToTop from "@/components/ScrollToTop";
+import AIChatbot from "@/components/AIChatbot";
 
 const Index = () => {
   return (
@@ -30,6 +31,7 @@ const Index = () => {
       <Footer />
       <WhatsAppButton />
       <ScrollToTop />
+      <AIChatbot />
     </div>
   );
 };
