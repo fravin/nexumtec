@@ -9,6 +9,16 @@ import estoqueLogin from "@/assets/estoque-login.png";
 import estoqueDashboard from "@/assets/estoque-dashboard.png";
 import vendasDashboard from "@/assets/vendas-dashboard.png";
 import vendasModeloDados from "@/assets/vendas-modelo-dados.png";
+import estoqueDashboardNovo from "@/assets/estoque-dashboard-novo.png";
+import estoqueAtual from "@/assets/estoque-atual.png";
+import estoqueEntrada from "@/assets/estoque-entrada.png";
+import estoqueSaida from "@/assets/estoque-saida.png";
+import estoqueMovimentacoes from "@/assets/estoque-movimentacoes.png";
+import estoqueRelatorios from "@/assets/estoque-relatorios.png";
+import estoqueAnalytics1 from "@/assets/estoque-analytics-1.png";
+import estoqueAnalytics2 from "@/assets/estoque-analytics-2.png";
+import estoqueAnalyticsGraficos from "@/assets/estoque-analytics-graficos.png";
+import estoqueCadastroProdutos from "@/assets/estoque-cadastro-produtos.png";
 
 interface ProjectModalProps {
   project: {
@@ -45,14 +55,54 @@ const ProjectModal = ({ project, children }: ProjectModalProps) => {
     ],
     "Sistema Web de Gestão de Estoque Hospitalar": [
       {
-        src: estoqueLogin,
-        title: "Tela de Login - Sistema de Estoque",
-        description: "Interface de autenticação do sistema web"
+        src: estoqueDashboardNovo,
+        title: "Dashboard - Visão Estratégica",
+        description: "Painel de controle com KPIs, gráfico de movimentações e top 5 itens mais utilizados"
       },
       {
-        src: estoqueDashboard,
-        title: "Dashboard Principal - Gestão de Estoque",
-        description: "Painel de controle com métricas em tempo real e gestão completa"
+        src: estoqueAtual,
+        title: "Estoque Atual - Lista de Produtos",
+        description: "Visualização completa com filtros por produto, categoria, status e fornecedor"
+      },
+      {
+        src: estoqueEntrada,
+        title: "Entrada de Estoque",
+        description: "Registro de novos materiais e medicamentos no estoque"
+      },
+      {
+        src: estoqueSaida,
+        title: "Lançamento de Saída",
+        description: "Registro de materiais utilizados em procedimentos com rastreabilidade completa"
+      },
+      {
+        src: estoqueMovimentacoes,
+        title: "Histórico de Movimentações",
+        description: "Consulta completa com filtros avançados de data, tipo, categoria e convênio"
+      },
+      {
+        src: estoqueRelatorios,
+        title: "Relatórios - Exportação PDF",
+        description: "Geração de relatórios analíticos e sintéticos com filtros personalizados"
+      },
+      {
+        src: estoqueAnalytics1,
+        title: "Analytics & BI Avançado",
+        description: "Painel de filtros avançado com métricas de saídas, custo e consumo diário"
+      },
+      {
+        src: estoqueAnalytics2,
+        title: "Analytics - Top Convênios",
+        description: "Análise de volume por convênio e curva de consumo diário"
+      },
+      {
+        src: estoqueAnalyticsGraficos,
+        title: "Analytics - Distribuição e Performance",
+        description: "Top 10 itens, distribuição por categoria e performance por médico"
+      },
+      {
+        src: estoqueCadastroProdutos,
+        title: "Cadastro de Produtos",
+        description: "Formulário para adicionar novos produtos ao sistema"
       }
     ],
     "Sistema de Controle de Estoque com Dashboard Dinâmico": [
@@ -95,7 +145,7 @@ const ProjectModal = ({ project, children }: ProjectModalProps) => {
 
   // Dados específicos dos projetos com imagens personalizadas
   const projectImages = {
-    "Sistema Web de Gestão de Estoque Hospitalar": estoqueDashboard,
+    "Sistema Web de Gestão de Estoque Hospitalar": estoqueDashboardNovo,
     "Pesquisa de Satisfação e Avaliação de Pacientes": pesquisaSatisfacaoGrafico,
     "Alinhamento Estratégico e Otimização de Processos Intersetoriais": alinhamentoEstrategicoSlide,
     "Análise Global de Vendas - Pós-Graduação": vendasDashboard
