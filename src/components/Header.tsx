@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import nexumLogo from "@/assets/nexum-logo.png";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { AnimatedSection } from "@/components/AnimatedSection";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -42,35 +43,39 @@ const Header = () => {
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
-            <img 
-              src={nexumLogo} 
-              alt="Nexum Technology Logo" 
-              className="h-10 w-auto"
-            />
-            <span className="text-xl font-bold gradient-text">Nexum Tecnologia</span>
-          </div>
+          <AnimatedSection animation="slideInLeft" delay={0} duration={800}>
+            <div className="flex items-center space-x-3">
+              <img 
+                src={nexumLogo} 
+                alt="Nexum Technology Logo" 
+                className="h-10 w-auto"
+              />
+              <span className="text-xl font-bold gradient-text">Nexum Tecnologia</span>
+            </div>
+          </AnimatedSection>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <button
-                key={item.label}
-                onClick={() => scrollToSection(item.href)}
-                className="text-foreground hover:text-primary transition-smooth font-medium"
+          <AnimatedSection animation="slideInRight" delay={200} duration={800}>
+            <div className="hidden md:flex items-center space-x-8">
+              {navItems.map((item) => (
+                <button
+                  key={item.label}
+                  onClick={() => scrollToSection(item.href)}
+                  className="text-foreground hover:text-primary transition-smooth font-medium"
+                >
+                  {item.label}
+                </button>
+              ))}
+              <ThemeToggle />
+              <Button 
+                variant="hero" 
+                size="sm"
+                onClick={() => scrollToSection("#contato")}
               >
-                {item.label}
-              </button>
-            ))}
-            <ThemeToggle />
-            <Button 
-              variant="hero" 
-              size="sm"
-              onClick={() => scrollToSection("#contato")}
-            >
-              Fale Comigo
-            </Button>
-          </div>
+                Fale Comigo
+              </Button>
+            </div>
+          </AnimatedSection>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-2">

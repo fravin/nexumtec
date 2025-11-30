@@ -11,6 +11,7 @@ import {
   GitBranch,
   FileSpreadsheet
 } from "lucide-react";
+import { AnimatedSection } from "@/components/AnimatedSection";
 
 const Skills = () => {
   const technicalSkills = [
@@ -78,27 +79,30 @@ const Skills = () => {
   return (
     <section id="skills" className="py-20 bg-gradient-to-br from-background to-secondary/20">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16 fade-in-section">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Minhas <span className="gradient-text">Competências</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Uma combinação única de habilidades técnicas e experiência prática 
-            para transformar dados em decisões estratégicas
-          </p>
-        </div>
+        <AnimatedSection animation="slideUp" delay={0}>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Minhas <span className="gradient-text">Competências</span>
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Uma combinação única de habilidades técnicas e experiência prática 
+              para transformar dados em decisões estratégicas
+            </p>
+          </div>
+        </AnimatedSection>
 
         {/* Technical Skills */}
-        <div className="mb-16 fade-in-section">
-          <h3 className="text-3xl font-bold text-center mb-12">
-            Habilidades <span className="gradient-text">Técnicas</span>
-          </h3>
+        <div className="mb-16">
+          <AnimatedSection animation="slideUp" delay={100}>
+            <h3 className="text-3xl font-bold text-center mb-12">
+              Habilidades <span className="gradient-text">Técnicas</span>
+            </h3>
+          </AnimatedSection>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {technicalSkills.map((skill, index) => (
-              <Card 
-                key={index}
-                className="group hover:shadow-glow transition-smooth hover:-translate-y-2 skill-card"
-                style={{ animationDelay: `${index * 100}ms` }}
+              <AnimatedSection key={index} animation="scaleIn" delay={150 + index * 100}>
+                <Card
+                className="group hover:shadow-glow transition-smooth hover:-translate-y-2 h-full"
               >
                 <CardContent className="p-6">
                   <div className="flex items-start space-x-4 mb-4">
@@ -120,10 +124,7 @@ const Skills = () => {
                         <div className="w-full bg-secondary/30 rounded-full h-2 overflow-hidden">
                           <div 
                             className="bg-gradient-hero h-full rounded-full transition-all duration-1000 ease-out"
-                            style={{ 
-                              width: `${skill.proficiency}%`,
-                              animationDelay: `${index * 150}ms`
-                            }}
+                            style={{ width: `${skill.proficiency}%` }}
                           />
                         </div>
                       </div>
@@ -131,21 +132,23 @@ const Skills = () => {
                   </div>
                 </CardContent>
               </Card>
+              </AnimatedSection>
             ))}
           </div>
         </div>
 
         {/* Soft Skills */}
-        <div className="fade-in-section">
-          <h3 className="text-3xl font-bold text-center mb-12">
-            Habilidades <span className="gradient-text">Comportamentais</span>
-          </h3>
+        <div>
+          <AnimatedSection animation="slideUp" delay={100}>
+            <h3 className="text-3xl font-bold text-center mb-12">
+              Habilidades <span className="gradient-text">Comportamentais</span>
+            </h3>
+          </AnimatedSection>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {softSkills.map((skill, index) => (
-              <Card 
-                key={index}
-                className="group hover:shadow-glow transition-smooth hover:-translate-y-2 skill-card"
-                style={{ animationDelay: `${index * 100}ms` }}
+              <AnimatedSection key={index} animation="scaleIn" delay={150 + index * 100}>
+                <Card
+                className="group hover:shadow-glow transition-smooth hover:-translate-y-2 h-full"
               >
                 <CardContent className="p-6 text-center">
                   <div className="bg-gradient-hero text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
@@ -159,6 +162,7 @@ const Skills = () => {
                   </p>
                 </CardContent>
               </Card>
+              </AnimatedSection>
             ))}
           </div>
         </div>
