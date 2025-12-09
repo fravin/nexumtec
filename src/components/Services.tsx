@@ -46,10 +46,10 @@ const Services = () => {
   ];
 
   return (
-    <section id="servicos" className="py-20 bg-gradient-to-br from-secondary/20 to-background">
+    <section id="servicos" className="py-12 bg-gradient-to-br from-secondary/20 to-background">
       <div className="container mx-auto px-6">
         <AnimatedSection animation="slideUp" delay={0}>
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               Como Posso Ajudar a <span className="gradient-text">Sua Empresa</span>
             </h2>
@@ -62,9 +62,9 @@ const Services = () => {
           </div>
         </AnimatedSection>
 
-        <div className="space-y-12">
+        <div className="space-y-8">
           <AnimatedSection animation="slideUp" delay={100}>
-            <h3 className="text-3xl font-bold text-center mb-12">Nossos Serviços</h3>
+            <h3 className="text-3xl font-bold text-center mb-8">Nossos Serviços</h3>
           </AnimatedSection>
           
           {services.map((service, serviceIndex) => (
@@ -127,7 +127,7 @@ const Services = () => {
 
         {/* Call to Action */}
         <AnimatedSection animation="scaleIn" delay={400}>
-          <div className="text-center mt-16">
+          <div className="text-center mt-10">
             <Card className="bg-gradient-card shadow-lg max-w-2xl mx-auto">
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bold mb-4 gradient-text">
