@@ -96,10 +96,10 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contato" className="py-20 bg-gradient-to-br from-secondary/20 to-background">
+    <section id="contato" className="py-12 bg-gradient-to-br from-secondary/20 to-background">
       <div className="container mx-auto px-6">
         <AnimatedSection animation="slideUp" delay={0}>
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               Vamos <span className="gradient-text">Conversar</span>
             </h2>
@@ -109,7 +109,7 @@ const Contact = () => {
           </div>
         </AnimatedSection>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {/* Contact Information */}
           <div className="space-y-8">
             <AnimatedSection animation="slideInLeft" delay={100}>

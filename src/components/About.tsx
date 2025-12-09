@@ -16,17 +16,17 @@ const About = () => {
     title: "A Curiosidade como Guia",
     description: "Estou sempre aprendendo, questionando e buscando novas formas de otimizar. Acredito que a pergunta certa é o primeiro passo para a inovação."
   }];
-  return <section id="sobre" className="py-20 bg-gradient-to-br from-background to-secondary/20">
+  return <section id="sobre" className="py-12 bg-gradient-to-br from-background to-secondary/20">
       <div className="container mx-auto px-6">
         <AnimatedSection animation="slideUp" delay={0}>
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               <span className="gradient-text">Minha Jornada:</span> Da Feira à Análise de Dados
             </h2>
           </div>
         </AnimatedSection>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
+        <div className="grid md:grid-cols-2 gap-8 items-center mb-12">
           {/* Portrait */}
           <AnimatedSection animation="slideInLeft" delay={100}>
             <div className="text-center">
@@ -117,7 +117,7 @@ const About = () => {
 
         {/* Philosophy Section */}
         <AnimatedSection animation="slideUp" delay={100}>
-          <div className="text-center mb-12 mt-20">
+          <div className="text-center mb-8 mt-12">
             <h3 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
               Minha Filosofia de Trabalho
             </h3>

@@ -226,10 +226,10 @@ const SuccessCases = () => {
   };
 
   return (
-    <section id="cases-sucesso" className="py-24 bg-gradient-to-b from-background to-secondary/20" ref={sectionRef}>
+    <section id="cases-sucesso" className="py-12 bg-gradient-to-b from-background to-secondary/20" ref={sectionRef}>
       <div className="container mx-auto px-6">
         <AnimatedSection animation="fadeIn">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">
               Cases de Sucesso em IA e Data Science
             </h2>
@@ -240,7 +240,7 @@ const SuccessCases = () => {
           </div>
         </AnimatedSection>
 
-        <div className="space-y-16">
+        <div className="space-y-10">
           {cases.map((caseItem, idx) => (
             <AnimatedSection key={caseItem.id} animation="slideUp" delay={idx * 100}>
               <Card className="p-8 hover:shadow-2xl transition-all duration-300 border-2 hover:border-primary/50">

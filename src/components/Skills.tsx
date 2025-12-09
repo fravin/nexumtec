@@ -77,10 +77,10 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 bg-gradient-to-br from-background to-secondary/20">
+    <section id="skills" className="py-12 bg-gradient-to-br from-background to-secondary/20">
       <div className="container mx-auto px-6">
         <AnimatedSection animation="slideUp" delay={0}>
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               Minhas <span className="gradient-text">Competências</span>
             </h2>
@@ -92,9 +92,9 @@ const Skills = () => {
         </AnimatedSection>
 
         {/* Technical Skills */}
-        <div className="mb-16">
+        <div className="mb-10">
           <AnimatedSection animation="slideUp" delay={100}>
-            <h3 className="text-3xl font-bold text-center mb-12">
+            <h3 className="text-3xl font-bold text-center mb-8">
               Habilidades <span className="gradient-text">Técnicas</span>
             </h3>
           </AnimatedSection>
@@ -140,7 +140,7 @@ const Skills = () => {
         {/* Soft Skills */}
         <div>
           <AnimatedSection animation="slideUp" delay={100}>
-            <h3 className="text-3xl font-bold text-center mb-12">
+            <h3 className="text-3xl font-bold text-center mb-8">
               Habilidades <span className="gradient-text">Comportamentais</span>
             </h3>
           </AnimatedSection>

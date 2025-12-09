@@ -3,7 +3,7 @@ import { ArrowRight, MessageCircle } from "lucide-react";
 
 const CallToAction = () => {
   return (
-    <section className="py-20 bg-gradient-to-br from-secondary/10 to-primary/5">
+    <section className="py-12 bg-gradient-to-br from-secondary/10 to-primary/5">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center">
           <Card className="bg-gradient-hero text-white shadow-glow border-0 overflow-hidden">

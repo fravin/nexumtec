@@ -56,9 +56,9 @@ const Timeline = () => {
   ];
 
   return (
-    <section id="timeline" className="py-20 bg-gradient-to-br from-secondary/20 to-background">
+    <section id="timeline" className="py-12 bg-gradient-to-br from-secondary/20 to-background">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             <span className="gradient-text">Linha do Tempo</span> Profissional
           </h2>
@@ -71,7 +71,7 @@ const Timeline = () => {
           {/* Vertical Line */}
           <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-accent to-primary transform md:-translate-x-1/2" />
 
-          <div className="space-y-12">
+          <div className="space-y-8">
             {timelineEvents.map((event, index) => {
               const Icon = event.icon;
               const isLeft = index % 2 === 0;
@@ -124,7 +124,7 @@ const Timeline = () => {
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-16">
+        <div className="text-center mt-10">
           <Card className="max-w-2xl mx-auto bg-gradient-card border-primary/30">
             <CardContent className="p-8">
               <p className="text-lg text-foreground/90 italic">
