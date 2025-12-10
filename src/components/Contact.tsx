@@ -63,8 +63,8 @@ const Contact = () => {
     {
       icon: <Mail className="h-6 w-6" />,
       label: "E-mail",
-      value: "flavio.de.souza10@gmail.com",
-      href: "mailto:flavio.de.souza10@gmail.com"
+      value: "contato@nexumtec.com.br",
+      href: "mailto:contato@nexumtec.com.br"
     },
     {
       icon: <Phone className="h-6 w-6" />,
@@ -90,7 +90,7 @@ const Contact = () => {
     {
       icon: <Mail className="h-6 w-6" />,
       label: "E-mail",
-      href: "mailto:flavio.de.souza10@gmail.com",
+      href: "mailto:contato@nexumtec.com.br",
       color: "hover:text-red-600"
     }
   ];
