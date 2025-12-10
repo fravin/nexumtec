@@ -109,11 +109,11 @@ const Contact = () => {
           </div>
         </AnimatedSection>
 
-        <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto items-stretch">
           {/* Contact Information */}
-          <div className="space-y-8">
-            <AnimatedSection animation="slideInLeft" delay={100}>
-              <Card className="bg-gradient-card shadow-lg">
+          <div className="flex flex-col gap-8">
+            <AnimatedSection animation="slideInLeft" delay={100} className="flex-1">
+              <Card className="bg-gradient-card shadow-lg h-full">
               <CardHeader>
                 <CardTitle className="flex items-center space-x-3">
                   <div className="bg-gradient-hero text-white p-3 rounded-lg">
@@ -192,14 +192,13 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <AnimatedSection animation="slideInRight" delay={100}>
-            <div>
-            <Card className="shadow-lg hover:shadow-glow transition-smooth">
+          <AnimatedSection animation="slideInRight" delay={100} className="h-full">
+            <Card className="shadow-lg hover:shadow-glow transition-smooth h-full flex flex-col">
               <CardHeader>
                 <CardTitle>Envie uma Mensagem</CardTitle>
               </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
+              <CardContent className="flex-1">
+                <form onSubmit={handleSubmit} className="space-y-6 h-full flex flex-col">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -264,7 +263,7 @@ const Contact = () => {
                     />
                   </div>
 
-                  <div>
+                  <div className="flex-1">
                     <label htmlFor="message" className="block text-sm font-medium mb-2">
                       Mensagem *
                     </label>
@@ -280,33 +279,34 @@ const Contact = () => {
                     ></textarea>
                   </div>
 
-                  <Button 
-                    type="submit" 
-                    variant="hero" 
-                    size="lg" 
-                    className="w-full group"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                        Enviando...
-                      </>
-                    ) : (
-                      <>
-                        <Send className="mr-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                        Enviar Mensagem
-                      </>
-                    )}
-                  </Button>
+                  <div className="mt-auto">
+                    <Button 
+                      type="submit" 
+                      variant="hero" 
+                      size="lg" 
+                      className="w-full group"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                          Enviando...
+                        </>
+                      ) : (
+                        <>
+                          <Send className="mr-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                          Enviar Mensagem
+                        </>
+                      )}
+                    </Button>
 
-                  <p className="text-sm text-muted-foreground text-center">
-                    * Campos obrigatórios. Seus dados são protegidos e não serão compartilhados.
-                  </p>
+                    <p className="text-sm text-muted-foreground text-center mt-4">
+                      * Campos obrigatórios. Seus dados são protegidos e não serão compartilhados.
+                    </p>
+                  </div>
                 </form>
               </CardContent>
-              </Card>
-            </div>
+            </Card>
           </AnimatedSection>
         </div>
         </div>
