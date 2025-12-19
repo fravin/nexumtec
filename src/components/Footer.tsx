@@ -48,7 +48,7 @@ const Footer = () => {
             <h3 className="font-semibold text-lg">Contato</h3>
             <div className="space-y-2 text-muted-foreground">
               <p>
-                <a href="mailto:contato@nexumtecnologia.com" className="hover:text-primary transition-smooth">flavio.de.souza10@gmail.com</a>
+                <a href="mailto:contato@nexumtec.com.br" className="hover:text-primary transition-smooth">contato@nexumtec.com.br</a>
               </p>
               <p>
                 <a href="tel:+5521999999999" className="hover:text-primary transition-smooth">+55 (21) 99999-9999</a>
