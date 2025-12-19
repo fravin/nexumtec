@@ -59,36 +59,70 @@ const AIChatbot = () => {
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
       let assistantMessage = "";
+      let textBuffer = "";
 
       setMessages((prev) => [...prev, { role: "assistant", content: "" }]);
+
+      const updateAssistantMessage = (content: string) => {
+        assistantMessage += content;
+        setMessages((prev) => {
+          const newMessages = [...prev];
+          newMessages[newMessages.length - 1].content = assistantMessage;
+          return newMessages;
+        });
+      };
+
+      const processLine = (line: string): boolean => {
+        if (line.endsWith("\r")) line = line.slice(0, -1);
+        if (line.startsWith(":") || line.trim() === "") return true;
+        if (!line.startsWith("data: ")) return true;
+
+        const jsonStr = line.slice(6).trim();
+        if (jsonStr === "[DONE]") return false;
+
+        try {
+          const parsed = JSON.parse(jsonStr);
+          const content = parsed.choices?.[0]?.delta?.content;
+          if (content) {
+            updateAssistantMessage(content);
+          }
+          return true;
+        } catch {
+          return false; // JSON incompleto
+        }
+      };
 
       while (true) {
         const { done, value } = await reader.read();
         if (done) break;
 
-        const chunk = decoder.decode(value);
-        const lines = chunk.split("\n");
+        textBuffer += decoder.decode(value, { stream: true });
 
-        for (const line of lines) {
-          if (line.startsWith("data: ")) {
-            const data = line.slice(6);
-            if (data === "[DONE]") continue;
+        let newlineIndex: number;
+        while ((newlineIndex = textBuffer.indexOf("\n")) !== -1) {
+          const line = textBuffer.slice(0, newlineIndex);
+          textBuffer = textBuffer.slice(newlineIndex + 1);
 
-            try {
-              const parsed = JSON.parse(data);
-              const content = parsed.choices?.[0]?.delta?.content;
-              if (content) {
-                assistantMessage += content;
-                setMessages((prev) => {
-                  const newMessages = [...prev];
-                  newMessages[newMessages.length - 1].content = assistantMessage;
-                  return newMessages;
-                });
+          if (!processLine(line)) {
+            // Se falhou no parse, tenta re-bufferizar
+            const jsonStr = line.slice(6)?.trim();
+            if (jsonStr && jsonStr !== "[DONE]") {
+              try {
+                JSON.parse(jsonStr);
+              } catch {
+                textBuffer = line + "\n" + textBuffer;
+                break;
               }
-            } catch (e) {
-              console.error("Parse error:", e);
             }
           }
+        }
+      }
+
+      // Flush final - processa dados restantes no buffer
+      if (textBuffer.trim()) {
+        for (const raw of textBuffer.split("\n")) {
+          if (!raw.trim()) continue;
+          processLine(raw);
         }
       }
     } catch (error) {
