@@ -167,6 +167,25 @@ All colors MUST be HSL.
   ::-webkit-scrollbar-thumb:hover {
     opacity: 0.8;
   }
+
+  /* Mobile scrollbar - thinner */
+  @media (max-width: 768px) {
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+  }
+
+  /* Ensure touch targets are accessible */
+  button, a, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Exception for inline elements */
+  .inline-link, p a, span a {
+    min-height: auto;
+    min-width: auto;
+  }
 }
 
 @layer components {
