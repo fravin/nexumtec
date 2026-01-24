@@ -1,21 +1,34 @@
-import { Briefcase, GraduationCap, Heart, TrendingUp, Database, Building2, ShoppingCart } from "lucide-react";
+import { Briefcase, GraduationCap, Heart, TrendingUp, Database, Building2, ShoppingCart, Code, Rocket } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+
+interface TimelineEvent {
+  year: string;
+  title: string;
+  description: string;
+  icon: React.ElementType;
+  color: string;
+  special?: boolean;
+  badges?: { label: string; color: string }[];
+}
 
 const Timeline = () => {
-  const timelineEvents = [
+  const timelineEvents: TimelineEvent[] = [
     {
       year: "Início",
-      title: "Feira Livre - Tijuca, RJ",
-      description: "Primeiras lições de carreira: foco no cliente, negociação e criação de conexões autênticas. Aprendi que confiança e satisfação são a chave para o crescimento.",
+      title: "Vendas na Feira Livre - Tijuca, RJ",
+      description: "Primeiras lições de carreira em VENDAS: foco no cliente, negociação e criação de conexões autênticas. Aprendi que confiança e satisfação são a chave para o crescimento. Experiência que moldou minha visão de negócios e relacionamento com clientes.",
       icon: ShoppingCart,
-      color: "from-primary to-primary-dark"
+      color: "from-green-500 to-green-600",
+      badges: [{ label: "VENDAS", color: "bg-green-500/20 text-green-600 border-green-500/30" }]
     },
     {
       year: "2011",
       title: "Estagiário - Centro Trauma",
-      description: "Início na área da saúde como estagiário na recepção da clínica Centro Trauma. Primeiro contato com o ambiente corporativo de saúde.",
+      description: "Início na área da saúde como estagiário na recepção da clínica Centro Trauma. Período de intensa dedicação, conciliando estudos, trabalho na clínica e vendas na feira. Primeiro contato com o ambiente corporativo de saúde.",
       icon: Building2,
-      color: "from-accent to-accent/80"
+      color: "from-accent to-accent/80",
+      badges: [{ label: "Conciliava 3 atividades", color: "bg-amber-500/20 text-amber-600 border-amber-500/30" }]
     },
     {
       year: "2012",
@@ -33,11 +46,12 @@ const Timeline = () => {
       special: true
     },
     {
-      year: "2017",
-      title: "Promoção - Assistente Administrativo",
-      description: "Crescimento dentro da empresa. De auxiliar de escritório para assistente administrativo, combinando experiência e desenvolvimento profissional.",
-      icon: Briefcase,
-      color: "from-accent to-accent/80"
+      year: "2017-2021",
+      title: "Assistente Administrativo & Técnico em Informática",
+      description: "Promoção para Assistente Administrativo na Centro Trauma, combinando experiência e desenvolvimento profissional. Paralelamente, conclusão do curso Técnico em Informática na Faculdade Mercúrio - marcando o início da jornada em tecnologia e programação.",
+      icon: Code,
+      color: "from-accent to-accent/80",
+      badges: [{ label: "Início na Tecnologia", color: "bg-blue-500/20 text-blue-600 border-blue-500/30" }]
     },
     {
       year: "2024",
@@ -48,10 +62,11 @@ const Timeline = () => {
     },
     {
       year: "Atual",
-      title: "Pós-Graduação em Ciência de Dados",
-      description: "Especialização em análise de dados com foco em transformar dados em decisões inteligentes e processos em resultados mensuráveis.",
-      icon: Database,
-      color: "from-accent to-accent/80"
+      title: "Pós-Graduação & Projetos de Impacto",
+      description: "Especialização em Ciência de Dados com foco em transformar dados em decisões inteligentes. Conclusão de diversos projetos para a área da saúde na clínica Centro Trauma e outras empresas, incluindo sistemas de gestão de estoque, dashboards de BI, automações e aplicações personalizadas.",
+      icon: Rocket,
+      color: "from-primary to-primary-dark",
+      badges: [{ label: "Projetos Entregues", color: "bg-primary/20 text-primary border-primary/30" }]
     }
   ];
 
@@ -98,15 +113,24 @@ const Timeline = () => {
                       event.special ? 'border-destructive/50 bg-destructive/5' : ''
                     }`}>
                       <CardContent className="p-6">
-                        <div className="flex items-center gap-3 mb-3">
+                        <div className="flex flex-wrap items-center gap-3 mb-3">
                           <span className={`text-2xl font-bold bg-gradient-to-r ${event.color} bg-clip-text text-transparent`}>
                             {event.year}
                           </span>
                           {event.special && (
-                            <span className="px-3 py-1 text-xs font-semibold bg-destructive/20 text-destructive rounded-full">
+                            <span className="px-3 py-1 text-xs font-semibold bg-destructive/20 text-destructive rounded-full border border-destructive/30">
                               Marco Pessoal
                             </span>
                           )}
+                          {event.badges?.map((badge, badgeIndex) => (
+                            <Badge 
+                              key={badgeIndex} 
+                              variant="outline" 
+                              className={`${badge.color} font-semibold animate-pulse`}
+                            >
+                              {badge.label}
+                            </Badge>
+                          ))}
                         </div>
                         <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
                           {event.title}
