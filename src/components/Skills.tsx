@@ -8,7 +8,7 @@ import {
   Target,
   Lightbulb,
   TrendingUp,
-  GitBranch,
+  Server,
   FileSpreadsheet
 } from "lucide-react";
 import { AnimatedSection } from "@/components/AnimatedSection";
@@ -46,9 +46,9 @@ const Skills = () => {
       proficiency: 80
     },
     {
-      icon: <GitBranch className="h-8 w-8" />,
-      title: "Controle de Versão",
-      description: "Git & GitHub para gestão de projetos",
+      icon: <Server className="h-8 w-8" />,
+      title: "Hospedagem e VPS",
+      description: "Deploy de sites, gerenciamento de servidores e armazenamento em nuvem",
       proficiency: 85
     }
   ];
