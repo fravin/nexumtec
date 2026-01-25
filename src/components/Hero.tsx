@@ -62,15 +62,20 @@ const Hero = () => {
           {/* CTA Buttons */}
           <AnimatedSection animation="slideUp" delay={300}>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-12 sm:mb-16 px-4 sm:px-0">
-              <Button 
-                variant="glass" 
-                size="lg"
-                onClick={scrollToNext}
-                className="group w-full sm:w-auto min-h-[48px]"
+              <a 
+                href="/cv-flavio-admilson.pdf" 
+                download="CV-Flavio-Admilson.pdf"
+                className="w-full sm:w-auto"
               >
-                <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
-                Conheça minha jornada
-              </Button>
+                <Button 
+                  variant="glass" 
+                  size="lg"
+                  className="group w-full min-h-[48px]"
+                >
+                  <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
+                  Download CV
+                </Button>
+              </a>
               <Button 
                 variant="hero" 
                 size="lg"

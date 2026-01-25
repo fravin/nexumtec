@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Linkedin, Github, Mail } from "lucide-react";
+import { Menu, X, Linkedin, Github, Mail, Download } from "lucide-react";
 import nexumLogo from "@/assets/nexum-logo.png";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { AnimatedSection } from "@/components/AnimatedSection";
@@ -92,6 +92,19 @@ const Header = () => {
               </div>
               
               <ThemeToggle />
+              <a 
+                href="/cv-flavio-admilson.pdf" 
+                download="CV-Flavio-Admilson.pdf"
+              >
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  className="min-h-[44px]"
+                >
+                  <Download className="mr-2 h-4 w-4" />
+                  CV
+                </Button>
+              </a>
               <Button 
                 variant="hero" 
                 size="sm"
@@ -156,14 +169,29 @@ const Header = () => {
                   <Mail className="h-5 w-5" />
                 </a>
               </div>
-              <Button 
-                variant="hero" 
-                size="sm" 
-                className="mt-2 self-start min-h-[44px]"
-                onClick={() => scrollToSection("#contato")}
-              >
-                Fale Comigo
-              </Button>
+              <div className="flex flex-wrap gap-2 mt-2">
+                <a 
+                  href="/cv-flavio-admilson.pdf" 
+                  download="CV-Flavio-Admilson.pdf"
+                >
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    className="min-h-[44px]"
+                  >
+                    <Download className="mr-2 h-4 w-4" />
+                    Download CV
+                  </Button>
+                </a>
+                <Button 
+                  variant="hero" 
+                  size="sm" 
+                  className="min-h-[44px]"
+                  onClick={() => scrollToSection("#contato")}
+                >
+                  Fale Comigo
+                </Button>
+              </div>
             </div>
           </div>
         )}
