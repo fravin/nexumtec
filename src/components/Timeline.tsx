@@ -33,9 +33,10 @@ const Timeline = () => {
     {
       year: "2012",
       title: "Contratação - Setor de Faturamento",
-      description: "Efetivado e direcionado para faturamento hospitalar. Mergulho no universo de auditoria de glosas e gestão de estoque.",
+      description: "Efetivado e direcionado para faturamento hospitalar. Período de intensa dedicação, conciliando dois empregos (clínica e feira) com os estudos em Administração de Empresas. Mergulho no universo de auditoria de glosas e gestão de estoque.",
       icon: TrendingUp,
-      color: "from-primary to-primary-dark"
+      color: "from-primary to-primary-dark",
+      badges: [{ label: "2 Empregos + Estudos", color: "bg-amber-500/20 text-amber-600 border-amber-500/30" }]
     },
     {
       year: "2014",
@@ -55,10 +56,11 @@ const Timeline = () => {
     },
     {
       year: "2024",
-      title: "Graduação & Analista de Tecnologia",
-      description: "Conclusão da graduação em Sistemas de Informação. Promoção para Analista de Tecnologia, unindo experiência de negócio com paixão por tecnologia.",
+      title: "Graduação & Mudança de Mindset",
+      description: "Conclusão da graduação em Sistemas de Informação e promoção para Analista de Tecnologia. Momento de transformação: deixei de apenas executar tarefas para pensar estrategicamente em como a tecnologia pode gerar valor real para o negócio.",
       icon: GraduationCap,
-      color: "from-primary to-primary-dark"
+      color: "from-primary to-primary-dark",
+      badges: [{ label: "Mudança de Mindset", color: "bg-purple-500/20 text-purple-600 border-purple-500/30" }]
     },
     {
       year: "Atual",
