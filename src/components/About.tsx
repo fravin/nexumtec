@@ -1,20 +1,25 @@
 import { Card, CardContent } from "@/components/ui/card";
 import ImpactMetrics from "./ImpactMetrics";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import { TrendingUp, CheckCircle, MessageSquare, Lightbulb } from "lucide-react";
 
 const About = () => {
   const philosophyItems = [{
-    title: "Dados para Pessoas",
-    description: "Acredito que a tecnologia deve servir para simplificar a vida das pessoas e tornar as empresas mais humanas e eficientes."
+    icon: TrendingUp,
+    title: "ROI Comprovado",
+    description: "Cada projeto que entrego gera economia real ou aumento de receita. Meu compromisso é transformar investimento em resultados mensuráveis para o seu negócio."
   }, {
-    title: "Eficiência com Alegria",
-    description: "Trago a mesma energia e otimismo da feira para o ambiente corporativo. Um time motivado e com boa comunicação resolve qualquer desafio."
+    icon: CheckCircle,
+    title: "Soluções que Funcionam",
+    description: "Traduzo desafios complexos em soluções práticas e fáceis de manter. Menos retrabalho, mais produtividade para sua equipe."
   }, {
-    title: "Soluções Simples para Problemas Complexos",
-    description: "Minha meta é traduzir desafios complexos em soluções práticas e fáceis de implementar, seja em uma planilha de Excel ou em um modelo de dados."
+    icon: MessageSquare,
+    title: "Comunicação Clara",
+    description: "Trago a energia da feira para o ambiente corporativo: transparência, agilidade e foco no cliente. Você sempre saberá o andamento do projeto."
   }, {
-    title: "A Curiosidade como Guia",
-    description: "Estou sempre aprendendo, questionando e buscando novas formas de otimizar. Acredito que a pergunta certa é o primeiro passo para a inovação."
+    icon: Lightbulb,
+    title: "Aprendizado Contínuo",
+    description: "Estou constantemente atualizado em IA, dados e automação. Sua empresa terá acesso às soluções mais modernas do mercado."
   }];
   return <section id="sobre" className="py-12 bg-gradient-to-br from-background to-secondary/20">
       <div className="container mx-auto px-6">
@@ -119,26 +124,34 @@ const About = () => {
         <AnimatedSection animation="slideUp" delay={100}>
           <div className="text-center mb-8 mt-12">
             <h3 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
-              Minha Filosofia de Trabalho
+              Por Que Me Contratar?
             </h3>
           </div>
         </AnimatedSection>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {philosophyItems.map((item, index) => (
-            <AnimatedSection key={index} animation="scaleIn" delay={200 + index * 100}>
-              <Card className="group hover:shadow-glow transition-smooth cursor-pointer h-full">
-                <CardContent className="p-6 h-full">
-                  <h4 className="text-lg font-semibold mb-4 gradient-text group-hover:scale-105 transition-transform">
-                    {item.title}
-                  </h4>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {item.description}
-                  </p>
-                </CardContent>
-              </Card>
-            </AnimatedSection>
-          ))}
+          {philosophyItems.map((item, index) => {
+            const Icon = item.icon;
+            return (
+              <AnimatedSection key={index} animation="scaleIn" delay={200 + index * 100}>
+                <Card className="group hover:shadow-glow transition-smooth cursor-pointer h-full">
+                  <CardContent className="p-6 h-full">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                        <Icon className="h-5 w-5 text-primary" />
+                      </div>
+                      <h4 className="text-lg font-semibold gradient-text group-hover:scale-105 transition-transform">
+                        {item.title}
+                      </h4>
+                    </div>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {item.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </AnimatedSection>
+            );
+          })}
         </div>
       </div>
     </section>;
