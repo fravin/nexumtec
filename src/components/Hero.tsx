@@ -53,7 +53,7 @@ const Hero = () => {
           <AnimatedSection animation="scaleIn" delay={200}>
             <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-4 sm:p-8 mb-8 sm:mb-12 border border-white/20 mx-2 sm:mx-0">
               <p className="text-sm sm:text-lg md:text-xl leading-relaxed text-white/95 italic">
-                "Sou <span className="font-semibold text-white">Flávio Admilson</span>, Especialista em Inteligência Artificial e Data Science. 
+                "Somos<span className="font-semibold text-white"></span>, especialistas em Inteligência Artificial e Data Science. 
                 Desenvolvemos soluções personalizadas que convertem complexidade em clareza estratégica para o seu negócio.
               </p>
             </div>
