@@ -45,7 +45,7 @@ const Hero = () => {
           {/* Subtitle */}
           <AnimatedSection animation="slideUp" delay={100}>
             <p className="text-base sm:text-xl md:text-2xl mb-6 sm:mb-8 text-white/90 font-light px-2">
-              Transformação Digital e IA Estratégica para Impulsionar o Seu Negócio
+              A tecnologia que a sua gestão precisa, com a experiência de quem entende o setor.
             </p>
           </AnimatedSection>
 
@@ -54,7 +54,7 @@ const Hero = () => {
             <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-4 sm:p-8 mb-8 sm:mb-12 border border-white/20 mx-2 sm:mx-0">
               <p className="text-sm sm:text-lg md:text-xl leading-relaxed text-white/95 italic">
                 "Sou <span className="font-semibold text-white">Flávio Admilson</span>, Especialista em Inteligência Artificial e Data Science. 
-                Transformo dados em <span className="font-semibold text-white">VALOR</span> real para o seu negócio."
+                Desenvolvemos soluções personalizadas que convertem complexidade em clareza estratégica para o seu negócio.
               </p>
             </div>
           </AnimatedSection>
