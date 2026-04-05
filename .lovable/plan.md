@@ -1,81 +1,112 @@
 
 
-## Plano: Melhorar Filosofia de Trabalho e Atualizar Timeline
+## Plano: Adicionar Projeto de Faturamento e Criar Carrossel de Projetos
+
+### Contexto
+
+O usuario quer adicionar um novo projeto (Sistema de Gestao de Faturamento e Glosas - Centro Trauma) usando as imagens enviadas como referencia visual, sem expor dados reais. Tambem quer transformar a grade de projetos em um carrossel para facilitar a adicao futura de mais projetos.
 
 ---
 
-### Parte 1: Filosofia de Trabalho - Foco em Entrega de Valor
+### Parte 1: Copiar Imagens para o Projeto
 
-**Arquivo:** `src/components/About.tsx`
-
-**Objetivo:** Transformar a secao de filosofia para mostrar claramente o retorno de valor que empresas terao ao contratar seus servicos, mantendo caracteristicas pessoais como diferencial.
-
-#### Titulo Atualizado
-
-**De:** "Minha Filosofia de Trabalho"
-
-**Para:** "Por Que Me Contratar?"
-
-#### Novos Cards de Filosofia (4 itens)
-
-| Card | Titulo | Descricao (foco no valor para empresa) |
-|------|--------|----------------------------------------|
-| 1 | **ROI Comprovado** | Cada projeto que entrego gera economia real ou aumento de receita. Meu compromisso e transformar investimento em resultados mensuraveis para o seu negocio. |
-| 2 | **Solucoes que Funcionam** | Traduzo desafios complexos em solucoes praticas e faceis de manter. Menos retrabalho, mais produtividade para sua equipe. |
-| 3 | **Comunicacao Clara** | Trago a energia da feira para o ambiente corporativo: transparencia, agilidade e foco no cliente. Voce sempre sabera o andamento do projeto. |
-| 4 | **Aprendizado Continuo** | Estou constantemente atualizado em IA, dados e automacao. Sua empresa tera acesso as solucoes mais modernas do mercado. |
-
-#### Icones para os Cards
-
-Adicionar icones para reforcar visualmente cada proposta de valor:
-- ROI Comprovado: `TrendingUp`
-- Solucoes que Funcionam: `CheckCircle`
-- Comunicacao Clara: `MessageSquare`
-- Aprendizado Continuo: `Lightbulb`
+Copiar as 6 imagens enviadas para `src/assets/` com nomes descritivos:
+- `image-20.png` → `src/assets/faturamento-convenios.png`
+- `image-21.png` → `src/assets/faturamento-analytics.png`
+- `image-22.png` → `src/assets/faturamento-graficos.png`
+- `image-23.png` → `src/assets/faturamento-recursos.png`
+- `image-24.png` → `src/assets/faturamento-glosas.png`
+- `image-25.png` → `src/assets/faturamento-viscossuplementacao.png`
 
 ---
 
-### Parte 2: Atualizacao da Timeline
+### Parte 2: Adicionar Novo Projeto no Array
 
-**Arquivo:** `src/components/Timeline.tsx`
+**Arquivo:** `src/components/Projects.tsx`
 
-#### Alteracao 1: Evento de 2012
+Adicionar o projeto no topo do array (projeto mais robusto):
 
-**Linha 33-39** - Atualizar descricao e adicionar badge
+| Campo | Valor |
+|-------|-------|
+| **Titulo** | Sistema de Gestao de Faturamento e Glosas |
+| **Categoria** | Desenvolvimento Web |
+| **Icone** | `FileBarChart` (lucide) |
+| **Descricao** | Sistema web completo para gestao de faturamento de convenios, controle de glosas, analytics avancado e viscossuplementacao. Solucao sob medida desenvolvida para otimizar processos financeiros na area da saude. |
+| **Tecnologias** | React, TypeScript, Supabase, PostgreSQL, Tailwind CSS, Recharts |
+| **Desafio** | Processos de faturamento e controle de glosas dependiam de planilhas, gerando atrasos e perda de receita. |
+| **Solucao** | Sistema completo com modulos de faturamento por convenio, analytics com KPIs, controle de recursos de glosas com status e prazos, e modulo de viscossuplementacao com graficos analiticos. |
+| **Resultados** | Controle de R$ 34 mil+ em faturamento mensal, Analytics com ticket medio e evolucao temporal, Gestao de recursos de glosas com alertas de vencimento, Dashboard executivo com taxa de recuperacao, Modulo completo de viscossuplementacao com 260+ procedimentos |
 
-**De:**
+**Nota importante na descricao:** Incluir texto como "Sistema desenvolvido sob medida - dados ilustrativos por questoes de confidencialidade" para deixar claro que os dados sao protegidos.
+
+---
+
+### Parte 3: Transformar Grid em Carrossel
+
+**Arquivo:** `src/components/Projects.tsx`
+
+**Substituir** o grid atual (`grid lg:grid-cols-2 xl:grid-cols-3`) por um carrossel usando o componente `Carousel` ja existente em `src/components/ui/carousel.tsx`.
+
+**Layout do carrossel:**
+- Desktop: mostrar 3 cards por vez
+- Tablet: 2 cards por vez
+- Mobile: 1 card por vez
+- Setas de navegacao nos lados
+- Indicadores de pontos (dots) na base
+- Auto-play opcional com pause on hover
+
+**Imports necessarios:**
+```typescript
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 ```
-year: "2012",
-title: "Contratação - Setor de Faturamento",
-description: "Efetivado e direcionado para faturamento hospitalar. Mergulho no universo de auditoria de glosas e gestão de estoque."
+
+**Estrutura JSX:**
+```tsx
+<Carousel opts={{ align: "start", loop: true }}>
+  <CarouselContent>
+    {projects.map((project, index) => (
+      <CarouselItem key={index} className="md:basis-1/2 xl:basis-1/3">
+        <Card>...</Card>
+      </CarouselItem>
+    ))}
+  </CarouselContent>
+  <CarouselPrevious />
+  <CarouselNext />
+</Carousel>
 ```
 
-**Para:**
-```
-year: "2012",
-title: "Contratação - Setor de Faturamento",
-description: "Efetivado e direcionado para faturamento hospitalar. Período de intensa dedicação, conciliando dois empregos (clínica e feira) com os estudos em Administração de Empresas. Mergulho no universo de auditoria de glosas e gestão de estoque.",
-badges: [{ label: "2 Empregos + Estudos", color: "bg-amber-500/20 text-amber-600 border-amber-500/30" }]
-```
+Tambem adicionar indicadores de pagina (dots) abaixo do carrossel para navegacao visual.
 
-#### Alteracao 2: Evento de 2024
+---
 
-**Linha 56-62** - Atualizar descricao e adicionar badge sobre mudanca de mindset
+### Parte 4: Atualizar ProjectModal com Galeria do Novo Projeto
 
-**De:**
-```
-year: "2024",
-title: "Graduação & Analista de Tecnologia",
-description: "Conclusão da graduação em Sistemas de Informação. Promoção para Analista de Tecnologia, unindo experiência de negócio com paixão por tecnologia."
-```
+**Arquivo:** `src/components/ProjectModal.tsx`
 
-**Para:**
-```
-year: "2024",
-title: "Graduação & Mudança de Mindset",
-description: "Conclusão da graduação em Sistemas de Informação e promoção para Analista de Tecnologia. Momento de transformação: deixei de apenas executar tarefas para pensar estrategicamente em como a tecnologia pode gerar valor real para o negócio.",
-badges: [{ label: "Mudança de Mindset", color: "bg-purple-500/20 text-purple-600 border-purple-500/30" }]
-```
+Adicionar entrada no `dashboardGallery` para o novo projeto com as 6 imagens:
+- Faturamento de Convenios
+- Analytics de Faturamento
+- Graficos de Analise
+- Controle de Recursos
+- Dashboard Executivo de Glosas
+- Viscossuplementacao
+
+Cada imagem tera titulo e descricao generica sem dados sensiveis.
+
+Adicionar tambem entrada no `projectDetails` com detalhes expandidos.
+
+---
+
+### Parte 5: Reordenar Projetos por Relevancia
+
+Ordem final no carrossel (mais robustos primeiro):
+1. Sistema de Gestao de Faturamento e Glosas (NOVO)
+2. FISIOKIM - Clinica de Fisioterapia
+3. Sistema Web de Gestao de Estoque Hospitalar
+4. Analise Global de Vendas (Power BI)
+5. Sistema de Controle de Estoque (Excel)
+6. Pesquisa de Satisfacao
+7. Alinhamento Estrategico
 
 ---
 
@@ -83,32 +114,7 @@ badges: [{ label: "Mudança de Mindset", color: "bg-purple-500/20 text-purple-60
 
 | Arquivo | Alteracao |
 |---------|-----------|
-| `src/components/About.tsx` | Novo titulo "Por Que Me Contratar?", 4 cards focados em valor para empresas com icones |
-| `src/components/Timeline.tsx` | 2012: adicionar badge "2 Empregos + Estudos" e mencao a Administracao |
-| `src/components/Timeline.tsx` | 2024: novo titulo com "Mudanca de Mindset", badge e descricao atualizada |
-
----
-
-### Detalhes Tecnicos
-
-**Imports necessarios em About.tsx:**
-```typescript
-import { TrendingUp, CheckCircle, MessageSquare, Lightbulb } from "lucide-react";
-```
-
-**Estrutura atualizada do philosophyItems:**
-```typescript
-const philosophyItems = [
-  {
-    icon: TrendingUp,
-    title: "ROI Comprovado",
-    description: "..."
-  },
-  // ... demais itens
-];
-```
-
-**Ajuste no JSX dos cards:**
-- Adicionar renderizacao do icone antes do titulo
-- Manter animacoes e estilos existentes
+| `src/assets/faturamento-*.png` | 6 novas imagens do projeto |
+| `src/components/Projects.tsx` | Novo projeto + grid vira carrossel + reordenacao |
+| `src/components/ProjectModal.tsx` | Galeria e detalhes do novo projeto |
 
