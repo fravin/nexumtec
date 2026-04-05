@@ -24,6 +24,12 @@ import fisiokimAgenda from "@/assets/fisiokim-agenda.png";
 import fisiokimPacientes from "@/assets/fisiokim-pacientes.png";
 import fisiokimProntuario from "@/assets/fisiokim-prontuario.png";
 import fisiokimLogin from "@/assets/fisiokim-login.png";
+import faturamentoConvenios from "@/assets/faturamento-convenios.png";
+import faturamentoAnalytics from "@/assets/faturamento-analytics.png";
+import faturamentoGraficos from "@/assets/faturamento-graficos.png";
+import faturamentoRecursos from "@/assets/faturamento-recursos.png";
+import faturamentoGlosas from "@/assets/faturamento-glosas.png";
+import faturamentoViscossuplementacao from "@/assets/faturamento-viscossuplementacao.png";
 
 interface ProjectModalProps {
   project: {
@@ -46,6 +52,38 @@ const ProjectModal = ({ project, children }: ProjectModalProps) => {
   
   // Galeria de dashboards para o projeto de controle de estoque
   const dashboardGallery = {
+    "Sistema de Gestão de Faturamento e Glosas": [
+      {
+        src: faturamentoConvenios,
+        title: "Faturamento de Convênios",
+        description: "Módulo de controle de faturamento por convênio com status de envio e valores consolidados"
+      },
+      {
+        src: faturamentoAnalytics,
+        title: "Analytics de Faturamento",
+        description: "Dashboard analítico com KPIs de faturamento, ticket médio e evolução temporal"
+      },
+      {
+        src: faturamentoGraficos,
+        title: "Gráficos de Análise",
+        description: "Visualizações interativas com distribuição por convênio e análise comparativa"
+      },
+      {
+        src: faturamentoRecursos,
+        title: "Controle de Recursos de Glosas",
+        description: "Gestão de recursos com status, prazos e alertas de vencimento"
+      },
+      {
+        src: faturamentoGlosas,
+        title: "Dashboard Executivo de Glosas",
+        description: "Visão executiva com taxa de recuperação, valores glosados e status dos recursos"
+      },
+      {
+        src: faturamentoViscossuplementacao,
+        title: "Módulo de Viscossuplementação",
+        description: "Controle completo de procedimentos de viscossuplementação com analytics integrado"
+      }
+    ],
     "Análise Global de Vendas - Pós-Graduação": [
       {
         src: vendasDashboard,
@@ -184,6 +222,45 @@ const ProjectModal = ({ project, children }: ProjectModalProps) => {
   };
 
   const projectDetails = {
+    "Sistema de Gestão de Faturamento e Glosas": {
+      fullTitle: "Sistema de Gestão de Faturamento e Glosas - Área da Saúde",
+      challenge: "Os processos de faturamento de convênios e controle de glosas dependiam de planilhas manuais, gerando atrasos no envio, perda de receita por glosas não recorridas e ausência de visibilidade sobre a saúde financeira da operação.",
+      solution: `Desenvolvi um sistema web completo e sob medida com módulos integrados:
+
+• Faturamento por Convênio: Controle de envio de lotes com status, valores e prazos por convênio.
+
+• Analytics Avançado: Dashboard com KPIs de faturamento mensal, ticket médio, evolução temporal e distribuição por convênio usando Recharts.
+
+• Controle de Recursos de Glosas: Módulo para gestão de recursos com status (pendente, enviado, deferido, indeferido), prazos de vencimento e alertas automáticos.
+
+• Dashboard Executivo: Visão consolidada com taxa de recuperação de glosas, valores glosados vs. recuperados e indicadores de performance.
+
+• Viscossuplementação: Módulo específico para controle de procedimentos com 260+ registros e gráficos analíticos.
+
+⚠️ Sistema desenvolvido sob medida - dados ilustrativos por questões de confidencialidade.`,
+      results: `O sistema transformou a gestão financeira da operação:
+
+• Controle de R$ 34 mil+ em faturamento mensal com visibilidade total
+
+• Analytics em tempo real com ticket médio e evolução temporal
+
+• Gestão proativa de recursos de glosas com alertas de vencimento
+
+• Dashboard executivo com taxa de recuperação e indicadores financeiros
+
+• Módulo completo de viscossuplementação com 260+ procedimentos rastreados
+
+• Redução significativa de perdas por glosas não recorridas`,
+      tools: [
+        "React",
+        "TypeScript",
+        "Supabase",
+        "PostgreSQL",
+        "Tailwind CSS",
+        "Recharts",
+        "Git & GitHub"
+      ]
+    },
     "Análise Global de Vendas - Pós-Graduação": {
       fullTitle: "Análise Global de Vendas - Projeto de Pós-Graduação",
       challenge: "O desafio era realizar uma análise completa de um extenso banco de dados de vendas globais, identificando padrões de consumo, tendências de mercado por região e gerando insights estratégicos que pudessem ser apresentados de forma clara e interativa para auxiliar gestores na tomada de decisão.",
