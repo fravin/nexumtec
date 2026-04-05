@@ -24,6 +24,12 @@ import fisiokimAgenda from "@/assets/fisiokim-agenda.png";
 import fisiokimPacientes from "@/assets/fisiokim-pacientes.png";
 import fisiokimProntuario from "@/assets/fisiokim-prontuario.png";
 import fisiokimLogin from "@/assets/fisiokim-login.png";
+import faturamentoConvenios from "@/assets/faturamento-convenios.png";
+import faturamentoAnalytics from "@/assets/faturamento-analytics.png";
+import faturamentoGraficos from "@/assets/faturamento-graficos.png";
+import faturamentoRecursos from "@/assets/faturamento-recursos.png";
+import faturamentoGlosas from "@/assets/faturamento-glosas.png";
+import faturamentoViscossuplementacao from "@/assets/faturamento-viscossuplementacao.png";
 
 interface ProjectModalProps {
   project: {
