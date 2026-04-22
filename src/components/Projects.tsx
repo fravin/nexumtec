@@ -27,23 +27,27 @@ const Projects = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
+  const autoplay = useRef(
+    Autoplay({
+      delay: 5000,
+      stopOnInteraction: false,
+      stopOnMouseEnter: true,
+    })
+  );
 
   useEffect(() => {
     if (!api) return;
     setCount(api.scrollSnapList().length);
     setCurrent(api.selectedScrollSnap());
-    api.on("select", () => setCurrent(api.selectedScrollSnap()));
-  }, [api]);
 
-  // Auto-play
-  useEffect(() => {
-    if (!api) return;
-    const interval = setInterval(() => {
-      if (!document.querySelector('.projects-carousel:hover')) {
-        api.scrollNext();
-      }
-    }, 5000);
-    return () => clearInterval(interval);
+    const onSelect = () => setCurrent(api.selectedScrollSnap());
+    api.on("select", onSelect);
+    api.on("reInit", onSelect);
+
+    return () => {
+      api.off("select", onSelect);
+      api.off("reInit", onSelect);
+    };
   }, [api]);
 
   const projects = [
