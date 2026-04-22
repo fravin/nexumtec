@@ -1,120 +1,114 @@
 
 
-## Plano: Adicionar Projeto de Faturamento e Criar Carrossel de Projetos
+## Plano: Suavizar Rolagem do Carrossel de Projetos
 
-### Contexto
+### Problema Identificado
 
-O usuario quer adicionar um novo projeto (Sistema de Gestao de Faturamento e Glosas - Centro Trauma) usando as imagens enviadas como referencia visual, sem expor dados reais. Tambem quer transformar a grade de projetos em um carrossel para facilitar a adicao futura de mais projetos.
-
----
-
-### Parte 1: Copiar Imagens para o Projeto
-
-Copiar as 6 imagens enviadas para `src/assets/` com nomes descritivos:
-- `image-20.png` → `src/assets/faturamento-convenios.png`
-- `image-21.png` → `src/assets/faturamento-analytics.png`
-- `image-22.png` → `src/assets/faturamento-graficos.png`
-- `image-23.png` → `src/assets/faturamento-recursos.png`
-- `image-24.png` → `src/assets/faturamento-glosas.png`
-- `image-25.png` → `src/assets/faturamento-viscossuplementacao.png`
+A rolagem está travada porque:
+1. O auto-play foi feito com `setInterval` manual chamando `scrollNext()`, sem sincronização com o motor de animação do Embla
+2. A detecção de hover usa `document.querySelector(':hover')` que é instável e causa pulos
+3. Falta configuração de duração/easing para transições suaves
+4. Sem plugin oficial de autoplay, não há pausa inteligente em interação do usuário
 
 ---
 
-### Parte 2: Adicionar Novo Projeto no Array
+### Solução
 
-**Arquivo:** `src/components/Projects.tsx`
+#### Parte 1: Instalar plugin oficial de autoplay
 
-Adicionar o projeto no topo do array (projeto mais robusto):
+**Pacote:** `embla-carousel-autoplay` (mesma versão do embla-carousel-react já instalado: `^8.6.0`)
 
-| Campo | Valor |
-|-------|-------|
-| **Titulo** | Sistema de Gestao de Faturamento e Glosas |
-| **Categoria** | Desenvolvimento Web |
-| **Icone** | `FileBarChart` (lucide) |
-| **Descricao** | Sistema web completo para gestao de faturamento de convenios, controle de glosas, analytics avancado e viscossuplementacao. Solucao sob medida desenvolvida para otimizar processos financeiros na area da saude. |
-| **Tecnologias** | React, TypeScript, Supabase, PostgreSQL, Tailwind CSS, Recharts |
-| **Desafio** | Processos de faturamento e controle de glosas dependiam de planilhas, gerando atrasos e perda de receita. |
-| **Solucao** | Sistema completo com modulos de faturamento por convenio, analytics com KPIs, controle de recursos de glosas com status e prazos, e modulo de viscossuplementacao com graficos analiticos. |
-| **Resultados** | Controle de R$ 34 mil+ em faturamento mensal, Analytics com ticket medio e evolucao temporal, Gestao de recursos de glosas com alertas de vencimento, Dashboard executivo com taxa de recuperacao, Modulo completo de viscossuplementacao com 260+ procedimentos |
-
-**Nota importante na descricao:** Incluir texto como "Sistema desenvolvido sob medida - dados ilustrativos por questoes de confidencialidade" para deixar claro que os dados sao protegidos.
+Esse plugin é mantido pela mesma equipe e integra nativamente com o carrossel, garantindo:
+- Transições suaves coordenadas com o motor do Embla
+- Pausa automática ao passar o mouse (`stopOnInteraction`, `stopOnMouseEnter`)
+- Retomada automática após interação
+- Sem conflito com cliques nas setas/dots
 
 ---
 
-### Parte 3: Transformar Grid em Carrossel
+#### Parte 2: Refatorar `src/components/Projects.tsx`
 
-**Arquivo:** `src/components/Projects.tsx`
+**Remover:**
+- O `useEffect` com `setInterval` manual (linhas 38-46)
+- O `useCallback` import não utilizado
+- A classe `projects-carousel` usada apenas para o hack do hover
 
-**Substituir** o grid atual (`grid lg:grid-cols-2 xl:grid-cols-3`) por um carrossel usando o componente `Carousel` ja existente em `src/components/ui/carousel.tsx`.
-
-**Layout do carrossel:**
-- Desktop: mostrar 3 cards por vez
-- Tablet: 2 cards por vez
-- Mobile: 1 card por vez
-- Setas de navegacao nos lados
-- Indicadores de pontos (dots) na base
-- Auto-play opcional com pause on hover
-
-**Imports necessarios:**
-```typescript
-import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
-```
-
-**Estrutura JSX:**
+**Adicionar:**
 ```tsx
-<Carousel opts={{ align: "start", loop: true }}>
-  <CarouselContent>
-    {projects.map((project, index) => (
-      <CarouselItem key={index} className="md:basis-1/2 xl:basis-1/3">
-        <Card>...</Card>
-      </CarouselItem>
-    ))}
-  </CarouselContent>
-  <CarouselPrevious />
-  <CarouselNext />
-</Carousel>
+import Autoplay from "embla-carousel-autoplay";
+import { useRef } from "react";
+
+// Dentro do componente:
+const autoplay = useRef(
+  Autoplay({ 
+    delay: 5000, 
+    stopOnInteraction: false,
+    stopOnMouseEnter: true 
+  })
+);
 ```
 
-Tambem adicionar indicadores de pagina (dots) abaixo do carrossel para navegacao visual.
+**Atualizar o `<Carousel>`:**
+```tsx
+<Carousel 
+  setApi={setApi} 
+  plugins={[autoplay.current]}
+  opts={{ 
+    align: "start", 
+    loop: true,
+    duration: 25,        // duração da transição (mais suave)
+    skipSnaps: false,
+    dragFree: false
+  }}
+  className="w-full"
+>
+```
+
+**Parâmetros explicados:**
+- `duration: 25` — transição de ~400ms (padrão é 25, mas explicito para clareza); valores maiores = mais lento e suave
+- `stopOnMouseEnter: true` — pausa automaticamente ao passar mouse (substitui o hack atual)
+- `stopOnInteraction: false` — retoma autoplay após o usuário clicar nas setas
 
 ---
 
-### Parte 4: Atualizar ProjectModal com Galeria do Novo Projeto
+#### Parte 3: Melhorar listener de eventos do carrossel
 
-**Arquivo:** `src/components/ProjectModal.tsx`
+**Atualizar o `useEffect` de eventos:**
+```tsx
+useEffect(() => {
+  if (!api) return;
+  setCount(api.scrollSnapList().length);
+  setCurrent(api.selectedScrollSnap());
+  
+  const onSelect = () => setCurrent(api.selectedScrollSnap());
+  api.on("select", onSelect);
+  api.on("reInit", onSelect);
+  
+  return () => {
+    api.off("select", onSelect);
+    api.off("reInit", onSelect);
+  };
+}, [api]);
+```
 
-Adicionar entrada no `dashboardGallery` para o novo projeto com as 6 imagens:
-- Faturamento de Convenios
-- Analytics de Faturamento
-- Graficos de Analise
-- Controle de Recursos
-- Dashboard Executivo de Glosas
-- Viscossuplementacao
-
-Cada imagem tera titulo e descricao generica sem dados sensiveis.
-
-Adicionar tambem entrada no `projectDetails` com detalhes expandidos.
-
----
-
-### Parte 5: Reordenar Projetos por Relevancia
-
-Ordem final no carrossel (mais robustos primeiro):
-1. Sistema de Gestao de Faturamento e Glosas (NOVO)
-2. FISIOKIM - Clinica de Fisioterapia
-3. Sistema Web de Gestao de Estoque Hospitalar
-4. Analise Global de Vendas (Power BI)
-5. Sistema de Controle de Estoque (Excel)
-6. Pesquisa de Satisfacao
-7. Alinhamento Estrategico
+Isso evita memory leak e garante atualização correta dos dots ao redimensionar.
 
 ---
 
-### Resumo das Alteracoes
+### Resumo das Alterações
 
-| Arquivo | Alteracao |
+| Arquivo | Alteração |
 |---------|-----------|
-| `src/assets/faturamento-*.png` | 6 novas imagens do projeto |
-| `src/components/Projects.tsx` | Novo projeto + grid vira carrossel + reordenacao |
-| `src/components/ProjectModal.tsx` | Galeria e detalhes do novo projeto |
+| `package.json` | Adicionar `embla-carousel-autoplay@^8.6.0` |
+| `src/components/Projects.tsx` | Substituir setInterval manual pelo plugin Autoplay, adicionar `duration` no opts, corrigir cleanup de listeners |
+
+---
+
+### Resultado Esperado
+
+- Transições fluidas entre slides (sem travamentos)
+- Pausa imediata e confiável ao passar o mouse
+- Retomada suave do autoplay após o mouse sair
+- Cliques nas setas e dots não conflitam mais com o autoplay
+- Performance melhor (sem `querySelector` rodando a cada 5s)
 
