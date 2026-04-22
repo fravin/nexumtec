@@ -185,10 +185,11 @@ const Projects = () => {
         </AnimatedSection>
 
         <AnimatedSection animation="scaleIn" delay={100}>
-          <div className="projects-carousel relative px-12">
-            <Carousel 
-              setApi={setApi} 
-              opts={{ align: "start", loop: true }}
+          <div className="relative px-12">
+            <Carousel
+              setApi={setApi}
+              plugins={[autoplay.current]}
+              opts={{ align: "start", loop: true, duration: 30 }}
               className="w-full"
             >
               <CarouselContent>
