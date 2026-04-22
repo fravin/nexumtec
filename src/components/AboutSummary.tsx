@@ -28,7 +28,7 @@ const AboutSummary = () => {
               <AnimatedSection animation="slideInRight" delay={100}>
                 <div className="text-center md:text-left">
                   <h2 className="text-2xl md:text-3xl font-bold mb-3">
-                    Quem está por trás da <span className="gradient-text">Nexum</span>
+                    Responsável pela <span className="gradient-text">Nexum Tecnologia</span>
                   </h2>
                   <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
                     Mais de 15 anos transformando processos no setor de saúde. Da feira livre à
