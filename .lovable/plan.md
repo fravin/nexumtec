@@ -1,114 +1,134 @@
 
 
-## Plano: Suavizar Rolagem do Carrossel de Projetos
+## Plano: Reestruturar Home com Foco em Serviços + Nova Página "Sobre"
 
-### Problema Identificado
-
-A rolagem está travada porque:
-1. O auto-play foi feito com `setInterval` manual chamando `scrollNext()`, sem sincronização com o motor de animação do Embla
-2. A detecção de hover usa `document.querySelector(':hover')` que é instável e causa pulos
-3. Falta configuração de duração/easing para transições suaves
-4. Sem plugin oficial de autoplay, não há pausa inteligente em interação do usuário
+### Objetivo
+- **Home (`/`)**: foco comercial. Cliente entra e ja ve os servicos disponiveis (sites, sistemas sob medida, automacao WhatsApp, melhoria de processos, etc.).
+- **Nova pagina (`/sobre`)**: jornada completa, timeline, filosofia e impacto.
+- **Card principal da home**: virar um resumo curto com link "Conheca minha jornada".
 
 ---
 
-### Solução
+### Parte 1: Nova pagina `/sobre`
 
-#### Parte 1: Instalar plugin oficial de autoplay
+**Arquivo novo:** `src/pages/Sobre.tsx`
 
-**Pacote:** `embla-carousel-autoplay` (mesma versão do embla-carousel-react já instalado: `^8.6.0`)
+Estrutura:
+- `<Header />` (mesmo header do site)
+- **Hero compacto** da pagina: titulo "Minha Jornada" + subtitulo curto
+- Conteudo completo movido da home:
+  - Conteudo atual de `<About />` (foto + 5 cards de historia + ImpactMetrics + filosofia "Por Que Me Contratar?")
+  - `<Timeline />` completo
+- **CTA final**: "Vamos transformar sua empresa?" -> botao volta para `/#servicos` e `/#contato`
+- `<Footer />`, `<WhatsAppButton />`, `<ScrollToTop />`
 
-Esse plugin é mantido pela mesma equipe e integra nativamente com o carrossel, garantindo:
-- Transições suaves coordenadas com o motor do Embla
-- Pausa automática ao passar o mouse (`stopOnInteraction`, `stopOnMouseEnter`)
-- Retomada automática após interação
-- Sem conflito com cliques nas setas/dots
-
----
-
-#### Parte 2: Refatorar `src/components/Projects.tsx`
-
-**Remover:**
-- O `useEffect` com `setInterval` manual (linhas 38-46)
-- O `useCallback` import não utilizado
-- A classe `projects-carousel` usada apenas para o hack do hover
-
-**Adicionar:**
+**Roteamento (`src/App.tsx`):**
 ```tsx
-import Autoplay from "embla-carousel-autoplay";
-import { useRef } from "react";
-
-// Dentro do componente:
-const autoplay = useRef(
-  Autoplay({ 
-    delay: 5000, 
-    stopOnInteraction: false,
-    stopOnMouseEnter: true 
-  })
-);
+<Route path="/sobre" element={<Sobre />} />
 ```
 
-**Atualizar o `<Carousel>`:**
-```tsx
-<Carousel 
-  setApi={setApi} 
-  plugins={[autoplay.current]}
-  opts={{ 
-    align: "start", 
-    loop: true,
-    duration: 25,        // duração da transição (mais suave)
-    skipSnaps: false,
-    dragFree: false
-  }}
-  className="w-full"
->
+---
+
+### Parte 2: Reformular Home (`src/pages/Index.tsx`)
+
+**Nova ordem das secoes (foco comercial):**
+
+```
+1. Header
+2. Hero (CTA principal -> Servicos)
+3. Services EXPANDIDO (5+ servicos em destaque)  <- NOVO foco
+4. Projects (carrossel ja existente)
+5. AboutSummary (NOVO - resumo curto + link "/sobre")
+6. CallToAction
+7. Contact
+8. Footer
 ```
 
-**Parâmetros explicados:**
-- `duration: 25` — transição de ~400ms (padrão é 25, mas explicito para clareza); valores maiores = mais lento e suave
-- `stopOnMouseEnter: true` — pausa automaticamente ao passar mouse (substitui o hack atual)
-- `stopOnInteraction: false` — retoma autoplay após o usuário clicar nas setas
+**Removidos da home:**
+- `<About />` completo (vai para /sobre)
+- `<Timeline />` completo (vai para /sobre)
+- `<Skills />` (mantido apenas em /sobre? — ver questao abaixo)
 
 ---
 
-#### Parte 3: Melhorar listener de eventos do carrossel
+### Parte 3: Expandir `Services.tsx` com 5+ servicos comerciais
 
-**Atualizar o `useEffect` de eventos:**
+Substituir os 2 servicos atuais (com sub-cards de oferta) por **5 cards de servicos diretos**, formato grid 2-3 colunas, cada um com icone, titulo, descricao curta e CTA "Solicitar orcamento":
+
+| # | Servico | Icone | Descricao curta |
+|---|---------|-------|-----------------|
+| 1 | **Criacao de Sites** | `Globe` | Sites profissionais, responsivos e otimizados para conversao. Landing pages, institucionais e e-commerce. |
+| 2 | **Sistemas Sob Medida** | `Code2` | Aplicacoes web personalizadas para gestao, faturamento, controle de estoque e fluxos especificos da sua empresa. |
+| 3 | **Automacao de WhatsApp** | `MessageCircle` | Chatbots inteligentes, atendimento 24/7, agendamentos e disparos automatizados integrados ao seu CRM. |
+| 4 | **Melhoria de Processos** | `Workflow` | Diagnostico, mapeamento e otimizacao de fluxos operacionais. Reducao de retrabalho e ganho de produtividade. |
+| 5 | **Analise de Dados & BI** | `BarChart3` | Dashboards personalizados, relatorios estrategicos e KPIs em tempo real para decisoes baseadas em dados. |
+| 6 | **Integracao com IA** | `Brain` | Implementacao de IA generativa, chatbots, assistentes virtuais e automacoes inteligentes em seus sistemas. |
+
+**Layout:**
+- Grid: `grid md:grid-cols-2 lg:grid-cols-3 gap-6`
+- Cada card: icone com gradiente, titulo, descricao, badge de tecnologias/area, botao "Solicitar orcamento" (rola para `#contato`)
+- Header da secao: "Nossos Servicos" + subtitulo "Solucoes completas em tecnologia para sua empresa crescer"
+
+Servicos ficam **logo apos o Hero** — primeira coisa que o visitante ve.
+
+---
+
+### Parte 4: Novo componente `AboutSummary.tsx` na home
+
+**Arquivo novo:** `src/components/AboutSummary.tsx`
+
+Bloco enxuto (1 secao curta, ~py-12):
+- Foto pequena (a esquerda, redonda, ~200px)
+- A direita: 
+  - Titulo: "Quem esta por tras da Nexum"
+  - Paragrafo unico: "Mais de 15 anos transformando processos no setor de saude. Da feira livre a Analise de Dados, minha jornada uniu visao de negocio com tecnologia para entregar resultados reais."
+  - 3 mini-stats inline: `15+ anos` · `20+ projetos` · `100% foco em ROI`
+  - Botao: **"Conheca minha jornada completa →"** -> `Link to="/sobre"`
+
+---
+
+### Parte 5: Atualizar Header (`src/components/Header.tsx`)
+
+Atualizar `navItems`:
 ```tsx
-useEffect(() => {
-  if (!api) return;
-  setCount(api.scrollSnapList().length);
-  setCurrent(api.selectedScrollSnap());
-  
-  const onSelect = () => setCurrent(api.selectedScrollSnap());
-  api.on("select", onSelect);
-  api.on("reInit", onSelect);
-  
-  return () => {
-    api.off("select", onSelect);
-    api.off("reInit", onSelect);
-  };
-}, [api]);
+const navItems = [
+  { label: "Início", href: "/#inicio" },
+  { label: "Serviços", href: "/#servicos" },
+  { label: "Projetos", href: "/#projetos" },
+  { label: "Sobre", href: "/sobre", isRoute: true },  // novo - rota
+  { label: "Contato", href: "/#contato" },
+];
 ```
 
-Isso evita memory leak e garante atualização correta dos dots ao redimensionar.
+`scrollToSection` precisa diferenciar:
+- Se `isRoute` -> usa `navigate("/sobre")` do react-router
+- Se ancora na home atual -> rola
+- Se ancora vindo de `/sobre` -> `navigate("/")` e depois rola
+
+Remover item "Cases de Sucesso" (ja oculto).
 
 ---
 
-### Resumo das Alterações
+### Parte 6: Ajuste no Hero
 
-| Arquivo | Alteração |
-|---------|-----------|
-| `package.json` | Adicionar `embla-carousel-autoplay@^8.6.0` |
-| `src/components/Projects.tsx` | Substituir setInterval manual pelo plugin Autoplay, adicionar `duration` no opts, corrigir cleanup de listeners |
+CTA principal do Hero muda foco:
+- Botao primario: **"Ver Servicos"** -> rola para `#servicos` (ao inves de "Fale Comigo")
+- Botao secundario mantem "Fale Comigo"
+- Indicador de scroll aponta para `#servicos` (nao mais `#sobre`)
 
 ---
 
-### Resultado Esperado
+### Resumo de alteracoes
 
-- Transições fluidas entre slides (sem travamentos)
-- Pausa imediata e confiável ao passar o mouse
-- Retomada suave do autoplay após o mouse sair
-- Cliques nas setas e dots não conflitam mais com o autoplay
-- Performance melhor (sem `querySelector` rodando a cada 5s)
+| Arquivo | Tipo | Acao |
+|---------|------|------|
+| `src/pages/Sobre.tsx` | NOVO | Pagina completa: About + Timeline + Skills |
+| `src/components/AboutSummary.tsx` | NOVO | Resumo curto na home com link para /sobre |
+| `src/App.tsx` | EDITAR | Adicionar rota `/sobre` |
+| `src/pages/Index.tsx` | EDITAR | Remover About/Timeline, adicionar AboutSummary, reordenar |
+| `src/components/Services.tsx` | EDITAR | 6 servicos comerciais em grid (sites, sistemas, WhatsApp, processos, BI, IA) |
+| `src/components/Header.tsx` | EDITAR | Nav com rota `/sobre`, ajustar scrollToSection cross-page |
+| `src/components/Hero.tsx` | EDITAR | CTA primario aponta para `#servicos` |
+
+**Skills (`Skills.tsx`)**: por padrao vai para `/sobre` (foco tecnico, combina com a jornada). Se preferir manter na home, basta dizer.
 
