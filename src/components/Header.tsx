@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Linkedin, Github, Mail, Download } from "lucide-react";
 import nexumLogo from "@/assets/nexum-logo.png";
