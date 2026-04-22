@@ -1,21 +1,22 @@
 import { Button } from "@/components/ui/button";
-import { ChevronDown, Download, Mail } from "lucide-react";
+import { ChevronDown, Download, Mail, ArrowRight } from "lucide-react";
 import techHeroBg from "@/assets/tech-hero-bg.jpg";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
 const Hero = () => {
   const scrollToNext = () => {
-    const element = document.querySelector("#sobre");
+    const element = document.querySelector("#servicos");
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
+  const scrollToServices = () => {
+    document.querySelector("#servicos")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   const scrollToContact = () => {
-    const element = document.querySelector("#contato");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    document.querySelector("#contato")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -62,22 +63,17 @@ const Hero = () => {
           {/* CTA Buttons */}
           <AnimatedSection animation="slideUp" delay={300}>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-12 sm:mb-16 px-4 sm:px-0">
-              <a 
-                href="/cv-flavio-admilson.pdf" 
-                download="CV-Flavio-Admilson.pdf"
-                className="w-full sm:w-auto"
+              <Button
+                variant="hero"
+                size="lg"
+                onClick={scrollToServices}
+                className="group w-full sm:w-auto min-h-[48px]"
               >
-                <Button 
-                  variant="glass" 
-                  size="lg"
-                  className="group w-full min-h-[48px]"
-                >
-                  <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
-                  Download CV
-                </Button>
-              </a>
-              <Button 
-                variant="hero" 
+                Ver Serviços
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+              <Button
+                variant="glass"
                 size="lg"
                 onClick={scrollToContact}
                 className="group w-full sm:w-auto min-h-[48px]"
@@ -85,6 +81,20 @@ const Hero = () => {
                 <Mail className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
                 Fale Comigo
               </Button>
+              <a
+                href="/cv-flavio-admilson.pdf"
+                download="CV-Flavio-Admilson.pdf"
+                className="w-full sm:w-auto"
+              >
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="group w-full min-h-[48px] bg-white/10 text-white border-white/30 hover:bg-white/20 hover:text-white"
+                >
+                  <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
+                  CV
+                </Button>
+              </a>
             </div>
           </AnimatedSection>
 
