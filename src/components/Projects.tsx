@@ -4,7 +4,8 @@ import { Badge } from "@/components/ui/badge";
 import { ExternalLink, BarChart3, Code, Workflow, Users, Globe, Stethoscope, FileBarChart } from "lucide-react";
 import ProjectModal from "./ProjectModal";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, type CarouselApi } from "@/components/ui/carousel";
-import { useState, useEffect, useCallback } from "react";
+import Autoplay from "embla-carousel-autoplay";
+import { useState, useEffect, useRef } from "react";
 import estoqueLogin from "@/assets/estoque-login.png";
 import estoqueDashboard from "@/assets/estoque-dashboard.png";
 import estoqueDashboardNovo from "@/assets/estoque-dashboard-novo.png";
@@ -26,23 +27,27 @@ const Projects = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
+  const autoplay = useRef(
+    Autoplay({
+      delay: 5000,
+      stopOnInteraction: false,
+      stopOnMouseEnter: true,
+    })
+  );
 
   useEffect(() => {
     if (!api) return;
     setCount(api.scrollSnapList().length);
     setCurrent(api.selectedScrollSnap());
-    api.on("select", () => setCurrent(api.selectedScrollSnap()));
-  }, [api]);
 
-  // Auto-play
-  useEffect(() => {
-    if (!api) return;
-    const interval = setInterval(() => {
-      if (!document.querySelector('.projects-carousel:hover')) {
-        api.scrollNext();
-      }
-    }, 5000);
-    return () => clearInterval(interval);
+    const onSelect = () => setCurrent(api.selectedScrollSnap());
+    api.on("select", onSelect);
+    api.on("reInit", onSelect);
+
+    return () => {
+      api.off("select", onSelect);
+      api.off("reInit", onSelect);
+    };
   }, [api]);
 
   const projects = [
@@ -180,10 +185,11 @@ const Projects = () => {
         </AnimatedSection>
 
         <AnimatedSection animation="scaleIn" delay={100}>
-          <div className="projects-carousel relative px-12">
-            <Carousel 
-              setApi={setApi} 
-              opts={{ align: "start", loop: true }}
+          <div className="relative px-12">
+            <Carousel
+              setApi={setApi}
+              plugins={[autoplay.current]}
+              opts={{ align: "start", loop: true, duration: 30 }}
               className="w-full"
             >
               <CarouselContent>
