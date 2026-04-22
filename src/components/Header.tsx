@@ -9,30 +9,45 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navItems = [
     { label: "Início", href: "#inicio" },
-    { label: "Sobre Mim", href: "#sobre" },
     { label: "Serviços", href: "#servicos" },
-    { label: "Cases de Sucesso", href: "#cases-sucesso" },
     { label: "Projetos", href: "#projetos" },
+    { label: "Sobre", href: "/sobre" },
     { label: "Contato", href: "#contato" },
   ];
 
   const scrollToSection = (href: string) => {
+    setIsMobileMenuOpen(false);
+
+    // Route navigation (e.g. /sobre)
+    if (href.startsWith("/") && !href.startsWith("/#")) {
+      navigate(href);
+      window.scrollTo(0, 0);
+      return;
+    }
+
+    // Hash navigation from another page -> go home with hash
+    if (location.pathname !== "/") {
+      navigate(`/${href}`);
+      return;
+    }
+
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
-      setIsMobileMenuOpen(false);
     }
   };
 
