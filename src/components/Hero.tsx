@@ -1,113 +1,129 @@
 import { Button } from "@/components/ui/button";
-import { ChevronDown, Download, Mail, ArrowRight } from "lucide-react";
+import { ChevronDown, ArrowRight, Check, TrendingDown, Briefcase, DollarSign } from "lucide-react";
 import techHeroBg from "@/assets/tech-hero-bg.jpg";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
 const Hero = () => {
-  const scrollToNext = () => {
-    const element = document.querySelector("#servicos");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+  const scrollTo = (id: string) => {
+    document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const scrollToServices = () => {
-    document.querySelector("#servicos")?.scrollIntoView({ behavior: "smooth" });
-  };
+  const socialProof = [
+    "Sem compromisso inicial",
+    "Resposta em 24h",
+    "Atendimento consultivo",
+  ];
 
-  const scrollToContact = () => {
-    document.querySelector("#contato")?.scrollIntoView({ behavior: "smooth" });
-  };
+  const metrics = [
+    { icon: Briefcase, value: "+50", label: "projetos entregues" },
+    { icon: TrendingDown, value: "↓87%", label: "redução em tarefas manuais" },
+    { icon: DollarSign, value: "R$180k", label: "em glosas recuperadas" },
+  ];
 
   return (
-    <section 
+    <section
       id="inicio"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16 sm:pt-20"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 sm:pt-24 pb-16"
       style={{
         backgroundImage: `url(${techHeroBg})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundAttachment: "fixed"
+        backgroundAttachment: "fixed",
       }}
     >
       {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/70 to-accent/80"></div>
-      
+
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 text-center text-white">
-        <div className="max-w-4xl mx-auto">
-          {/* Main Heading */}
-          <AnimatedSection animation="slideUp" delay={0}>
-            <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-6 animate-float">
-              Nexum Tecnologia
-            </h1>
-          </AnimatedSection>
-          
-          {/* Subtitle */}
-          <AnimatedSection animation="slideUp" delay={100}>
-            <p className="text-base sm:text-xl md:text-2xl mb-6 sm:mb-8 text-white/90 font-light px-2">
-              A tecnologia que a sua gestão precisa, com a experiência de quem entende o setor.
-            </p>
-          </AnimatedSection>
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 text-white">
+        <div className="grid lg:grid-cols-[1.3fr_1fr] gap-10 lg:gap-12 items-center max-w-7xl mx-auto">
+          {/* Left: Copy */}
+          <div className="text-center lg:text-left">
+            {/* Eyebrow */}
+            <AnimatedSection animation="slideUp" delay={0}>
+              <span className="inline-block px-4 py-1.5 mb-5 text-xs sm:text-sm font-medium tracking-wide uppercase rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white">
+                Transformação Digital Estratégica — Rio de Janeiro
+              </span>
+            </AnimatedSection>
 
-          {/* Introduction Quote */}
-          <AnimatedSection animation="scaleIn" delay={200}>
-            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-4 sm:p-8 mb-8 sm:mb-12 border border-white/20 mx-2 sm:mx-0">
-              <p className="text-sm sm:text-lg md:text-xl leading-relaxed text-white/95 italic">
-                "Somos<span className="font-semibold text-white"></span> especialistas em Inteligência Artificial e Data Science.
-                Desenvolvemos soluções personalizadas que convertem complexidade em clareza estratégica para o seu negócio."
+            {/* Headline */}
+            <AnimatedSection animation="slideUp" delay={100}>
+              <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-5 leading-tight">
+                Pare de perder dinheiro com{" "}
+                <span className="bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent">
+                  processos manuais.
+                </span>
+              </h1>
+            </AnimatedSection>
+
+            {/* Subtitle */}
+            <AnimatedSection animation="slideUp" delay={200}>
+              <p className="text-base sm:text-lg md:text-xl mb-8 text-white/90 font-light leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                A Nexum Tecnologia transforma operações ineficientes em sistemas
+                inteligentes. Automação, BI, IA e Desenvolvimento — integrados para
+                empresas que querem crescer com controle e previsibilidade.
               </p>
-            </div>
-          </AnimatedSection>
+            </AnimatedSection>
 
-          {/* CTA Buttons */}
-          <AnimatedSection animation="slideUp" delay={300}>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-12 sm:mb-16 px-4 sm:px-0">
-              <Button
-                variant="hero"
-                size="lg"
-                onClick={scrollToServices}
-                className="group w-full sm:w-auto min-h-[48px]"
-              >
-                Ver Serviços
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button
-                variant="glass"
-                size="lg"
-                onClick={scrollToContact}
-                className="group w-full sm:w-auto min-h-[48px]"
-              >
-                <Mail className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
-                Fale Comigo
-              </Button>
-              <a
-                href="/cv-flavio-admilson.pdf"
-                download="CV-Flavio-Admilson.pdf"
-                className="w-full sm:w-auto"
-              >
+            {/* CTAs */}
+            <AnimatedSection animation="slideUp" delay={300}>
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-center mb-6">
                 <Button
-                  variant="outline"
+                  variant="hero"
                   size="lg"
-                  className="group w-full min-h-[48px] bg-white/10 text-white border-white/30 hover:bg-white/20 hover:text-white"
+                  onClick={() => scrollTo("#contato")}
+                  className="group w-full sm:w-auto min-h-[48px]"
                 >
-                  <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
-                  CV
+                  Solicitar Diagnóstico Gratuito
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
-              </a>
-            </div>
-          </AnimatedSection>
-
-          {/* Stats */}
-          <AnimatedSection animation="fadeIn" delay={400}>
-            <div className="grid grid-cols-2 gap-4 sm:gap-8 max-w-md mx-auto px-4 sm:px-0">
-              <div className="text-center">
-                <div className="text-2xl sm:text-4xl font-bold mb-1 sm:mb-2 text-white">15+</div>
-                <div className="text-white/80 text-xs sm:text-base">Anos de Experiência</div>
+                <Button
+                  variant="glass"
+                  size="lg"
+                  onClick={() => scrollTo("#projetos")}
+                  className="w-full sm:w-auto min-h-[48px]"
+                >
+                  Ver Cases
+                </Button>
               </div>
-              <div className="text-center">
-                <div className="text-2xl sm:text-4xl font-bold mb-1 sm:mb-2 text-white">100%</div>
-                <div className="text-white/80 text-xs sm:text-base">Foco em Resultados</div>
+            </AnimatedSection>
+
+            {/* Social proof */}
+            <AnimatedSection animation="fadeIn" delay={400}>
+              <ul className="flex flex-wrap justify-center lg:justify-start gap-x-5 gap-y-2 text-sm text-white/90">
+                {socialProof.map((item) => (
+                  <li key={item} className="flex items-center gap-1.5">
+                    <Check className="h-4 w-4 text-white shrink-0" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </AnimatedSection>
+          </div>
+
+          {/* Right: Floating metrics card */}
+          <AnimatedSection animation="scaleIn" delay={300}>
+            <div className="relative mx-auto w-full max-w-sm lg:max-w-none">
+              <div className="absolute -inset-2 bg-white/10 rounded-3xl blur-xl"></div>
+              <div className="relative bg-white/10 backdrop-blur-xl border border-white/25 rounded-2xl p-6 sm:p-8 shadow-2xl">
+                <div className="text-xs uppercase tracking-widest text-white/70 mb-5 text-center lg:text-left">
+                  Resultados reais
+                </div>
+                <div className="space-y-5">
+                  {metrics.map(({ icon: Icon, value, label }) => (
+                    <div key={label} className="flex items-center gap-4">
+                      <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-white/15 border border-white/20 shrink-0">
+                        <Icon className="h-6 w-6 text-white" />
+                      </div>
+                      <div>
+                        <div className="text-2xl sm:text-3xl font-bold leading-none">
+                          {value}
+                        </div>
+                        <div className="text-sm text-white/80 mt-1">{label}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </AnimatedSection>
@@ -117,8 +133,9 @@ const Hero = () => {
       {/* Scroll Indicator */}
       <AnimatedSection animation="fadeIn" delay={500}>
         <button
-          onClick={scrollToNext}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/70 hover:text-white transition-smooth animate-bounce"
+          onClick={() => scrollTo("#servicos")}
+          aria-label="Rolar para serviços"
+          className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-white/70 hover:text-white transition-smooth animate-bounce"
         >
           <ChevronDown size={32} />
         </button>
