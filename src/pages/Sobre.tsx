@@ -44,7 +44,7 @@ const Sobre = () => {
               Vamos transformar sua empresa?
             </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Conheça os serviços que posso oferecer ou fale comigo diretamente.
+              Conheça os serviços que a Nexum oferece ou fale com a Nexum diretamente.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/#servicos">
@@ -56,7 +56,7 @@ const Sobre = () => {
               <Link to="/#contato">
                 <Button variant="outline" size="lg" className="w-full sm:w-auto">
                   <MessageCircle className="mr-2 h-5 w-5" />
-                  Fale Comigo
+                  Fale com a Nexum
                 </Button>
               </Link>
             </div>

@@ -179,7 +179,7 @@ const Projects = () => {
               Projetos em <span className="gradient-text">Destaque</span>: Soluções na Prática
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Estudos de caso reais demonstrando como transformo desafios em soluções práticas através da análise de dados.
+              Estudos de caso reais demonstrando como a Nexum transforma desafios em soluções práticas através da análise de dados.
             </p>
           </div>
         </AnimatedSection>
@@ -312,7 +312,7 @@ const Projects = () => {
                   Interessado em Saber Mais?
                 </h3>
                 <p className="text-muted-foreground mb-6">
-                  Quer conhecer mais detalhes sobre esses projetos ou discutir como posso ajudar sua empresa? 
+                  Quer conhecer mais detalhes sobre esses projetos ou discutir como a Nexum pode ajudar sua empresa? 
                   Vamos conversar!
                 </p>
                 <Button 

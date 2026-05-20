@@ -104,7 +104,7 @@ const Contact = () => {
               Vamos <span className="gradient-text">Conversar</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Pronto para transformar seus dados em resultados? Entre em contato e vamos discutir como posso ajudar sua empresa.
+              Pronto para transformar seus dados em resultados? Entre em contato e vamos discutir como a Nexum pode ajudar sua empresa.
             </p>
           </div>
         </AnimatedSection>
@@ -124,8 +124,8 @@ const Contact = () => {
               </CardHeader>
               <CardContent className="space-y-6">
                 <p className="text-muted-foreground leading-relaxed">
-                  Estou sempre aberto a novas oportunidades e desafios. Se você tem um projeto interessante 
-                  ou quer saber mais sobre meus serviços, não hesite em entrar em contato.
+                  Estamos sempre abertos a novas oportunidades e desafios. Se você tem um projeto interessante
+                  ou quer saber mais sobre nossos serviços, não hesite em entrar em contato.
                 </p>
 
                 {/* Contact Details */}
