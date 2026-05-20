@@ -132,7 +132,7 @@ const Services = () => {
                   Cada empresa é única. Vamos conversar sobre o seu desafio e desenhar uma solução sob medida para o seu negócio.
                 </p>
                 <Button variant="hero" size="lg" onClick={scrollToContact}>
-                  Fale Comigo Agora
+                  Fale com a Nexum Agora
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </CardContent>
