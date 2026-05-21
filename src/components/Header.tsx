@@ -127,7 +127,7 @@ const Header = () => {
                 onClick={() => scrollToSection("#contato")}
                 className="min-h-[44px]"
               >
-                Fale com a Nexum
+                Falar com a Nexum
               </Button>
             </div>
           </AnimatedSection>
@@ -205,7 +205,7 @@ const Header = () => {
                   className="min-h-[44px]"
                   onClick={() => scrollToSection("#contato")}
                 >
-                  Fale com a Nexum
+                  Falar com a Nexum
                 </Button>
               </div>
             </div>

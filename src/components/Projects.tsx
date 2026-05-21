@@ -320,7 +320,7 @@ const Projects = () => {
                   size="lg"
                   onClick={() => document.querySelector("#contato")?.scrollIntoView({ behavior: "smooth" })}
                 >
-                  Vamos Conversar
+                  Agendar Consultoria
                 </Button>
               </CardContent>
             </Card>

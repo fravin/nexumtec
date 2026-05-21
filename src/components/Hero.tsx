@@ -9,9 +9,9 @@ const Hero = () => {
   };
 
   const socialProof = [
-    "Sem compromisso inicial",
+    "Sem compromisso",
     "Resposta em 24h",
-    "Atendimento consultivo",
+    "Presencial ou remoto",
   ];
 
   const metrics = [
