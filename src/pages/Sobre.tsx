@@ -56,7 +56,7 @@ const Sobre = () => {
               <Link to="/#contato">
                 <Button variant="outline" size="lg" className="w-full sm:w-auto">
                   <MessageCircle className="mr-2 h-5 w-5" />
-                  Fale com a Nexum
+                  Agendar Consultoria
                 </Button>
               </Link>
             </div>
