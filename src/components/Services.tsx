@@ -2,12 +2,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
-  Globe,
-  Code2,
-  MessageCircle,
-  Workflow,
+  Cog,
   BarChart3,
-  Brain,
+  Bot,
+  Map,
+  HeartPulse,
   ArrowRight,
 } from "lucide-react";
 import { AnimatedSection } from "@/components/AnimatedSection";
@@ -15,46 +14,39 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 const Services = () => {
   const services = [
     {
-      icon: Globe,
-      title: "Criação de Sites",
+      icon: Cog,
+      title: "Desenvolvimento de Sistemas",
       description:
-        "Sites profissionais, responsivos e otimizados para conversão. Landing pages, institucionais e e-commerce com SEO e performance de ponta.",
-      tags: ["Landing Pages", "SEO", "Responsivo"],
-    },
-    {
-      icon: Code2,
-      title: "Sistemas Sob Medida",
-      description:
-        "Aplicações web personalizadas para gestão, faturamento, controle de estoque e fluxos específicos da sua empresa.",
-      tags: ["Web Apps", "Dashboards", "ERP"],
-    },
-    {
-      icon: MessageCircle,
-      title: "Automação de WhatsApp",
-      description:
-        "Chatbots inteligentes, atendimento 24/7, agendamentos e disparos automatizados integrados ao seu CRM.",
-      tags: ["Chatbot", "CRM", "24/7"],
-    },
-    {
-      icon: Workflow,
-      title: "Melhoria de Processos",
-      description:
-        "Diagnóstico, mapeamento e otimização de fluxos operacionais. Redução de retrabalho e ganho de produtividade real.",
-      tags: ["Diagnóstico", "Automação", "Eficiência"],
+        "Sistemas personalizados que automatizam processos internos, melhoram a gestão e eliminam dependência de planilhas.",
+      tags: ["Sistemas Web", "Painéis Administrativos", "ERP", "APIs", "Integrações"],
     },
     {
       icon: BarChart3,
-      title: "Análise de Dados & BI",
+      title: "Business Intelligence & Power BI",
       description:
-        "Dashboards personalizados, relatórios estratégicos e KPIs em tempo real para decisões baseadas em dados.",
-      tags: ["Power BI", "Excel", "KPIs"],
+        "Dados brutos viram dashboards estratégicos. Sua liderança decide com base em indicadores reais, não em intuição.",
+      tags: ["Dashboards", "Indicadores Gerenciais", "Relatórios Automáticos", "Controle Financeiro"],
     },
     {
-      icon: Brain,
-      title: "Integração com IA",
+      icon: Bot,
+      title: "Inteligência Artificial & Automação",
       description:
-        "Implementação de IA generativa, chatbots, assistentes virtuais e automações inteligentes em seus sistemas.",
-      tags: ["IA Generativa", "GPT", "Assistentes"],
+        "Processos repetitivos automatizados com IA. Sua equipe para de fazer o que a máquina pode fazer melhor e mais rápido.",
+      tags: ["Chatbots", "Automação de Processos", "IA para Saúde", "Integração WhatsApp"],
+    },
+    {
+      icon: Map,
+      title: "Consultoria em Processos",
+      description:
+        "Mapeamos onde está o gargalo e redesenhamos o fluxo para operar com menos esforço e mais previsibilidade.",
+      tags: ["Diagnóstico Operacional", "Redesenho de Processos", "Padronização", "Otimização"],
+    },
+    {
+      icon: HeartPulse,
+      title: "Soluções para Saúde",
+      description:
+        "Especialização em hospitais e clínicas: faturamento, gestão de glosas, indicadores assistenciais e automação administrativa.",
+      tags: ["Faturamento Hospitalar", "Glosas", "TISS/TUSS", "Dashboards Clínicos"],
     },
   ];
 
@@ -68,10 +60,10 @@ const Services = () => {
         <AnimatedSection animation="slideUp" delay={0}>
           <div className="text-center mb-10">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Nossos <span className="gradient-text">Serviços</span>
+              Soluções que geram <span className="gradient-text">eficiência real</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Soluções completas em tecnologia para sua empresa crescer com eficiência e inteligência.
+              Não vendemos sistemas ou dashboards. Entregamos eficiência operacional, redução de custos e inteligência para tomada de decisão.
             </p>
           </div>
         </AnimatedSection>
