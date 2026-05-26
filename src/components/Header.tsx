@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Linkedin, Github, Mail, Download } from "lucide-react";
-import nexumLogo from "@/assets/nexum-logo.png";
-import { ThemeToggle } from "@/components/ThemeToggle";
-import { AnimatedSection } from "@/components/AnimatedSection";
+import { Menu, X, Linkedin, Github, Download } from "lucide-react";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -13,205 +10,133 @@ const Header = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const navItems = [
-    { label: "Início", href: "#inicio" },
     { label: "Serviços", href: "#servicos" },
     { label: "Projetos", href: "#projetos" },
+    { label: "Diagnóstico", href: "#contato" },
     { label: "Sobre", href: "/sobre" },
     { label: "Contato", href: "#contato" },
   ];
 
-  const scrollToSection = (href: string) => {
+  const go = (href: string) => {
     setIsMobileMenuOpen(false);
-
-    // Route navigation (e.g. /sobre)
     if (href.startsWith("/") && !href.startsWith("/#")) {
       navigate(href);
       window.scrollTo(0, 0);
       return;
     }
-
-    // Hash navigation from another page -> go home with hash
     if (location.pathname !== "/") {
       navigate(`/${href}`);
       return;
     }
-
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-smooth ${
-        isScrolled ? "glass shadow-md" : "bg-background/95 backdrop-blur-sm shadow-sm"
+    <header
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? "bg-ink/92 backdrop-blur-xl border-b border-white/[0.06]"
+          : "bg-ink/80 backdrop-blur-md"
       }`}
     >
-      <nav className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <AnimatedSection animation="slideInLeft" delay={0} duration={800}>
-            <div className="flex items-center space-x-2 sm:space-x-3">
-              <img 
-                src={nexumLogo} 
-                alt="Nexum Technology Logo" 
-                className="h-8 sm:h-10 w-auto"
-                loading="eager"
-              />
-              <span className="text-lg sm:text-xl font-bold gradient-text">Nexum Tecnologia</span>
-            </div>
-          </AnimatedSection>
+      <nav className="container mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
+        {/* Logo */}
+        <button
+          onClick={() => go("/")}
+          className="nav-inline flex items-center gap-2 font-serif text-xl sm:text-2xl tracking-wide text-white"
+          aria-label="Nexum Tecnologia"
+        >
+          <span className="font-semibold">Nexum</span>
+          <em className="italic font-medium text-gold">Tecnologia</em>
+        </button>
 
-          {/* Desktop Navigation */}
-          <AnimatedSection animation="slideInRight" delay={200} duration={800}>
-            <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
-              {navItems.map((item) => (
-                <button
-                  key={item.label}
-                  onClick={() => scrollToSection(item.href)}
-                  className="text-foreground hover:text-primary transition-smooth font-medium text-sm xl:text-base"
-                >
-                  {item.label}
-                </button>
-              ))}
-              
-              {/* Social Links */}
-              <div className="flex items-center space-x-2">
-                <a
-                  href="https://www.linkedin.com/in/flaviodesouza10/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-lg hover:bg-primary/10 text-foreground hover:text-primary transition-smooth min-w-[44px] min-h-[44px] flex items-center justify-center"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin className="h-5 w-5" />
-                </a>
-                <a
-                  href="https://github.com/flaviodesouza10"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-lg hover:bg-primary/10 text-foreground hover:text-primary transition-smooth min-w-[44px] min-h-[44px] flex items-center justify-center"
-                  aria-label="GitHub"
-                >
-                  <Github className="h-5 w-5" />
-                </a>
-              </div>
-              
-              <ThemeToggle />
-              <a 
-                href="/cv-flavio-admilson.pdf" 
-                download="CV-Flavio-Admilson.pdf"
+        {/* Desktop nav */}
+        <ul className="hidden lg:flex items-center gap-9">
+          {navItems.map((item) => (
+            <li key={item.label}>
+              <button
+                onClick={() => go(item.href)}
+                className="nav-inline font-mono text-[0.72rem] tracking-[0.18em] uppercase text-muted-foreground hover:text-gold transition-colors"
               >
-                <Button 
-                  variant="outline" 
-                  size="sm"
-                  className="min-h-[44px]"
-                >
-                  <Download className="mr-2 h-4 w-4" />
-                  CV
-                </Button>
-              </a>
-              <Button 
-                variant="hero" 
-                size="sm"
-                onClick={() => scrollToSection("#contato")}
-                className="min-h-[44px]"
-              >
-                Falar com a Nexum
-              </Button>
-            </div>
-          </AnimatedSection>
+                {item.label}
+              </button>
+            </li>
+          ))}
+        </ul>
 
-          {/* Mobile Menu Button */}
-          <div className="lg:hidden flex items-center space-x-2">
-            <a
-              href="https://www.linkedin.com/in/flaviodesouza10/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 rounded-lg hover:bg-primary/10 text-foreground hover:text-primary transition-smooth min-w-[44px] min-h-[44px] flex items-center justify-center"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="h-5 w-5" />
-            </a>
-            <ThemeToggle />
-            <button
-              className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
-            >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
+        {/* Right cluster */}
+        <div className="hidden lg:flex items-center gap-3">
+          <a
+            href="https://www.linkedin.com/in/flaviodesouza10/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            className="nav-inline p-2 text-muted-foreground hover:text-gold transition-colors"
+          >
+            <Linkedin className="h-4 w-4" />
+          </a>
+          <a
+            href="https://github.com/flaviodesouza10"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            className="nav-inline p-2 text-muted-foreground hover:text-gold transition-colors"
+          >
+            <Github className="h-4 w-4" />
+          </a>
+          <a href="/cv-flavio-admilson.pdf" download="CV-Flavio-Admilson.pdf">
+            <Button variant="ghost" size="sm">
+              <Download className="h-4 w-4" />
+              CV
+            </Button>
+          </a>
+          <Button variant="outline" size="sm" onClick={() => go("#contato")}>
+            Falar conosco
+          </Button>
         </div>
 
-        {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <div className="lg:hidden mt-4 pb-4 border-t border-border">
-            <div className="flex flex-col space-y-1 pt-4">
-              {navItems.map((item) => (
-                <button
-                  key={item.label}
-                  onClick={() => scrollToSection(item.href)}
-                  className="text-left text-foreground hover:text-primary hover:bg-primary/5 transition-smooth font-medium py-3 px-2 rounded-lg min-h-[44px]"
-                >
-                  {item.label}
-                </button>
-              ))}
-              <div className="flex items-center space-x-2 pt-2 px-2">
-                <a
-                  href="https://github.com/flaviodesouza10"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-lg hover:bg-primary/10 text-foreground hover:text-primary transition-smooth min-w-[44px] min-h-[44px] flex items-center justify-center"
-                  aria-label="GitHub"
-                >
-                  <Github className="h-5 w-5" />
-                </a>
-                <a
-                  href="mailto:contato@nexumtec.com.br"
-                  className="p-2 rounded-lg hover:bg-primary/10 text-foreground hover:text-primary transition-smooth min-w-[44px] min-h-[44px] flex items-center justify-center"
-                  aria-label="Email"
-                >
-                  <Mail className="h-5 w-5" />
-                </a>
-              </div>
-              <div className="flex flex-wrap gap-2 mt-2">
-                <a 
-                  href="/cv-flavio-admilson.pdf" 
-                  download="CV-Flavio-Admilson.pdf"
-                >
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    className="min-h-[44px]"
-                  >
-                    <Download className="mr-2 h-4 w-4" />
-                    Download CV
-                  </Button>
-                </a>
-                <Button 
-                  variant="hero" 
-                  size="sm" 
-                  className="min-h-[44px]"
-                  onClick={() => scrollToSection("#contato")}
-                >
-                  Falar com a Nexum
+        {/* Mobile toggle */}
+        <button
+          className="lg:hidden p-2 text-foreground"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+        >
+          {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+        </button>
+      </nav>
+
+      {/* Mobile menu */}
+      {isMobileMenuOpen && (
+        <div className="lg:hidden border-t border-white/[0.06] bg-ink/95 backdrop-blur-xl">
+          <div className="container mx-auto px-5 py-5 flex flex-col gap-1">
+            {navItems.map((item) => (
+              <button
+                key={item.label}
+                onClick={() => go(item.href)}
+                className="text-left font-mono text-xs tracking-[0.18em] uppercase text-muted-foreground hover:text-gold py-3 px-2"
+              >
+                {item.label}
+              </button>
+            ))}
+            <div className="flex flex-wrap gap-2 pt-3 border-t border-white/[0.06] mt-3">
+              <a href="/cv-flavio-admilson.pdf" download="CV-Flavio-Admilson.pdf">
+                <Button variant="ghost" size="sm">
+                  <Download className="h-4 w-4" /> CV
                 </Button>
-              </div>
+              </a>
+              <Button variant="outline" size="sm" onClick={() => go("#contato")}>
+                Falar conosco
+              </Button>
             </div>
           </div>
-        )}
-      </nav>
+        </div>
+      )}
     </header>
   );
 };
