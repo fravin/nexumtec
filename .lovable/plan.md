@@ -1,25 +1,68 @@
-## Plano: Atualizar identidade do site para Nexum Tecnologia
+## Proposta: Reposicionamento visual premium da Nexum Tecnologia
 
-### Objetivo
-Reposicionar o site como empresa (Nexum Tecnologia), não como perfil pessoal.
+O HTML de referência define uma identidade muito diferente do site atual:
+- **Atual:** tema claro, gradiente azul-roxo, sans-serif, glass effects, layout cards arredondados.
+- **Referência:** tema escuro editorial (ink #080810), acento **dourado #c9a96e**, **Cormorant Garamond** (serif itálico) nos títulos, **Cabinet Grotesk** no corpo, **DM Mono** em labels, grid linear, bordas retas, animações sutis.
 
-### Alterações
+> ⚠️ Conflito com a memória do projeto ("Light theme default. Blue-purple gradient"). Esta proposta substitui essa diretriz — confirme se deseja seguir com a virada para escuro/dourado antes de implementar.
 
-**1. `index.html` — metadados SEO**
-- `<title>`: "Nexum Tecnologia | Automação, BI e Inteligência Artificial para Empresas — Rio de Janeiro"
-- `<meta name="description">`: "A Nexum Tecnologia transforma processos manuais em operações inteligentes. Automação, Business Intelligence, IA e Desenvolvimento de Sistemas para empresas que querem crescer com eficiência. Rio de Janeiro."
-- `<meta name="author">`: "Nexum Tecnologia"
-- `<meta name="keywords">`: "automação empresarial, business intelligence, power bi, inteligência artificial, desenvolvimento de sistemas, agência de tecnologia, transformação digital, automação saúde, rio de janeiro"
-- `<meta property="og:title">`: "Nexum Tecnologia | Transformação Digital Estratégica"
-- `<meta property="og:description">`: "Automação empresarial, Power BI, Inteligência Artificial e Desenvolvimento de Sistemas. A Nexum resolve o que trava a operação da sua empresa."
-- `<meta name="apple-mobile-web-app-title">`: "Nexum Tecnologia"
-- Atualizar também `<meta name="twitter:title">` e `<meta name="twitter:description">` com os mesmos valores do OG para manter consistência nas prévias sociais.
+### O que muda
 
-**2. `src/components/Header.tsx` — logo/navbar**
-- Verificado: já exibe "Nexum Tecnologia" (linha do `<span>` ao lado do logo). Nenhuma alteração necessária; apenas confirmar.
+**1. Design System (`index.css` + `tailwind.config.ts`)**
+- Novos tokens HSL: `--ink`, `--ink-2`, `--gold`, `--gold-light`, `--text`, `--muted`, `--line`, `--cyan-accent`.
+- Fontes Google: Cormorant Garamond, Cabinet Grotesk, DM Mono.
+- Classes utilitárias: `.serif-display`, `.mono-label`, `.gold-text`, `.section-label` (com traço dourado), bordas finas em vez de radius.
+- Atualizar variantes do `Button` (`hero` = dourado sólido, `glass` = ghost com borda).
 
-### Arquivos alterados
-| Arquivo | Alteração |
-|---|---|
-| `index.html` | Atualizar title, description, keywords, author, OG e Twitter tags |
-| `src/components/Header.tsx` | Sem alteração (já correto) |
+**2. Header**
+- Fundo `ink/95` com blur, borda inferior fina.
+- Logo "Nexum *Tecnologia*" (Tecnologia em itálico dourado, serif).
+- Links em DM Mono uppercase tracking alto, hover dourado.
+- CTA principal: botão outline dourado "Falar conosco".
+
+**3. Hero**
+- Remover imagem `tech-hero-bg.jpg`. Fundo ink com **grid dourado sutil** + **glow radial** central.
+- Eyebrow em DM Mono entre traços: "— Agência de Transformação Digital · Rio de Janeiro —".
+- H1 serif gigante centralizado: "Tecnologia que *escala* o seu negócio." (itálico dourado em "escala").
+- Subtítulo curto em muted.
+- CTAs: dourado sólido + ghost ("Diagnóstico Gratuito →" / "Ver Cases Reais").
+- 4 métricas em linha com numeral serif dourado + label mono: 50+ projetos · 87% redução · R$180k glosas · 15+ anos.
+
+**4. Marquee de competências**
+- Faixa horizontal infinita entre seções (Desenvolvimento · BI · IA · Automação · ML · Saúde · Power BI · Consultoria).
+
+**5. Serviços**
+- Label "— O QUE FAZEMOS", h2 "Soluções que geram *eficiência real*".
+- Grid 2 colunas com **bordas hairline** (sem gap, sem radius), numeração "01 ——", ícone em quadrado com borda dourada, tags mono.
+
+**6. Cases / Projetos**
+- Substituir carousel atual por **lista linear de cases** (linha por case): coluna esquerda com narrativa, coluna direita com 3 KPIs serif dourados + chips de stack.
+
+**7. Sobre (strip)**
+- Layout 2 colunas: esquerda com narrativa "Da feira livre à *ciência de dados*" + blockquote serif itálico com barra dourada; direita com cards de credenciais (formação, anos em saúde, localização, projetos entregues).
+
+**8. Chatbot IA**
+- Manter funcionalidade existente (Nexum IA), redesenhar UI: janela com borda hairline, topbar com avatar dourado, status "Online agora", bolhas escuras com borda fina, input + botão dourado.
+
+**9. CTA Final**
+- Bloco full-width, ink puro, glow dourado inferior. Título serif "Pronto para transformar sua operação *com dados e IA?*", 3 botões (WhatsApp dourado, Email ghost, LinkedIn ghost), linha de contato em mono.
+
+**10. Footer**
+- Minimal: logo + links mono uppercase + copyright.
+
+### O que NÃO entra (respeitando memórias)
+- **Sem** seção "Cases de Sucesso/Testimonials" como blocos separados (mantido como ocultos).
+- **Sem** quiz interativo nem seção de Blog do HTML de referência (não existem no projeto e expandem escopo — posso adicionar em fase 2 se desejar).
+- **Sem** cursor custom (`cursor: none` quebra UX mobile/acessibilidade).
+- Mantém: AIChatbot (Lovable AI), formulário de contato, página /sobre, download de CV, WhatsApp button, métricas animadas.
+
+### Estrutura técnica
+- Edita: `index.css`, `tailwind.config.ts`, `index.html` (fonts), `Header.tsx`, `Hero.tsx`, `Services.tsx`, `Projects.tsx`, `About.tsx`/`AboutSummary.tsx`, `CallToAction.tsx`, `Contact.tsx`, `Footer.tsx`, `AIChatbot.tsx`, `button.tsx` (variantes).
+- Adiciona: `Marquee.tsx` (componente novo).
+- Remove referências ao `tech-hero-bg.jpg`.
+- Atualiza memória de identidade visual para refletir nova paleta dark/dourada.
+
+### Perguntas antes de implementar
+1. Confirma a virada completa para **tema escuro dourado** (abandona azul/roxo claro atual)?
+2. Quer que eu inclua o **quiz de diagnóstico** e a **seção de Blog** do HTML de referência, ou deixo fora desta fase?
+3. Manter o **chatbot Nexum IA** já existente (só redesenhar UI) — confirma?

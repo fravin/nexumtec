@@ -143,30 +143,38 @@ const AIChatbot = () => {
       {/* Floating Button */}
       <Button
         onClick={() => setIsOpen(true)}
-        className={`fixed bottom-24 right-6 h-14 w-14 rounded-full shadow-lg hover:shadow-glow transition-all duration-300 z-50 ${
+        className={`fixed bottom-24 right-6 h-14 w-14 rounded-full bg-gold text-ink shadow-glow hover:shadow-glow hover:-translate-y-0.5 transition-all z-50 ${
           isOpen ? "scale-0" : "scale-100"
         }`}
         size="icon"
-        style={{ background: 'linear-gradient(135deg, hsl(225 80% 55%) 0%, hsl(270 60% 60%) 100%)' }}
+        aria-label="Abrir assistente Nexum IA"
       >
         <Bot className="h-6 w-6" />
       </Button>
 
       {/* Chat Window */}
       {isOpen && (
-        <Card className="fixed bottom-6 right-6 w-[380px] h-[600px] shadow-2xl backdrop-blur-sm border-primary/20 flex flex-col z-50 animate-in slide-in-from-bottom-5 duration-300">
+        <Card className="fixed bottom-6 right-6 w-[380px] h-[600px] shadow-2xl bg-ink border border-white/[0.12] flex flex-col z-50 animate-in slide-in-from-bottom-5 duration-300 rounded-sm">
           {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b rounded-t-lg text-white"
-               style={{ background: 'linear-gradient(135deg, hsl(225 80% 55%) 0%, hsl(270 60% 60%) 100%)' }}>
-            <div className="flex items-center gap-2">
-              <Bot className="h-5 w-5" />
-              <h3 className="font-semibold">Nexum IA</h3>
+          <div className="flex items-center justify-between p-4 border-b border-white/[0.08] bg-ink-2">
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 flex items-center justify-center bg-gold/15 border border-gold/30 text-gold">
+                <Bot className="h-4 w-4" />
+              </div>
+              <div className="leading-tight">
+                <h3 className="font-semibold text-sm text-white">Assistente Nexum</h3>
+                <span className="flex items-center gap-1.5 font-mono text-[0.65rem] tracking-[0.1em] uppercase text-green-400">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                  Online agora
+                </span>
+              </div>
             </div>
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setIsOpen(false)}
-              className="h-8 w-8 hover:bg-white/10 text-white"
+              className="h-8 w-8 text-muted-foreground hover:text-gold"
+              aria-label="Fechar"
             >
               <X className="h-4 w-4" />
             </Button>
@@ -176,23 +184,23 @@ const AIChatbot = () => {
           <ScrollArea className="flex-1 p-4" ref={scrollRef}>
             {messages.length === 0 && (
               <div className="space-y-4">
-                <div className="bg-muted/80 backdrop-blur-sm p-4 rounded-lg">
-                  <p className="text-sm">
-                    👋 Olá! Sou o assistente virtual da Nexum Tecnologia. Como posso ajudá-lo hoje?
+                <div className="bg-ink-2 border border-white/[0.08] p-4 rounded-sm">
+                  <p className="text-sm text-foreground/90 leading-relaxed">
+                    Olá! Sou o assistente da <strong className="text-gold">Nexum Tecnologia</strong>. Posso ajudar com informações sobre serviços, cases, orçamentos ou como podemos automatizar sua operação.
                   </p>
                 </div>
                 <div className="space-y-2">
-                  <p className="text-xs text-muted-foreground">Perguntas rápidas:</p>
-                  {quickQuestions.map((question, idx) => (
-                    <Button
+                  <p className="font-mono text-[0.62rem] tracking-[0.16em] uppercase text-muted-foreground">
+                    Perguntas rápidas
+                  </p>
+                  {quickQuestions.map((q, idx) => (
+                    <button
                       key={idx}
-                      variant="outline"
-                      size="sm"
-                      className="w-full text-left justify-start text-xs h-auto py-2"
-                      onClick={() => sendMessage(question)}
+                      onClick={() => sendMessage(q)}
+                      className="w-full text-left text-xs text-foreground/80 border border-white/[0.08] hover:border-gold/40 hover:bg-gold/[0.04] p-3 transition-colors"
                     >
-                      {question}
-                    </Button>
+                      {q}
+                    </button>
                   ))}
                 </div>
               </div>
@@ -201,53 +209,47 @@ const AIChatbot = () => {
             {messages.map((msg, idx) => (
               <div
                 key={idx}
-                className={`mb-4 ${
-                  msg.role === "user" ? "flex justify-end" : ""
-                }`}
+                className={`mb-3 flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
               >
                 <div
-                  className={`rounded-lg p-3 max-w-[85%] ${
+                  className={`p-3 max-w-[85%] text-sm leading-relaxed ${
                     msg.role === "user"
-                      ? "text-white ml-auto"
-                      : "bg-muted/80 backdrop-blur-sm"
+                      ? "bg-gold/15 border border-gold/25 text-gold-light"
+                      : "bg-ink-2 border border-white/[0.08] text-foreground"
                   }`}
-                  style={msg.role === "user" ? { background: 'linear-gradient(135deg, hsl(225 80% 55%) 0%, hsl(270 60% 60%) 100%)' } : {}}
                 >
-                  <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
+                  <p className="whitespace-pre-wrap">{msg.content}</p>
                 </div>
               </div>
             ))}
 
             {isLoading && (
               <div className="flex items-center gap-2 text-muted-foreground">
-                <Loader2 className="h-4 w-4 animate-spin" />
-                <span className="text-sm">Pensando...</span>
+                <Loader2 className="h-4 w-4 animate-spin text-gold" />
+                <span className="font-mono text-[0.65rem] tracking-[0.14em] uppercase">Pensando...</span>
               </div>
             )}
           </ScrollArea>
 
           {/* Input */}
-          <div className="p-4 border-t">
+          <div className="border-t border-white/[0.08]">
             <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                sendMessage(input);
-              }}
-              className="flex gap-2"
+              onSubmit={(e) => { e.preventDefault(); sendMessage(input); }}
+              className="flex"
             >
               <Input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Digite sua mensagem..."
+                placeholder="Digite sua pergunta..."
                 disabled={isLoading}
-                className="flex-1"
+                className="flex-1 bg-transparent border-0 rounded-none focus-visible:ring-0 focus-visible:ring-offset-0 h-12 px-4 text-sm"
               />
-              <Button 
-                type="submit" 
-                size="icon" 
+              <Button
+                type="submit"
+                size="icon"
                 disabled={isLoading || !input.trim()}
-                className="hover:shadow-glow transition-all"
-                style={{ background: 'linear-gradient(135deg, hsl(225 80% 55%) 0%, hsl(270 60% 60%) 100%)' }}
+                className="bg-gold text-ink rounded-none h-12 w-14 hover:bg-gold-light"
+                aria-label="Enviar"
               >
                 <Send className="h-4 w-4" />
               </Button>
@@ -260,3 +262,4 @@ const AIChatbot = () => {
 };
 
 export default AIChatbot;
+

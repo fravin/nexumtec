@@ -1,68 +1,83 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
 const AboutSummary = () => {
+  const credentials = [
+    { icon: "🎓", title: "Sistemas de Informação (2024)", desc: "Graduação completa com foco em desenvolvimento e arquitetura de sistemas." },
+    { icon: "🔬", title: "Pós-graduando em Ciência de Dados", desc: "Machine learning, estatística aplicada e modelos preditivos em produção." },
+    { icon: "🏥", title: "13 anos na área da Saúde", desc: "Faturamento hospitalar, TISS/TUSS, glosas e indicadores clínicos." },
+    { icon: "📍", title: "Rio de Janeiro — RJ", desc: "Atendimento presencial no Rio e remoto para todo o Brasil." },
+  ];
+
   return (
-    <section id="sobre-resumo" className="py-12 bg-gradient-to-br from-background to-secondary/20">
-      <div className="container mx-auto px-6">
-        <Card className="glass shadow-lg max-w-5xl mx-auto overflow-hidden">
-          <CardContent className="p-6 md:p-10">
-            <div className="grid md:grid-cols-[200px_1fr] gap-8 items-center">
-              {/* Photo */}
-              <AnimatedSection animation="scaleIn" delay={0}>
-                <div className="relative mx-auto">
-                  <div className="absolute -inset-2 bg-gradient-to-r from-primary to-accent rounded-full opacity-75 blur-sm"></div>
-                  <img
-                    src="/lovable-uploads/f99c685c-3957-4643-a4d6-0abf73d8f016.png"
-                    alt="Flávio Admilson - Fundador da Nexum Tecnologia"
-                    className="relative w-[200px] h-[200px] object-cover object-top rounded-full border-4 border-background shadow-xl mx-auto"
-                    loading="lazy"
-                  />
-                </div>
-              </AnimatedSection>
+    <section id="sobre-resumo" className="relative z-10 py-24 md:py-32 bg-ink-2">
+      <div className="container mx-auto px-6 max-w-6xl">
+        <AnimatedSection animation="slideUp">
+          <div className="section-label mb-5">Quem está por trás</div>
+        </AnimatedSection>
 
-              {/* Text */}
-              <AnimatedSection animation="slideInRight" delay={100}>
-                <div className="text-center md:text-left">
-                  <h2 className="text-2xl md:text-3xl font-bold mb-3">
-                    Responsável pela <span className="gradient-text">Nexum Tecnologia</span>
-                  </h2>
-                  <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
-                    Mais de 15 anos transformando processos no setor de saúde. Da feira livre à
-                    Análise de Dados, minha jornada uniu visão de negócio com tecnologia para
-                    entregar resultados reais.
-                  </p>
-
-                  {/* Mini stats */}
-                  <div className="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-2 mb-6 text-sm">
-                    <div className="flex items-center gap-2">
-                      <span className="text-2xl font-bold gradient-text">15+</span>
-                      <span className="text-muted-foreground">anos</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-2xl font-bold gradient-text">20+</span>
-                      <span className="text-muted-foreground">projetos</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-2xl font-bold gradient-text">100%</span>
-                      <span className="text-muted-foreground">foco em ROI</span>
-                    </div>
-                  </div>
-
-                  <Link to="/sobre">
-                    <Button variant="hero" size="lg" className="group">
-                      Conheça minha jornada completa
-                      <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </Link>
-                </div>
-              </AnimatedSection>
+        <div className="grid md:grid-cols-2 border border-white/[0.06]">
+          {/* Left: narrative */}
+          <AnimatedSection animation="slideInLeft">
+            <div className="p-8 md:p-14 bg-ink-2 md:border-r border-white/[0.06]">
+              <h2 className="serif-display text-3xl md:text-5xl text-white mb-6">
+                Da feira livre à<br /><em>ciência de dados</em>
+              </h2>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+                Flávio Admilson — analista de sistemas, graduado em Sistemas de
+                Informação e pós-graduando em Ciência de Dados. Uma trajetória que
+                começa de um lugar incomum para o mundo tech.
+              </p>
+              <blockquote className="serif-display italic text-lg md:text-xl text-gold-light border-l-2 border-gold pl-5 py-2 my-6 leading-relaxed">
+                "Minhas primeiras lições de carreira vieram de uma feira livre no
+                bairro da Tijuca-RJ, onde aprendi que o verdadeiro motor de qualquer
+                negócio é o cliente."
+              </blockquote>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+                Em 2011 entrou na área da saúde como estagiário, e em 2012 foi
+                contratado para o setor de faturamento. Foram 13 anos imerso em
+                glosas, auditoria, gestão de estoque e indicadores assistenciais.
+              </p>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-8">
+                Hoje a Nexum Tecnologia une essa experiência operacional real com as
+                tecnologias mais modernas de IA, dados e automação. Soluções que
+                funcionam porque foram desenhadas por quem viveu o problema por
+                dentro.
+              </p>
+              <Link to="/sobre">
+                <Button variant="outline" size="default" className="group">
+                  Conheça a trajetória completa
+                  <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
             </div>
-          </CardContent>
-        </Card>
+          </AnimatedSection>
+
+          {/* Right: credentials */}
+          <AnimatedSection animation="slideInRight">
+            <div className="p-8 md:p-14 flex flex-col gap-3 bg-ink">
+              <h3 className="text-sm font-semibold text-white tracking-tight mb-2">
+                Credenciais & Formação
+              </h3>
+              {credentials.map((c) => (
+                <div
+                  key={c.title}
+                  className="flex gap-4 p-5 border border-white/[0.08] bg-ink-2 hover:border-gold/40 transition-colors"
+                >
+                  <span className="text-xl flex-shrink-0 mt-0.5">{c.icon}</span>
+                  <div>
+                    <strong className="block text-sm text-white mb-1">{c.title}</strong>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      {c.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </AnimatedSection>
+        </div>
       </div>
     </section>
   );
