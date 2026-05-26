@@ -1,136 +1,108 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import {
-  Cog,
-  BarChart3,
-  Bot,
-  Map,
-  HeartPulse,
-  ArrowRight,
-} from "lucide-react";
+import { Cog, BarChart3, Bot, Map, HeartPulse, FlaskConical } from "lucide-react";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
 const Services = () => {
   const services = [
     {
+      num: "01",
       icon: Cog,
       title: "Desenvolvimento de Sistemas",
-      description:
-        "Sistemas personalizados que automatizam processos internos, melhoram a gestão e eliminam dependência de planilhas.",
-      tags: ["Sistemas Web", "Painéis Administrativos", "ERP", "APIs", "Integrações"],
+      desc: "Sistemas personalizados que automatizam processos internos, eliminam planilhas e integram todas as áreas da empresa em uma plataforma única.",
+      tags: ["Sistemas Web", "ERP", "APIs REST", "Integrações"],
     },
     {
+      num: "02",
       icon: BarChart3,
       title: "Business Intelligence & Power BI",
-      description:
-        "Dados brutos viram dashboards estratégicos. Sua liderança decide com base em indicadores reais, não em intuição.",
-      tags: ["Dashboards", "Indicadores Gerenciais", "Relatórios Automáticos", "Controle Financeiro"],
+      desc: "Dados brutos se tornam dashboards estratégicos. Sua liderança toma decisões com base em fatos, não em intuição ou relatórios desatualizados.",
+      tags: ["Dashboards", "KPIs", "Relatórios Automáticos", "Financeiro"],
     },
     {
+      num: "03",
       icon: Bot,
       title: "Inteligência Artificial & Automação",
-      description:
-        "Processos repetitivos automatizados com IA. Sua equipe para de fazer o que a máquina pode fazer melhor e mais rápido.",
-      tags: ["Chatbots", "Automação de Processos", "IA para Saúde", "Integração WhatsApp"],
+      desc: "Processos repetitivos automatizados com IA. Sua equipe foca no estratégico enquanto a máquina executa o operacional com zero erros.",
+      tags: ["Chatbots IA", "RPA", "WhatsApp", "Power Automate"],
     },
     {
+      num: "04",
+      icon: HeartPulse,
+      title: "Especialização em Saúde",
+      desc: "13 anos na área: faturamento hospitalar, auditoria de glosas, indicadores assistenciais e automação administrativa. Domínio que poucos têm.",
+      tags: ["Faturamento", "TISS/TUSS", "Glosas", "Dashboards Clínicos"],
+    },
+    {
+      num: "05",
+      icon: FlaskConical,
+      title: "Machine Learning & Ciência de Dados",
+      desc: "Modelos preditivos que antecipam demanda, identificam padrões e reduzem desperdício. Ciência de dados aplicada ao problema real do cliente.",
+      tags: ["Python", "Scikit-learn", "Previsão de Demanda", "SQL"],
+    },
+    {
+      num: "06",
       icon: Map,
       title: "Consultoria em Processos",
-      description:
-        "Mapeamos onde está o gargalo e redesenhamos o fluxo para operar com menos esforço e mais previsibilidade.",
-      tags: ["Diagnóstico Operacional", "Redesenho de Processos", "Padronização", "Otimização"],
-    },
-    {
-      icon: HeartPulse,
-      title: "Soluções para Saúde",
-      description:
-        "Especialização em hospitais e clínicas: faturamento, gestão de glosas, indicadores assistenciais e automação administrativa.",
-      tags: ["Faturamento Hospitalar", "Glosas", "TISS/TUSS", "Dashboards Clínicos"],
+      desc: "Mapeamos onde está o gargalo e redesenhamos o fluxo para operar com menos esforço, menos erro e mais previsibilidade operacional.",
+      tags: ["Diagnóstico", "BPM", "Padronização", "Otimização"],
     },
   ];
 
-  const scrollToContact = () => {
-    document.querySelector("#contato")?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
-    <section id="servicos" className="py-12 bg-gradient-to-br from-secondary/20 to-background">
-      <div className="container mx-auto px-6">
-        <AnimatedSection animation="slideUp" delay={0}>
-          <div className="text-center mb-10">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Soluções que geram <span className="gradient-text">eficiência real</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Não vendemos sistemas ou dashboards. Entregamos eficiência operacional, redução de custos e inteligência para tomada de decisão.
-            </p>
-          </div>
+    <section id="servicos" className="py-24 md:py-32 bg-ink-2 relative z-10">
+      <div className="container mx-auto px-6 max-w-6xl">
+        <AnimatedSection animation="slideUp">
+          <div className="section-label mb-5">O que fazemos</div>
+          <h2 className="serif-display text-4xl md:text-6xl text-white mb-5">
+            Soluções que geram
+            <br />
+            <em>eficiência real</em>
+          </h2>
+          <p className="text-muted-foreground max-w-xl leading-relaxed mb-16">
+            Não vendemos tecnologia por tecnologia. Cada projeto resolve um problema
+            específico e entrega ROI mensurável.
+          </p>
         </AnimatedSection>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => {
-            const Icon = service.icon;
+        {/* Hairline grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.06] border border-white/[0.06]">
+          {services.map((s, i) => {
+            const Icon = s.icon;
             return (
               <AnimatedSection
-                key={index}
+                key={s.num}
                 animation="slideUp"
-                delay={100 + index * 80}
+                delay={i * 60}
+                className="bg-ink-2"
               >
-                <Card className="group hover:shadow-glow transition-smooth h-full flex flex-col border-primary/10 hover:border-primary/30">
-                  <CardHeader>
-                    <div className="bg-gradient-hero text-white p-3 rounded-lg w-fit mb-3 group-hover:scale-110 transition-transform">
-                      <Icon className="h-6 w-6" />
-                    </div>
-                    <CardTitle className="text-xl group-hover:text-primary transition-colors">
-                      {service.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="flex-1 flex flex-col">
-                    <p className="text-muted-foreground leading-relaxed mb-4 flex-1">
-                      {service.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {service.tags.map((tag) => (
-                        <Badge key={tag} variant="secondary" className="text-xs">
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-                    <Button
-                      variant="outline"
-                      className="w-full group/btn"
-                      onClick={scrollToContact}
-                    >
-                      Solicitar orçamento
-                      <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
-                    </Button>
-                  </CardContent>
-                </Card>
+                <article className="group relative p-9 h-full transition-colors hover:bg-ink-3">
+                  <div className="font-mono text-[0.65rem] tracking-[0.2em] uppercase text-muted-foreground mb-7">
+                    {s.num} ——
+                  </div>
+                  <div className="w-12 h-12 mb-6 flex items-center justify-center border border-gold/25 bg-gold/[0.08] text-gold">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-white mb-3 tracking-tight">
+                    {s.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                    {s.desc}
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {s.tags.map((t) => (
+                      <span
+                        key={t}
+                        className="font-mono text-[0.65rem] tracking-[0.08em] uppercase text-muted-foreground px-2.5 py-1 border border-white/10"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-gold-line opacity-0 group-hover:opacity-100 transition-opacity" />
+                </article>
               </AnimatedSection>
             );
           })}
         </div>
-
-        {/* Call to Action */}
-        <AnimatedSection animation="scaleIn" delay={400}>
-          <div className="text-center mt-12">
-            <Card className="bg-gradient-card shadow-lg max-w-2xl mx-auto">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-bold mb-4 gradient-text">
-                  Não encontrou o que precisa?
-                </h3>
-                <p className="text-muted-foreground mb-6">
-                  Cada empresa é única. Vamos conversar sobre o seu desafio e desenhar uma solução sob medida para o seu negócio.
-                </p>
-                <Button variant="hero" size="lg" onClick={scrollToContact}>
-                  Agendar Consultoria
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-        </AnimatedSection>
       </div>
     </section>
   );
