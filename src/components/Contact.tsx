@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, MapPin, Linkedin, Github, Send, Loader2 } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Github, Send, Loader2, MessageCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { AnimatedSection } from "@/components/AnimatedSection";
@@ -10,48 +9,26 @@ const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    company: "",
-    subject: "",
-    message: ""
+    name: "", email: "", company: "", subject: "", message: "",
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-
     try {
-      const { error } = await supabase.functions.invoke('send-contact-email', {
-        body: formData
-      });
-
+      const { error } = await supabase.functions.invoke("send-contact-email", { body: formData });
       if (error) throw error;
-
+      toast({ title: "Mensagem enviada com sucesso!", description: "Retornaremos em breve." });
+      setFormData({ name: "", email: "", company: "", subject: "", message: "" });
+    } catch (err) {
+      console.error(err);
       toast({
-        title: "Mensagem enviada com sucesso!",
-        description: "Obrigado pelo contato. Retornarei em breve!",
-      });
-
-      setFormData({
-        name: "",
-        email: "",
-        company: "",
-        subject: "",
-        message: ""
-      });
-    } catch (error) {
-      console.error("Error sending email:", error);
-      toast({
-        title: "Erro ao enviar mensagem",
-        description: "Por favor, tente novamente ou entre em contato diretamente pelo email.",
+        title: "Erro ao enviar",
+        description: "Tente novamente ou nos contate diretamente por e-mail.",
         variant: "destructive",
       });
     } finally {
@@ -59,257 +36,161 @@ const Contact = () => {
     }
   };
 
-  const contactInfo = [
-    {
-      icon: <Mail className="h-6 w-6" />,
-      label: "E-mail",
-      value: "contato@nexumtec.com.br",
-      href: "mailto:contato@nexumtec.com.br"
-    },
-    {
-      icon: <Phone className="h-6 w-6" />,
-      label: "Telefone",
-      value: "+55 (21) 98146-6912",
-      href: "tel:+5521981466912"
-    }
-  ];
+  const whatsappUrl =
+    "https://wa.me/5521981466912?text=" +
+    encodeURIComponent("Olá! Vim do site da Nexum e quero agendar um diagnóstico.");
 
-  const socialLinks = [
-    {
-      icon: <Linkedin className="h-6 w-6" />,
-      label: "LinkedIn",
-      href: "https://www.linkedin.com/in/fl%C3%A1viodesouza10/",
-      color: "hover:text-blue-600"
-    },
-    {
-      icon: <Github className="h-6 w-6" />,
-      label: "GitHub",
-      href: "https://github.com/flavioadmilson",
-      color: "hover:text-gray-800"
-    },
-    {
-      icon: <Mail className="h-6 w-6" />,
-      label: "E-mail",
-      href: "mailto:contato@nexumtec.com.br",
-      color: "hover:text-red-600"
-    }
-  ];
+  const inputClass =
+    "w-full px-4 py-3 bg-ink border border-white/[0.1] text-foreground placeholder:text-muted-foreground/70 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/40 transition-colors";
 
   return (
-    <section id="contato" className="py-12 bg-gradient-to-br from-secondary/20 to-background">
-      <div className="container mx-auto px-6">
-        <AnimatedSection animation="slideUp" delay={0}>
-          <div className="text-center mb-10">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Vamos <span className="gradient-text">Conversar</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Pronto para transformar seus dados em resultados? Entre em contato e vamos discutir como a Nexum pode ajudar sua empresa.
-            </p>
-          </div>
+    <section id="contato" className="relative z-10 py-24 md:py-32 bg-ink-2">
+      <div className="container mx-auto px-6 max-w-6xl">
+        <AnimatedSection animation="slideUp">
+          <div className="section-label mb-5">Vamos conversar</div>
+          <h2 className="serif-display text-4xl md:text-6xl text-white mb-5">
+            Solicite seu <em>diagnóstico</em>
+          </h2>
+          <p className="text-muted-foreground max-w-xl leading-relaxed mb-16">
+            Conte sobre o desafio da sua operação. Respondemos em até 24h úteis.
+          </p>
         </AnimatedSection>
 
-        <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto items-stretch">
-          {/* Contact Information */}
-          <div className="flex flex-col gap-8">
-            <AnimatedSection animation="slideInLeft" delay={100} className="flex-1">
-              <Card className="bg-gradient-card shadow-lg h-full">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-3">
-                  <div className="bg-gradient-hero text-white p-3 rounded-lg">
-                    <Send className="h-6 w-6" />
-                  </div>
-                  <span>Entre em Contato</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <p className="text-muted-foreground leading-relaxed">
-                  Estamos sempre abertos a novas oportunidades e desafios. Se você tem um projeto interessante
-                  ou quer saber mais sobre nossos serviços, não hesite em entrar em contato.
-                </p>
-
-                {/* Contact Details */}
-                <div className="space-y-4">
-                  {contactInfo.map((contact, index) => (
-                    <a
-                      key={index}
-                      href={contact.href}
-                      className="flex items-center space-x-4 p-4 rounded-lg bg-secondary/30 hover:bg-secondary/50 transition-smooth group"
-                    >
-                      <div className="text-primary group-hover:scale-110 transition-transform">
-                        {contact.icon}
-                      </div>
-                      <div>
-                        <div className="font-medium">{contact.label}</div>
-                        <div className="text-muted-foreground group-hover:text-primary transition-colors">
-                          {contact.value}
-                        </div>
-                      </div>
-                    </a>
-                  ))}
-                </div>
-
-                {/* Social Links */}
-                <div className="pt-6 border-t border-border">
-                  <h4 className="font-semibold mb-4">Conecte-se Comigo</h4>
-                  <div className="flex space-x-4">
-                    {socialLinks.map((social, index) => (
-                      <a
-                        key={index}
-                        href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`p-3 rounded-lg bg-secondary/30 hover:bg-secondary/50 transition-smooth ${social.color} group`}
-                        title={social.label}
-                      >
-                        <div className="group-hover:scale-110 transition-transform">
-                          {social.icon}
-                        </div>
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-            </AnimatedSection>
-
-            {/* Availability */}
-            <AnimatedSection animation="slideInLeft" delay={200}>
-              <Card className="bg-gradient-hero text-white shadow-glow">
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-3">Disponibilidade</h3>
-                <p className="text-white/90 mb-4">
-                  Atualmente disponível para novos projetos e consultorias. 
-                  Respondo em até 24 horas durante dias úteis.
-                </p>
-                <div className="flex items-center space-x-2">
-                  <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                  <span className="text-sm">Disponível para novos projetos</span>
-                </div>
-              </CardContent>
-            </Card>
-            </AnimatedSection>
-          </div>
-
-          {/* Contact Form */}
-          <AnimatedSection animation="slideInRight" delay={100} className="h-full">
-            <Card className="shadow-lg hover:shadow-glow transition-smooth h-full flex flex-col">
-              <CardHeader>
-                <CardTitle>Envie uma Mensagem</CardTitle>
-              </CardHeader>
-              <CardContent className="flex-1">
-                <form onSubmit={handleSubmit} className="space-y-6 h-full flex flex-col">
-                  <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid lg:grid-cols-[1fr_1.4fr] gap-px bg-white/[0.06] border border-white/[0.06]">
+          {/* Left: contact info */}
+          <AnimatedSection animation="slideInLeft">
+            <div className="bg-ink-2 p-8 md:p-10 h-full flex flex-col gap-7">
+              <div>
+                <h3 className="font-mono text-[0.7rem] tracking-[0.18em] uppercase text-gold mb-4">
+                  Canais diretos
+                </h3>
+                <div className="space-y-3">
+                  <a
+                    href="mailto:contato@nexumtec.com.br"
+                    className="flex items-center gap-3 p-4 border border-white/[0.08] bg-ink hover:border-gold/40 transition-colors"
+                  >
+                    <Mail className="h-4 w-4 text-gold flex-shrink-0" />
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium mb-2">
-                        Nome *
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        required
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary transition-smooth"
-                        placeholder="Seu nome"
-                      />
+                      <div className="font-mono text-[0.62rem] tracking-[0.15em] uppercase text-muted-foreground">E-mail</div>
+                      <div className="text-sm text-white">contato@nexumtec.com.br</div>
                     </div>
+                  </a>
+                  <a
+                    href="tel:+5521981466912"
+                    className="flex items-center gap-3 p-4 border border-white/[0.08] bg-ink hover:border-gold/40 transition-colors"
+                  >
+                    <Phone className="h-4 w-4 text-gold flex-shrink-0" />
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium mb-2">
-                        E-mail *
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        required
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary transition-smooth"
-                        placeholder="seu@email.com"
-                      />
+                      <div className="font-mono text-[0.62rem] tracking-[0.15em] uppercase text-muted-foreground">Telefone</div>
+                      <div className="text-sm text-white">+55 (21) 98146-6912</div>
+                    </div>
+                  </a>
+                  <div className="flex items-center gap-3 p-4 border border-white/[0.08] bg-ink">
+                    <MapPin className="h-4 w-4 text-gold flex-shrink-0" />
+                    <div>
+                      <div className="font-mono text-[0.62rem] tracking-[0.15em] uppercase text-muted-foreground">Localização</div>
+                      <div className="text-sm text-white">Rio de Janeiro — RJ</div>
                     </div>
                   </div>
+                </div>
+              </div>
 
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+                <Button variant="hero" size="lg" className="w-full">
+                  <MessageCircle className="h-4 w-4" />
+                  Falar no WhatsApp
+                </Button>
+              </a>
+
+              <div className="border-t border-white/[0.06] pt-6">
+                <h4 className="font-mono text-[0.68rem] tracking-[0.18em] uppercase text-muted-foreground mb-3">
+                  Redes
+                </h4>
+                <div className="flex gap-2">
+                  <a
+                    href="https://www.linkedin.com/in/flaviodesouza10/"
+                    target="_blank" rel="noopener noreferrer"
+                    className="nav-inline p-3 border border-white/[0.08] text-muted-foreground hover:border-gold hover:text-gold transition-colors"
+                    aria-label="LinkedIn"
+                  >
+                    <Linkedin className="h-4 w-4" />
+                  </a>
+                  <a
+                    href="https://github.com/flaviodesouza10"
+                    target="_blank" rel="noopener noreferrer"
+                    className="nav-inline p-3 border border-white/[0.08] text-muted-foreground hover:border-gold hover:text-gold transition-colors"
+                    aria-label="GitHub"
+                  >
+                    <Github className="h-4 w-4" />
+                  </a>
+                </div>
+              </div>
+
+              <div className="mt-auto pt-6 border-t border-white/[0.06]">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                  <span className="font-mono text-[0.65rem] tracking-[0.14em] uppercase text-muted-foreground">
+                    Disponível para novos projetos
+                  </span>
+                </div>
+              </div>
+            </div>
+          </AnimatedSection>
+
+          {/* Right: form */}
+          <AnimatedSection animation="slideInRight">
+            <div className="bg-ink p-8 md:p-10">
+              <h3 className="serif-display text-2xl md:text-3xl text-white mb-6">
+                Envie sua mensagem
+              </h3>
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="company" className="block text-sm font-medium mb-2">
-                      Empresa
+                    <label htmlFor="name" className="block font-mono text-[0.6rem] tracking-[0.18em] uppercase text-muted-foreground mb-2">
+                      Nome *
                     </label>
-                    <input
-                      type="text"
-                      id="company"
-                      name="company"
-                      value={formData.company}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary transition-smooth"
-                      placeholder="Nome da sua empresa"
-                    />
+                    <input id="name" name="name" required type="text" value={formData.name} onChange={handleChange} className={inputClass} placeholder="Seu nome" />
                   </div>
-
                   <div>
-                    <label htmlFor="subject" className="block text-sm font-medium mb-2">
-                      Assunto *
+                    <label htmlFor="email" className="block font-mono text-[0.6rem] tracking-[0.18em] uppercase text-muted-foreground mb-2">
+                      E-mail *
                     </label>
-                    <input
-                      type="text"
-                      id="subject"
-                      name="subject"
-                      required
-                      value={formData.subject}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary transition-smooth"
-                      placeholder="Como posso ajudá-lo?"
-                    />
+                    <input id="email" name="email" required type="email" value={formData.email} onChange={handleChange} className={inputClass} placeholder="seu@email.com" />
                   </div>
-
-                  <div className="flex-1">
-                    <label htmlFor="message" className="block text-sm font-medium mb-2">
-                      Mensagem *
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows={5}
-                      required
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary transition-smooth resize-none"
-                      placeholder="Conte-me mais sobre seu projeto ou necessidade..."
-                    ></textarea>
-                  </div>
-
-                  <div className="mt-auto">
-                    <Button 
-                      type="submit" 
-                      variant="hero" 
-                      size="lg" 
-                      className="w-full group"
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? (
-                        <>
-                          <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                          Enviando...
-                        </>
-                      ) : (
-                        <>
-                          <Send className="mr-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                          Solicitar Diagnóstico
-                        </>
-                      )}
-                    </Button>
-
-                    <p className="text-sm text-muted-foreground text-center mt-4">
-                      * Campos obrigatórios. Seus dados são protegidos e não serão compartilhados.
-                    </p>
-                  </div>
-                </form>
-              </CardContent>
-            </Card>
+                </div>
+                <div>
+                  <label htmlFor="company" className="block font-mono text-[0.6rem] tracking-[0.18em] uppercase text-muted-foreground mb-2">
+                    Empresa
+                  </label>
+                  <input id="company" name="company" type="text" value={formData.company} onChange={handleChange} className={inputClass} placeholder="Nome da empresa" />
+                </div>
+                <div>
+                  <label htmlFor="subject" className="block font-mono text-[0.6rem] tracking-[0.18em] uppercase text-muted-foreground mb-2">
+                    Assunto *
+                  </label>
+                  <input id="subject" name="subject" required type="text" value={formData.subject} onChange={handleChange} className={inputClass} placeholder="Como podemos ajudar?" />
+                </div>
+                <div>
+                  <label htmlFor="message" className="block font-mono text-[0.6rem] tracking-[0.18em] uppercase text-muted-foreground mb-2">
+                    Mensagem *
+                  </label>
+                  <textarea id="message" name="message" required rows={5} value={formData.message} onChange={handleChange} className={`${inputClass} resize-none`} placeholder="Conte sobre seu desafio ou objetivo..." />
+                </div>
+                <Button type="submit" variant="hero" size="lg" className="w-full group" disabled={isSubmitting}>
+                  {isSubmitting ? (
+                    <><Loader2 className="h-4 w-4 animate-spin" />Enviando...</>
+                  ) : (
+                    <><Send className="h-4 w-4 group-hover:translate-x-1 transition-transform" />Solicitar Diagnóstico</>
+                  )}
+                </Button>
+                <p className="font-mono text-[0.6rem] tracking-[0.1em] uppercase text-muted-foreground/70 text-center">
+                  * Campos obrigatórios · seus dados são protegidos
+                </p>
+              </form>
+            </div>
           </AnimatedSection>
         </div>
-        </div>
+      </div>
     </section>
   );
 };
