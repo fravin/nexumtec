@@ -143,7 +143,7 @@ const AIChatbot = () => {
       {/* Floating Button */}
       <Button
         onClick={() => setIsOpen(true)}
-        className={`fixed bottom-24 right-6 h-14 w-14 rounded-full bg-primary text-ink shadow-glow hover:shadow-glow hover:-translate-y-0.5 transition-all z-50 ${
+        className={`fixed bottom-24 right-6 h-14 w-14 rounded-full bg-primary text-primary-foreground shadow-glow hover:shadow-glow hover:-translate-y-0.5 transition-all z-50 ${
           isOpen ? "scale-0" : "scale-100"
         }`}
         size="icon"
@@ -248,7 +248,7 @@ const AIChatbot = () => {
                 type="submit"
                 size="icon"
                 disabled={isLoading || !input.trim()}
-                className="bg-primary text-ink rounded-none h-12 w-14 hover:bg-accent"
+                className="bg-primary text-primary-foreground rounded-none h-12 w-14 hover:bg-accent"
                 aria-label="Enviar"
               >
                 <Send className="h-4 w-4" />
