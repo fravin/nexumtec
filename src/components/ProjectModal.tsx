@@ -583,7 +583,7 @@ const ProjectModal = ({ project, children }: ProjectModalProps) => {
                     
                     {/* Category badge overlay */}
                     <div className="absolute top-6 left-6">
-                      <Badge className="bg-gradient-hero text-white">
+                      <Badge className="bg-gradient-hero text-foreground">
                         {project.category}
                       </Badge>
                     </div>

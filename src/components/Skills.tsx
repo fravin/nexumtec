@@ -106,7 +106,7 @@ const Skills = () => {
               >
                 <CardContent className="p-6">
                   <div className="flex items-start space-x-4 mb-4">
-                    <div className="bg-gradient-hero text-white p-3 rounded-lg group-hover:scale-110 transition-transform">
+                    <div className="bg-gradient-hero text-foreground p-3 rounded-lg group-hover:scale-110 transition-transform">
                       {skill.icon}
                     </div>
                     <div className="flex-1">
@@ -151,7 +151,7 @@ const Skills = () => {
                 className="group hover:shadow-glow transition-smooth hover:-translate-y-2 h-full"
               >
                 <CardContent className="p-6 text-center">
-                  <div className="bg-gradient-hero text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                  <div className="bg-gradient-hero text-foreground p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                     {skill.icon}
                   </div>
                   <h4 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">

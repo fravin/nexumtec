@@ -37,15 +37,15 @@ const Hero = () => {
 
       <div className="relative z-10 container mx-auto px-6 max-w-5xl text-center">
         <AnimatedSection animation="slideUp" delay={0}>
-          <span className="inline-flex items-center gap-3 px-5 py-2 mb-10 font-mono text-[0.68rem] tracking-[0.22em] uppercase text-gold border border-gold/25 bg-gold/[0.04]">
-            <span className="w-4 h-px bg-gold" />
+          <span className="inline-flex items-center gap-3 px-5 py-2 mb-10 font-mono text-[0.68rem] tracking-[0.22em] uppercase text-primary border border-primary/25 bg-primary/[0.04]">
+            <span className="w-4 h-px bg-primary" />
             Agência de Transformação Digital — Rio de Janeiro
-            <span className="w-4 h-px bg-gold" />
+            <span className="w-4 h-px bg-primary" />
           </span>
         </AnimatedSection>
 
         <AnimatedSection animation="slideUp" delay={100}>
-          <h1 className="serif-display text-white text-[3rem] sm:text-[4.5rem] md:text-[6rem] lg:text-[7rem] mb-8">
+          <h1 className="serif-display text-foreground text-[3rem] sm:text-[4.5rem] md:text-[6rem] lg:text-[7rem] mb-8">
             Tecnologia que <em>escala</em>
             <br />o seu negócio.
           </h1>
@@ -90,7 +90,7 @@ const Hero = () => {
                   i > 0 ? "md:border-l md:border-white/10" : ""
                 }`}
               >
-                <div className="serif-display text-gold text-3xl md:text-4xl mb-1">
+                <div className="serif-display text-primary text-3xl md:text-4xl mb-1">
                   {m.value}
                 </div>
                 <div className="font-mono text-[0.65rem] tracking-[0.14em] uppercase text-muted-foreground">

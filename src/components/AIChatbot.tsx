@@ -143,7 +143,7 @@ const AIChatbot = () => {
       {/* Floating Button */}
       <Button
         onClick={() => setIsOpen(true)}
-        className={`fixed bottom-24 right-6 h-14 w-14 rounded-full bg-gold text-ink shadow-glow hover:shadow-glow hover:-translate-y-0.5 transition-all z-50 ${
+        className={`fixed bottom-24 right-6 h-14 w-14 rounded-full bg-primary text-ink shadow-glow hover:shadow-glow hover:-translate-y-0.5 transition-all z-50 ${
           isOpen ? "scale-0" : "scale-100"
         }`}
         size="icon"
@@ -154,15 +154,15 @@ const AIChatbot = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <Card className="fixed bottom-6 right-6 w-[380px] h-[600px] shadow-2xl bg-ink border border-white/[0.12] flex flex-col z-50 animate-in slide-in-from-bottom-5 duration-300 rounded-sm">
+        <Card className="fixed bottom-6 right-6 w-[380px] h-[600px] shadow-2xl bg-ink border border-border flex flex-col z-50 animate-in slide-in-from-bottom-5 duration-300 rounded-sm">
           {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b border-white/[0.08] bg-ink-2">
+          <div className="flex items-center justify-between p-4 border-b border-border bg-ink-2">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 flex items-center justify-center bg-gold/15 border border-gold/30 text-gold">
+              <div className="w-9 h-9 flex items-center justify-center bg-primary/15 border border-primary/30 text-primary">
                 <Bot className="h-4 w-4" />
               </div>
               <div className="leading-tight">
-                <h3 className="font-semibold text-sm text-white">Assistente Nexum</h3>
+                <h3 className="font-semibold text-sm text-foreground">Assistente Nexum</h3>
                 <span className="flex items-center gap-1.5 font-mono text-[0.65rem] tracking-[0.1em] uppercase text-green-400">
                   <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
                   Online agora
@@ -173,7 +173,7 @@ const AIChatbot = () => {
               variant="ghost"
               size="icon"
               onClick={() => setIsOpen(false)}
-              className="h-8 w-8 text-muted-foreground hover:text-gold"
+              className="h-8 w-8 text-muted-foreground hover:text-primary"
               aria-label="Fechar"
             >
               <X className="h-4 w-4" />
@@ -184,9 +184,9 @@ const AIChatbot = () => {
           <ScrollArea className="flex-1 p-4" ref={scrollRef}>
             {messages.length === 0 && (
               <div className="space-y-4">
-                <div className="bg-ink-2 border border-white/[0.08] p-4 rounded-sm">
+                <div className="bg-ink-2 border border-border p-4 rounded-sm">
                   <p className="text-sm text-foreground/90 leading-relaxed">
-                    Olá! Sou o assistente da <strong className="text-gold">Nexum Tecnologia</strong>. Posso ajudar com informações sobre serviços, cases, orçamentos ou como podemos automatizar sua operação.
+                    Olá! Sou o assistente da <strong className="text-primary">Nexum Tecnologia</strong>. Posso ajudar com informações sobre serviços, cases, orçamentos ou como podemos automatizar sua operação.
                   </p>
                 </div>
                 <div className="space-y-2">
@@ -197,7 +197,7 @@ const AIChatbot = () => {
                     <button
                       key={idx}
                       onClick={() => sendMessage(q)}
-                      className="w-full text-left text-xs text-foreground/80 border border-white/[0.08] hover:border-gold/40 hover:bg-gold/[0.04] p-3 transition-colors"
+                      className="w-full text-left text-xs text-foreground/80 border border-border hover:border-primary/40 hover:bg-primary/[0.04] p-3 transition-colors"
                     >
                       {q}
                     </button>
@@ -214,8 +214,8 @@ const AIChatbot = () => {
                 <div
                   className={`p-3 max-w-[85%] text-sm leading-relaxed ${
                     msg.role === "user"
-                      ? "bg-gold/15 border border-gold/25 text-gold-light"
-                      : "bg-ink-2 border border-white/[0.08] text-foreground"
+                      ? "bg-primary/15 border border-primary/25 text-primary"
+                      : "bg-ink-2 border border-border text-foreground"
                   }`}
                 >
                   <p className="whitespace-pre-wrap">{msg.content}</p>
@@ -225,14 +225,14 @@ const AIChatbot = () => {
 
             {isLoading && (
               <div className="flex items-center gap-2 text-muted-foreground">
-                <Loader2 className="h-4 w-4 animate-spin text-gold" />
+                <Loader2 className="h-4 w-4 animate-spin text-primary" />
                 <span className="font-mono text-[0.65rem] tracking-[0.14em] uppercase">Pensando...</span>
               </div>
             )}
           </ScrollArea>
 
           {/* Input */}
-          <div className="border-t border-white/[0.08]">
+          <div className="border-t border-border">
             <form
               onSubmit={(e) => { e.preventDefault(); sendMessage(input); }}
               className="flex"
@@ -248,7 +248,7 @@ const AIChatbot = () => {
                 type="submit"
                 size="icon"
                 disabled={isLoading || !input.trim()}
-                className="bg-gold text-ink rounded-none h-12 w-14 hover:bg-gold-light"
+                className="bg-primary text-ink rounded-none h-12 w-14 hover:bg-accent"
                 aria-label="Enviar"
               >
                 <Send className="h-4 w-4" />

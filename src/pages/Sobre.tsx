@@ -21,11 +21,11 @@ const Sobre = () => {
       <Header />
 
       {/* Compact page hero */}
-      <section className="pt-28 sm:pt-32 pb-12 bg-gradient-to-br from-primary/90 via-primary/70 to-accent/80 text-white">
+      <section className="pt-28 sm:pt-32 pb-12 bg-gradient-to-br from-primary/90 via-primary/70 to-accent/80 text-foreground">
         <div className="container mx-auto px-6 text-center">
           <AnimatedSection animation="slideUp" delay={0}>
             <h1 className="text-4xl md:text-6xl font-bold mb-4">Minha Jornada</h1>
-            <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-foreground/90 max-w-2xl mx-auto">
               Da feira livre à Análise de Dados: a história por trás da Nexum Tecnologia.
             </p>
           </AnimatedSection>

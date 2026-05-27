@@ -21,7 +21,7 @@ const CallToAction = () => {
         <div className="section-label justify-center mb-6 inline-flex">
           Próximo passo
         </div>
-        <h2 className="serif-display text-white text-4xl md:text-6xl mb-6">
+        <h2 className="serif-display text-foreground text-4xl md:text-6xl mb-6">
           Pronto para transformar
           <br />sua operação <em>com dados e IA?</em>
         </h2>

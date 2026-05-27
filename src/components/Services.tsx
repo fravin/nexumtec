@@ -52,7 +52,7 @@ const Services = () => {
       <div className="container mx-auto px-6 max-w-6xl">
         <AnimatedSection animation="slideUp">
           <div className="section-label mb-5">O que fazemos</div>
-          <h2 className="serif-display text-4xl md:text-6xl text-white mb-5">
+          <h2 className="serif-display text-4xl md:text-6xl text-foreground mb-5">
             Soluções que geram
             <br />
             <em>eficiência real</em>
@@ -64,7 +64,7 @@ const Services = () => {
         </AnimatedSection>
 
         {/* Hairline grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.06] border border-white/[0.06]">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border">
           {services.map((s, i) => {
             const Icon = s.icon;
             return (
@@ -78,10 +78,10 @@ const Services = () => {
                   <div className="font-mono text-[0.65rem] tracking-[0.2em] uppercase text-muted-foreground mb-7">
                     {s.num} ——
                   </div>
-                  <div className="w-12 h-12 mb-6 flex items-center justify-center border border-gold/25 bg-gold/[0.08] text-gold">
+                  <div className="w-12 h-12 mb-6 flex items-center justify-center border border-primary/25 bg-primary/[0.08] text-primary">
                     <Icon className="h-5 w-5" />
                   </div>
-                  <h3 className="text-lg font-semibold text-white mb-3 tracking-tight">
+                  <h3 className="text-lg font-semibold text-foreground mb-3 tracking-tight">
                     {s.title}
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed mb-6">

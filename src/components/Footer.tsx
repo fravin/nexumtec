@@ -11,12 +11,12 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative z-10 border-t border-white/[0.06] bg-ink-2">
+    <footer className="relative z-10 border-t border-border bg-ink-2">
       <div className="container mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Logo */}
-        <a href="/" className="nav-inline font-serif text-lg text-white tracking-wide">
+        <a href="/" className="nav-inline font-serif text-lg text-foreground tracking-wide">
           <span className="font-semibold">Nexum</span>{" "}
-          <em className="italic font-medium text-gold">Tecnologia</em>
+          <em className="italic font-medium text-primary">Tecnologia</em>
         </a>
 
         {/* Links */}
@@ -25,7 +25,7 @@ const Footer = () => {
             <li key={l.label}>
               <a
                 href={l.href}
-                className="nav-inline font-mono text-[0.7rem] tracking-[0.18em] uppercase text-muted-foreground hover:text-gold transition-colors"
+                className="nav-inline font-mono text-[0.7rem] tracking-[0.18em] uppercase text-muted-foreground hover:text-primary transition-colors"
               >
                 {l.label}
               </a>
@@ -40,7 +40,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
-            className="nav-inline p-2 text-muted-foreground hover:text-gold transition-colors"
+            className="nav-inline p-2 text-muted-foreground hover:text-primary transition-colors"
           >
             <Linkedin className="h-4 w-4" />
           </a>
@@ -49,20 +49,20 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
-            className="nav-inline p-2 text-muted-foreground hover:text-gold transition-colors"
+            className="nav-inline p-2 text-muted-foreground hover:text-primary transition-colors"
           >
             <Github className="h-4 w-4" />
           </a>
           <a
             href="mailto:contato@nexumtec.com.br"
             aria-label="E-mail"
-            className="nav-inline p-2 text-muted-foreground hover:text-gold transition-colors"
+            className="nav-inline p-2 text-muted-foreground hover:text-primary transition-colors"
           >
             <Mail className="h-4 w-4" />
           </a>
         </div>
       </div>
-      <div className="border-t border-white/[0.04] py-4">
+      <div className="border-t border-border/60 py-4">
         <p className="text-center font-mono text-[0.65rem] tracking-[0.14em] uppercase text-muted-foreground/80">
           © {year} Nexum Tecnologia · Flávio Admilson · Rio de Janeiro
         </p>
