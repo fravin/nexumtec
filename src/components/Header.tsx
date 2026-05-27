@@ -41,19 +41,19 @@ const Header = () => {
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-ink/92 backdrop-blur-xl border-b border-white/[0.06]"
-          : "bg-ink/80 backdrop-blur-md"
+          ? "bg-background/95 backdrop-blur-xl border-b border-border"
+          : "bg-background/80 backdrop-blur-md"
       }`}
     >
       <nav className="container mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
         {/* Logo */}
         <button
           onClick={() => go("/")}
-          className="nav-inline flex items-center gap-2 font-serif text-xl sm:text-2xl tracking-wide text-white"
+          className="nav-inline flex items-center gap-2 font-serif text-xl sm:text-2xl tracking-wide text-foreground"
           aria-label="Nexum Tecnologia"
         >
           <span className="font-semibold">Nexum</span>
-          <em className="italic font-medium text-gold">Tecnologia</em>
+          <em className="italic font-medium text-primary">Tecnologia</em>
         </button>
 
         {/* Desktop nav */}
@@ -62,7 +62,7 @@ const Header = () => {
             <li key={item.label}>
               <button
                 onClick={() => go(item.href)}
-                className="nav-inline font-mono text-[0.72rem] tracking-[0.18em] uppercase text-muted-foreground hover:text-gold transition-colors"
+                className="nav-inline font-mono text-[0.72rem] tracking-[0.18em] uppercase text-muted-foreground hover:text-primary transition-colors"
               >
                 {item.label}
               </button>
@@ -77,7 +77,7 @@ const Header = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
-            className="nav-inline p-2 text-muted-foreground hover:text-gold transition-colors"
+            className="nav-inline p-2 text-muted-foreground hover:text-primary transition-colors"
           >
             <Linkedin className="h-4 w-4" />
           </a>
@@ -86,7 +86,7 @@ const Header = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
-            className="nav-inline p-2 text-muted-foreground hover:text-gold transition-colors"
+            className="nav-inline p-2 text-muted-foreground hover:text-primary transition-colors"
           >
             <Github className="h-4 w-4" />
           </a>
@@ -113,18 +113,18 @@ const Header = () => {
 
       {/* Mobile menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden border-t border-white/[0.06] bg-ink/95 backdrop-blur-xl">
+        <div className="lg:hidden border-t border-border bg-background/95 backdrop-blur-xl">
           <div className="container mx-auto px-5 py-5 flex flex-col gap-1">
             {navItems.map((item) => (
               <button
                 key={item.label}
                 onClick={() => go(item.href)}
-                className="text-left font-mono text-xs tracking-[0.18em] uppercase text-muted-foreground hover:text-gold py-3 px-2"
+                className="text-left font-mono text-xs tracking-[0.18em] uppercase text-muted-foreground hover:text-primary py-3 px-2"
               >
                 {item.label}
               </button>
             ))}
-            <div className="flex flex-wrap gap-2 pt-3 border-t border-white/[0.06] mt-3">
+            <div className="flex flex-wrap gap-2 pt-3 border-t border-border mt-3">
               <a href="/cv-flavio-admilson.pdf" download="CV-Flavio-Admilson.pdf">
                 <Button variant="ghost" size="sm">
                   <Download className="h-4 w-4" /> CV

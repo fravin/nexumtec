@@ -42,15 +42,15 @@ const ImpactMetrics = () => {
   return (
     <section id="impact-metrics" className="py-16 bg-ink relative z-10">
       <div className="container mx-auto px-6 max-w-6xl">
-        <div className="grid grid-cols-2 md:grid-cols-4 border border-white/[0.06]">
+        <div className="grid grid-cols-2 md:grid-cols-4 border border-border">
           {metrics.map((m, i) => (
             <div
               key={m.label}
               className={`p-8 text-center bg-ink-2 ${
-                i > 0 ? "border-l border-white/[0.06]" : ""
+                i > 0 ? "border-l border-border" : ""
               }`}
             >
-              <div className="serif-display text-gold text-4xl md:text-5xl mb-2 leading-none">
+              <div className="serif-display text-primary text-4xl md:text-5xl mb-2 leading-none">
                 {counts[i]}{m.suffix}
               </div>
               <div className="font-mono text-[0.62rem] tracking-[0.14em] uppercase text-muted-foreground">

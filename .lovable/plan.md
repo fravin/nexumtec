@@ -1,68 +1,98 @@
-## Proposta: Reposicionamento visual premium da Nexum Tecnologia
+## Reposicionamento Nexum — Tecnologia Humanizada para Negócios e Saúde
 
-O HTML de referência define uma identidade muito diferente do site atual:
-- **Atual:** tema claro, gradiente azul-roxo, sans-serif, glass effects, layout cards arredondados.
-- **Referência:** tema escuro editorial (ink #080810), acento **dourado #c9a96e**, **Cormorant Garamond** (serif itálico) nos títulos, **Cabinet Grotesk** no corpo, **DM Mono** em labels, grid linear, bordas retas, animações sutis.
+Mudança de identidade do tema escuro/dourado atual para um **tema claro, sereno e clínico** ("Clinical Calm"), com narrativa de marca empresa (Nexum) e equilíbrio 50/50 entre Negócios e Saúde.
 
-> ⚠️ Conflito com a memória do projeto ("Light theme default. Blue-purple gradient"). Esta proposta substitui essa diretriz — confirme se deseja seguir com a virada para escuro/dourado antes de implementar.
+### 1. Nova paleta (substitui ink/gold)
 
-### O que muda
+Tokens HSL no `index.css` e `tailwind.config.ts`:
 
-**1. Design System (`index.css` + `tailwind.config.ts`)**
-- Novos tokens HSL: `--ink`, `--ink-2`, `--gold`, `--gold-light`, `--text`, `--muted`, `--line`, `--cyan-accent`.
-- Fontes Google: Cormorant Garamond, Cabinet Grotesk, DM Mono.
-- Classes utilitárias: `.serif-display`, `.mono-label`, `.gold-text`, `.section-label` (com traço dourado), bordas finas em vez de radius.
-- Atualizar variantes do `Button` (`hero` = dourado sólido, `glass` = ghost com borda).
+- `--background` branco quente `#fafbfc`
+- `--surface` azul gelo `#e8f0f8`
+- `--foreground` ink `#0f172a` (texto principal)
+- `--muted-foreground` cinza azulado `#64748b`
+- `--primary` azul sereno `#3b82f6` (CTA principal, links, foco)
+- `--accent` verde menta/teal `#5cbdb9` (saúde, sucesso, métricas)
+- `--border` hairline `#e2e8f0`
+- Remover `--ink`, `--gold` (ou redirecioná-los para os novos tokens via alias para não quebrar componentes existentes)
 
-**2. Header**
-- Fundo `ink/95` com blur, borda inferior fina.
-- Logo "Nexum *Tecnologia*" (Tecnologia em itálico dourado, serif).
-- Links em DM Mono uppercase tracking alto, hover dourado.
-- CTA principal: botão outline dourado "Falar conosco".
+Tipografia: manter **Cormorant Garamond** para H1/H2 (humano, editorial) + **Inter** para corpo. Remover DM Mono dos labels mais visíveis — substituir por Inter uppercase tracking (menos "techy", mais consultivo). Manter cantos quase quadrados e bordas hairline (1px), mas com sombras suaves em cards-chave (estética clínica premium).
 
-**3. Hero**
-- Remover imagem `tech-hero-bg.jpg`. Fundo ink com **grid dourado sutil** + **glow radial** central.
-- Eyebrow em DM Mono entre traços: "— Agência de Transformação Digital · Rio de Janeiro —".
-- H1 serif gigante centralizado: "Tecnologia que *escala* o seu negócio." (itálico dourado em "escala").
-- Subtítulo curto em muted.
-- CTAs: dourado sólido + ghost ("Diagnóstico Gratuito →" / "Ver Cases Reais").
-- 4 métricas em linha com numeral serif dourado + label mono: 50+ projetos · 87% redução · R$180k glosas · 15+ anos.
+### 2. Hero reposicionado
 
-**4. Marquee de competências**
-- Faixa horizontal infinita entre seções (Desenvolvimento · BI · IA · Automação · ML · Saúde · Power BI · Consultoria).
+- Eyebrow: "Nexum Tecnologia · Rio de Janeiro"
+- H1: "Tecnologia humanizada para *negócios* e *saúde*." (itálico azul nas duas palavras-chave)
+- Sub: "Automação inteligente, IA aplicada e gestão simples — para empresas que querem crescer e clínicas que querem cuidar melhor."
+- CTAs: "Diagnóstico Gratuito" (primário azul) · "Ver Cases" (ghost)
+- **4 pilares em grid abaixo** (substituem as métricas no topo): cada um com ícone outline, título curto e linha de descrição:
+  1. Automação Inteligente + IA Aplicada
+  2. Experiência do Paciente + Atendimento Humanizado
+  3. Gestão Simples + Produtividade
+  4. Treinamento de Equipes + Organização
+- Métricas (50+ projetos, 87%, R$180k, 15+ anos) descem para uma faixa entre Hero e Serviços, em fundo `surface`.
+- Background: gradiente sutil branco→azul gelo + grid azul muito leve (sem glow dourado).
 
-**5. Serviços**
-- Label "— O QUE FAZEMOS", h2 "Soluções que geram *eficiência real*".
-- Grid 2 colunas com **bordas hairline** (sem gap, sem radius), numeração "01 ——", ícone em quadrado com borda dourada, tags mono.
+### 3. Dupla vertical Negócios + Saúde
 
-**6. Cases / Projetos**
-- Substituir carousel atual por **lista linear de cases** (linha por case): coluna esquerda com narrativa, coluna direita com 3 KPIs serif dourados + chips de stack.
+Nova seção **"Duas verticais, uma metodologia"** logo após o Hero, em 2 colunas:
 
-**7. Sobre (strip)**
-- Layout 2 colunas: esquerda com narrativa "Da feira livre à *ciência de dados*" + blockquote serif itálico com barra dourada; direita com cards de credenciais (formação, anos em saúde, localização, projetos entregues).
+```text
+┌──────────────────────────┬──────────────────────────┐
+│  NEGÓCIOS                │  SAÚDE                   │
+│  (accent azul)           │  (accent teal)           │
+│  Para empresas que       │  Para clínicas e         │
+│  querem operar com       │  hospitais que querem    │
+│  previsibilidade.        │  cuidar melhor.          │
+│  • Sistemas sob medida   │  • Faturamento e glosas  │
+│  • BI e dashboards       │  • Experiência paciente  │
+│  • Automação RPA         │  • Indicadores clínicos  │
+│  • Consultoria de dados  │  • TISS/TUSS, prontuário │
+│  [Ver cases Negócios →]  │  [Ver cases Saúde →]     │
+└──────────────────────────┴──────────────────────────┘
+```
 
-**8. Chatbot IA**
-- Manter funcionalidade existente (Nexum IA), redesenhar UI: janela com borda hairline, topbar com avatar dourado, status "Online agora", bolhas escuras com borda fina, input + botão dourado.
+### 4. Serviços — manter 5 cards, refraseados em tom humano
 
-**9. CTA Final**
-- Bloco full-width, ink puro, glow dourado inferior. Título serif "Pronto para transformar sua operação *com dados e IA?*", 3 botões (WhatsApp dourado, Email ghost, LinkedIn ghost), linha de contato em mono.
+Reescrever copy com viés humano/operacional (menos jargão técnico), mantendo a estrutura de grid hairline. Ícones outline em quadrado com borda azul (não dourada). Tags em chips arredondados suaves (não monospace).
 
-**10. Footer**
-- Minimal: logo + links mono uppercase + copyright.
+### 5. Projetos / Cases
 
-### O que NÃO entra (respeitando memórias)
-- **Sem** seção "Cases de Sucesso/Testimonials" como blocos separados (mantido como ocultos).
-- **Sem** quiz interativo nem seção de Blog do HTML de referência (não existem no projeto e expandem escopo — posso adicionar em fase 2 se desejar).
-- **Sem** cursor custom (`cursor: none` quebra UX mobile/acessibilidade).
-- Mantém: AIChatbot (Lovable AI), formulário de contato, página /sobre, download de CV, WhatsApp button, métricas animadas.
+Separar a lista linear em duas faixas visuais: **Cases de Negócios** e **Cases de Saúde** (cada uma com 2–3 itens). Chip de vertical em cada card. KPIs em azul (negócios) ou teal (saúde).
 
-### Estrutura técnica
-- Edita: `index.css`, `tailwind.config.ts`, `index.html` (fonts), `Header.tsx`, `Hero.tsx`, `Services.tsx`, `Projects.tsx`, `About.tsx`/`AboutSummary.tsx`, `CallToAction.tsx`, `Contact.tsx`, `Footer.tsx`, `AIChatbot.tsx`, `button.tsx` (variantes).
-- Adiciona: `Marquee.tsx` (componente novo).
-- Remove referências ao `tech-hero-bg.jpg`.
-- Atualiza memória de identidade visual para refletir nova paleta dark/dourada.
+### 6. Sobre — Nexum em destaque, Flávio como fundador
 
-### Perguntas antes de implementar
-1. Confirma a virada completa para **tema escuro dourado** (abandona azul/roxo claro atual)?
-2. Quer que eu inclua o **quiz de diagnóstico** e a **seção de Blog** do HTML de referência, ou deixo fora desta fase?
-3. Manter o **chatbot Nexum IA** já existente (só redesenhar UI) — confirma?
+- H2: "Nexum Tecnologia"
+- Sub: "Consultoria de transformação digital com DNA de saúde, fundada por Flávio Admilson em 2024."
+- Bloco lateral: foto do Flávio + mini-bio "Flávio Admilson, fundador — 15+ anos entre tecnologia e gestão hospitalar."
+- Manter ImpactMetrics com cores claras (números em primary).
+
+### 7. CTA Final + Footer
+
+- CTA final em fundo `surface` (azul gelo), título serif, botão primary azul + WhatsApp teal.
+- Footer claro, com bloco "Atendemos: empresas · clínicas · hospitais".
+
+### 8. Componentes utilitários a atualizar
+
+- `button.tsx`: variantes `hero` (azul sólido + sombra suave), `glass` (borda azul clara), `outline` (azul). Remover dourado.
+- `AIChatbot.tsx`: header azul, bolhas brancas com borda, input claro. Manter funcionalidade.
+- `Header.tsx`: fundo `white/95` com blur, borda inferior hairline azul claro, CTA azul outline. Links em Inter (não mono).
+- `Marquee.tsx`: faixa em fundo `surface`, dots em primary.
+- `WhatsAppButton.tsx`: usar teal (`accent`) em vez de gold.
+- `ImpactMetrics.tsx`: números em primary azul, label em cinza.
+
+### 9. SEO + memória
+
+- Atualizar `<title>` e meta description: "Nexum Tecnologia — Tecnologia humanizada para negócios e saúde · RJ".
+- Atualizar memória `design/visual-identity-system` com a nova paleta clara.
+- Atualizar Core memory: remover "Dark editorial" → "Light Clinical Calm theme: white #fafbfc base, blue #3b82f6 primary, teal #5cbdb9 accent".
+- Atualizar `brand-identity-and-value-proposition` com novo posicionamento dual.
+
+### Arquivos afetados
+
+`src/index.css`, `tailwind.config.ts`, `index.html`, `Header.tsx`, `Hero.tsx`, `Services.tsx`, `Projects.tsx`, `AboutSummary.tsx`, `CallToAction.tsx`, `Contact.tsx`, `Footer.tsx`, `AIChatbot.tsx`, `Marquee.tsx`, `WhatsAppButton.tsx`, `ImpactMetrics.tsx`, `ui/button.tsx`, `pages/Index.tsx`, `pages/Sobre.tsx`. Novo: `Verticals.tsx` (seção dupla Negócios/Saúde).
+
+### Fora de escopo
+
+- Manter `Testimonials`/`SuccessCases` ocultos.
+- Não adicionar quiz nem blog.
+- Manter chatbot Nexum IA (só re-skin claro).
+- Manter CV download e WhatsApp.

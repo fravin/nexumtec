@@ -18,11 +18,11 @@ const AboutSummary = () => {
           <div className="section-label mb-5">Quem está por trás</div>
         </AnimatedSection>
 
-        <div className="grid md:grid-cols-2 border border-white/[0.06]">
+        <div className="grid md:grid-cols-2 border border-border">
           {/* Left: narrative */}
           <AnimatedSection animation="slideInLeft">
-            <div className="p-8 md:p-14 bg-ink-2 md:border-r border-white/[0.06]">
-              <h2 className="serif-display text-3xl md:text-5xl text-white mb-6">
+            <div className="p-8 md:p-14 bg-ink-2 md:border-r border-border">
+              <h2 className="serif-display text-3xl md:text-5xl text-foreground mb-6">
                 Da feira livre à<br /><em>ciência de dados</em>
               </h2>
               <p className="text-sm text-muted-foreground leading-relaxed mb-5">
@@ -30,7 +30,7 @@ const AboutSummary = () => {
                 Informação e pós-graduando em Ciência de Dados. Uma trajetória que
                 começa de um lugar incomum para o mundo tech.
               </p>
-              <blockquote className="serif-display italic text-lg md:text-xl text-gold-light border-l-2 border-gold pl-5 py-2 my-6 leading-relaxed">
+              <blockquote className="serif-display italic text-lg md:text-xl text-primary border-l-2 border-primary pl-5 py-2 my-6 leading-relaxed">
                 "Minhas primeiras lições de carreira vieram de uma feira livre no
                 bairro da Tijuca-RJ, onde aprendi que o verdadeiro motor de qualquer
                 negócio é o cliente."
@@ -58,17 +58,17 @@ const AboutSummary = () => {
           {/* Right: credentials */}
           <AnimatedSection animation="slideInRight">
             <div className="p-8 md:p-14 flex flex-col gap-3 bg-ink">
-              <h3 className="text-sm font-semibold text-white tracking-tight mb-2">
+              <h3 className="text-sm font-semibold text-foreground tracking-tight mb-2">
                 Credenciais & Formação
               </h3>
               {credentials.map((c) => (
                 <div
                   key={c.title}
-                  className="flex gap-4 p-5 border border-white/[0.08] bg-ink-2 hover:border-gold/40 transition-colors"
+                  className="flex gap-4 p-5 border border-border bg-ink-2 hover:border-primary/40 transition-colors"
                 >
                   <span className="text-xl flex-shrink-0 mt-0.5">{c.icon}</span>
                   <div>
-                    <strong className="block text-sm text-white mb-1">{c.title}</strong>
+                    <strong className="block text-sm text-foreground mb-1">{c.title}</strong>
                     <p className="text-xs text-muted-foreground leading-relaxed">
                       {c.desc}
                     </p>

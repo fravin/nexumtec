@@ -103,7 +103,7 @@ const Timeline = () => {
                   {/* Icon Circle */}
                   <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 z-10">
                     <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${event.color} shadow-glow flex items-center justify-center animate-float`}>
-                      <Icon className="w-8 h-8 text-white" />
+                      <Icon className="w-8 h-8 text-foreground" />
                     </div>
                   </div>
 

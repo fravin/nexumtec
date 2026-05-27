@@ -65,7 +65,7 @@ const Projects = () => {
       <div className="container mx-auto px-6 max-w-6xl">
         <AnimatedSection animation="slideUp">
           <div className="section-label mb-5">Resultados comprovados</div>
-          <h2 className="serif-display text-4xl md:text-6xl text-white mb-5">
+          <h2 className="serif-display text-4xl md:text-6xl text-foreground mb-5">
             Cases de <em>impacto real</em>
           </h2>
           <p className="text-muted-foreground max-w-xl leading-relaxed mb-16">
@@ -74,16 +74,16 @@ const Projects = () => {
           </p>
         </AnimatedSection>
 
-        <div className="flex flex-col gap-px bg-white/[0.06] border border-white/[0.06]">
+        <div className="flex flex-col gap-px bg-border border border-border">
           {cases.map((c, i) => (
             <AnimatedSection key={c.num} animation="slideUp" delay={i * 80}>
               <article className="grid md:grid-cols-[1fr_1.4fr] bg-ink-2 transition-colors hover:bg-ink-3">
                 {/* Left */}
-                <div className="p-8 md:p-12 md:border-r border-white/[0.06]">
+                <div className="p-8 md:p-12 md:border-r border-border">
                   <div className="font-mono text-[0.65rem] tracking-[0.2em] uppercase text-muted-foreground mb-4">
                     {c.num} ——
                   </div>
-                  <h3 className="text-xl md:text-2xl font-semibold text-white mb-4 leading-tight">
+                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-4 leading-tight">
                     {c.title}
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
@@ -97,9 +97,9 @@ const Projects = () => {
                     {c.kpis.map((k) => (
                       <div
                         key={k.label}
-                        className="text-center p-4 bg-ink border border-white/[0.08]"
+                        className="text-center p-4 bg-ink border border-border"
                       >
-                        <div className="serif-display text-gold text-2xl md:text-3xl leading-none mb-2">
+                        <div className="serif-display text-primary text-2xl md:text-3xl leading-none mb-2">
                           {k.value}
                         </div>
                         <div className="font-mono text-[0.6rem] tracking-[0.08em] uppercase text-muted-foreground leading-tight">
