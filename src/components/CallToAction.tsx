@@ -13,7 +13,7 @@ const CallToAction = () => {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 60% 50% at 50% 100%, hsl(36 45% 61% / 0.10), transparent 70%)",
+            "radial-gradient(ellipse 60% 50% at 50% 100%, hsl(217 91% 60% / 0.10), transparent 70%)",
         }}
       />
 
