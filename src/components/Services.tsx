@@ -91,7 +91,7 @@ const Services = () => {
                     {s.tags.map((t) => (
                       <span
                         key={t}
-                        className="font-mono text-[0.65rem] tracking-[0.08em] uppercase text-muted-foreground px-2.5 py-1 border border-white/10"
+                        className="font-mono text-[0.65rem] tracking-[0.08em] uppercase text-muted-foreground px-2.5 py-1 border border-border"
                       >
                         {t}
                       </span>
