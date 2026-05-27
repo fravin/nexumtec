@@ -1,6 +1,8 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import Verticals from "@/components/Verticals";
 import Marquee from "@/components/Marquee";
+import ImpactMetrics from "@/components/ImpactMetrics";
 import Services from "@/components/Services";
 import Projects from "@/components/Projects";
 import AboutSummary from "@/components/AboutSummary";
@@ -12,6 +14,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import AIChatbot from "@/components/AIChatbot";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+
 
 
 const Index = () => {
@@ -32,6 +35,8 @@ const Index = () => {
     <div className="min-h-screen">
       <Header />
       <Hero />
+      <Verticals />
+      <ImpactMetrics />
       <Marquee />
       <Services />
       <Projects />
