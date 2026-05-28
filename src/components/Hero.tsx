@@ -68,9 +68,6 @@ const Hero = () => {
 
         <AnimatedSection animation="slideUp" delay={100}>
           <h1 className="serif-display text-foreground text-[2.5rem] sm:text-[4rem] md:text-[5.5rem] lg:text-[6.25rem] mb-8 max-w-5xl mx-auto">
-            Tecnologia humanizada
-            <br />para <em>negócios</em> e <em>saúde</em>.
-          <h1 className="serif-display text-foreground text-[2.5rem] sm:text-[4rem] md:text-[5.5rem] lg:text-[6.25rem] mb-8 max-w-5xl mx-auto">
             Tecnologia humanizada para <em>clínicas</em> e <em>empresas</em> que querem crescer com inteligência.
           </h1>
         </AnimatedSection>
@@ -82,6 +79,9 @@ const Hero = () => {
           </p>
         </AnimatedSection>
 
+        <AnimatedSection animation="slideUp" delay={300}>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-20">
+            <Button
               variant="hero"
               size="lg"
               onClick={() => scrollTo("#contato")}
@@ -90,6 +90,7 @@ const Hero = () => {
               Diagnóstico Gratuito
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Button>
+
             <Button
               variant="glass"
               size="lg"
