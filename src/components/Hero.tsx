@@ -70,20 +70,18 @@ const Hero = () => {
           <h1 className="serif-display text-foreground text-[2.5rem] sm:text-[4rem] md:text-[5.5rem] lg:text-[6.25rem] mb-8 max-w-5xl mx-auto">
             Tecnologia humanizada
             <br />para <em>negócios</em> e <em>saúde</em>.
+          <h1 className="serif-display text-foreground text-[2.5rem] sm:text-[4rem] md:text-[5.5rem] lg:text-[6.25rem] mb-8 max-w-5xl mx-auto">
+            Tecnologia humanizada para <em>clínicas</em> e <em>empresas</em> que querem crescer com inteligência.
           </h1>
         </AnimatedSection>
 
         <AnimatedSection animation="slideUp" delay={200}>
           <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-12">
-            Automação inteligente, IA aplicada e gestão simples — para empresas que
-            querem crescer com previsibilidade e clínicas que querem cuidar melhor
-            dos seus pacientes.
+            Automação, IA aplicada e gestão eficiente para reduzir falhas, otimizar
+            processos e melhorar a experiência dos pacientes e clientes.
           </p>
         </AnimatedSection>
 
-        <AnimatedSection animation="slideUp" delay={300}>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-20">
-            <Button
               variant="hero"
               size="lg"
               onClick={() => scrollTo("#contato")}
