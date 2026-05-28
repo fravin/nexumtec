@@ -7,7 +7,7 @@ const AboutSummary = () => {
   const credentials = [
     { icon: "🎓", title: "Sistemas de Informação (2024)", desc: "Graduação completa com foco em desenvolvimento e arquitetura de sistemas." },
     { icon: "🔬", title: "Pós-graduando em Ciência de Dados", desc: "Machine learning, estatística aplicada e modelos preditivos em produção." },
-    { icon: "🏥", title: "13 anos na área da Saúde", desc: "Faturamento hospitalar, TISS/TUSS, glosas e indicadores clínicos." },
+    { icon: "🏥", title: "15 anos na área da Saúde", desc: "Faturamento hospitalar, TISS/TUSS, glosas e indicadores clínicos." },
     { icon: "📍", title: "Rio de Janeiro — RJ", desc: "Atendimento presencial no Rio e remoto para todo o Brasil." },
   ];
 
@@ -37,7 +37,7 @@ const AboutSummary = () => {
               </blockquote>
               <p className="text-sm text-muted-foreground leading-relaxed mb-5">
                 Em 2011 entrou na área da saúde como estagiário, e em 2012 foi
-                contratado para o setor de faturamento. Foram 13 anos imerso em
+                contratado para o setor de faturamento. Foram 15 anos imerso em
                 glosas, auditoria, gestão de estoque e indicadores assistenciais.
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed mb-8">
