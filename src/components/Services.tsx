@@ -28,7 +28,7 @@ const Services = () => {
       num: "04",
       icon: HeartPulse,
       title: "Especialização em Saúde",
-      desc: "13 anos na área: faturamento hospitalar, auditoria de glosas, indicadores assistenciais e automação administrativa. Domínio que poucos têm.",
+      desc: "15 anos na área: faturamento hospitalar, auditoria de glosas, indicadores assistenciais e automação administrativa. Domínio que poucos têm.",
       tags: ["Faturamento", "TISS/TUSS", "Glosas", "Dashboards Clínicos"],
     },
     {
