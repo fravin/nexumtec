@@ -6,7 +6,7 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 const AboutSummary = () => {
   const credentials = [
     { icon: "🎓", title: "Sistemas de Informação (2024)", desc: "Graduação completa com foco em desenvolvimento e arquitetura de sistemas." },
-    { icon: "🔬", title: "Pós-graduando em Ciência de Dados", desc: "Machine learning, estatística aplicada e modelos preditivos em produção." },
+    { icon: "🔬", title: "Pós-graduado em Ciência de Dados e Big Data Analytics", desc: "Machine learning, estatística aplicada e modelos preditivos em produção." },
     { icon: "🏥", title: "15 anos na área da Saúde", desc: "Faturamento hospitalar, TISS/TUSS, glosas e indicadores clínicos." },
     { icon: "📍", title: "Rio de Janeiro — RJ", desc: "Atendimento presencial no Rio e remoto para todo o Brasil." },
   ];
@@ -27,7 +27,7 @@ const AboutSummary = () => {
               </h2>
               <p className="text-sm text-muted-foreground leading-relaxed mb-5">
                 Flávio Admilson — analista de sistemas, graduado em Sistemas de
-                Informação e pós-graduando em Ciência de Dados. Uma trajetória que
+                Informação e pós-graduado em Ciência de Dados e Big Data Analytics. Uma trajetória que
                 começa de um lugar incomum para o mundo tech.
               </p>
               <blockquote className="serif-display italic text-lg md:text-xl text-primary border-l-2 border-primary pl-5 py-2 my-6 leading-relaxed">

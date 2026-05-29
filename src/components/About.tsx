@@ -108,7 +108,7 @@ const About = () => {
                   Em 2017 fui crescendo dentro da empresa e fui de auxiliar de escritório virei assistente administrativo, 
                   após eu concluir minha graduação no final de 2024 assumi a posição de Analista de tecnologia, combinando 
                   minha experiência de negócio com a paixão por tecnologia. Hoje, graduado em Sistemas de Informação e 
-                  pós-graduando em Ciência de Dados, meu objetivo é claro: usar toda essa bagagem para transformar dados 
+                  pós-graduado em Ciência de Dados e Big Data Analytics, meu objetivo é claro: usar toda essa bagagem para transformar dados 
                   em decisões inteligentes e processos em resultados mensuráveis.
                 </p>
               </CardContent>
