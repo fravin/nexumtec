@@ -7,7 +7,7 @@ const AboutSummary = () => {
   const credentials = [
     { icon: "🎓", title: "Sistemas de Informação (2024)", desc: "Graduação completa com foco em desenvolvimento e arquitetura de sistemas." },
     { icon: "🔬", title: "Pós-graduado em Ciência de Dados e Big Data Analytics", desc: "Machine learning, estatística aplicada e modelos preditivos em produção." },
-    { icon: "🏥", title: "15 anos na área da Saúde", desc: "Faturamento hospitalar, TISS/TUSS, glosas e indicadores clínicos." },
+    { icon: "🏥", title: "15 anos na área da Saúde e tecnologia aplicada", desc: "Faturamento hospitalar, TISS/TUSS, glosas e indicadores clínicos." },
     { icon: "📍", title: "Rio de Janeiro — RJ", desc: "Atendimento presencial no Rio e remoto para todo o Brasil." },
   ];
 
