@@ -143,18 +143,18 @@ const AIChatbot = () => {
       {/* Floating Button */}
       <Button
         onClick={() => setIsOpen(true)}
-        className={`fixed bottom-24 right-6 h-14 w-14 rounded-full bg-primary text-primary-foreground shadow-glow hover:shadow-glow hover:-translate-y-0.5 transition-all z-50 ${
+        className={`fixed bottom-20 right-4 md:bottom-24 md:right-6 h-12 w-12 md:h-14 md:w-14 rounded-full bg-primary text-primary-foreground shadow-glow hover:shadow-glow hover:-translate-y-0.5 transition-all z-50 ${
           isOpen ? "scale-0" : "scale-100"
         }`}
         size="icon"
         aria-label="Abrir assistente Nexum IA"
       >
-        <Bot className="h-6 w-6" />
+        <Bot className="h-5 w-5 md:h-6 md:w-6" />
       </Button>
 
       {/* Chat Window */}
       {isOpen && (
-        <Card className="fixed bottom-6 right-6 w-[380px] h-[600px] shadow-2xl bg-ink border border-border flex flex-col z-50 animate-in slide-in-from-bottom-5 duration-300 rounded-sm">
+        <Card className="fixed inset-x-4 bottom-4 top-20 sm:inset-auto sm:bottom-6 sm:right-6 sm:w-[380px] sm:h-[600px] sm:top-auto shadow-2xl bg-ink border border-border flex flex-col z-50 animate-in slide-in-from-bottom-5 duration-300 rounded-sm">
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b border-border bg-ink-2">
             <div className="flex items-center gap-3">
