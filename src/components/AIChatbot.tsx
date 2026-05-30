@@ -141,15 +141,15 @@ const AIChatbot = () => {
   return (
     <>
       {/* Floating Button */}
-      <Button
-        onClick={() => setIsOpen(true)}
-        className={`fixed bottom-20 right-4 md:bottom-24 md:right-6 h-12 w-12 md:h-14 md:w-14 rounded-full bg-primary text-primary-foreground shadow-glow hover:shadow-glow hover:-translate-y-0.5 transition-all z-50 ${
+        <Button
+          onClick={() => setIsOpen(true)}
+          className={`fixed bottom-[4.8rem] right-3 md:bottom-24 md:right-6 h-11 w-11 md:h-14 md:w-14 rounded-full bg-primary text-primary-foreground shadow-glow hover:shadow-glow hover:-translate-y-0.5 transition-all z-50 ${
           isOpen ? "scale-0" : "scale-100"
         }`}
         size="icon"
         aria-label="Abrir assistente Nexum IA"
       >
-        <Bot className="h-5 w-5 md:h-6 md:w-6" />
+          <Bot className="h-4 w-4 md:h-6 md:w-6" />
       </Button>
 
       {/* Chat Window */}

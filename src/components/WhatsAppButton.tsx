@@ -13,10 +13,10 @@ const WhatsAppButton = () => {
   return (
     <Button
       onClick={handleClick}
-      className="fixed bottom-4 right-4 md:bottom-6 md:right-6 rounded-full w-12 h-12 md:w-14 md:h-14 p-0 bg-accent hover:bg-accent/90 text-foreground shadow-lg hover:scale-110 transition-smooth z-50 normal-case tracking-normal"
+      className="fixed bottom-3 right-3 md:bottom-6 md:right-6 rounded-full h-11 w-11 md:h-14 md:w-14 p-0 bg-accent text-foreground shadow-lg transition-smooth hover:scale-110 hover:bg-accent/90 z-50 normal-case tracking-normal"
       aria-label="Contato via WhatsApp"
     >
-      <MessageCircle className="h-5 w-5 md:h-6 md:w-6" />
+      <MessageCircle className="h-4 w-4 md:h-6 md:w-6" />
     </Button>
   );
 };

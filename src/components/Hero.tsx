@@ -67,7 +67,7 @@ const Hero = () => {
         </AnimatedSection>
 
         <AnimatedSection animation="slideUp" delay={100}>
-          <h1 className="serif-display mx-auto mb-8 max-w-5xl text-[2.2rem] text-foreground sm:text-[4rem] md:text-[5.5rem] lg:text-[6.25rem]">
+          <h1 className="serif-display mx-auto mb-8 max-w-5xl text-[2.2rem] leading-[1.14] text-foreground sm:text-[4rem] sm:leading-[1.04] md:text-[5.5rem] lg:text-[6.25rem]">
             Tecnologia humanizada para <em>clínicas</em> e <em>empresas</em> que querem crescer com inteligência.
           </h1>
         </AnimatedSection>
