@@ -62,8 +62,8 @@ const Footer = () => {
           </a>
         </div>
       </div>
-      <div className="border-t border-border/60 py-4">
-        <p className="text-center font-mono text-[0.65rem] tracking-[0.14em] uppercase text-muted-foreground/80">
+      <div className="border-t border-border/60 py-4 pb-20 md:pb-4">
+        <p className="text-center font-mono text-[0.65rem] tracking-[0.14em] uppercase text-muted-foreground/80 px-16 md:px-0">
           © {year} Nexum Tecnologia · Flávio Admilson · Rio de Janeiro
         </p>
       </div>
