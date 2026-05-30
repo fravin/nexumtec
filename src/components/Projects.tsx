@@ -92,17 +92,17 @@ const Projects = () => {
                 </div>
 
                 {/* Right */}
-                <div className="p-8 md:p-12">
-                  <div className="grid grid-cols-3 gap-4 mb-6">
+                <div className="p-6 md:p-12">
+                  <div className="mb-6 grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
                     {c.kpis.map((k) => (
                       <div
                         key={k.label}
-                        className="text-center p-4 bg-ink border border-border"
+                        className="min-h-[92px] border border-border bg-ink p-4 text-center sm:min-h-[120px]"
                       >
-                        <div className="serif-display text-primary text-2xl md:text-3xl leading-none mb-2">
+                        <div className="serif-display mb-2 break-words text-[1.9rem] leading-none text-primary sm:text-3xl">
                           {k.value}
                         </div>
-                        <div className="font-mono text-[0.6rem] tracking-[0.08em] uppercase text-muted-foreground leading-tight">
+                        <div className="font-mono text-[0.58rem] leading-tight tracking-[0.06em] uppercase text-muted-foreground sm:text-[0.6rem] sm:tracking-[0.08em]">
                           {k.label}
                         </div>
                       </div>
@@ -112,7 +112,7 @@ const Projects = () => {
                     {c.stack.map((t) => (
                       <span
                         key={t}
-                        className="font-mono text-[0.62rem] tracking-[0.06em] uppercase text-accent px-2.5 py-1 border border-accent/25 bg-accent/[0.06]"
+                        className="border border-accent/25 bg-accent/[0.06] px-2 py-1 font-mono text-[0.58rem] tracking-[0.05em] uppercase text-accent sm:px-2.5 sm:text-[0.62rem] sm:tracking-[0.06em]"
                       >
                         {t}
                       </span>

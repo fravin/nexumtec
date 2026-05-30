@@ -58,16 +58,16 @@ const Hero = () => {
         }}
       />
 
-      <div className="relative z-10 container mx-auto px-6 max-w-6xl text-center">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 max-w-6xl text-center">
         <AnimatedSection animation="slideUp" delay={0}>
-          <span className="inline-flex items-center gap-3 px-5 py-2 mb-10 text-[0.68rem] tracking-[0.22em] uppercase font-semibold text-primary border border-primary/25 bg-primary/[0.06] rounded-full">
+          <span className="inline-flex max-w-full items-center justify-center gap-3 rounded-full border border-primary/25 bg-primary/[0.06] px-4 py-2 text-center text-[0.62rem] font-semibold uppercase leading-relaxed tracking-[0.18em] text-primary sm:px-5 sm:text-[0.68rem] sm:tracking-[0.22em]">
             <span className="w-1.5 h-1.5 rounded-full bg-accent" />
             Nexum Tecnologia · Rio de Janeiro
           </span>
         </AnimatedSection>
 
         <AnimatedSection animation="slideUp" delay={100}>
-          <h1 className="serif-display text-foreground text-[2.5rem] sm:text-[4rem] md:text-[5.5rem] lg:text-[6.25rem] mb-8 max-w-5xl mx-auto">
+          <h1 className="serif-display mx-auto mb-8 max-w-5xl text-[2.2rem] leading-[1.14] text-foreground sm:text-[4rem] sm:leading-[1.04] md:text-[5.5rem] lg:text-[6.25rem]">
             Tecnologia humanizada para <em>clínicas</em> e <em>empresas</em> que querem crescer com inteligência.
           </h1>
         </AnimatedSection>
@@ -80,12 +80,12 @@ const Hero = () => {
         </AnimatedSection>
 
         <AnimatedSection animation="slideUp" delay={300}>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-20">
+          <div className="mb-20 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
             <Button
               variant="hero"
               size="lg"
               onClick={() => scrollTo("#contato")}
-              className="group"
+              className="group w-full max-w-sm self-center whitespace-normal text-center leading-tight sm:w-auto"
             >
               Diagnóstico Gratuito
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -95,6 +95,7 @@ const Hero = () => {
               variant="glass"
               size="lg"
               onClick={() => scrollTo("#verticais")}
+              className="w-full max-w-sm self-center whitespace-normal text-center leading-tight sm:w-auto"
             >
               Ver como funciona
             </Button>
@@ -103,13 +104,13 @@ const Hero = () => {
 
         {/* Pillars grid */}
         <AnimatedSection animation="fadeIn" delay={500}>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-border border border-border max-w-6xl mx-auto text-left">
+          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-px border border-border bg-border text-left md:grid-cols-2 lg:grid-cols-4">
             {pillars.map((p) => {
               const Icon = p.icon;
               return (
                 <div
                   key={p.title}
-                  className="bg-card p-6 md:p-7 flex flex-col gap-3 hover:bg-secondary transition-colors"
+                  className="flex flex-col gap-3 bg-card p-5 transition-colors hover:bg-secondary sm:p-6 md:p-7"
                 >
                   <div className="w-11 h-11 flex items-center justify-center border border-primary/25 bg-primary/[0.06] text-primary">
                     <Icon className="h-5 w-5" />
