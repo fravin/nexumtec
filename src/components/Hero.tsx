@@ -115,9 +115,9 @@ const Hero = () => {
                   <div className="w-11 h-11 flex items-center justify-center border border-primary/25 bg-primary/[0.06] text-primary">
                     <Icon className="h-5 w-5" />
                   </div>
-                  <h3 className="text-sm font-semibold text-foreground leading-snug tracking-tight">
+                  <h2 className="text-sm font-semibold text-foreground leading-snug tracking-tight">
                     {p.title}
-                  </h3>
+                  </h2>
                   <p className="text-xs text-muted-foreground leading-relaxed">
                     {p.desc}
                   </p>

@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Verticals from "@/components/Verticals";
@@ -33,17 +34,21 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
+      <Helmet>
+        <link rel="canonical" href="https://www.nexumtec.com.br/" />
+      </Helmet>
       <Header />
-      <Hero />
-      <Verticals />
-      <ImpactMetrics />
-      <Marquee />
-      <Services />
-      <Projects />
-      <AboutSummary />
-
-      <CallToAction />
-      <Contact />
+      <main>
+        <Hero />
+        <Verticals />
+        <ImpactMetrics />
+        <Marquee />
+        <Services />
+        <Projects />
+        <AboutSummary />
+        <CallToAction />
+        <Contact />
+      </main>
       <Footer />
       <WhatsAppButton />
       <ScrollToTop />
