@@ -1,0 +1,15 @@
+# Nexum Tecnologia
+
+> Tecnologia humanizada para saúde e negócios — automação inteligente, IA aplicada, BI e desenvolvimento de sistemas para clínicas e empresas no Brasil.
+
+Fundada por Flávio de Souza, a Nexum Tecnologia une 15+ anos de experiência em gestão hospitalar (faturamento, glosas, TISS/TUSS, indicadores assistenciais) com automação, ciência de dados e IA aplicada. Atendimento no Rio de Janeiro e remoto.
+
+## Pages
+
+- [Home](/): Visão geral, serviços, projetos e diagnóstico gratuito.
+- [Sobre](/sobre): Jornada do fundador, linha do tempo profissional, competências e formação.
+
+## Contato
+
+- E-mail: contato@nexumtec.com.br
+- WhatsApp: +55 21 98146-6912
