@@ -1,98 +1,68 @@
-## Reposicionamento Nexum — Tecnologia Humanizada para Negócios e Saúde
+## Objetivo
 
-Mudança de identidade do tema escuro/dourado atual para um **tema claro, sereno e clínico** ("Clinical Calm"), com narrativa de marca empresa (Nexum) e equilíbrio 50/50 entre Negócios e Saúde.
+Criar uma nova página `/saude` acessada pelo botão "Ver cases de saúde", explicando em linguagem simples e direta para médicos e administradores da área da saúde como a Nexum Tecnologia pode colaborar com melhorias na rotina de clínicas e hospitais.
 
-### 1. Nova paleta (substitui ink/gold)
+## Mudanças
 
-Tokens HSL no `index.css` e `tailwind.config.ts`:
+### 1. Roteamento
+- `src/App.tsx`: adicionar rota `/saude` → componente `Saude`.
+- `src/components/Verticals.tsx`: no card "Saúde", trocar o `onClick` que faz scroll para `#projetos` por `<Link to="/saude">` (mantendo o card "Negócios" como está, fazendo scroll para `#projetos`).
 
-- `--background` branco quente `#fafbfc`
-- `--surface` azul gelo `#e8f0f8`
-- `--foreground` ink `#0f172a` (texto principal)
-- `--muted-foreground` cinza azulado `#64748b`
-- `--primary` azul sereno `#3b82f6` (CTA principal, links, foco)
-- `--accent` verde menta/teal `#5cbdb9` (saúde, sucesso, métricas)
-- `--border` hairline `#e2e8f0`
-- Remover `--ink`, `--gold` (ou redirecioná-los para os novos tokens via alias para não quebrar componentes existentes)
+### 2. Nova página `src/pages/Saude.tsx`
 
-Tipografia: manter **Cormorant Garamond** para H1/H2 (humano, editorial) + **Inter** para corpo. Remover DM Mono dos labels mais visíveis — substituir por Inter uppercase tracking (menos "techy", mais consultivo). Manter cantos quase quadrados e bordas hairline (1px), mas com sombras suaves em cards-chave (estética clínica premium).
+Seguindo a identidade visual atual (Clinical Calm, tipografia Cormorant + Inter, hairline grids, botões `hero`/`glass`, paddings `py-24 md:py-32`, tokens semânticos), com SEO completo via `react-helmet-async` (title, description, canonical `https://www.nexumtec.com.br/saude`, OG, JSON-LD `MedicalBusiness` + `Service`).
 
-### 2. Hero reposicionado
+Estrutura de seções:
 
-- Eyebrow: "Nexum Tecnologia · Rio de Janeiro"
-- H1: "Tecnologia humanizada para *negócios* e *saúde*." (itálico azul nas duas palavras-chave)
-- Sub: "Automação inteligente, IA aplicada e gestão simples — para empresas que querem crescer e clínicas que querem cuidar melhor."
-- CTAs: "Diagnóstico Gratuito" (primário azul) · "Ver Cases" (ghost)
-- **4 pilares em grid abaixo** (substituem as métricas no topo): cada um com ícone outline, título curto e linha de descrição:
-  1. Automação Inteligente + IA Aplicada
-  2. Experiência do Paciente + Atendimento Humanizado
-  3. Gestão Simples + Produtividade
-  4. Treinamento de Equipes + Organização
-- Métricas (50+ projetos, 87%, R$180k, 15+ anos) descem para uma faixa entre Hero e Serviços, em fundo `surface`.
-- Background: gradiente sutil branco→azul gelo + grid azul muito leve (sem glow dourado).
+1. **Header reutilizado** (`<Header />`) + `<main>` landmark.
+2. **Hero da página**
+   - Eyebrow "Saúde · Tecnologia humanizada para quem cuida"
+   - H1: "Sua clínica funcionando melhor — para a equipe e para o paciente"
+   - Subtítulo curto explicando em linguagem simples: menos planilha, menos glosa, mais tempo para cuidar.
+   - CTA primário "Diagnóstico gratuito" (link para `/#contato`) + CTA secundário "WhatsApp direto".
+3. **"Eu entendo a sua rotina"** — bloco de credibilidade humanizado
+   - 15+ anos dentro do hospital (faturamento, glosas, recepção, estoque) + formação em Sistemas + pós em Ciência de Dados.
+   - Tom: "Não sou só TI. Já vivi a recepção lotada, o convênio glosando e o estoque que some."
+4. **Como posso colaborar** — 4 cards em grid hairline, linguagem simples:
+   - **Faturamento sem dor de cabeça** — TISS/TUSS, conferência de guias, fechamento mais rápido.
+   - **Glosas que viram receita** — auditoria, recurso e indicadores para parar de perder dinheiro.
+   - **Agenda, prontuário e paciente** — sistema único, prontuário eletrônico exportável, lembretes.
+   - **Estoque e compras sob controle** — fim das planilhas, validade, ponto de pedido, rastreabilidade.
+5. **O que muda na prática** — lista de "antes / depois" em duas colunas, explicando em frases curtas:
+   - Antes: planilha que ninguém atualiza → Depois: painel atualizado em tempo real.
+   - Antes: glosa descoberta no fim do mês → Depois: alerta no momento do lançamento.
+   - Antes: prontuário em papel → Depois: prontuário digital exportável em PDF.
+   - Antes: estoque vencendo → Depois: alerta de validade e ponto de pedido.
+6. **Para quem é** — três perfis em cards:
+   - Clínicas pequenas e médias que querem profissionalizar a gestão.
+   - Consultórios que ainda dependem de planilhas.
+   - Hospitais que precisam de indicadores e auditoria de glosas.
+7. **Cases de saúde já entregues** — destaque resumido (sem duplicar Projects) com 2-3 cases relevantes (Faturamento/Glosas R$34k+, Análise Preditiva R$77,5M, Clínica de Fisioterapia) e link "Ver todos os cases" para `/#projetos`.
+8. **Como trabalhamos juntos** — passo a passo em 4 etapas:
+   1. Conversa de diagnóstico (gratuita)
+   2. Mapeamento da rotina e dos gargalos
+   3. Implementação com a equipe (não só software)
+   4. Acompanhamento e ajustes
+9. **Perguntas frequentes (FAQ)** — accordion curto:
+   - "Preciso trocar meu sistema atual?"
+   - "Funciona para clínica pequena?"
+   - "Atende LGPD?"
+   - "Como é a cobrança?"
+   - "Em quanto tempo vejo resultado?"
+   - JSON-LD `FAQPage` correspondente para SEO.
+10. **CTA final** — bloco com fundo `bg-secondary`, frase de fechamento humanizada e botões "Agendar diagnóstico gratuito" + WhatsApp.
+11. **Footer reutilizado** (`<Footer />`), `<WhatsAppButton />`, `<AIChatbot />`, `<ScrollToTop />`.
 
-### 3. Dupla vertical Negócios + Saúde
+### 3. Detalhes técnicos
+- Reaproveitar `AnimatedSection` para scroll animations.
+- Reaproveitar tokens (`primary`, `accent`, `border`, `secondary`, `foreground`, `muted-foreground`) — sem cores hardcoded.
+- Usar `Stethoscope`, `HeartPulse`, `Activity`, `ClipboardList`, `Pill`, `Users`, `ShieldCheck` do `lucide-react` nos cards.
+- Mobile-first: grids `grid-cols-1 md:grid-cols-2`, botões `w-full sm:w-auto`, headings com `leading-tight` em mobile.
+- Atualizar `public/sitemap.xml` adicionando `/saude`.
 
-Nova seção **"Duas verticais, uma metodologia"** logo após o Hero, em 2 colunas:
+### 4. Linguagem
+Tom direto, sem jargão técnico de TI. Frases curtas. Falando "você" para o médico/gestor. Foco em benefício prático: tempo, dinheiro, tranquilidade, experiência do paciente. Evitar termos como "stack", "deploy", "API" no corpo da página.
 
-```text
-┌──────────────────────────┬──────────────────────────┐
-│  NEGÓCIOS                │  SAÚDE                   │
-│  (accent azul)           │  (accent teal)           │
-│  Para empresas que       │  Para clínicas e         │
-│  querem operar com       │  hospitais que querem    │
-│  previsibilidade.        │  cuidar melhor.          │
-│  • Sistemas sob medida   │  • Faturamento e glosas  │
-│  • BI e dashboards       │  • Experiência paciente  │
-│  • Automação RPA         │  • Indicadores clínicos  │
-│  • Consultoria de dados  │  • TISS/TUSS, prontuário │
-│  [Ver cases Negócios →]  │  [Ver cases Saúde →]     │
-└──────────────────────────┴──────────────────────────┘
-```
-
-### 4. Serviços — manter 5 cards, refraseados em tom humano
-
-Reescrever copy com viés humano/operacional (menos jargão técnico), mantendo a estrutura de grid hairline. Ícones outline em quadrado com borda azul (não dourada). Tags em chips arredondados suaves (não monospace).
-
-### 5. Projetos / Cases
-
-Separar a lista linear em duas faixas visuais: **Cases de Negócios** e **Cases de Saúde** (cada uma com 2–3 itens). Chip de vertical em cada card. KPIs em azul (negócios) ou teal (saúde).
-
-### 6. Sobre — Nexum em destaque, Flávio como fundador
-
-- H2: "Nexum Tecnologia"
-- Sub: "Consultoria de transformação digital com DNA de saúde, fundada por Flávio Admilson em 2024."
-- Bloco lateral: foto do Flávio + mini-bio "Flávio Admilson, fundador — 15+ anos entre tecnologia e gestão hospitalar."
-- Manter ImpactMetrics com cores claras (números em primary).
-
-### 7. CTA Final + Footer
-
-- CTA final em fundo `surface` (azul gelo), título serif, botão primary azul + WhatsApp teal.
-- Footer claro, com bloco "Atendemos: empresas · clínicas · hospitais".
-
-### 8. Componentes utilitários a atualizar
-
-- `button.tsx`: variantes `hero` (azul sólido + sombra suave), `glass` (borda azul clara), `outline` (azul). Remover dourado.
-- `AIChatbot.tsx`: header azul, bolhas brancas com borda, input claro. Manter funcionalidade.
-- `Header.tsx`: fundo `white/95` com blur, borda inferior hairline azul claro, CTA azul outline. Links em Inter (não mono).
-- `Marquee.tsx`: faixa em fundo `surface`, dots em primary.
-- `WhatsAppButton.tsx`: usar teal (`accent`) em vez de gold.
-- `ImpactMetrics.tsx`: números em primary azul, label em cinza.
-
-### 9. SEO + memória
-
-- Atualizar `<title>` e meta description: "Nexum Tecnologia — Tecnologia humanizada para negócios e saúde · RJ".
-- Atualizar memória `design/visual-identity-system` com a nova paleta clara.
-- Atualizar Core memory: remover "Dark editorial" → "Light Clinical Calm theme: white #fafbfc base, blue #3b82f6 primary, teal #5cbdb9 accent".
-- Atualizar `brand-identity-and-value-proposition` com novo posicionamento dual.
-
-### Arquivos afetados
-
-`src/index.css`, `tailwind.config.ts`, `index.html`, `Header.tsx`, `Hero.tsx`, `Services.tsx`, `Projects.tsx`, `AboutSummary.tsx`, `CallToAction.tsx`, `Contact.tsx`, `Footer.tsx`, `AIChatbot.tsx`, `Marquee.tsx`, `WhatsAppButton.tsx`, `ImpactMetrics.tsx`, `ui/button.tsx`, `pages/Index.tsx`, `pages/Sobre.tsx`. Novo: `Verticals.tsx` (seção dupla Negócios/Saúde).
-
-### Fora de escopo
-
-- Manter `Testimonials`/`SuccessCases` ocultos.
-- Não adicionar quiz nem blog.
-- Manter chatbot Nexum IA (só re-skin claro).
-- Manter CV download e WhatsApp.
+## Arquivos
+- **Criar**: `src/pages/Saude.tsx`
+- **Editar**: `src/App.tsx`, `src/components/Verticals.tsx`, `public/sitemap.xml`

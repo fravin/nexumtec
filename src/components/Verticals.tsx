@@ -1,4 +1,5 @@
 import { Building2, Stethoscope, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
@@ -85,15 +86,24 @@ const Verticals = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button
-                    variant="glass"
-                    size="default"
-                    className="self-start group"
-                    onClick={() => scrollTo("#projetos")}
-                  >
-                    Ver cases de {v.eyebrow.toLowerCase()}
-                    <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </Button>
+                  {v.tone === "accent" ? (
+                    <Link to="/saude" className="self-start">
+                      <Button variant="glass" size="default" className="group">
+                        Ver cases de {v.eyebrow.toLowerCase()}
+                        <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      </Button>
+                    </Link>
+                  ) : (
+                    <Button
+                      variant="glass"
+                      size="default"
+                      className="self-start group"
+                      onClick={() => scrollTo("#projetos")}
+                    >
+                      Ver cases de {v.eyebrow.toLowerCase()}
+                      <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  )}
                 </div>
               </AnimatedSection>
             );
