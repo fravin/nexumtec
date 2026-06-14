@@ -1,68 +1,62 @@
 ## Objetivo
 
-Criar uma nova página `/saude` acessada pelo botão "Ver cases de saúde", explicando em linguagem simples e direta para médicos e administradores da área da saúde como a Nexum Tecnologia pode colaborar com melhorias na rotina de clínicas e hospitais.
+Criar uma nova página `/negocios` acessada pelo botão "Ver cases de negócios" do componente `Verticals`, com linguagem direta para empresários e gestores de qualquer nicho (não só saúde), destacando automações de WhatsApp, e-mail, processos repetitivos, sistemas sob medida e BI.
 
 ## Mudanças
 
-### 1. Roteamento
-- `src/App.tsx`: adicionar rota `/saude` → componente `Saude`.
-- `src/components/Verticals.tsx`: no card "Saúde", trocar o `onClick` que faz scroll para `#projetos` por `<Link to="/saude">` (mantendo o card "Negócios" como está, fazendo scroll para `#projetos`).
+### 1. Roteamento e navegação
+- `src/App.tsx`: adicionar rota `/negocios` → componente `Negocios`.
+- `src/components/Verticals.tsx`: trocar o card "Negócios" para usar `<Link to="/negocios">` em vez de scroll para `#projetos` (espelhando o que já foi feito no card "Saúde").
 
-### 2. Nova página `src/pages/Saude.tsx`
+### 2. Nova página `src/pages/Negocios.tsx`
 
-Seguindo a identidade visual atual (Clinical Calm, tipografia Cormorant + Inter, hairline grids, botões `hero`/`glass`, paddings `py-24 md:py-32`, tokens semânticos), com SEO completo via `react-helmet-async` (title, description, canonical `https://www.nexumtec.com.br/saude`, OG, JSON-LD `MedicalBusiness` + `Service`).
+Mesma identidade visual da página `/saude` (Clinical Calm, Cormorant + Inter, hairline grids, tokens semânticos, `py-24 md:py-32`, `AnimatedSection`), SEO completo via `react-helmet-async` (title, description, canonical `https://www.nexumtec.com.br/negocios`, OG, JSON-LD `ProfessionalService` + `FAQPage`).
 
-Estrutura de seções:
+Estrutura:
 
-1. **Header reutilizado** (`<Header />`) + `<main>` landmark.
-2. **Hero da página**
-   - Eyebrow "Saúde · Tecnologia humanizada para quem cuida"
-   - H1: "Sua clínica funcionando melhor — para a equipe e para o paciente"
-   - Subtítulo curto explicando em linguagem simples: menos planilha, menos glosa, mais tempo para cuidar.
-   - CTA primário "Diagnóstico gratuito" (link para `/#contato`) + CTA secundário "WhatsApp direto".
-3. **"Eu entendo a sua rotina"** — bloco de credibilidade humanizado
-   - 15+ anos dentro do hospital (faturamento, glosas, recepção, estoque) + formação em Sistemas + pós em Ciência de Dados.
-   - Tom: "Não sou só TI. Já vivi a recepção lotada, o convênio glosando e o estoque que some."
-4. **Como posso colaborar** — 4 cards em grid hairline, linguagem simples:
-   - **Faturamento sem dor de cabeça** — TISS/TUSS, conferência de guias, fechamento mais rápido.
-   - **Glosas que viram receita** — auditoria, recurso e indicadores para parar de perder dinheiro.
-   - **Agenda, prontuário e paciente** — sistema único, prontuário eletrônico exportável, lembretes.
-   - **Estoque e compras sob controle** — fim das planilhas, validade, ponto de pedido, rastreabilidade.
-5. **O que muda na prática** — lista de "antes / depois" em duas colunas, explicando em frases curtas:
-   - Antes: planilha que ninguém atualiza → Depois: painel atualizado em tempo real.
-   - Antes: glosa descoberta no fim do mês → Depois: alerta no momento do lançamento.
-   - Antes: prontuário em papel → Depois: prontuário digital exportável em PDF.
-   - Antes: estoque vencendo → Depois: alerta de validade e ponto de pedido.
-6. **Para quem é** — três perfis em cards:
-   - Clínicas pequenas e médias que querem profissionalizar a gestão.
-   - Consultórios que ainda dependem de planilhas.
-   - Hospitais que precisam de indicadores e auditoria de glosas.
-7. **Cases de saúde já entregues** — destaque resumido (sem duplicar Projects) com 2-3 cases relevantes (Faturamento/Glosas R$34k+, Análise Preditiva R$77,5M, Clínica de Fisioterapia) e link "Ver todos os cases" para `/#projetos`.
-8. **Como trabalhamos juntos** — passo a passo em 4 etapas:
-   1. Conversa de diagnóstico (gratuita)
-   2. Mapeamento da rotina e dos gargalos
-   3. Implementação com a equipe (não só software)
-   4. Acompanhamento e ajustes
-9. **Perguntas frequentes (FAQ)** — accordion curto:
-   - "Preciso trocar meu sistema atual?"
-   - "Funciona para clínica pequena?"
-   - "Atende LGPD?"
+1. **Header** + `<main>`.
+2. **Hero**
+   - Eyebrow "Negócios · Tecnologia que faz a operação girar sozinha"
+   - H1: "Menos planilha, menos repetição — mais tempo para crescer o negócio"
+   - Subtítulo: automações, sistemas e dashboards para qualquer nicho que ainda depende de trabalho manual.
+   - CTAs: "Diagnóstico gratuito" (→ `/#contato`) + WhatsApp.
+3. **"Eu entendo o seu dia a dia"** — bloco de credibilidade
+   - 13+ anos resolvendo gargalos de operação dentro de empresas; foco em problema do cliente, não em tecnologia.
+4. **Como posso colaborar** — grid de 6 cards (icons `MessageCircle`, `Mail`, `Workflow`, `BarChart3`, `Database`, `Bot`):
+   - **Automação de WhatsApp** — atendimento, follow-up, cobrança, agendamento e respostas com IA.
+   - **Automação de e-mail** — disparos, segmentação, respostas automáticas e fluxos de nutrição.
+   - **Processos repetitivos (RPA + IA)** — robôs que copiam, colam, conferem, geram relatórios e cadastram.
+   - **Dashboards e Power BI** — visão única de vendas, financeiro, operação e marketing.
+   - **Sistemas web sob medida** — CRM, ERP leve, portais internos, áreas do cliente.
+   - **IA aplicada ao negócio** — chatbots, classificação de leads, análise de documentos, atendimento.
+5. **Para quem é** — 4 perfis em cards (linguagem por nicho, sem prometer setor exclusivo):
+   - Comércio e varejo
+   - Serviços e consultoria
+   - Indústria e logística
+   - Educação, jurídico e imobiliário
+6. **O que muda na prática** — antes/depois em duas colunas:
+   - Atendimento WhatsApp manual → bot 24/7 com handoff humano.
+   - Disparo de e-mail um a um → fluxo automático com segmentação.
+   - Planilha consolidada na mão → dashboard em tempo real.
+   - Cadastro repetitivo em sistema → robô que executa em segundos.
+   - Relatórios montados no fim do mês → indicadores ao vivo.
+7. **Cases já entregues** — resumo com 2-3 cases de negócios (Análise Preditiva R$77,5M, Estoque substituindo Excel, Faturamento/Glosas como prova de sistemas complexos) + link "Ver todos os cases" para `/#projetos`.
+8. **Como trabalhamos juntos** — 4 etapas: diagnóstico gratuito, mapeamento, implementação com a equipe, acompanhamento.
+9. **FAQ** (accordion + JSON-LD `FAQPage`):
+   - "Atende empresa pequena?"
+   - "Funciona se eu já uso outros sistemas?"
+   - "WhatsApp oficial ou não oficial?"
+   - "Quanto tempo leva uma automação?"
    - "Como é a cobrança?"
-   - "Em quanto tempo vejo resultado?"
-   - JSON-LD `FAQPage` correspondente para SEO.
-10. **CTA final** — bloco com fundo `bg-secondary`, frase de fechamento humanizada e botões "Agendar diagnóstico gratuito" + WhatsApp.
-11. **Footer reutilizado** (`<Footer />`), `<WhatsAppButton />`, `<AIChatbot />`, `<ScrollToTop />`.
+10. **CTA final** com fundo `bg-secondary` e botões "Agendar diagnóstico gratuito" + WhatsApp.
+11. **Footer** + `WhatsAppButton` + `AIChatbot` + `ScrollToTop`.
 
-### 3. Detalhes técnicos
-- Reaproveitar `AnimatedSection` para scroll animations.
-- Reaproveitar tokens (`primary`, `accent`, `border`, `secondary`, `foreground`, `muted-foreground`) — sem cores hardcoded.
-- Usar `Stethoscope`, `HeartPulse`, `Activity`, `ClipboardList`, `Pill`, `Users`, `ShieldCheck` do `lucide-react` nos cards.
-- Mobile-first: grids `grid-cols-1 md:grid-cols-2`, botões `w-full sm:w-auto`, headings com `leading-tight` em mobile.
-- Atualizar `public/sitemap.xml` adicionando `/saude`.
+### 3. SEO
+- Atualizar `public/sitemap.xml` adicionando `/negocios` com `priority 0.9`.
 
 ### 4. Linguagem
-Tom direto, sem jargão técnico de TI. Frases curtas. Falando "você" para o médico/gestor. Foco em benefício prático: tempo, dinheiro, tranquilidade, experiência do paciente. Evitar termos como "stack", "deploy", "API" no corpo da página.
+Direta, "você", sem jargão (evitar "stack", "deploy", "API" no corpo). Foco em tempo economizado, dinheiro recuperado e equipe menos sobrecarregada.
 
 ## Arquivos
-- **Criar**: `src/pages/Saude.tsx`
+- **Criar**: `src/pages/Negocios.tsx`
 - **Editar**: `src/App.tsx`, `src/components/Verticals.tsx`, `public/sitemap.xml`
