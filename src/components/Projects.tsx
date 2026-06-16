@@ -36,6 +36,30 @@ const Projects = () => {
     },
     {
       num: "CASE 03",
+      title: "Automação de WhatsApp com Agente de IA",
+      description:
+        "Agente de IA no WhatsApp atende dúvidas recorrentes 24/7, qualifica leads e passa para o humano só quando precisa — liberando a equipe das perguntas óbvias e agilizando o cliente.",
+      kpis: [
+        { value: "24/7", label: "Atendimento sem pausa" },
+        { value: "0", label: "Erro de digitação" },
+        { value: "↑Agilidade", label: "Resposta ao cliente" },
+      ],
+      stack: ["WhatsApp API", "OpenAI", "Node.js", "Webhooks"],
+    },
+    {
+      num: "CASE 04",
+      title: "Emissor de NFSe integrado à API da prefeitura",
+      description:
+        "Aplicação conectada à API oficial de NFSe que simplifica a emissão de notas fiscais de serviço — fim do passo a passo manual no portal, menos retrabalho e menos erro.",
+      kpis: [
+        { value: "1 clique", label: "Emissão de NFSe" },
+        { value: "↓Retrabalho", label: "Emissão e cancelamento" },
+        { value: "API oficial", label: "Integração direta" },
+      ],
+      stack: ["React", "TypeScript", "API NFSe", "Node.js"],
+    },
+    {
+      num: "CASE 05",
       title: "Gestão Completa para Clínica de Fisioterapia",
       description:
         "Sistema de agenda, prontuário eletrônico, pacotes de sessões e relatórios gerenciais — em produção, eliminando planilhas e controles manuais da clínica.",
@@ -46,6 +70,7 @@ const Projects = () => {
       ],
       stack: ["React", "TypeScript", "Supabase", "Tailwind"],
     },
+
     {
       num: "CASE 04",
       title: "Estoque Hospitalar — Excel substituído por sistema web",
