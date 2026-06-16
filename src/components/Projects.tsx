@@ -72,7 +72,7 @@ const Projects = () => {
     },
 
     {
-      num: "CASE 04",
+      num: "CASE 06",
       title: "Estoque Hospitalar — Excel substituído por sistema web",
       description:
         "Controle de materiais migrado de uma planilha Excel suscetível a erros para uma aplicação web robusta com banco SQL, autenticação e relatórios precisos.",
@@ -83,6 +83,7 @@ const Projects = () => {
       ],
       stack: ["JavaScript", "HTML5/CSS3", "SQL", "GitHub"],
     },
+
   ];
 
   return (
