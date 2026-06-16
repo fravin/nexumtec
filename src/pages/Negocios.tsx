@@ -111,24 +111,31 @@ const paraQuem = [
 
 const casesNegocios = [
   {
+    tag: "Automação + IA",
+    title: "Atendimento WhatsApp com Agente de IA",
+    kpi: "24/7 · zero erro de digitação · equipe liberada",
+    desc: "Agente de IA conectado ao WhatsApp responde dúvidas recorrentes, qualifica clientes e só envolve o humano quando precisa. A equipe deixa de gastar energia com perguntas óbvias e o cliente é atendido na hora.",
+  },
+  {
+    tag: "Integração fiscal",
+    title: "Emissão de NFSe via API",
+    kpi: "Emissão em 1 clique · menos retrabalho",
+    desc: "Sistema próprio conectado à API oficial de NFSe que simplifica drasticamente a emissão de notas fiscais de serviço. Fim do passo a passo manual no portal da prefeitura.",
+  },
+  {
+    tag: "Sistema próprio · uso pessoal",
+    title: "Gestão Financeira Pessoal + PJ",
+    kpi: "Pessoa física e empresa separadas · controle real",
+    desc: "Sistema criado para controlar minha vida financeira pessoal e, na transição para empreendedor, evoluiu para separar receitas e despesas da empresa das pessoais. Projeto pessoal que prova a capacidade de modelar fluxos financeiros sob medida.",
+  },
+  {
     tag: "Business Intelligence",
     title: "Análise Preditiva — R$77,5M analisados",
     kpi: "40% mais eficiência · 204k produtos mapeados",
     desc: "Dashboard com BI e modelo preditivo deu à liderança visibilidade comercial e capacidade de antecipar tendências de venda.",
   },
-  {
-    tag: "Sistema web",
-    title: "Estoque substituindo Excel",
-    kpi: "↓100% erros · visão em tempo real",
-    desc: "Migração de controle em planilha para aplicação web com banco SQL, autenticação e relatórios precisos.",
-  },
-  {
-    tag: "Sistema sob medida",
-    title: "Faturamento e Gestão de Glosas",
-    kpi: "R$ 34k+/mês sob controle",
-    desc: "Plataforma única e auditável substituindo planilhas, com rastreabilidade total — prova de sistema complexo entregue.",
-  },
 ];
+
 
 const passos = [
   {
