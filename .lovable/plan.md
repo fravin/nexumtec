@@ -1,62 +1,69 @@
 ## Objetivo
 
-Criar uma nova página `/negocios` acessada pelo botão "Ver cases de negócios" do componente `Verticals`, com linguagem direta para empresários e gestores de qualquer nicho (não só saúde), destacando automações de WhatsApp, e-mail, processos repetitivos, sistemas sob medida e BI.
+Adicionar 3 cases reais aos espaços de cases — sem dados financeiros inventados, focando em ganhos qualitativos descritos pelo usuário:
+
+1. **Automação de WhatsApp com Agente de IA** — atendimento automatizado que libera o funcionário das perguntas óbvias, agiliza resposta ao cliente e elimina erro de digitação.
+2. **Sistema de Finanças Pessoais** — projeto pessoal que evoluiu para separar receitas pessoais e da empresa durante a transição profissional (apresentado como case de capacidade técnica + organização, não como produto comercial).
+3. **Emissor de Nota Fiscal integrado à API NFSe** — simplifica a emissão de notas fiscais, eliminando etapas manuais no portal da prefeitura.
 
 ## Mudanças
 
-### 1. Roteamento e navegação
-- `src/App.tsx`: adicionar rota `/negocios` → componente `Negocios`.
-- `src/components/Verticals.tsx`: trocar o card "Negócios" para usar `<Link to="/negocios">` em vez de scroll para `#projetos` (espelhando o que já foi feito no card "Saúde").
+### 1. `src/components/Projects.tsx` (home `/#projetos`)
 
-### 2. Nova página `src/pages/Negocios.tsx`
+Misturar com os cases atuais. Estado final, na ordem:
 
-Mesma identidade visual da página `/saude` (Clinical Calm, Cormorant + Inter, hairline grids, tokens semânticos, `py-24 md:py-32`, `AnimatedSection`), SEO completo via `react-helmet-async` (title, description, canonical `https://www.nexumtec.com.br/negocios`, OG, JSON-LD `ProfessionalService` + `FAQPage`).
+```
+CASE 01 — Sistema de Faturamento e Gestão de Glosas        (mantém)
+CASE 02 — Análise Preditiva de Vendas — R$77,5M analisados (mantém)
+CASE 03 — Automação de WhatsApp com Agente de IA           (NOVO)
+CASE 04 — Emissor de NFSe integrado à API da prefeitura    (NOVO)
+CASE 05 — Gestão Completa para Clínica de Fisioterapia     (mantém)
+CASE 06 — Estoque Hospitalar — Excel substituído           (mantém)
+```
 
-Estrutura:
+O case "Finanças Pessoais" **não entra na home** — é um projeto pessoal e a home é vitrine comercial; ele vai apenas na página `/negocios` com enquadramento adequado.
 
-1. **Header** + `<main>`.
-2. **Hero**
-   - Eyebrow "Negócios · Tecnologia que faz a operação girar sozinha"
-   - H1: "Menos planilha, menos repetição — mais tempo para crescer o negócio"
-   - Subtítulo: automações, sistemas e dashboards para qualquer nicho que ainda depende de trabalho manual.
-   - CTAs: "Diagnóstico gratuito" (→ `/#contato`) + WhatsApp.
-3. **"Eu entendo o seu dia a dia"** — bloco de credibilidade
-   - 13+ anos resolvendo gargalos de operação dentro de empresas; foco em problema do cliente, não em tecnologia.
-4. **Como posso colaborar** — grid de 6 cards (icons `MessageCircle`, `Mail`, `Workflow`, `BarChart3`, `Database`, `Bot`):
-   - **Automação de WhatsApp** — atendimento, follow-up, cobrança, agendamento e respostas com IA.
-   - **Automação de e-mail** — disparos, segmentação, respostas automáticas e fluxos de nutrição.
-   - **Processos repetitivos (RPA + IA)** — robôs que copiam, colam, conferem, geram relatórios e cadastram.
-   - **Dashboards e Power BI** — visão única de vendas, financeiro, operação e marketing.
-   - **Sistemas web sob medida** — CRM, ERP leve, portais internos, áreas do cliente.
-   - **IA aplicada ao negócio** — chatbots, classificação de leads, análise de documentos, atendimento.
-5. **Para quem é** — 4 perfis em cards (linguagem por nicho, sem prometer setor exclusivo):
-   - Comércio e varejo
-   - Serviços e consultoria
-   - Indústria e logística
-   - Educação, jurídico e imobiliário
-6. **O que muda na prática** — antes/depois em duas colunas:
-   - Atendimento WhatsApp manual → bot 24/7 com handoff humano.
-   - Disparo de e-mail um a um → fluxo automático com segmentação.
-   - Planilha consolidada na mão → dashboard em tempo real.
-   - Cadastro repetitivo em sistema → robô que executa em segundos.
-   - Relatórios montados no fim do mês → indicadores ao vivo.
-7. **Cases já entregues** — resumo com 2-3 cases de negócios (Análise Preditiva R$77,5M, Estoque substituindo Excel, Faturamento/Glosas como prova de sistemas complexos) + link "Ver todos os cases" para `/#projetos`.
-8. **Como trabalhamos juntos** — 4 etapas: diagnóstico gratuito, mapeamento, implementação com a equipe, acompanhamento.
-9. **FAQ** (accordion + JSON-LD `FAQPage`):
-   - "Atende empresa pequena?"
-   - "Funciona se eu já uso outros sistemas?"
-   - "WhatsApp oficial ou não oficial?"
-   - "Quanto tempo leva uma automação?"
-   - "Como é a cobrança?"
-10. **CTA final** com fundo `bg-secondary` e botões "Agendar diagnóstico gratuito" + WhatsApp.
-11. **Footer** + `WhatsAppButton` + `AIChatbot` + `ScrollToTop`.
+**Novos objetos `Case`** (mesmo shape `{ num, title, description, kpis, stack }`):
 
-### 3. SEO
-- Atualizar `public/sitemap.xml` adicionando `/negocios` com `priority 0.9`.
+- **WhatsApp + IA**
+  - description: "Agente de IA no WhatsApp atende dúvidas recorrentes 24/7, qualifica leads e passa para o humano só quando precisa — liberando a equipe das perguntas óbvias e agilizando o cliente."
+  - kpis: `{ "24/7", "Atendimento sem pausa" }`, `{ "0", "Erro de digitação" }`, `{ "↑Agilidade", "Resposta ao cliente" }`
+  - stack: `["WhatsApp API", "OpenAI", "Node.js", "Webhooks"]`
 
-### 4. Linguagem
-Direta, "você", sem jargão (evitar "stack", "deploy", "API" no corpo). Foco em tempo economizado, dinheiro recuperado e equipe menos sobrecarregada.
+- **NFSe**
+  - description: "Aplicação conectada à API oficial de NFSe que simplifica a emissão de notas fiscais de serviço — fim do passo a passo manual no portal, menos retrabalho e menos erro."
+  - kpis: `{ "1 clique", "Emissão de NFSe" }`, `{ "↓Retrabalho", "Em emissão e cancelamento" }`, `{ "API oficial", "Integração direta" }`
+  - stack: `["React", "TypeScript", "API NFSe", "Node.js"]`
+
+### 2. `src/pages/Negocios.tsx` — array `casesNegocios`
+
+Misturar: manter "Análise Preditiva R$77,5M" + adicionar os 3 novos cases reais, removendo "Estoque substituindo Excel" e "Faturamento/Glosas" (esses já aparecem na home e são mais saúde/hospitalar; a página `/negocios` precisa de cases que reforcem automação para qualquer nicho).
+
+Estado final (4 cards no grid — ajustar layout para `md:grid-cols-2 lg:grid-cols-2` ou manter 3 colunas com o 4º quebrando linha; vamos usar `lg:grid-cols-2` para destaque):
+
+1. **Tag "Automação + IA"** — Atendimento WhatsApp com Agente de IA
+   - kpi: "24/7 · zero erro de digitação · equipe liberada"
+   - desc: "Agente de IA conectado ao WhatsApp responde dúvidas recorrentes, qualifica clientes e só envolve o humano quando precisa. A equipe deixa de gastar energia com perguntas óbvias e o cliente é atendido na hora."
+
+2. **Tag "Integração fiscal"** — Emissão de NFSe via API
+   - kpi: "Emissão em 1 clique · menos retrabalho"
+   - desc: "Sistema próprio conectado à API oficial de NFSe que simplifica drasticamente a emissão de notas fiscais de serviço. Fim do passo a passo manual no portal da prefeitura."
+
+3. **Tag "Sistema próprio · uso pessoal"** — Gestão Financeira Pessoal
+   - kpi: "Pessoa física + PJ separados · controle real"
+   - desc: "Sistema criado para controlar minha vida financeira pessoal e, na transição para empreendedor, evoluiu para separar receitas e despesas da empresa das pessoais. Projeto pessoal que prova a capacidade de modelar fluxos financeiros sob medida."
+
+4. **Tag "Business Intelligence"** — Análise Preditiva R$77,5M (mantém)
+
+### 3. SEO / JSON-LD
+
+Sem mudanças estruturais — os cases entram como conteúdo dentro das seções existentes. `serviceJsonLd` e `faqJsonLd` permanecem.
+
+## Linguagem
+
+- Sem números financeiros inventados nos cases novos.
+- Para o case de Finanças Pessoais deixar explícito que é "projeto pessoal" / "uso pessoal" — evita parecer que estamos vendendo um produto que não está pronto.
+- Tom direto, foco em ganho de tempo e redução de erro, conforme respostas do usuário.
 
 ## Arquivos
-- **Criar**: `src/pages/Negocios.tsx`
-- **Editar**: `src/App.tsx`, `src/components/Verticals.tsx`, `public/sitemap.xml`
+- **Editar**: `src/components/Projects.tsx`, `src/pages/Negocios.tsx`
