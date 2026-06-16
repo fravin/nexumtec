@@ -445,7 +445,7 @@ const Negocios = () => {
               </div>
             </AnimatedSection>
 
-            <div className="grid md:grid-cols-3 gap-px bg-border border border-border">
+            <div className="grid md:grid-cols-2 gap-px bg-border border border-border">
               {casesNegocios.map((c, i) => (
                 <AnimatedSection key={c.title} animation="slideUp" delay={i * 80}>
                   <article className="bg-card p-8 h-full flex flex-col">
