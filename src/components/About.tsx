@@ -47,7 +47,7 @@ const About = () => {
               
               {/* Main image */}
               <div className="relative">
-                <img src="/lovable-uploads/f99c685c-3957-4643-a4d6-0abf73d8f016.png" alt="Flávio Admilson - Analista de Sistemas" className="w-full max-w-md h-[500px] object-cover object-top rounded-lg border-4 border-background shadow-2xl group-hover:scale-105 transition-transform duration-500 mx-auto relative z-10" />
+                <img src="/lovable-uploads/f99c685c-3957-4643-a4d6-0abf73d8f016.png" alt="Flávio Admilson - Analista de Sistemas" loading="lazy" className="w-full max-w-md h-[340px] sm:h-[420px] md:h-[500px] object-cover object-top rounded-lg border-4 border-background shadow-2xl group-hover:scale-105 transition-transform duration-500 mx-auto relative z-10" />
                 
                 {/* Overlay effect */}
                 <div className="absolute inset-0 rounded-lg bg-gradient-to-tr from-primary/10 via-transparent to-accent/10 group-hover:from-primary/20 group-hover:to-accent/20 transition-all duration-500"></div>

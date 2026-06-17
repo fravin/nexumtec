@@ -12,8 +12,8 @@ const AboutSummary = () => {
   ];
 
   return (
-    <section id="sobre-resumo" className="relative z-10 py-24 md:py-32 bg-ink-2">
-      <div className="container mx-auto px-6 max-w-6xl">
+    <section id="sobre-resumo" className="relative z-10 py-16 sm:py-20 md:py-24 lg:py-32 bg-ink-2">
+      <div className="container mx-auto px-5 sm:px-6 max-w-6xl">
         <AnimatedSection animation="slideUp">
           <div className="section-label mb-5">Quem está por trás</div>
         </AnimatedSection>
@@ -21,8 +21,8 @@ const AboutSummary = () => {
         <div className="grid md:grid-cols-2 border border-border">
           {/* Left: narrative */}
           <AnimatedSection animation="slideInLeft">
-            <div className="p-8 md:p-14 bg-ink-2 md:border-r border-border">
-              <h2 className="serif-display text-3xl md:text-5xl text-foreground mb-6">
+            <div className="p-6 sm:p-10 md:p-14 bg-ink-2 md:border-r border-border">
+              <h2 className="serif-display text-3xl sm:text-4xl md:text-5xl text-foreground mb-6">
                 Da feira livre à<br /><em>ciência de dados</em>
               </h2>
               <p className="text-sm text-muted-foreground leading-relaxed mb-5">
@@ -57,7 +57,7 @@ const AboutSummary = () => {
 
           {/* Right: credentials */}
           <AnimatedSection animation="slideInRight">
-            <div className="p-8 md:p-14 flex flex-col gap-3 bg-ink">
+            <div className="p-6 sm:p-10 md:p-14 flex flex-col gap-3 bg-ink">
               <h3 className="text-sm font-semibold text-foreground tracking-tight mb-2">
                 Credenciais & Formação
               </h3>

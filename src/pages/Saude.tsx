@@ -207,7 +207,7 @@ const Saude = () => {
 
       <main>
         {/* Hero */}
-        <section className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28 bg-background">
+        <section className="relative overflow-hidden pt-24 sm:pt-28 md:pt-40 pb-14 sm:pb-20 md:pb-28 bg-background">
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
@@ -260,8 +260,8 @@ const Saude = () => {
         </section>
 
         {/* Eu entendo a sua rotina */}
-        <section className="py-20 md:py-28 bg-card border-t border-border">
-          <div className="container mx-auto px-6 max-w-5xl">
+        <section className="py-14 sm:py-16 md:py-20 lg:py-28 bg-card border-t border-border">
+          <div className="container mx-auto px-5 sm:px-6 max-w-5xl">
             <div className="grid md:grid-cols-[1fr_1.4fr] gap-10 items-start">
               <AnimatedSection animation="slideInLeft">
                 <div className="section-label mb-4">Quem fala com você</div>
@@ -294,8 +294,8 @@ const Saude = () => {
         </section>
 
         {/* Como posso colaborar */}
-        <section className="py-24 md:py-32 bg-secondary">
-          <div className="container mx-auto px-6 max-w-6xl">
+        <section className="py-16 sm:py-20 md:py-24 lg:py-32 bg-secondary">
+          <div className="container mx-auto px-5 sm:px-6 max-w-6xl">
             <AnimatedSection animation="slideUp">
               <div className="text-center mb-14">
                 <div className="section-label justify-center inline-flex mb-4">
@@ -316,7 +316,7 @@ const Saude = () => {
                     animation="slideUp"
                     delay={i * 80}
                   >
-                    <div className="bg-card p-8 md:p-10 h-full">
+                    <div className="bg-card p-6 sm:p-8 md:p-10 h-full">
                       <div className="w-12 h-12 flex items-center justify-center border border-accent/30 bg-accent/[0.06] text-accent mb-5">
                         <Icon className="h-5 w-5" />
                       </div>
@@ -335,8 +335,8 @@ const Saude = () => {
         </section>
 
         {/* Antes / Depois */}
-        <section className="py-24 md:py-32 bg-background">
-          <div className="container mx-auto px-6 max-w-5xl">
+        <section className="py-16 sm:py-20 md:py-24 lg:py-32 bg-background">
+          <div className="container mx-auto px-5 sm:px-6 max-w-5xl">
             <AnimatedSection animation="slideUp">
               <div className="section-label mb-4">O que muda na prática</div>
               <h2 className="serif-display text-3xl md:text-5xl text-foreground mb-12">
@@ -375,8 +375,8 @@ const Saude = () => {
         </section>
 
         {/* Para quem é */}
-        <section className="py-24 md:py-32 bg-card border-y border-border">
-          <div className="container mx-auto px-6 max-w-6xl">
+        <section className="py-16 sm:py-20 md:py-24 lg:py-32 bg-card border-y border-border">
+          <div className="container mx-auto px-5 sm:px-6 max-w-6xl">
             <AnimatedSection animation="slideUp">
               <div className="text-center mb-14">
                 <div className="section-label justify-center inline-flex mb-4">
@@ -410,8 +410,8 @@ const Saude = () => {
         </section>
 
         {/* Cases de saúde */}
-        <section className="py-24 md:py-32 bg-background">
-          <div className="container mx-auto px-6 max-w-6xl">
+        <section className="py-16 sm:py-20 md:py-24 lg:py-32 bg-background">
+          <div className="container mx-auto px-5 sm:px-6 max-w-6xl">
             <AnimatedSection animation="slideUp">
               <div className="mb-12">
                 <div className="section-label mb-4">Cases de saúde já entregues</div>
@@ -458,8 +458,8 @@ const Saude = () => {
         </section>
 
         {/* Como trabalhamos juntos */}
-        <section className="py-24 md:py-32 bg-secondary">
-          <div className="container mx-auto px-6 max-w-6xl">
+        <section className="py-16 sm:py-20 md:py-24 lg:py-32 bg-secondary">
+          <div className="container mx-auto px-5 sm:px-6 max-w-6xl">
             <AnimatedSection animation="slideUp">
               <div className="text-center mb-14">
                 <div className="section-label justify-center inline-flex mb-4">
@@ -492,7 +492,7 @@ const Saude = () => {
         </section>
 
         {/* FAQ */}
-        <section className="py-24 md:py-32 bg-background">
+        <section className="py-16 sm:py-20 md:py-24 lg:py-32 bg-background">
           <div className="container mx-auto px-6 max-w-3xl">
             <AnimatedSection animation="slideUp">
               <div className="mb-10 text-center">
@@ -527,7 +527,7 @@ const Saude = () => {
         </section>
 
         {/* CTA final */}
-        <section className="py-20 md:py-28 bg-gradient-to-br from-accent/15 via-secondary to-primary/10 border-t border-border">
+        <section className="py-14 sm:py-16 md:py-20 lg:py-28 bg-gradient-to-br from-accent/15 via-secondary to-primary/10 border-t border-border">
           <div className="container mx-auto px-6 max-w-3xl text-center">
             <AnimatedSection animation="scaleIn">
               <h2 className="serif-display text-3xl md:text-5xl text-foreground mb-5 leading-tight">

@@ -87,14 +87,14 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projetos" className="py-24 md:py-32 bg-ink relative z-10">
-      <div className="container mx-auto px-6 max-w-6xl">
+    <section id="projetos" className="py-16 sm:py-20 md:py-24 lg:py-32 bg-ink relative z-10">
+      <div className="container mx-auto px-5 sm:px-6 max-w-6xl">
         <AnimatedSection animation="slideUp">
           <div className="section-label mb-5">Resultados comprovados</div>
-          <h2 className="serif-display text-4xl md:text-6xl text-foreground mb-5">
+          <h2 className="serif-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-foreground mb-5">
             Cases de <em>impacto real</em>
           </h2>
-          <p className="text-muted-foreground max-w-xl leading-relaxed mb-16">
+          <p className="text-muted-foreground max-w-xl leading-relaxed mb-10 sm:mb-14 md:mb-16">
             Projetos entregues com ROI mensurável. Números reais, contexto real,
             impacto real.
           </p>
@@ -105,11 +105,11 @@ const Projects = () => {
             <AnimatedSection key={c.num} animation="slideUp" delay={i * 80}>
               <article className="grid md:grid-cols-[1fr_1.4fr] bg-ink-2 transition-colors hover:bg-ink-3">
                 {/* Left */}
-                <div className="p-8 md:p-12 md:border-r border-border">
+                <div className="p-6 sm:p-8 md:p-12 md:border-r border-border">
                   <div className="font-mono text-[0.65rem] tracking-[0.2em] uppercase text-muted-foreground mb-4">
                     {c.num} ——
                   </div>
-                  <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-4 leading-tight">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-foreground mb-4 leading-tight">
                     {c.title}
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
@@ -118,7 +118,7 @@ const Projects = () => {
                 </div>
 
                 {/* Right */}
-                <div className="p-6 md:p-12">
+                <div className="p-6 sm:p-8 md:p-12">
                   <div className="mb-6 grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
                     {c.kpis.map((k) => (
                       <div
