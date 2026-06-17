@@ -139,12 +139,12 @@ const Contact = () => {
 
           {/* Right: form */}
           <AnimatedSection animation="slideInRight">
-            <div className="bg-ink p-8 md:p-10">
+            <div className="bg-ink p-6 sm:p-8 md:p-10">
               <h3 className="serif-display text-2xl md:text-3xl text-foreground mb-6">
                 Envie sua mensagem
               </h3>
               <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid md:grid-cols-2 gap-4">
+                <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="name" className="block font-mono text-[0.6rem] tracking-[0.18em] uppercase text-muted-foreground mb-2">
                       Nome *
