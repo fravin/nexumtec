@@ -48,16 +48,16 @@ const Services = () => {
   ];
 
   return (
-    <section id="servicos" className="py-24 md:py-32 bg-ink-2 relative z-10">
-      <div className="container mx-auto px-6 max-w-6xl">
+    <section id="servicos" className="py-16 sm:py-20 md:py-24 lg:py-32 bg-ink-2 relative z-10">
+      <div className="container mx-auto px-5 sm:px-6 max-w-6xl">
         <AnimatedSection animation="slideUp">
           <div className="section-label mb-5">O que fazemos</div>
-          <h2 className="serif-display text-4xl md:text-6xl text-foreground mb-5">
+          <h2 className="serif-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-foreground mb-5">
             Soluções que geram
             <br />
             <em>eficiência real</em>
           </h2>
-          <p className="text-muted-foreground max-w-xl leading-relaxed mb-16">
+          <p className="text-muted-foreground max-w-xl leading-relaxed mb-10 sm:mb-14 md:mb-16">
             Não vendemos tecnologia por tecnologia. Cada projeto resolve um problema
             específico e entrega ROI mensurável.
           </p>
@@ -74,7 +74,7 @@ const Services = () => {
                 delay={i * 60}
                 className="bg-ink-2"
               >
-                <article className="group relative p-9 h-full transition-colors hover:bg-ink-3">
+                <article className="group relative p-6 sm:p-8 md:p-9 h-full transition-colors hover:bg-ink-3">
                   <div className="font-mono text-[0.65rem] tracking-[0.2em] uppercase text-muted-foreground mb-7">
                     {s.num} ——
                   </div>

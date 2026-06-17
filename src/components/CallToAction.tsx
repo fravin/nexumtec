@@ -7,7 +7,7 @@ const CallToAction = () => {
     encodeURIComponent("Olá! Quero agendar um diagnóstico gratuito com a Nexum.");
 
   return (
-    <section className="relative z-10 py-28 md:py-36 bg-ink overflow-hidden">
+    <section className="relative z-10 py-16 sm:py-20 md:py-28 lg:py-36 bg-ink overflow-hidden">
       {/* Gold radial glow at the bottom */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -17,27 +17,27 @@ const CallToAction = () => {
         }}
       />
 
-      <div className="relative z-10 container mx-auto px-6 max-w-4xl text-center">
+      <div className="relative z-10 container mx-auto px-5 sm:px-6 max-w-4xl text-center">
         <div className="section-label justify-center mb-6 inline-flex">
           Próximo passo
         </div>
-        <h2 className="serif-display text-foreground text-4xl md:text-6xl mb-6">
+        <h2 className="serif-display text-foreground text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-6">
           Pronto para transformar
           <br />sua operação <em>com dados e IA?</em>
         </h2>
-        <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto mb-12 leading-relaxed">
+        <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto mb-10 sm:mb-12 leading-relaxed">
           Diagnóstico gratuito de 30 a 45 minutos. Atendimento consultivo — sem SDR,
           sem enrolação. Você sai com clareza sobre onde está perdendo eficiência.
         </p>
-        <div className="flex flex-wrap justify-center gap-3 mb-8">
-          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-            <Button variant="hero" size="lg">
+        <div className="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-3 mb-8">
+          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+            <Button variant="hero" size="lg" className="w-full sm:w-auto">
               <MessageCircle className="h-4 w-4" />
               WhatsApp — resposta imediata
             </Button>
           </a>
-          <a href="mailto:contato@nexumtec.com.br">
-            <Button variant="glass" size="lg">
+          <a href="mailto:contato@nexumtec.com.br" className="w-full sm:w-auto">
+            <Button variant="glass" size="lg" className="w-full sm:w-auto">
               <Mail className="h-4 w-4" />
               Enviar e-mail
             </Button>
@@ -46,8 +46,9 @@ const CallToAction = () => {
             href="https://www.linkedin.com/in/flaviodesouza10/"
             target="_blank"
             rel="noopener noreferrer"
+            className="w-full sm:w-auto"
           >
-            <Button variant="glass" size="lg">
+            <Button variant="glass" size="lg" className="w-full sm:w-auto">
               <Linkedin className="h-4 w-4" />
               LinkedIn
             </Button>

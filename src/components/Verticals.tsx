@@ -35,14 +35,14 @@ const Verticals = () => {
   ];
 
   return (
-    <section id="verticais" className="relative z-10 py-24 md:py-32 bg-secondary">
-      <div className="container mx-auto px-6 max-w-6xl">
+    <section id="verticais" className="relative z-10 py-16 sm:py-20 md:py-24 lg:py-32 bg-secondary">
+      <div className="container mx-auto px-5 sm:px-6 max-w-6xl">
         <AnimatedSection animation="slideUp">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 sm:mb-14 md:mb-16">
             <div className="section-label justify-center inline-flex mb-5">
               Duas verticais, uma metodologia
             </div>
-            <h2 className="serif-display text-4xl md:text-5xl text-foreground mb-4">
+            <h2 className="serif-display text-3xl sm:text-4xl md:text-5xl text-foreground mb-4">
               Atendemos <em>empresas</em> e <em>clínicas</em>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
@@ -62,14 +62,14 @@ const Verticals = () => {
                 key={v.eyebrow}
                 animation={i === 0 ? "slideInLeft" : "slideInRight"}
               >
-                <div className="bg-card p-8 md:p-12 h-full flex flex-col">
-                  <div className={`w-14 h-14 flex items-center justify-center border ${accent} mb-7`}>
-                    <Icon className="h-6 w-6" />
+                <div className="bg-card p-6 sm:p-8 md:p-12 h-full flex flex-col">
+                  <div className={`w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center border ${accent} mb-6 sm:mb-7`}>
+                    <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
                   </div>
                   <div className="text-[0.7rem] tracking-[0.22em] uppercase font-semibold text-muted-foreground mb-3">
                     {v.eyebrow}
                   </div>
-                  <h3 className="serif-display text-2xl md:text-3xl text-foreground mb-4 leading-tight">
+                  <h3 className="serif-display text-xl sm:text-2xl md:text-3xl text-foreground mb-4 leading-tight">
                     {v.title}
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed mb-7">

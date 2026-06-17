@@ -44,22 +44,22 @@ const Contact = () => {
     "w-full px-4 py-3 bg-ink border border-border text-foreground placeholder:text-muted-foreground/70 focus:outline-none focus:border-primary focus:ring-1 focus:ring-gold/40 transition-colors";
 
   return (
-    <section id="contato" className="relative z-10 py-24 md:py-32 bg-ink-2">
-      <div className="container mx-auto px-6 max-w-6xl">
+    <section id="contato" className="relative z-10 py-16 sm:py-20 md:py-24 lg:py-32 bg-ink-2">
+      <div className="container mx-auto px-5 sm:px-6 max-w-6xl">
         <AnimatedSection animation="slideUp">
           <div className="section-label mb-5">Vamos conversar</div>
-          <h2 className="serif-display text-4xl md:text-6xl text-foreground mb-5">
+          <h2 className="serif-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-foreground mb-5">
             Solicite seu <em>diagnóstico</em>
           </h2>
-          <p className="text-muted-foreground max-w-xl leading-relaxed mb-16">
+          <p className="text-muted-foreground max-w-xl leading-relaxed mb-10 sm:mb-14 md:mb-16">
             Conte sobre o desafio da sua operação. Respondemos em até 24h úteis.
           </p>
         </AnimatedSection>
 
-        <div className="grid lg:grid-cols-[1fr_1.4fr] gap-px bg-border border border-border">
+        <div className="grid md:grid-cols-[1fr_1.4fr] gap-px bg-border border border-border">
           {/* Left: contact info */}
           <AnimatedSection animation="slideInLeft">
-            <div className="bg-ink-2 p-8 md:p-10 h-full flex flex-col gap-7">
+            <div className="bg-ink-2 p-6 sm:p-8 md:p-10 h-full flex flex-col gap-7">
               <div>
                 <h3 className="font-mono text-[0.7rem] tracking-[0.18em] uppercase text-primary mb-4">
                   Canais diretos

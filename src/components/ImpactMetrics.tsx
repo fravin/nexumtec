@@ -40,20 +40,22 @@ const ImpactMetrics = () => {
   }, [hasAnimated]);
 
   return (
-    <section id="impact-metrics" className="py-16 bg-ink relative z-10">
-      <div className="container mx-auto px-6 max-w-6xl">
+    <section id="impact-metrics" className="py-12 sm:py-14 md:py-16 bg-ink relative z-10">
+      <div className="container mx-auto px-5 sm:px-6 max-w-6xl">
         <div className="grid grid-cols-2 md:grid-cols-4 border border-border">
           {metrics.map((m, i) => (
             <div
               key={m.label}
-              className={`p-8 text-center bg-ink-2 ${
-                i > 0 ? "border-l border-border" : ""
+              className={`p-5 sm:p-6 md:p-8 text-center bg-ink-2 ${
+                i % 2 !== 0 ? "border-l border-border" : ""
+              } ${i >= 2 ? "border-t md:border-t-0 border-border" : ""} ${
+                i > 0 && "md:border-l md:border-border"
               }`}
             >
-              <div className="serif-display text-primary text-4xl md:text-5xl mb-2 leading-none">
+              <div className="serif-display text-primary text-3xl sm:text-4xl md:text-5xl mb-2 leading-none">
                 {counts[i]}{m.suffix}
               </div>
-              <div className="font-mono text-[0.62rem] tracking-[0.14em] uppercase text-muted-foreground">
+              <div className="font-mono text-[0.58rem] sm:text-[0.62rem] tracking-[0.12em] sm:tracking-[0.14em] uppercase text-muted-foreground leading-tight">
                 {m.label}
               </div>
             </div>
