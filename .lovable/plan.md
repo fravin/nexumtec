@@ -1,49 +1,36 @@
-# Plano: Responsividade Mobile/Tablet
-
 ## Objetivo
-Fazer uma varredura completa do site e melhorar a experiência em celular (≤640px) e tablet (641–1024px), mantendo o design Clinical Calm intacto no desktop.
+Atualizar o card de pré-visualização exibido quando o link `nexumtec.com.br` é compartilhado (WhatsApp, LinkedIn, Slack, Facebook), substituindo o logo/imagem antigos por uma nova imagem social e ajustando título e descrição.
 
-## Escopo da auditoria
-Revisar cada componente/página nos breakpoints `sm` (640), `md` (768), `lg` (1024):
+## O que será alterado
 
-**Home (`/`)**
-- `Hero.tsx` — tamanho do título serif, padding-top do hero, CTAs empilhados, grid de fundo 3D em mobile (performance)
-- `Verticals.tsx` — dupla Negócios/Saúde lado a lado vira stack
-- `ImpactMetrics.tsx` — contadores em grid responsivo
-- `Marquee.tsx` — velocidade/altura em telas pequenas
-- `Services.tsx` — grid de cards
-- `Projects.tsx` — carrossel: arrows, dots, tamanho dos cards, KPIs e stack chips
-- `AboutSummary.tsx`, `CallToAction.tsx`, `Contact.tsx`, `Footer.tsx`
+**Arquivo:** `index.html`
 
-**Páginas internas**
-- `Sobre.tsx` (About, Timeline, Skills)
-- `Negocios.tsx` e `Saude.tsx` — hero, grid de cases (`md:grid-cols-2`), seções de serviços
+1. **Título (og:title / twitter:title)** — manter "Nexum Tecnologia | Tecnologia para saúde e negócios" (usuário não pediu alteração).
+2. **Descrição (og:description / twitter:description / meta description)** — atualizar para a versão fornecida pelo usuário:
+   > 🚀 Tecnologia que transforma gestão em resultados · 🧠 Sistemas • Dados • IA • Automação
+3. **og:image / twitter:image** — substituir a URL antiga (`social-1762007678906-logoNexumTec.png`) por uma nova imagem de card social que será gerada.
 
-**Globais**
-- `Header.tsx` — menu mobile (já existe); revisar altura, espaçamento dos itens, área de toque
-- `WhatsAppButton.tsx` e `AIChatbot.tsx` — posição não sobrepor CTAs/footer no mobile
-- `ScrollToTop.tsx` — posição
+## Nova imagem de card social
 
-## Ajustes que serão aplicados
-1. **Tipografia fluida**: títulos serif com `clamp()` ou escala `text-3xl sm:text-4xl md:text-5xl lg:text-6xl` consistente. Reduzir `serif-display` em mobile.
-2. **Espaçamento de seções**: `py-16 sm:py-20 md:py-24 lg:py-32` (hoje muitas seções usam `py-24 md:py-32` fixo, ficando apertado/excessivo no mobile).
-3. **Container**: `px-5 sm:px-6 lg:px-8` padronizado.
-4. **Grids**: garantir `grid-cols-1 sm:grid-cols-2 lg:grid-cols-3` onde fizer sentido; revisar cards de Projects/Services/Cases para não estourar largura.
-5. **Carrossel de Projetos**: ajustar `basis` por breakpoint, mover setas para dentro/baixo em mobile, garantir swipe touch.
-6. **Header mobile**: revisar transição do menu, fechar ao navegar (já faz), aumentar área de toque dos itens.
-7. **Botões flutuantes**: WhatsApp + Chatbot + ScrollToTop não podem se sobrepor. Reposicionar em mobile (empilhar verticalmente, `bottom` ajustado).
-8. **Imagens**: garantir `max-w-full h-auto` e `loading="lazy"`; checar `flavio-professional-styled.png` no About.
-9. **Tabelas/timeline**: Timeline vertical em mobile com marcadores menores.
-10. **Formulário de Contato**: inputs `w-full`, labels acima, botão full-width em mobile.
-11. **3D background do Hero**: confirmar que `dotted-surface` não trava em mobile (reduzir partículas ou desativar em `<md`).
-12. **Overflow**: garantir `overflow-x-hidden` (já está em `body`) e checar elementos com `min-width` causando scroll horizontal.
+- **Formato:** 1200×630 px (proporção 1.91:1 — padrão Open Graph/WhatsApp)
+- **Conteúdo visual:**
+  - Fundo escuro elegante com gradiente azul → teal alinhado à identidade Clinical Calm (#0f172a → #3b82f6 → #5cbdb9)
+  - Logo da Nexum Tecnologia em destaque à esquerda
+  - Título "Nexum Tecnologia" em serifa (Cormorant Garamond) à direita
+  - Subtítulo: "Tecnologia humanizada para negócios e saúde"
+  - Tagline inferior: "Sistemas • Dados • IA • Automação"
+  - Pequeno acento gráfico (linha/hairline) reforçando a marca
+- **Geração:** ferramenta `imagegen` em qualidade `premium` (legibilidade de texto)
+- **Hospedagem:** salva em `src/assets/og-nexum-social.jpg` e publicada via `lovable-assets` para obter URL CDN absoluta utilizável em metatags
 
-## Verificação
-Testar via `browser--view_preview` em 3 viewports: 375×812 (mobile), 768×1024 (tablet), 1366×768 (desktop) — em `/`, `/sobre`, `/negocios`, `/saude`.
+## Aviso importante ao usuário
+
+O WhatsApp (e outras plataformas) faz **cache agressivo** dos cards. Mesmo após a publicação:
+- O card antigo pode continuar aparecendo por horas/dias.
+- Para forçar atualização imediata: usar o **Facebook Sharing Debugger** (https://developers.facebook.com/tools/debug/) colando a URL e clicando em "Scrape Again". O WhatsApp herda esse cache em muitos casos.
+- Em alguns chats do WhatsApp, basta apagar mensagens antigas com o link e reenviar.
 
 ## Fora do escopo
-- Nenhuma mudança de conteúdo, copy, cores, fontes ou funcionalidade.
-- Sem novos componentes; apenas ajustes de classes Tailwind e, se necessário, pequenos tweaks em `index.css`.
-
-## Arquivos previstos para edição
-`Hero.tsx`, `Verticals.tsx`, `ImpactMetrics.tsx`, `Services.tsx`, `Projects.tsx`, `AboutSummary.tsx`, `CallToAction.tsx`, `Contact.tsx`, `Footer.tsx`, `Header.tsx`, `About.tsx`, `Timeline.tsx`, `Skills.tsx`, `Negocios.tsx`, `Saude.tsx`, `Sobre.tsx`, `WhatsAppButton.tsx`, `AIChatbot.tsx`, `ScrollToTop.tsx`, `ui/dotted-surface.tsx` (condicional), `index.css` (ajustes finos).
+- Sem mudanças de copy/conteúdo nas páginas do site.
+- Sem mudanças nas tags por rota (Helmet em `/sobre`, `/negocios`, `/saude`) — mantidas como estão.
+- Sem alteração no favicon.
