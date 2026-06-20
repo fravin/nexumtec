@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Linkedin, Github, Download } from "lucide-react";
+import nexumSymbol from "@/assets/nexum-symbol.png.asset.json";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -49,9 +50,15 @@ const Header = () => {
         {/* Logo */}
         <button
           onClick={() => go("/")}
-          className="nav-inline flex items-center gap-2 font-serif text-xl sm:text-2xl tracking-wide text-foreground"
+          className="nav-inline flex items-center gap-2.5 font-serif text-xl sm:text-2xl tracking-wide text-foreground"
           aria-label="Nexum Tecnologia"
         >
+          <img
+            src={nexumSymbol.url}
+            alt=""
+            aria-hidden="true"
+            className="h-8 w-8 sm:h-9 sm:w-9 object-contain"
+          />
           <span className="font-semibold">Nexum</span>
           <em className="italic font-medium text-primary">Tecnologia</em>
         </button>
