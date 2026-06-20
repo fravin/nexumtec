@@ -1,4 +1,5 @@
 import { Linkedin, Github, Mail } from "lucide-react";
+import nexumLogoFull from "@/assets/nexum-logo-full.png.asset.json";
 
 const Footer = () => {
   const year = new Date().getFullYear();
@@ -14,9 +15,12 @@ const Footer = () => {
     <footer className="relative z-10 border-t border-border bg-ink-2">
       <div className="container mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Logo */}
-        <a href="/" className="nav-inline font-serif text-lg text-foreground tracking-wide">
-          <span className="font-semibold">Nexum</span>{" "}
-          <em className="italic font-medium text-primary">Tecnologia</em>
+        <a href="/" className="nav-inline inline-flex items-center" aria-label="Nexum Tecnologia">
+          <img
+            src={nexumLogoFull.url}
+            alt="Nexum Tecnologia"
+            className="h-10 md:h-12 w-auto object-contain"
+          />
         </a>
 
         {/* Links */}

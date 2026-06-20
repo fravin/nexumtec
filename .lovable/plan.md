@@ -1,36 +1,36 @@
 ## Objetivo
-Atualizar o card de pré-visualização exibido quando o link `nexumtec.com.br` é compartilhado (WhatsApp, LinkedIn, Slack, Facebook), substituindo o logo/imagem antigos por uma nova imagem social e ajustando título e descrição.
+Substituir o logo antigo da Nexum Tecnologia pelo novo lockup enviado (hexágono + "NEXUM TECNOLOGIA") em todos os pontos do site.
 
-## O que será alterado
+## Assets a criar (via Lovable Assets / CDN)
 
-**Arquivo:** `index.html`
+1. **Lockup completo** (imagem enviada, fundo branco) → `src/assets/nexum-logo-full.png.asset.json`
+   - Usada no Footer e no JSON-LD (`Organization.logo`).
+2. **Símbolo isolado** (recorte só do hexágono, fundo transparente) → `src/assets/nexum-symbol.png.asset.json`
+   - Gerado a partir do logo enviado via `imagegen--edit_image` (crop + remoção de fundo).
+   - Usado no Header, favicon e apple-touch-icon.
+3. **Favicon 512×512** PNG quadrado com o símbolo → `public/favicon.png` (sobrescreve referência atual; remover `public/favicon.ico` se existir para não conflitar).
+4. **Novo card social 1200×630** com o lockup oficial em fundo gradiente Clinical Calm → substitui `src/assets/og-nexum-social.jpg.asset.json` (deleta o antigo via `assets--delete_asset` e gera o novo).
 
-1. **Título (og:title / twitter:title)** — manter "Nexum Tecnologia | Tecnologia para saúde e negócios" (usuário não pediu alteração).
-2. **Descrição (og:description / twitter:description / meta description)** — atualizar para a versão fornecida pelo usuário:
-   > 🚀 Tecnologia que transforma gestão em resultados · 🧠 Sistemas • Dados • IA • Automação
-3. **og:image / twitter:image** — substituir a URL antiga (`social-1762007678906-logoNexumTec.png`) por uma nova imagem de card social que será gerada.
+## Arquivos a editar
 
-## Nova imagem de card social
+- **`src/components/Header.tsx`** — adiciona o `<img>` do símbolo (h-8 sm:h-9) ao lado esquerdo do texto serif "Nexum Tecnologia". Mantém comportamento atual de navegação e responsividade.
+- **`src/components/Footer.tsx`** — substitui o texto serif do logo pelo lockup completo (`<img>` com `h-10 md:h-12`, alt "Nexum Tecnologia"). Mantém links e redes sociais.
+- **`index.html`**:
+  - `<link rel="icon">` e `<link rel="apple-touch-icon">` → apontar para o novo favicon.
+  - JSON-LD `Organization.logo` → URL CDN do lockup completo.
+  - `og:image` / `twitter:image` (+ width/height) → novo card social.
+- **Verificação por varredura** (`rg`) para garantir que nenhuma outra referência ao logo antigo `logoNexumTec.png` ou ao Storage Google permaneça.
 
-- **Formato:** 1200×630 px (proporção 1.91:1 — padrão Open Graph/WhatsApp)
-- **Conteúdo visual:**
-  - Fundo escuro elegante com gradiente azul → teal alinhado à identidade Clinical Calm (#0f172a → #3b82f6 → #5cbdb9)
-  - Logo da Nexum Tecnologia em destaque à esquerda
-  - Título "Nexum Tecnologia" em serifa (Cormorant Garamond) à direita
-  - Subtítulo: "Tecnologia humanizada para negócios e saúde"
-  - Tagline inferior: "Sistemas • Dados • IA • Automação"
-  - Pequeno acento gráfico (linha/hairline) reforçando a marca
-- **Geração:** ferramenta `imagegen` em qualidade `premium` (legibilidade de texto)
-- **Hospedagem:** salva em `src/assets/og-nexum-social.jpg` e publicada via `lovable-assets` para obter URL CDN absoluta utilizável em metatags
+## Detalhes técnicos
 
-## Aviso importante ao usuário
-
-O WhatsApp (e outras plataformas) faz **cache agressivo** dos cards. Mesmo após a publicação:
-- O card antigo pode continuar aparecendo por horas/dias.
-- Para forçar atualização imediata: usar o **Facebook Sharing Debugger** (https://developers.facebook.com/tools/debug/) colando a URL e clicando em "Scrape Again". O WhatsApp herda esse cache em muitos casos.
-- Em alguns chats do WhatsApp, basta apagar mensagens antigas com o link e reenviar.
+- Geração do símbolo isolado: `imagegen--edit_image` sobre a imagem enviada com prompt "isolate only the hexagonal N symbol on the left, transparent background, square crop", `transparent_background: true`, salvo como PNG.
+- Geração do card social: `imagegen--generate_image` premium, 16:9, com o novo lockup centralizado sobre gradiente `#0f172a → #3b82f6 → #5cbdb9`, tagline "Sistemas • Dados • IA • Automação".
+- Card antigo (`og-nexum-social.jpg.asset.json`) será removido com `assets--delete_asset` antes de criar o novo, para manter o repositório limpo.
 
 ## Fora do escopo
-- Sem mudanças de copy/conteúdo nas páginas do site.
-- Sem mudanças nas tags por rota (Helmet em `/sobre`, `/negocios`, `/saude`) — mantidas como estão.
-- Sem alteração no favicon.
+- Sem mudanças em conteúdo/copy das páginas.
+- Sem alterações na paleta global ou tipografia.
+- Sem novas rotas ou componentes.
+
+## Aviso
+WhatsApp/LinkedIn fazem cache agressivo do card social — a nova imagem pode levar horas/dias para aparecer; pode ser forçada via Facebook Sharing Debugger.
