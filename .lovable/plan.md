@@ -1,36 +1,62 @@
 ## Objetivo
-Substituir o logo antigo da Nexum Tecnologia pelo novo lockup enviado (hexágono + "NEXUM TECNOLOGIA") em todos os pontos do site.
+Ajustar o texto do CASE 04 na seção de projetos para refletir a integração com a NFSe Nacional e a simplificação da emissão de notas fiscais.
 
-## Assets a criar (via Lovable Assets / CDN)
+## Arquivo a alterar
+- `src/components/Projects.tsx` — objeto do CASE 04.
 
-1. **Lockup completo** (imagem enviada, fundo branco) → `src/assets/nexum-logo-full.png.asset.json`
-   - Usada no Footer e no JSON-LD (`Organization.logo`).
-2. **Símbolo isolado** (recorte só do hexágono, fundo transparente) → `src/assets/nexum-symbol.png.asset.json`
-   - Gerado a partir do logo enviado via `imagegen--edit_image` (crop + remoção de fundo).
-   - Usado no Header, favicon e apple-touch-icon.
-3. **Favicon 512×512** PNG quadrado com o símbolo → `public/favicon.png` (sobrescreve referência atual; remover `public/favicon.ico` se existir para não conflitar).
-4. **Novo card social 1200×630** com o lockup oficial em fundo gradiente Clinical Calm → substitui `src/assets/og-nexum-social.jpg.asset.json` (deleta o antigo via `assets--delete_asset` e gera o novo).
+## Alterações exatas
 
-## Arquivos a editar
+### Título
+De:
+```
+Emissor de NFSe integrado à API da prefeitura
+```
+Para:
+```
+Emissor de NFSe integrado à Nota Fiscal de Serviço Nacional
+```
 
-- **`src/components/Header.tsx`** — adiciona o `<img>` do símbolo (h-8 sm:h-9) ao lado esquerdo do texto serif "Nexum Tecnologia". Mantém comportamento atual de navegação e responsividade.
-- **`src/components/Footer.tsx`** — substitui o texto serif do logo pelo lockup completo (`<img>` com `h-10 md:h-12`, alt "Nexum Tecnologia"). Mantém links e redes sociais.
-- **`index.html`**:
-  - `<link rel="icon">` e `<link rel="apple-touch-icon">` → apontar para o novo favicon.
-  - JSON-LD `Organization.logo` → URL CDN do lockup completo.
-  - `og:image` / `twitter:image` (+ width/height) → novo card social.
-- **Verificação por varredura** (`rg`) para garantir que nenhuma outra referência ao logo antigo `logoNexumTec.png` ou ao Storage Google permaneça.
+### Descrição
+De:
+```
+Aplicação conectada à API oficial de NFSe que simplifica a emissão de notas fiscais de serviço — fim do passo a passo manual no portal, menos retrabalho e menos erro.
+```
+Para redação que deixe claro:
+- A conexão é com a NFSe (Nota Fiscal de Serviço eletrônica) nacional.
+- O serviço está centralizado para emissão de notas.
+- A ferramenta simplifica o trabalho de emissão de notas fiscais.
 
-## Detalhes técnicos
+Sugestão:
+```
+Aplicação conectada à NFSe (Nota Fiscal de Serviço eletrônica) nacional para centralizar e simplificar a emissão de notas fiscais de serviço — menos passos manuais, menos retrabalho e menos erro.
+```
 
-- Geração do símbolo isolado: `imagegen--edit_image` sobre a imagem enviada com prompt "isolate only the hexagonal N symbol on the left, transparent background, square crop", `transparent_background: true`, salvo como PNG.
-- Geração do card social: `imagegen--generate_image` premium, 16:9, com o novo lockup centralizado sobre gradiente `#0f172a → #3b82f6 → #5cbdb9`, tagline "Sistemas • Dados • IA • Automação".
-- Card antigo (`og-nexum-social.jpg.asset.json`) será removido com `assets--delete_asset` antes de criar o novo, para manter o repositório limpo.
+### KPIs
+De:
+```
+{ value: "1 clique", label: "Emissão de NFSe" }
+{ value: "API oficial", label: "Integração direta" }
+```
+Para:
+```
+{ value: "Com poucos cliques", label: "Emissão de NFSe" }
+{ value: "NFSe Nacional", label: "Integração direta" }
+```
+
+Manter:
+```
+{ value: "↓Retrabalho", label: "Emissão e cancelamento" }
+```
+
+### Stack
+Manter inalterada:
+```
+stack: ["React", "TypeScript", "API NFSe", "Node.js"]
+```
 
 ## Fora do escopo
-- Sem mudanças em conteúdo/copy das páginas.
-- Sem alterações na paleta global ou tipografia.
-- Sem novas rotas ou componentes.
+- Sem mudanças visuais, layout, cores, imagens ou outros cases.
+- Sem alteração de página, rota ou componente novo.
 
-## Aviso
-WhatsApp/LinkedIn fazem cache agressivo do card social — a nova imagem pode levar horas/dias para aparecer; pode ser forçada via Facebook Sharing Debugger.
+## Verificação
+- Revisar o card no preview para confirmar quebra de linha e legibilidade dos KPIs atualizados.
