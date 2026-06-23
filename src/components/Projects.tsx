@@ -50,13 +50,13 @@ const Projects = () => {
       num: "CASE 04",
       title: "Emissor de NFSe integrado à Nota Fiscal de Serviço Nacional",
       description:
-        "Aplicação conectada à NFSe (Nota Fiscal de Serviço eletrônica) nacional para centralizar e simplificar a emissão de notas fiscais de serviço — menos passos manuais, menos retrabalho e menos erro.",
+        "Aplicação integrada à NFSe Nacional — o padrão unificado que centraliza a emissão de notas fiscais de serviço em um único ambiente. A conexão direta com esse serviço elimina o passo a passo manual no portal, reduz retrabalho e simplifica a emissão e o cancelamento de notas.",
       kpis: [
         { value: "Com poucos cliques", label: "Emissão de NFSe" },
         { value: "↓Retrabalho", label: "Emissão e cancelamento" },
         { value: "NFSe Nacional", label: "Integração direta" },
       ],
-      stack: ["React", "TypeScript", "API NFSe", "Node.js"],
+      stack: ["React", "TypeScript", "NFSe Nacional", "Node.js"],
     },
     {
       num: "CASE 05",

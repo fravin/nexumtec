@@ -1,62 +1,45 @@
 ## Objetivo
-Ajustar o texto do CASE 04 na seção de projetos para refletir a integração com a NFSe Nacional e a simplificação da emissão de notas fiscais.
+Refinar o CASE 04 em `src/components/Projects.tsx` para eliminar qualquer leitura de "API não oficial" e explicar com clareza como funciona a conexão com a emissão centralizada de notas fiscais via NFSe Nacional.
 
 ## Arquivo a alterar
-- `src/components/Projects.tsx` — objeto do CASE 04.
+- `src/components/Projects.tsx` — apenas o objeto do CASE 04.
 
-## Alterações exatas
-
-### Título
-De:
-```
-Emissor de NFSe integrado à API da prefeitura
-```
-Para:
-```
-Emissor de NFSe integrado à Nota Fiscal de Serviço Nacional
-```
+## Alterações
 
 ### Descrição
 De:
 ```
-Aplicação conectada à API oficial de NFSe que simplifica a emissão de notas fiscais de serviço — fim do passo a passo manual no portal, menos retrabalho e menos erro.
-```
-Para redação que deixe claro:
-- A conexão é com a NFSe (Nota Fiscal de Serviço eletrônica) nacional.
-- O serviço está centralizado para emissão de notas.
-- A ferramenta simplifica o trabalho de emissão de notas fiscais.
-
-Sugestão:
-```
 Aplicação conectada à NFSe (Nota Fiscal de Serviço eletrônica) nacional para centralizar e simplificar a emissão de notas fiscais de serviço — menos passos manuais, menos retrabalho e menos erro.
-```
-
-### KPIs
-De:
-```
-{ value: "1 clique", label: "Emissão de NFSe" }
-{ value: "API oficial", label: "Integração direta" }
 ```
 Para:
 ```
-{ value: "Com poucos cliques", label: "Emissão de NFSe" }
-{ value: "NFSe Nacional", label: "Integração direta" }
+Aplicação integrada à NFSe Nacional — o padrão unificado que centraliza a emissão de notas fiscais de serviço em um único ambiente. A conexão direta com esse serviço elimina o passo a passo manual no portal, reduz retrabalho e simplifica a emissão e o cancelamento de notas.
 ```
 
-Manter:
-```
-{ value: "↓Retrabalho", label: "Emissão e cancelamento" }
-```
+Isso explicita:
+- O que é a NFSe Nacional (padrão unificado de emissão centralizada).
+- Como a conexão funciona (integração direta com o serviço nacional, sem operar manualmente no portal).
+- O ganho prático (menos passos, menos retrabalho, emissão e cancelamento simplificados).
 
 ### Stack
-Manter inalterada:
+Trocar o chip genérico `"API NFSe"` por `"NFSe Nacional"` para reforçar a integração oficial e remover qualquer ambiguidade de "API não oficial".
+
+De:
 ```
 stack: ["React", "TypeScript", "API NFSe", "Node.js"]
 ```
+Para:
+```
+stack: ["React", "TypeScript", "NFSe Nacional", "Node.js"]
+```
+
+### Mantidos
+- Título: "Emissor de NFSe integrado à Nota Fiscal de Serviço Nacional".
+- KPIs: "Com poucos cliques" / "↓Retrabalho" / "NFSe Nacional".
 
 ## Fora do escopo
 - Sem mudanças visuais, layout, cores, imagens ou outros cases.
-- Sem alteração de página, rota ou componente novo.
+- Sem nova rota, página ou componente.
 
 ## Verificação
-- Revisar o card no preview para confirmar quebra de linha e legibilidade dos KPIs atualizados.
+- Conferir no preview o card do CASE 04: descrição legível, chips alinhados e nenhum texto remanescente sugerindo "API oficial" ou "API não oficial".
