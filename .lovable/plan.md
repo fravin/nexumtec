@@ -1,45 +1,53 @@
 ## Objetivo
-Refinar o CASE 04 em `src/components/Projects.tsx` para eliminar qualquer leitura de "API não oficial" e explicar com clareza como funciona a conexão com a emissão centralizada de notas fiscais via NFSe Nacional.
+Atualizar a `description` e `og:description` globais em `index.html` para destacar NFSe Nacional + automação, mantendo coerência com o CASE 04 e com o restante do portfólio. Também alinhar o nó `Service` do JSON-LD para citar a integração NFSe Nacional como serviço ofertado.
 
 ## Arquivo a alterar
-- `src/components/Projects.tsx` — apenas o objeto do CASE 04.
+- `index.html` — apenas tags de head e JSON-LD `Service`. Nenhum componente React é tocado.
 
-## Alterações
+## Mudanças
 
-### Descrição
+### 1. `<meta name="description">` e `<meta property="og:description">` / `twitter:description`
 De:
 ```
-Aplicação conectada à NFSe (Nota Fiscal de Serviço eletrônica) nacional para centralizar e simplificar a emissão de notas fiscais de serviço — menos passos manuais, menos retrabalho e menos erro.
+🚀 Tecnologia que transforma gestão em resultados · 🧠 Sistemas • Dados • IA • Automação para empresas e clínicas.
 ```
 Para:
 ```
-Aplicação integrada à NFSe Nacional — o padrão unificado que centraliza a emissão de notas fiscais de serviço em um único ambiente. A conexão direta com esse serviço elimina o passo a passo manual no portal, reduz retrabalho e simplifica a emissão e o cancelamento de notas.
+Tecnologia que simplifica gestão: emissão de NFSe integrada à Nota Fiscal de Serviço Nacional, automação, IA, BI e sistemas sob medida para negócios e clínicas.
+```
+- `<meta name="description">` recebe a nova frase (≤160 chars).
+- `og:description` e `twitter:description` espelham o mesmo texto, para o card de compartilhamento ficar consistente.
+
+### 2. JSON-LD — nó `Service`
+Acrescentar "Integração com NFSe Nacional" ao array `serviceType`, sem alterar os demais itens:
+```
+"serviceType": [
+  "Automação empresarial",
+  "Business Intelligence",
+  "Inteligência Artificial aplicada",
+  "Desenvolvimento de sistemas",
+  "Integração com NFSe Nacional",
+  "Gestão hospitalar e de clínicas"
+]
+```
+E ajustar o campo `name` desse nó para incluir o serviço:
+```
+"name": "Automação inteligente, IA aplicada, BI, Desenvolvimento de Sistemas e Integração NFSe Nacional"
 ```
 
-Isso explicita:
-- O que é a NFSe Nacional (padrão unificado de emissão centralizada).
-- Como a conexão funciona (integração direta com o serviço nacional, sem operar manualmente no portal).
-- O ganho prático (menos passos, menos retrabalho, emissão e cancelamento simplificados).
+### 3. CASE 04 (referência, sem mudança de código)
+O texto do card em `src/components/Projects.tsx` já reflete a mensagem nova (NFSe Nacional, conexão direta, menos retrabalho). Apenas confirmamos que o vocabulário do `og:description` e do JSON-LD passa a usar os mesmos termos: **NFSe Nacional**, **emissão simplificada**, **automação**.
 
-### Stack
-Trocar o chip genérico `"API NFSe"` por `"NFSe Nacional"` para reforçar a integração oficial e remover qualquer ambiguidade de "API não oficial".
-
-De:
-```
-stack: ["React", "TypeScript", "API NFSe", "Node.js"]
-```
-Para:
-```
-stack: ["React", "TypeScript", "NFSe Nacional", "Node.js"]
-```
-
-### Mantidos
-- Título: "Emissor de NFSe integrado à Nota Fiscal de Serviço Nacional".
-- KPIs: "Com poucos cliques" / "↓Retrabalho" / "NFSe Nacional".
-
-## Fora do escopo
-- Sem mudanças visuais, layout, cores, imagens ou outros cases.
-- Sem nova rota, página ou componente.
+## Mantidos
+- `<title>`, `og:title`, `twitter:title` continuam institucionais (Nexum Tecnologia | Tecnologia para saúde e negócios) — o site não é uma landing de CASE 04.
+- `og:image`, canonical, Organization e WebSite no JSON-LD permanecem inalterados.
+- Nenhuma rota nova, nenhum Helmet adicional.
 
 ## Verificação
-- Conferir no preview o card do CASE 04: descrição legível, chips alinhados e nenhum texto remanescente sugerindo "API oficial" ou "API não oficial".
+- Conferir `index.html` renderizado: `description`, `og:description` e `twitter:description` com o novo texto e ≤160 chars.
+- Validar JSON-LD em https://search.google.com/test/rich-results.
+- Avisar o usuário: LinkedIn, WhatsApp, Slack e Facebook cacheiam o card antigo; é preciso forçar refresh nos debuggers de preview (LinkedIn Post Inspector, Facebook Sharing Debugger) para o card novo aparecer imediatamente.
+
+## Fora do escopo
+- Não criar rota dedicada ao CASE 04.
+- Não alterar `og:image`, layout, componentes ou outros cases.
