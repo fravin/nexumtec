@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import Seo from "@/components/Seo";
 import Header from "@/components/Header";
 import About from "@/components/About";
 import Timeline from "@/components/Timeline";
