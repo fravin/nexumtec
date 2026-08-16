@@ -1,4 +1,3 @@
-import { Helmet } from "react-helmet-async";
 import Seo from "@/components/Seo";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
@@ -35,9 +34,11 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
-      <Helmet>
-        <link rel="canonical" href="https://www.nexumtec.com.br/" />
-      </Helmet>
+      <Seo
+        title="Nexum Tecnologia | Automação, IA e BI para clínicas e empresas"
+        description="Automação de processos, IA aplicada, Power BI e integração com a NFSe Nacional. Tecnologia sob medida para clínicas e empresas no Rio de Janeiro."
+        path="/"
+      />
       <Header />
       <main>
         <Hero />
