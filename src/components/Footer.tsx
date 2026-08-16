@@ -1,41 +1,51 @@
 import { Linkedin, Github, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 import nexumLogoFull from "@/assets/nexum-logo-full.png.asset.json";
 
 const Footer = () => {
   const year = new Date().getFullYear();
 
   const links = [
-    { label: "Serviços", href: "#servicos" },
-    { label: "Projetos", href: "#projetos" },
+    { label: "Início", href: "/" },
+    { label: "Saúde", href: "/saude" },
+    { label: "Negócios", href: "/negocios" },
     { label: "Sobre", href: "/sobre" },
-    { label: "Contato", href: "#contato" },
   ];
 
   return (
     <footer className="relative z-10 border-t border-border bg-ink-2">
       <div className="container mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Logo */}
-        <a href="/" className="nav-inline inline-flex items-center" aria-label="Nexum Tecnologia">
+        <Link to="/" className="nav-inline inline-flex items-center" aria-label="Nexum Tecnologia">
           <img
             src={nexumLogoFull.url}
             alt="Nexum Tecnologia"
             className="h-10 md:h-12 w-auto object-contain"
           />
-        </a>
+        </Link>
 
         {/* Links */}
         <ul className="flex flex-wrap items-center justify-center gap-x-7 gap-y-2">
           {links.map((l) => (
             <li key={l.label}>
-              <a
-                href={l.href}
+              <Link
+                to={l.href}
                 className="nav-inline font-mono text-[0.7rem] tracking-[0.18em] uppercase text-muted-foreground hover:text-primary transition-colors"
               >
                 {l.label}
-              </a>
+              </Link>
             </li>
           ))}
+          <li>
+            <a
+              href="/#contato"
+              className="nav-inline font-mono text-[0.7rem] tracking-[0.18em] uppercase text-muted-foreground hover:text-primary transition-colors"
+            >
+              Contato
+            </a>
+          </li>
         </ul>
+
 
         {/* Social */}
         <div className="flex items-center gap-2">
