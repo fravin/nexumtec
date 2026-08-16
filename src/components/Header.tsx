@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Linkedin, Github, Download } from "lucide-react";
 import nexumSymbol from "@/assets/nexum-symbol.png.asset.json";
@@ -19,7 +19,8 @@ const Header = () => {
   const navItems = [
     { label: "Serviços", href: "#servicos" },
     { label: "Projetos", href: "#projetos" },
-    { label: "Diagnóstico", href: "#contato" },
+    { label: "Saúde", href: "/saude" },
+    { label: "Negócios", href: "/negocios" },
     { label: "Sobre", href: "/sobre" },
     { label: "Contato", href: "#contato" },
   ];
@@ -38,6 +39,9 @@ const Header = () => {
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const navLinkClass =
+    "nav-inline font-mono text-[0.72rem] tracking-[0.18em] uppercase text-muted-foreground hover:text-primary transition-colors";
+
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
@@ -48,8 +52,9 @@ const Header = () => {
     >
       <nav className="container mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
         {/* Logo */}
-        <button
-          onClick={() => go("/")}
+        <Link
+          to="/"
+          onClick={() => setIsMobileMenuOpen(false)}
           className="nav-inline flex items-center gap-2.5 font-serif text-xl sm:text-2xl tracking-wide text-foreground"
           aria-label="Nexum Tecnologia"
         >
@@ -61,21 +66,29 @@ const Header = () => {
           />
           <span className="font-semibold">Nexum</span>
           <em className="italic font-medium text-primary">Tecnologia</em>
-        </button>
+        </Link>
 
         {/* Desktop nav */}
-        <ul className="hidden lg:flex items-center gap-9">
+        <ul className="hidden lg:flex items-center gap-7">
           {navItems.map((item) => (
             <li key={item.label}>
-              <button
-                onClick={() => go(item.href)}
-                className="nav-inline font-mono text-[0.72rem] tracking-[0.18em] uppercase text-muted-foreground hover:text-primary transition-colors"
-              >
-                {item.label}
-              </button>
+              {item.href.startsWith("#") ? (
+                <button onClick={() => go(item.href)} className={navLinkClass}>
+                  {item.label}
+                </button>
+              ) : (
+                <Link
+                  to={item.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={navLinkClass}
+                >
+                  {item.label}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
+
 
         {/* Right cluster */}
         <div className="hidden lg:flex items-center gap-3">
