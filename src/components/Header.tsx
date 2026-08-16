@@ -135,15 +135,26 @@ const Header = () => {
       {isMobileMenuOpen && (
         <div className="lg:hidden border-t border-border bg-background/95 backdrop-blur-xl">
           <div className="container mx-auto px-5 py-5 flex flex-col gap-1">
-            {navItems.map((item) => (
-              <button
-                key={item.label}
-                onClick={() => go(item.href)}
-                className="text-left font-mono text-xs tracking-[0.18em] uppercase text-muted-foreground hover:text-primary py-3 px-2"
-              >
-                {item.label}
-              </button>
-            ))}
+            {navItems.map((item) =>
+              item.href.startsWith("#") ? (
+                <button
+                  key={item.label}
+                  onClick={() => go(item.href)}
+                  className="text-left font-mono text-xs tracking-[0.18em] uppercase text-muted-foreground hover:text-primary py-3 px-2"
+                >
+                  {item.label}
+                </button>
+              ) : (
+                <Link
+                  key={item.label}
+                  to={item.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-left font-mono text-xs tracking-[0.18em] uppercase text-muted-foreground hover:text-primary py-3 px-2"
+                >
+                  {item.label}
+                </Link>
+              )
+            )}
             <div className="flex flex-wrap gap-2 pt-3 border-t border-border mt-3">
               <a href="/cv-flavio-admilson.pdf" download="CV-Flavio-Admilson.pdf">
                 <Button variant="ghost" size="sm">
