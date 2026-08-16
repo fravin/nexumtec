@@ -53,6 +53,15 @@ const Sobre = () => {
               </h2>
               <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
                 Conheça os serviços que a Nexum oferece ou fale com a Nexum diretamente.
+                Se você atua em clínicas ou hospitais, veja{" "}
+                <Link to="/saude" className="text-primary underline underline-offset-4">
+                  tecnologia para a área da saúde
+                </Link>
+                . Se o desafio é operação e processos, veja{" "}
+                <Link to="/negocios" className="text-primary underline underline-offset-4">
+                  automação e BI para empresas
+                </Link>
+                .
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/#servicos">
