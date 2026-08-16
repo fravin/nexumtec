@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import Seo from "@/components/Seo";
 import Header from "@/components/Header";
 import About from "@/components/About";
 import Timeline from "@/components/Timeline";
@@ -19,26 +19,11 @@ const Sobre = () => {
 
   return (
     <div className="min-h-screen">
-      <Helmet>
-        <title>Sobre Flávio de Souza | Nexum Tecnologia</title>
-        <meta
-          name="description"
-          content="A jornada do fundador da Nexum Tecnologia: 15+ anos em saúde, faturamento hospitalar, ciência de dados e IA aplicada — da feira livre à análise de dados."
-        />
-        <link rel="canonical" href="https://www.nexumtec.com.br/sobre" />
-        <meta property="og:title" content="Sobre Flávio de Souza | Nexum Tecnologia" />
-        <meta
-          property="og:description"
-          content="Da feira livre à análise de dados: a história por trás da Nexum Tecnologia e do fundador Flávio de Souza."
-        />
-        <meta property="og:url" content="https://www.nexumtec.com.br/sobre" />
-        <meta property="og:type" content="profile" />
-        <meta name="twitter:title" content="Sobre Flávio de Souza | Nexum Tecnologia" />
-        <meta
-          name="twitter:description"
-          content="Da feira livre à análise de dados: a história por trás da Nexum Tecnologia."
-        />
-      </Helmet>
+      <Seo
+        title="Sobre a Nexum | Flávio de Souza, dados e tecnologia na saúde"
+        description="Da feira livre à ciência de dados: mais de 13 anos resolvendo gargalos de faturamento, glosas e processos em clínicas e empresas. Conheça a história."
+        path="/sobre"
+      />
 
       <Header />
 
@@ -68,6 +53,15 @@ const Sobre = () => {
               </h2>
               <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
                 Conheça os serviços que a Nexum oferece ou fale com a Nexum diretamente.
+                Se você atua em clínicas ou hospitais, veja{" "}
+                <Link to="/saude" className="text-primary underline underline-offset-4">
+                  tecnologia para a área da saúde
+                </Link>
+                . Se o desafio é operação e processos, veja{" "}
+                <Link to="/negocios" className="text-primary underline underline-offset-4">
+                  automação e BI para empresas
+                </Link>
+                .
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/#servicos">

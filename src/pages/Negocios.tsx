@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import {
   ArrowRight,
   MessageCircle,
@@ -16,6 +15,7 @@ import {
   GraduationCap,
   CheckCircle2,
 } from "lucide-react";
+import Seo from "@/components/Seo";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -210,23 +210,12 @@ const Negocios = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
-        <title>Automações e sistemas para empresas | Nexum Negócios</title>
-        <meta
-          name="description"
-          content="Automação de WhatsApp, e-mail, processos repetitivos, sistemas web sob medida, Power BI e IA aplicada — para empresas de qualquer nicho que querem operar com previsibilidade."
-        />
-        <link rel="canonical" href="https://www.nexumtec.com.br/negocios" />
-        <meta property="og:title" content="Automações e sistemas para empresas | Nexum Negócios" />
-        <meta
-          property="og:description"
-          content="WhatsApp, e-mail, RPA, sistemas sob medida e BI para negócios que querem parar de depender de planilha."
-        />
-        <meta property="og:url" content="https://www.nexumtec.com.br/negocios" />
-        <meta property="og:type" content="website" />
-        <script type="application/ld+json">{JSON.stringify(serviceJsonLd)}</script>
-        <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
-      </Helmet>
+      <Seo
+        title="Automação de Processos e BI para Empresas | Nexum Tecnologia"
+        description="Automatize tarefas repetitivas, integre a NFSe Nacional e acompanhe indicadores em Power BI. Consultoria e desenvolvimento sob medida para sua operação."
+        path="/negocios"
+        jsonLd={[serviceJsonLd, faqJsonLd]}
+      />
 
       <Header />
 

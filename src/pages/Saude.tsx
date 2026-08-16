@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import {
   ArrowRight,
   MessageCircle,
@@ -13,6 +12,7 @@ import {
   Users,
   CheckCircle2,
 } from "lucide-react";
+import Seo from "@/components/Seo";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -185,23 +185,12 @@ const Saude = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
-        <title>Tecnologia para clínicas e hospitais | Nexum Saúde</title>
-        <meta
-          name="description"
-          content="Soluções práticas para clínicas, consultórios e hospitais: faturamento, glosas, prontuário, agenda e indicadores. 15+ anos de saúde aplicados à tecnologia."
-        />
-        <link rel="canonical" href="https://www.nexumtec.com.br/saude" />
-        <meta property="og:title" content="Tecnologia para clínicas e hospitais | Nexum Saúde" />
-        <meta
-          property="og:description"
-          content="Faturamento, glosas, prontuário e indicadores — tecnologia humanizada para quem cuida."
-        />
-        <meta property="og:url" content="https://www.nexumtec.com.br/saude" />
-        <meta property="og:type" content="website" />
-        <script type="application/ld+json">{JSON.stringify(serviceJsonLd)}</script>
-        <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
-      </Helmet>
+      <Seo
+        title="Tecnologia para Clínicas | Gestão de Glosas, IA e BI — Nexum"
+        description="Sistemas de faturamento, gestão de glosas, automação de atendimento com IA e BI para clínicas e hospitais. Menos retrabalho e mais receita recuperada."
+        path="/saude"
+        jsonLd={[serviceJsonLd, faqJsonLd]}
+      />
 
       <Header />
 
