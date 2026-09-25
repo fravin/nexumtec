@@ -26,6 +26,13 @@ jobs:
       - name: Mostrar arquivos gerados
         run: ls -al dist/
 
+      # ATENCAO (25/09/2026): 'dangerous-clean-slate: true' foi REMOVIDO.
+      # Ele apagava todo o conteudo de server-dir antes de enviar, e como o
+      # server-dir e a raiz do public_html, cada publicacao destruia as pastas
+      # dos subdominios (ponto, estoque, financeiro, faturamento, fisiokim, vps).
+      # O site ponto.nexumtec.com.br caiu varias vezes por causa disso.
+      # A lista 'exclude' abaixo e a segunda camada de protecao: ela impede que
+      # essas pastas sejam removidas pela sincronizacao. NAO reative o clean slate.
       - name: Deploy FTP para Hostinger
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
@@ -35,10 +42,15 @@ jobs:
           password: ${{ secrets.FTP_PASS }}
           local-dir: dist/
           server-dir: /
-          dangerous-clean-slate: true
           dry-run: false
           log-level: verbose
-
-
-
-
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            ponto/**
+            estoque/**
+            financeiro/**
+            faturamento/**
+            fisiokim/**
+            vps/**
