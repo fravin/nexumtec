@@ -21,7 +21,7 @@ const Hero = () => {
     {
       icon: Workflow,
       title: "Gestão Simples + Produtividade",
-      desc: "Painéis e fluxos claros para decidir rápido — sem planilhas dispersas.",
+      desc: "Painéis e fluxos claros para decidir rápido — sem planilhas dispersas TESTANDO.",
     },
     {
       icon: Users,
@@ -39,8 +39,7 @@ const Hero = () => {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background:
-            "linear-gradient(180deg, hsl(210 33% 98%) 0%, hsl(210 38% 95%) 100%)",
+          background: "linear-gradient(180deg, hsl(210 33% 98%) 0%, hsl(210 38% 95%) 100%)",
         }}
       />
       <div className="absolute inset-0 hero-grid-bg pointer-events-none" />
@@ -50,8 +49,7 @@ const Hero = () => {
           width: "900px",
           height: "600px",
           borderRadius: "50%",
-          background:
-            "radial-gradient(ellipse, hsl(217 91% 60% / 0.10) 0%, transparent 65%)",
+          background: "radial-gradient(ellipse, hsl(217 91% 60% / 0.10) 0%, transparent 65%)",
           top: "42%",
           left: "50%",
           transform: "translate(-50%, -50%)",
@@ -74,8 +72,8 @@ const Hero = () => {
 
         <AnimatedSection animation="slideUp" delay={200}>
           <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-12">
-            Automação, IA aplicada e gestão eficiente para reduzir falhas, otimizar
-            processos e melhorar a experiência dos pacientes e clientes.
+            Automação, IA aplicada e gestão eficiente para reduzir falhas, otimizar processos e melhorar a experiência
+            dos pacientes e clientes.
           </p>
         </AnimatedSection>
 
@@ -115,12 +113,8 @@ const Hero = () => {
                   <div className="w-11 h-11 flex items-center justify-center border border-primary/25 bg-primary/[0.06] text-primary">
                     <Icon className="h-5 w-5" />
                   </div>
-                  <h2 className="text-sm font-semibold text-foreground leading-snug tracking-tight">
-                    {p.title}
-                  </h2>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    {p.desc}
-                  </p>
+                  <h2 className="text-sm font-semibold text-foreground leading-snug tracking-tight">{p.title}</h2>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{p.desc}</p>
                 </div>
               );
             })}
