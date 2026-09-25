@@ -21,7 +21,7 @@ const Hero = () => {
     {
       icon: Workflow,
       title: "Gestão Simples + Produtividade",
-      desc: "Painéis e fluxos claros para decidir rápido — sem planilhas dispersas TESTANDO.",
+      desc: "Painéis e fluxos claros para decidir rápido — sem planilhas dispersas.",
     },
     {
       icon: Users,
