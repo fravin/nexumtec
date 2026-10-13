@@ -1,4 +1,6 @@
-import { Cog, BarChart3, Bot, Map, HeartPulse, FlaskConical } from "lucide-react";
+import { Cog, BarChart3, Bot, Map, HeartPulse, FlaskConical, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
 const Services = () => {
@@ -102,6 +104,10 @@ const Services = () => {
               </AnimatedSection>
             );
           })}
+        </div>
+        <div className="mt-10 border-t border-border pt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+          <div><h3 className="font-serif text-2xl text-foreground mb-2">Uma presença digital à altura da sua empresa</h3><p className="text-sm text-muted-foreground">Sites institucionais, landing pages e sites para clínicas, com estratégia e design sob medida.</p></div>
+          <Button asChild variant="outline" className="shrink-0 tracking-normal"><Link to="/criacao-de-sites">Criação de sites<ArrowRight /></Link></Button>
         </div>
       </div>
     </section>
