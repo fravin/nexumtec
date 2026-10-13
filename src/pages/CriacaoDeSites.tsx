@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { websiteExamples, websiteFaqs, websiteSchema } from "@/content/websiteCreation";
+import clinicMobile from "@/assets/sites-clinica-mobile-demo.jpg";
 
 const formats = [
   { icon: Globe2, title: "Site institucional", text: "Sua empresa, seus serviços e seus diferenciais apresentados com clareza. Uma base sólida para sua presença digital.", ideal: "Empresas e prestadores de serviços" },
@@ -65,7 +66,7 @@ export default function CriacaoDeSites() {
           <div className="mt-10 md:mt-14 grid grid-cols-3 gap-2 sm:gap-5 items-start" aria-label="Modelos demonstrativos de sites">
             {websiteExamples.map((item, i) => <div key={item.name} className={i === 1 ? "mt-5 sm:mt-8" : ""}><img src={item.image} alt={`Modelo demonstrativo de site: ${item.name}`} width={1440} height={1024} loading="lazy" className="w-full aspect-[45/32] object-contain border border-border shadow-sm" /></div>)}
           </div>
-          <p className="text-center text-xs text-muted-foreground mt-5">Modelos demonstrativos · Marcas e projetos ilustrativos</p>
+          <p className="text-center text-xs text-muted-foreground mt-5 px-10">Modelos demonstrativos · Marcas e projetos ilustrativos</p>
         </div>
       </section>
 
@@ -83,7 +84,7 @@ export default function CriacaoDeSites() {
             <div className="relative"><img src={item.image} alt={`Exemplo ilustrativo de ${item.category}: ${item.name}`} width={1440} height={1024} loading="lazy" className="w-full aspect-[45/32] object-contain border border-border" /><Button variant="glass" size="icon" onClick={() => setSelected(i)} aria-label={`Ampliar modelo ${item.name}`} title={`Ampliar modelo ${item.name}`} className="absolute bottom-3 right-3"><Expand /></Button></div>
             <div><p className="text-xs text-primary font-semibold uppercase mb-3">Modelo demonstrativo · 0{i + 1}</p><h3 className="font-serif text-3xl text-foreground mb-2">{item.name}</h3><p className="font-medium text-foreground mb-4">{item.category}</p><p className="text-sm text-muted-foreground leading-relaxed mb-6">{item.description}</p><ul className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-muted-foreground mb-6">{item.features.map(f => <li key={f} className="flex items-center gap-1"><Check className="w-3 h-3 text-accent" />{f}</li>)}</ul><div className="flex gap-4 text-xs text-muted-foreground mb-6"><span className="flex gap-2 items-center"><Monitor className="w-4 h-4" />Desktop</span><span className="flex gap-2 items-center"><Smartphone className="w-4 h-4" />Adaptação mobile</span></div><Button asChild variant="link" className="px-0 tracking-normal"><a href={`${whatsapp}&`} target="_blank" rel="noopener noreferrer">Quero um site nessa direção<ArrowRight /></a></Button></div>
           </article>)}</div>
-          <div className="mt-14 border-t border-border pt-8 grid md:grid-cols-2 gap-6"><h3 className="font-serif text-2xl text-foreground">A mesma marca. Uma experiência pensada para cada tela.</h3><p className="text-sm text-muted-foreground leading-relaxed">No celular, conteúdo, imagens e caminhos de contato são reorganizados para uma leitura confortável. Não é apenas diminuir o site: é adaptar a navegação ao contexto de quem acessa.</p></div>
+          <div className="mt-14 border-t border-border pt-10 grid md:grid-cols-[1fr_1.6fr] gap-8 items-center"><div><h3 className="font-serif text-2xl text-foreground mb-5">A mesma marca. Uma experiência pensada para cada tela.</h3><p className="text-sm text-muted-foreground leading-relaxed">No celular, conteúdo, imagens e caminhos de contato são reorganizados para uma leitura confortável. Não é apenas diminuir o site: é adaptar a navegação ao contexto de quem acessa.</p><p className="text-xs text-muted-foreground mt-4">Clínica Aurora · Demonstração conceitual</p></div><div className="grid grid-cols-[2.4fr_1fr] gap-4 items-center"><figure><img src={websiteExamples[0].image} width={1440} height={1024} loading="lazy" alt="Modelo demonstrativo da Clínica Aurora no desktop" className="w-full border border-border" /><figcaption className="text-xs text-muted-foreground mt-3 flex gap-2 items-center"><Monitor className="w-4 h-4" />Desktop</figcaption></figure><figure><img src={clinicMobile} width={720} height={1280} loading="lazy" alt="Modelo demonstrativo da Clínica Aurora adaptado ao celular" className="w-full border border-border" /><figcaption className="text-xs text-muted-foreground mt-3 flex gap-2 items-center"><Smartphone className="w-4 h-4" />Mobile</figcaption></figure></div></div>
         </div>
       </section>
 
