@@ -21,6 +21,7 @@ const Header = () => {
     { label: "Projetos", href: "#projetos" },
     { label: "Saúde", href: "/saude" },
     { label: "Negócios", href: "/negocios" },
+    { label: "Sites", href: "/criacao-de-sites" },
     { label: "Sobre", href: "/sobre" },
     { label: "Contato", href: "#contato" },
   ];
@@ -69,7 +70,7 @@ const Header = () => {
         </Link>
 
         {/* Desktop nav */}
-        <ul className="hidden lg:flex items-center gap-7">
+        <ul className="hidden xl:flex items-center gap-5">
           {navItems.map((item) => (
             <li key={item.label}>
               {item.href.startsWith("#") ? (
@@ -91,7 +92,7 @@ const Header = () => {
 
 
         {/* Right cluster */}
-        <div className="hidden lg:flex items-center gap-3">
+        <div className="hidden xl:flex items-center gap-2">
           <a
             href="https://www.linkedin.com/in/flaviodesouza10/"
             target="_blank"
@@ -123,7 +124,7 @@ const Header = () => {
 
         {/* Mobile toggle */}
         <button
-          className="lg:hidden p-2 text-foreground"
+          className="xl:hidden p-2 text-foreground"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
         >
@@ -133,7 +134,7 @@ const Header = () => {
 
       {/* Mobile menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden border-t border-border bg-background/95 backdrop-blur-xl">
+        <div className="xl:hidden border-t border-border bg-background/95 backdrop-blur-xl">
           <div className="container mx-auto px-5 py-5 flex flex-col gap-1">
             {navItems.map((item) =>
               item.href.startsWith("#") ? (

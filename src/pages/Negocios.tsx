@@ -246,6 +246,7 @@ const Negocios = () => {
                 Automações de WhatsApp e e-mail, sistemas sob medida, dashboards e IA aplicada — para empresas
                 de qualquer nicho que ainda dependem de trabalho manual e querem operar com previsibilidade.
               </p>
+              <p className="mt-4 text-sm text-muted-foreground">Quer apresentar melhor sua empresa? Conheça também a <Link to="/criacao-de-sites" className="text-primary underline underline-offset-4">criação de sites profissionais da Nexum</Link>.</p>
             </AnimatedSection>
             <AnimatedSection animation="slideUp" delay={300}>
               <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center items-center">
