@@ -20,7 +20,7 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      const { error } = await supabase.functions.invoke("send-contact-email", { body: formData });
+      const { error } = await supabase.functions.invoke("send-contact-email", { body: { ...formData, source: "home" } });
       if (error) throw error;
       toast({ title: "Mensagem enviada com sucesso!", description: "Retornaremos em breve." });
       setFormData({ name: "", email: "", company: "", subject: "", message: "" });
