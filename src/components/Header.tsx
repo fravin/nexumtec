@@ -23,7 +23,7 @@ const Header = () => {
     { label: "Negócios", href: "/negocios" },
     { label: "Sites", href: "/criacao-de-sites" },
     { label: "Sobre", href: "/sobre" },
-    { label: "Contato", href: "#contato" },
+    { label: "Contato", href: "/contato" },
   ];
 
   const go = (href: string) => {
