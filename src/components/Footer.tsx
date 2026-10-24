@@ -39,7 +39,7 @@ const Footer = () => {
           ))}
           <li>
             <a
-              href="/#contato"
+              href="/contato"
               className="nav-inline font-mono text-[0.7rem] tracking-[0.18em] uppercase text-muted-foreground hover:text-primary transition-colors"
             >
               Contato
