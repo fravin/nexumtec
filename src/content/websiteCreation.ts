@@ -12,6 +12,7 @@ export const websiteFaqs = [
   { q: "Quanto custa criar um site profissional?", a: "O investimento depende do número de páginas, do conteúdo, das integrações e das funcionalidades. A Nexum prepara uma proposta personalizada após entender o objetivo do projeto, com escopo e condições definidos antes do início." },
   { q: "Qual a diferença entre site institucional e landing page?", a: "Um site institucional apresenta a empresa, seus serviços e sua história em várias páginas. Uma landing page concentra uma oferta e uma ação principal, como solicitar um orçamento ou agendar uma conversa. A escolha depende do seu objetivo comercial." },
   { q: "Vocês criam sites para clínicas e profissionais de saúde?", a: "Sim. Podemos organizar especialidades, apresentação da equipe, informações de atendimento e caminhos para agendamento. Conteúdo e funcionalidades são definidos com a clínica, considerando privacidade e as regras de comunicação da profissão." },
+  { q: "Vocês fazem sites para fisioterapeutas, psicólogos, personal trainers e nutricionistas?", a: "Sim. Criamos sites institucionais para clínicas e estúdios e landing pages de perfil para profissionais autônomos, com apresentação, especialidades e caminhos de contato. O conteúdo respeita as regras de comunicação de cada conselho profissional." },
   { q: "A Nexum atende apenas no Rio de Janeiro?", a: "A Nexum Tecnologia atua no Rio de Janeiro e atende empresas de outras regiões do Brasil remotamente. Diagnóstico, revisões e acompanhamento podem ser realizados online." },
   { q: "Em quanto tempo o site fica pronto?", a: "O prazo é definido na proposta conforme o tamanho do site, a disponibilidade do conteúdo e as integrações necessárias. O cronograma inclui etapas de criação, revisão e validação antes da publicação." },
   { q: "Preciso ter textos, fotos, domínio e hospedagem?", a: "Se você já tiver esses materiais, podemos aproveitá-los. Caso contrário, definimos o que precisa ser produzido e orientamos a contratação do domínio e da hospedagem. Produção de conteúdo e custos de serviços externos são detalhados na proposta." },
@@ -23,4 +24,30 @@ const base = "https://www.nexumtec.com.br";
 export const websiteSchema = [
   { "@context": "https://schema.org", "@type": "Service", "@id": `${base}/criacao-de-sites#service`, name: "Criação de sites profissionais", serviceType: "Desenvolvimento de sites institucionais, landing pages e sites para clínicas", url: `${base}/criacao-de-sites`, description: "Criação de sites profissionais para empresas, clínicas e prestadores de serviços. Nexum Tecnologia, Rio de Janeiro, com atendimento remoto no Brasil.", provider: { "@id": `${base}/#organization` }, areaServed: { "@type": "Country", name: "Brasil" } },
   { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Início", item: `${base}/` }, { "@type": "ListItem", position: 2, name: "Criação de sites", item: `${base}/criacao-de-sites` }] },
+];
+import fisioInst from "@/assets/sites-fisio-inst.jpg";
+import fisioLp from "@/assets/sites-fisio-lp.jpg";
+import psicoInst from "@/assets/sites-psico-inst.jpg";
+import psicoLp from "@/assets/sites-psico-lp.jpg";
+import edfisInst from "@/assets/sites-edfis-inst.jpg";
+import edfisLp from "@/assets/sites-edfis-lp.jpg";
+import personalInst from "@/assets/sites-personal-inst.jpg";
+import personalLp from "@/assets/sites-personal-lp.jpg";
+import nutriInst from "@/assets/sites-nutri-inst.jpg";
+import nutriLp from "@/assets/sites-nutri-lp.jpg";
+
+export const healthSegments = ["Fisioterapia", "Psicologia", "Educação física", "Personal trainer", "Nutrição"] as const;
+export const healthFormats = ["Site institucional", "Landing page de perfil"] as const;
+
+export const healthExamples = [
+  { name: "Movimento Fisio", segment: "Fisioterapia", format: "Site institucional", category: "Site para clínica de fisioterapia", image: fisioInst, description: "Especialidades, equipe e agendamento de avaliação para clínicas de fisioterapia e reabilitação." },
+  { name: "Dra. Lívia Ramos", segment: "Fisioterapia", format: "Landing page de perfil", category: "Site para fisioterapeuta", image: fisioLp, description: "Perfil profissional com áreas de atuação, formação e chamada direta para agendar." },
+  { name: "Espaço Acolher", segment: "Psicologia", format: "Site institucional", category: "Site para clínica de psicologia", image: psicoInst, description: "Ambiente acolhedor com modalidades de terapia, equipe e atendimento presencial ou online." },
+  { name: "Marina Couto", segment: "Psicologia", format: "Landing page de perfil", category: "Site para psicólogo", image: psicoLp, description: "Abordagem terapêutica explicada com clareza e caminho simples para a primeira conversa." },
+  { name: "Studio Ritmo", segment: "Educação física", format: "Site institucional", category: "Site para estúdio de treinamento", image: edfisInst, description: "Aulas, grade de horários e planos de um estúdio de treinamento funcional." },
+  { name: "Prof. Rafael Lima", segment: "Educação física", format: "Landing page de perfil", category: "Site para educador físico", image: edfisLp, description: "Aulas e grupos ao ar livre com apresentação do profissional e inscrição rápida." },
+  { name: "Impulso Assessoria", segment: "Personal trainer", format: "Site institucional", category: "Site para assessoria esportiva", image: personalInst, description: "Serviços de treino online, corrida e musculação para uma assessoria esportiva." },
+  { name: "Bruna Alves", segment: "Personal trainer", format: "Landing page de perfil", category: "Site para personal trainer", image: personalLp, description: "Planos de treino, método de trabalho e contato direto pelo WhatsApp." },
+  { name: "Nutri Vida", segment: "Nutrição", format: "Site institucional", category: "Site para clínica de nutrição", image: nutriInst, description: "Especialidades em nutrição clínica, esportiva e materno-infantil com agendamento." },
+  { name: "Carla Mendes", segment: "Nutrição", format: "Landing page de perfil", category: "Site para nutricionista", image: nutriLp, description: "Consultas e acompanhamento nutricional apresentados de forma leve e próxima." },
 ];
