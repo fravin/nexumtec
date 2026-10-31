@@ -11,7 +11,7 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { websiteExamples, websiteFaqs, websiteSchema } from "@/content/websiteCreation";
+import { healthExamples, healthSegments, healthFormats, websiteExamples, websiteFaqs, websiteSchema } from "@/content/websiteCreation";
 import clinicMobile from "@/assets/sites-clinica-mobile-demo.jpg";
 
 const formats = [
@@ -47,10 +47,15 @@ function ContactActions({ compact = false }: { compact?: boolean }) {
 
 export default function CriacaoDeSites() {
   const [selected, setSelected] = useState<number | null>(null);
+  const [viewList, setViewList] = useState<{ name: string; category: string; image: string }[]>(websiteExamples);
+  const [segment, setSegment] = useState<string>("Todos");
+  const [format, setFormat] = useState<string>("Todos");
+  const filteredHealth = healthExamples.filter(h => (segment === "Todos" || h.segment === segment) && (format === "Todos" || h.format === format));
   const triggerRef = useRef<HTMLButtonElement | null>(null);
-  const example = selected === null ? undefined : websiteExamples[selected];
-  const openExample = (i: number, e: React.MouseEvent<HTMLButtonElement>) => { triggerRef.current = e.currentTarget; setSelected(i); };
-  const step = (dir: 1 | -1) => setSelected(s => s === null ? s : (s + dir + websiteExamples.length) % websiteExamples.length);
+  const example = selected === null ? undefined : viewList[selected];
+  const openExample = (i: number, e: React.MouseEvent<HTMLButtonElement>, list: { name: string; category: string; image: string }[] = websiteExamples) => { triggerRef.current = e.currentTarget; setViewList(list); setSelected(i); };
+  const step = (dir: 1 | -1) => setSelected(s => s === null ? s : (s + dir + viewList.length) % viewList.length);
+  const chip = (active: boolean) => `min-h-11 px-4 text-xs border transition-colors ${active ? "bg-primary text-primary-foreground border-primary" : "bg-background text-muted-foreground border-border hover:text-foreground"}`;
   useEffect(() => { window.scrollTo(0, 0); }, []);
   return <div className="min-h-screen bg-background">
     <Seo title="Criação de Sites Profissionais no Rio de Janeiro | Nexum" description="Sites institucionais, landing pages e sites para clínicas. Design responsivo e estrutura para SEO. Nexum Tecnologia no Rio de Janeiro, com atendimento remoto no Brasil." path="/criacao-de-sites" jsonLd={websiteSchema} />
@@ -90,6 +95,20 @@ export default function CriacaoDeSites() {
           <div className="mt-14 border-t border-border pt-10 grid md:grid-cols-[1fr_1.6fr] gap-8 items-center"><div><h3 className="font-serif text-2xl text-foreground mb-5">A mesma marca. Uma experiência pensada para cada tela.</h3><p className="text-sm text-muted-foreground leading-relaxed">No celular, conteúdo, imagens e caminhos de contato são reorganizados para uma leitura confortável. Não é apenas diminuir o site: é adaptar a navegação ao contexto de quem acessa.</p><p className="text-xs text-muted-foreground mt-4">Clínica Aurora · Demonstração conceitual</p></div><div className="grid grid-cols-[2.4fr_1fr] gap-4 items-center"><figure><img src={websiteExamples[0].image} width={1440} height={1024} loading="lazy" alt="Modelo demonstrativo da Clínica Aurora no desktop" className="w-full border border-border" /><figcaption className="text-xs text-muted-foreground mt-3 flex gap-2 items-center"><Monitor className="w-4 h-4" />Desktop</figcaption></figure><figure><img src={clinicMobile} width={720} height={1280} loading="lazy" alt="Modelo demonstrativo da Clínica Aurora adaptado ao celular" className="w-full border border-border" /><figcaption className="text-xs text-muted-foreground mt-3 flex gap-2 items-center"><Smartphone className="w-4 h-4" />Mobile</figcaption></figure></div></div>
         </div>
       </section>
+      <section id="modelos-saude" className="py-24 md:py-32 border-b border-border">
+        <div className="container max-w-6xl mx-auto px-5 sm:px-8">
+          <AnimatedSection><div className="mb-10 max-w-3xl"><p className="text-xs uppercase font-semibold text-primary mb-4">Modelos para profissionais da saúde</p><h2 className="font-serif text-3xl md:text-5xl text-foreground mb-5">Sites para fisioterapeutas, psicólogos, personal trainers e nutricionistas</h2><p className="text-sm text-muted-foreground leading-relaxed">Sites institucionais para clínicas e estúdios e landing pages de perfil para profissionais autônomos. Marcas, pessoas e conteúdos são fictícios: modelos demonstrativos para inspirar o seu projeto.</p></div></AnimatedSection>
+          <div className="flex flex-col gap-3 mb-10">
+            <div role="group" aria-label="Filtrar por segmento" className="flex flex-wrap gap-2">{["Todos", ...healthSegments].map(s => <button key={s} type="button" aria-pressed={segment === s} onClick={() => setSegment(s)} className={chip(segment === s)}>{s}</button>)}</div>
+            <div role="group" aria-label="Filtrar por formato" className="flex flex-wrap gap-2">{["Todos", ...healthFormats].map(f => <button key={f} type="button" aria-pressed={format === f} onClick={() => setFormat(f)} className={chip(format === f)}>{f === "Todos" ? "Todos os formatos" : f}</button>)}</div>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">{filteredHealth.map((item, i) => <article key={item.name} className="flex flex-col">
+            <button type="button" onClick={e => openExample(i, e, filteredHealth)} aria-label={`Ampliar modelo ${item.name}`} className="block w-full cursor-zoom-in focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"><img src={item.image} alt={`Modelo demonstrativo: ${item.category} — ${item.name}`} width={1440} height={1024} loading="lazy" className="w-full aspect-[45/32] object-cover object-top border border-border shadow-sm" /></button>
+            <p className="text-[11px] uppercase font-semibold text-primary mt-4 mb-1">Modelo demonstrativo · {item.format}</p><h3 className="font-serif text-2xl text-foreground">{item.name}</h3><p className="text-sm font-medium text-foreground mb-2">{item.category}</p><p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+          </article>)}</div>
+          {filteredHealth.length === 0 && <p className="text-sm text-muted-foreground">Nenhum modelo nessa combinação ainda.</p>}
+        </div>
+      </section>
 
       <section className="py-24 md:py-32"><div className="container max-w-6xl mx-auto px-5 sm:px-8"><AnimatedSection><p className="text-xs uppercase font-semibold text-primary mb-4">Além da aparência</p><h2 className="font-serif text-3xl md:text-5xl text-foreground mb-5">Bonito para olhar.<br /><em>Bem pensado para funcionar.</em></h2><p className="text-muted-foreground max-w-2xl leading-relaxed mb-12">Planejamos os recursos que fazem sentido para sua empresa. Conteúdo, integrações e acompanhamento são detalhados na proposta, sem surpresas.</p></AnimatedSection><div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-10">{deliverables.map(({ icon: Icon, title, text }) => <div key={title} className="border-t border-border pt-6"><Icon className="w-5 h-5 text-primary mb-4" /><h3 className="font-semibold text-foreground mb-3">{title}</h3><p className="text-sm text-muted-foreground leading-relaxed">{text}</p></div>)}</div></div></section>
 
@@ -102,6 +121,6 @@ export default function CriacaoDeSites() {
       <section className="py-24 md:py-32"><div className="container max-w-3xl mx-auto px-5 sm:px-8 text-center"><p className="text-xs uppercase font-semibold text-primary mb-4">Vamos construir sua presença digital</p><h2 className="font-serif text-3xl md:text-5xl text-foreground mb-6">Seu negócio merece<br /><em>ser bem apresentado.</em></h2><p className="text-muted-foreground leading-relaxed mb-8">Conte para a Nexum o que você faz e quem quer alcançar. Começamos com uma conversa para entender o projeto e indicar o melhor caminho.</p><ContactActions compact /><a href="mailto:contato@nexumtec.com.br" className="inline-block mt-6 text-sm text-muted-foreground hover:text-primary break-all">contato@nexumtec.com.br</a></div></section>
     </main>
     <Footer /><WhatsAppButton /><ScrollToTop /><AIChatbot />
-    <Dialog open={example !== undefined} onOpenChange={open => { if (!open) { setSelected(null); setTimeout(() => triggerRef.current?.focus(), 0); } }}><DialogContent className="max-w-5xl max-h-[90dvh] overflow-y-auto" onKeyDown={e => { if (e.key === "ArrowRight") { e.preventDefault(); step(1); } if (e.key === "ArrowLeft") { e.preventDefault(); step(-1); } }}><DialogHeader><DialogTitle>{example?.name}</DialogTitle><DialogDescription>Modelo demonstrativo · {example?.category}. Marca e projeto ilustrativos.</DialogDescription></DialogHeader>{example && <div className="relative"><img src={example.image} alt={`Modelo ampliado: ${example.name}`} width={1440} height={1024} className="w-full h-auto" /><div className="absolute inset-y-0 left-0 flex items-center pl-2"><Button variant="glass" size="icon" onClick={() => step(-1)} aria-label="Modelo anterior" title="Modelo anterior" className="min-h-11 min-w-11"><ChevronLeft /></Button></div><div className="absolute inset-y-0 right-0 flex items-center pr-2"><Button variant="glass" size="icon" onClick={() => step(1)} aria-label="Próximo modelo" title="Próximo modelo" className="min-h-11 min-w-11"><ChevronRight /></Button></div><p className="text-center text-xs text-muted-foreground mt-3">Modelo demonstrativo · {String((selected ?? 0) + 1).padStart(2, "0")}/{String(websiteExamples.length).padStart(2, "0")}</p></div>}</DialogContent></Dialog>
+    <Dialog open={example !== undefined} onOpenChange={open => { if (!open) { setSelected(null); setTimeout(() => triggerRef.current?.focus(), 0); } }}><DialogContent className="max-w-5xl max-h-[90dvh] overflow-y-auto" onKeyDown={e => { if (e.key === "ArrowRight") { e.preventDefault(); step(1); } if (e.key === "ArrowLeft") { e.preventDefault(); step(-1); } }}><DialogHeader><DialogTitle>{example?.name}</DialogTitle><DialogDescription>Modelo demonstrativo · {example?.category}. Marca e projeto ilustrativos.</DialogDescription></DialogHeader>{example && <div className="relative"><img src={example.image} alt={`Modelo ampliado: ${example.name}`} width={1440} height={1024} className="w-full h-auto" /><div className="absolute inset-y-0 left-0 flex items-center pl-2"><Button variant="glass" size="icon" onClick={() => step(-1)} aria-label="Modelo anterior" title="Modelo anterior" className="min-h-11 min-w-11"><ChevronLeft /></Button></div><div className="absolute inset-y-0 right-0 flex items-center pr-2"><Button variant="glass" size="icon" onClick={() => step(1)} aria-label="Próximo modelo" title="Próximo modelo" className="min-h-11 min-w-11"><ChevronRight /></Button></div><p className="text-center text-xs text-muted-foreground mt-3">Modelo demonstrativo · {String((selected ?? 0) + 1).padStart(2, "0")}/{String(viewList.length).padStart(2, "0")}</p></div>}</DialogContent></Dialog>
   </div>;
 }
