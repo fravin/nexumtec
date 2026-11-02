@@ -1,6 +1,7 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { z } from "npm:zod@3.23.8";
+import { generateResponse } from "npm:@lovable.dev/ai-gateway";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -23,34 +24,16 @@ const schema = z.object({
 });
 
 async function aiPoints(text: string): Promise<string> {
-  const key = Deno.env.get("LOVABLE_API_KEY");
-  if (!key) return "";
   try {
-    const ctrl = new AbortController();
-    const t = setTimeout(() => ctrl.abort(), 20000);
-    const res = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
-      method: "POST", signal: ctrl.signal,
-      headers: { "Content-Type": "application/json", Authorization: `Bearer ${key}` },
-      body: JSON.stringify({
-        model: "google/gemini-3-flash-preview",
-        messages: [
-          { role: "system", content: "Você é consultor da Nexum Tecnologia. A partir de um briefing de cliente, escreva em português, em tópicos curtos: 1) Resumo do negócio; 2) Dores principais; 3) Sugestão de escopo; 4) Perguntas para a próxima conversa. Nunca invente preços, prazos ou dados que não estão no briefing. Texto simples, sem markdown pesado." },
-          { role: "user", content: text.slice(0, 8000) },
-        ],
-      }),
+    const res: any = await generateResponse({
+      model: "openai/gpt-6-astra",
+      instructions: "Você é consultor da Nexum Tecnologia. A partir de um briefing de cliente, escreva em português, em tópicos curtos: 1) Resumo do negócio; 2) Dores principais; 3) Sugestão de escopo; 4) Perguntas para a próxima conversa. Nunca invente preços, prazos ou dados que não estão no briefing. Texto simples, sem markdown.",
+      input: text.slice(0, 8000),
     });
-    clearTimeout(t);
-    if (!res.ok) { console.error("AI failed", res.status); return ""; }
-    const j = await res.json();
-    return j.choices?.[0]?.message?.content ?? "";
+    if (typeof res.output_text === "string") return res.output_text;
+    return (res.output ?? []).flatMap((o: any) => o.content ?? []).filter((c: any) => c.type === "output_text").map((c: any) => c.text).join("\n");
   } catch (e) { console.error("AI error", e); return ""; }
 }
-
-const esc = (s: string) =>
-  s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
-
-const json = (body: unknown, status = 200) =>
-  new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json", ...corsHeaders } });
 
 serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
