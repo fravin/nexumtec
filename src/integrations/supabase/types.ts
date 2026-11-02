@@ -16,6 +16,7 @@ export type Database = {
     Tables: {
       contact_submissions: {
         Row: {
+          briefing: Json | null
           company: string | null
           created_at: string
           email: string
@@ -28,6 +29,7 @@ export type Database = {
           subject: string | null
         }
         Insert: {
+          briefing?: Json | null
           company?: string | null
           created_at?: string
           email: string
@@ -40,6 +42,7 @@ export type Database = {
           subject?: string | null
         }
         Update: {
+          briefing?: Json | null
           company?: string | null
           created_at?: string
           email?: string
