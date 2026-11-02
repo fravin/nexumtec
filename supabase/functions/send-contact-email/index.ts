@@ -1,6 +1,7 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { z } from "npm:zod@3.23.8";
+import { generateResponse } from "npm:@lovable.dev/ai-gateway";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -16,13 +17,23 @@ const schema = z.object({
   subject: z.string().trim().max(150).optional().default(""),
   message: z.string().trim().min(1).max(2000),
   source: z.string().trim().max(60).optional().default("site"),
+  briefing: z.array(z.object({
+    title: z.string().trim().max(80),
+    items: z.array(z.object({ label: z.string().trim().max(80), value: z.string().trim().max(1500) })).max(25),
+  })).max(8).optional(),
 });
 
-const esc = (s: string) =>
-  s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
-
-const json = (body: unknown, status = 200) =>
-  new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json", ...corsHeaders } });
+async function aiPoints(text: string): Promise<string> {
+  try {
+    const res: any = await generateResponse({
+      model: "openai/gpt-6-astra",
+      instructions: "Você é consultor da Nexum Tecnologia. A partir de um briefing de cliente, escreva em português, em tópicos curtos: 1) Resumo do negócio; 2) Dores principais; 3) Sugestão de escopo; 4) Perguntas para a próxima conversa. Nunca invente preços, prazos ou dados que não estão no briefing. Texto simples, sem markdown.",
+      input: text.slice(0, 8000),
+    });
+    if (typeof res.output_text === "string") return res.output_text;
+    return (res.output ?? []).flatMap((o: any) => o.content ?? []).filter((c: any) => c.type === "output_text").map((c: any) => c.text).join("\n");
+  } catch (e) { console.error("AI error", e); return ""; }
+}
 
 serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
@@ -37,6 +48,7 @@ serve(async (req) => {
       .insert({
         name: d.name, email: d.email, phone: d.phone || null, company: d.company || null,
         project_type: d.projectType || null, subject: d.subject || null, message: d.message, source: d.source,
+        briefing: d.briefing ?? null,
       })
       .select("id")
       .single();
@@ -47,6 +59,14 @@ serve(async (req) => {
 
     let emailed = false;
     const resendApiKey = Deno.env.get("RESEND_API_KEY");
+    let briefingHtml = "";
+    if (resendApiKey && d.briefing?.length) {
+      const plain = d.briefing.map((s) => `${s.title}\n` + s.items.map((i) => `- ${i.label}: ${i.value}`).join("\n")).join("\n\n");
+      const points = await aiPoints(plain);
+      briefingHtml = d.briefing.map((s) => `<h3 style="color:#0f766e;margin-top:20px">${esc(s.title)}</h3><table style="border-collapse:collapse;width:100%">` +
+        s.items.map((i) => `<tr><td style="padding:4px 8px;border-bottom:1px solid #eee;color:#555;width:40%">${esc(i.label)}</td><td style="padding:4px 8px;border-bottom:1px solid #eee;white-space:pre-wrap">${esc(i.value)}</td></tr>`).join("") + "</table>").join("");
+      if (points) briefingHtml += `<h3 style="color:#2563eb;margin-top:24px">Pontos para a próxima conversa (IA)</h3><div style="white-space:pre-wrap;background:#f1f5f9;padding:12px">${esc(points)}</div>`;
+    }
     if (resendApiKey) {
       const html = `<div style="font-family:Arial,sans-serif;max-width:600px">
         <h2 style="color:#2563eb">Novo contato pelo site Nexum</h2>
@@ -56,7 +76,7 @@ serve(async (req) => {
         ${d.projectType ? `<b>Tipo de projeto:</b> ${esc(d.projectType)}<br>` : ""}
         ${d.subject ? `<b>Assunto:</b> ${esc(d.subject)}<br>` : ""}
         <b>Origem:</b> ${esc(d.source)}</p>
-        <p style="white-space:pre-wrap">${esc(d.message)}</p></div>`;
+        <p style="white-space:pre-wrap">${esc(d.message)}</p>${briefingHtml}</div>`;
       const res = await fetch("https://api.resend.com/emails", {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${resendApiKey}` },
