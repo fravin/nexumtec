@@ -198,39 +198,39 @@ const Briefing = () => {
               </div>
 
               <div className="space-y-6">
-                {step === 0 && <Single k="projectType" l="O que você quer criar?" opts={projectTypes} />}
+                {step === 0 && Single({ k: "projectType", l: "O que você quer criar?", opts: projectTypes })}
                 {step === 1 && <>
-                  <Text k="company" l="Nome da empresa ou negócio *" />
-                  <Single k="segment" l="Segmento" opts={segments} />
-                  <div className="grid sm:grid-cols-2 gap-4"><Text k="city" l="Cidade" ph="Rio de Janeiro" /><Text k="years" l="Tempo de mercado" ph="Ex.: 3 anos" /></div>
-                  <Single k="size" l="Porte" opts={sizes} />
-                  <Single k="hasSite" l="Já tem site?" opts={["Sim", "Não"]} />
-                  <div className="grid sm:grid-cols-2 gap-4"><Text k="siteUrl" l="Site atual" ph="www..." /><Text k="instagram" l="Instagram" ph="@seunegocio" /></div>
+                  {Text({ k: "company", l: "Nome da empresa ou negócio *" })}
+                  {Single({ k: "segment", l: "Segmento", opts: segments })}
+                  <div className="grid sm:grid-cols-2 gap-4">{Text({ k: "city", l: "Cidade", ph: "Rio de Janeiro" })}{Text({ k: "years", l: "Tempo de mercado", ph: "Ex.: 3 anos" })}</div>
+                  {Single({ k: "size", l: "Porte", opts: sizes })}
+                  {Single({ k: "hasSite", l: "Já tem site?", opts: ["Sim", "Não"] })}
+                  <div className="grid sm:grid-cols-2 gap-4">{Text({ k: "siteUrl", l: "Site atual", ph: "www..." })}{Text({ k: "instagram", l: "Instagram", ph: "@seunegocio" })}</div>
                 </>}
                 {step === 2 && <>
-                  <Multi k="goals" l="Objetivo principal" opts={goals} />
-                  <Text k="audience" l="Quem é o seu público?" area ph="Ex.: mulheres de 30 a 50 anos na Zona Sul que buscam..." />
-                  <Text k="differentials" l="O que diferencia você da concorrência?" area />
-                  <Text k="references" l="Concorrentes ou sites que você admira" area ph="Links ou nomes" />
+                  {Multi({ k: "goals", l: "Objetivo principal", opts: goals })}
+                  {Text({ k: "audience", l: "Quem é o seu público?", area: true, ph: "Ex.: mulheres de 30 a 50 anos na Zona Sul que buscam..." })}
+                  {Text({ k: "differentials", l: "O que diferencia você da concorrência?", area: true })}
+                  {Text({ k: "references", l: "Concorrentes ou sites que você admira", area: true, ph: "Links ou nomes" })}
                 </>}
                 {step === 3 && (isSite ? <>
-                  <Multi k="pages" l="Páginas desejadas" opts={sitePages} />
-                  <Multi k="integrations" l="Integrações" opts={integrations} />
-                  <Single k="hasLogo" l="Já tem logo?" opts={["Sim", "Não", "Quero renovar"]} />
-                  <Single k="hasContent" l="Já tem textos e fotos?" opts={["Sim", "Parcialmente", "Não"]} />
-                  <Single k="style" l="Estilo visual preferido" opts={styles} />
+                  {Multi({ k: "pages", l: "Páginas desejadas", opts: sitePages })}
+                  {Multi({ k: "integrations", l: "Integrações", opts: integrations })}
+                  {Single({ k: "hasLogo", l: "Já tem logo?", opts: ["Sim", "Não", "Quero renovar"] })}
+                  {Single({ k: "hasContent", l: "Já tem textos e fotos?", opts: ["Sim", "Parcialmente", "Não"] })}
+                  {Single({ k: "style", l: "Estilo visual preferido", opts: styles })}
                 </> : <>
-                  <Text k="currentProcess" l="Como o processo funciona hoje?" area ph="Ex.: controlamos tudo em planilhas e WhatsApp..." />
-                  <Text k="users" l="Quem vai usar o sistema e quantas pessoas?" />
-                  <Text k="pains" l="Quais as maiores dores ou retrabalhos?" area />
-                  <Multi k="integrations" l="Integrações" opts={integrations} />
+                  {Text({ k: "currentProcess", l: "Como o processo funciona hoje?", area: true, ph: "Ex.: controlamos tudo em planilhas e WhatsApp..." })}
+                  {Text({ k: "users", l: "Quem vai usar o sistema e quantas pessoas?" })}
+                  {Text({ k: "pains", l: "Quais as maiores dores ou retrabalhos?", area: true })}
+                  {Multi({ k: "integrations", l: "Integrações", opts: integrations })}
                 </>)}
                 {step === 4 && <>
-                  <div className="grid sm:grid-cols-2 gap-4"><Text k="name" l="Seu nome *" /><Text k="email" l="E-mail *" type="email" /></div>
-                  <Text k="phone" l="WhatsApp *" type="tel" ph="(21) 9..." />
-                  <Single k="deadline" l="Prazo desejado" opts={deadlines} />
-                  <Single k="budget" l="Faixa de investimento (opcional)" opts={budgets} />
-                  <Single k="contactTime" l="Melhor horário para contato" opts={times} />
+                  <div className="grid sm:grid-cols-2 gap-4">{Text({ k: "name", l: "Seu nome *" })}{Text({ k: "email", l: "E-mail *", type: "email" })}</div>
+                  {Text({ k: "phone", l: "WhatsApp *", type: "tel", ph: "(21) 9..." })}
+                  {Single({ k: "deadline", l: "Prazo desejado", opts: deadlines })}
+                  {Single({ k: "budget", l: "Faixa de investimento (opcional)", opts: budgets })}
+                  {Single({ k: "contactTime", l: "Melhor horário para contato", opts: times })}
                 </>}
               </div>
 
