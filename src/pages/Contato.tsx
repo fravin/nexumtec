@@ -159,6 +159,7 @@ const Contato = () => {
               ) : (
                 <form onSubmit={submit} className="space-y-5" noValidate>
                   <h2 className="serif-display text-2xl md:text-3xl text-foreground">Solicite seu orçamento</h2>
+                  <p className="text-sm text-muted-foreground">Prefere um briefing completo? <Link to="/briefing" className="text-primary underline underline-offset-4">Preencha o briefing do projeto</Link>.</p>
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div><label htmlFor="name" className={label}>Nome *</label><input id="name" name="name" value={form.name} onChange={set} className={input} maxLength={100} />{err("name")}</div>
                     <div><label htmlFor="email" className={label}>E-mail *</label><input id="email" name="email" type="email" value={form.email} onChange={set} className={input} maxLength={255} />{err("email")}</div>

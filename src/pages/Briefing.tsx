@@ -173,7 +173,7 @@ const Briefing = () => {
                   <h2 className="serif-display text-2xl md:text-3xl text-foreground mb-2">Um ponto de partida para {str(data.company)}</h2>
                   <p className="text-sm text-muted-foreground mb-5">Modelo da nossa galeria que mais combina com o que você contou. O projeto final é criado do zero para a sua marca.</p>
                   <figure className="relative border border-border overflow-hidden">
-                    <div className="absolute top-3 left-3 z-10 bg-background/90 border border-border px-3 py-1 text-xs text-foreground">Modelo demonstrativo</div>
+                    <div className="absolute top-12 right-3 z-10 bg-background/90 border border-border px-3 py-1 text-xs text-foreground">Modelo demonstrativo</div>
                     <div className="bg-primary text-primary-foreground px-4 py-2 text-sm font-medium">{str(data.company)} · {str(data.segment) || demo.category}</div>
                     <img src={demo.image} alt={`Modelo demonstrativo ${demo.name}`} loading="lazy" className="w-full h-auto" />
                   </figure>
