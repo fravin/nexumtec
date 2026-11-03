@@ -40,7 +40,7 @@ const whatsapp = `https://wa.me/5521981466912?text=${encodeURIComponent("Olá, N
 
 function ContactActions({ compact = false }: { compact?: boolean }) {
   return <div className="flex flex-col sm:flex-row gap-3 justify-center">
-    <Button asChild variant="hero" size="lg" className="h-auto min-h-12 whitespace-normal tracking-normal"><Link to="/#contato">{compact ? "Solicitar Diagnóstico Gratuito" : "Conversar sobre meu site"}<ArrowRight /></Link></Button>
+    <Button asChild variant="hero" size="lg" className="h-auto min-h-12 whitespace-normal tracking-normal"><Link to={compact ? "/#contato" : "/briefing?tipo=site"}>{compact ? "Solicitar Diagnóstico Gratuito" : "Conversar sobre meu site"}<ArrowRight /></Link></Button>
     <Button asChild variant="glass" size="lg" className="h-auto min-h-12 whitespace-normal tracking-normal"><a href={whatsapp} target="_blank" rel="noopener noreferrer"><MessageCircle />Falar no WhatsApp</a></Button>
   </div>;
 }
