@@ -212,7 +212,7 @@ export default function GerenciarModelos() {
     setIsSigningIn(true);
     const result = await lovable.auth.signInWithOAuth(provider, {
       redirect_uri: window.location.origin,
-      extraParams: { login_hint: "flavio.de.souza10@gmail.com", prompt: "select_account" },
+      extraParams: { login_hint: "flavio.de.souza10@gmail.com", prompt: provider === "google" ? "select_account" : "consent" },
     });
     if (result.redirected) return;
     setIsSigningIn(false);
