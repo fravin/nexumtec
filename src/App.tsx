@@ -11,6 +11,7 @@ import Negocios from "./pages/Negocios";
 import CriacaoDeSites from "./pages/CriacaoDeSites";
 import Contato from "./pages/Contato";
 import Briefing from "./pages/Briefing";
+import GerenciarModelos from "./pages/GerenciarModelos";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => (
             <Route path="/criacao-de-sites" element={<CriacaoDeSites />} />
             <Route path="/contato" element={<Contato />} />
             <Route path="/briefing" element={<Briefing />} />
+            <Route path="/gerenciar-modelos" element={<GerenciarModelos />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
