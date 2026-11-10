@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, MessageCircle, Monitor, Smartphone, Globe2, HeartPulse, LayoutTemplate, ShoppingBag, Briefcase, LockKeyhole, Check, Search, Gauge, Accessibility, ShieldCheck, ChartNoAxesCombined, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, MessageCircle, Monitor, Smartphone, Globe2, HeartPulse, LayoutTemplate, ShoppingBag, Briefcase, LockKeyhole, Check, Search, Gauge, Accessibility, ShieldCheck, ChartNoAxesCombined, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
@@ -11,8 +11,9 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { healthExamples, healthSegments, healthFormats, websiteExamples, websiteFaqs, websiteSchema } from "@/content/websiteCreation";
-import clinicMobile from "@/assets/sites-clinica-mobile-demo.jpg";
+import { healthSegments, healthFormats, websiteFaqs, websiteSchema } from "@/content/websiteCreation";
+import { fallbackWebsiteProjects, useWebsiteProjects } from "@/hooks/useWebsiteProjects";
+import { projectKindLabel, publicProjectImage, type WebsiteProject } from "@/lib/websiteProjects";
 
 const formats = [
   { icon: Globe2, title: "Site institucional", text: "Sua empresa, seus serviços e seus diferenciais apresentados com clareza. Uma base sólida para sua presença digital.", ideal: "Empresas e prestadores de serviços" },
@@ -46,14 +47,20 @@ function ContactActions({ compact = false }: { compact?: boolean }) {
 }
 
 export default function CriacaoDeSites() {
+  const { data: projects = fallbackWebsiteProjects } = useWebsiteProjects();
+  const generalExamples = projects.filter(project => project.kind === "demo" && project.section === "general");
+  const healthProjects = projects.filter(project => project.kind === "demo" && project.section === "health");
+  const realProjects = projects.filter(project => project.kind === "real");
+  const segments = Array.from(new Set([...healthSegments, ...healthProjects.map(project => project.segment).filter((value): value is string => Boolean(value))]));
+  const formatsList = Array.from(new Set([...healthFormats, ...healthProjects.map(project => project.format).filter((value): value is string => Boolean(value))]));
   const [selected, setSelected] = useState<number | null>(null);
-  const [viewList, setViewList] = useState<{ name: string; category: string; image: string }[]>(websiteExamples);
+  const [viewList, setViewList] = useState<WebsiteProject[]>([]);
   const [segment, setSegment] = useState<string>("Todos");
   const [format, setFormat] = useState<string>("Todos");
-  const filteredHealth = healthExamples.filter(h => (segment === "Todos" || h.segment === segment) && (format === "Todos" || h.format === format));
+  const filteredHealth = healthProjects.filter(project => (segment === "Todos" || project.segment === segment) && (format === "Todos" || project.format === format));
   const triggerRef = useRef<HTMLButtonElement | null>(null);
   const example = selected === null ? undefined : viewList[selected];
-  const openExample = (i: number, e: React.MouseEvent<HTMLButtonElement>, list: { name: string; category: string; image: string }[] = websiteExamples) => { triggerRef.current = e.currentTarget; setViewList(list); setSelected(i); };
+  const openExample = (i: number, e: React.MouseEvent<HTMLButtonElement>, list: WebsiteProject[]) => { triggerRef.current = e.currentTarget; setViewList(list); setSelected(i); };
   const step = (dir: 1 | -1) => setSelected(s => s === null ? s : (s + dir + viewList.length) % viewList.length);
   const chip = (active: boolean) => `min-h-11 px-4 text-xs border transition-colors ${active ? "bg-primary text-primary-foreground border-primary" : "bg-background text-muted-foreground border-border hover:text-foreground"}`;
   useEffect(() => { window.scrollTo(0, 0); }, []);
@@ -72,7 +79,7 @@ export default function CriacaoDeSites() {
             <div className="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs text-muted-foreground">{["Diagnóstico sem compromisso", "Projeto sob medida", "Atendimento consultivo"].map(text => <span key={text} className="inline-flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-accent" />{text}</span>)}</div>
           </div>
           <div className="mt-10 md:mt-14 grid grid-cols-3 gap-2 sm:gap-5 items-start" aria-label="Modelos demonstrativos de sites">
-            {websiteExamples.map((item, i) => <div key={item.name} className={i === 1 ? "mt-5 sm:mt-8" : ""}><button type="button" onClick={e => openExample(i, e)} aria-label={`Ampliar modelo ${item.name}`} className="block w-full cursor-zoom-in focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"><img src={item.image} alt={`Modelo demonstrativo de site: ${item.name}`} width={1440} height={1024} loading="lazy" className="w-full aspect-[45/32] object-contain border border-border shadow-sm" /></button></div>)}
+            {generalExamples.map((item, i) => <div key={item.id} className={i === 1 ? "mt-5 sm:mt-8" : ""}><button type="button" onClick={e => openExample(i, e, generalExamples)} aria-label={`Ampliar modelo ${item.title}`} className="block w-full cursor-zoom-in focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"><img src={publicProjectImage(item)} alt={`Modelo demonstrativo de site: ${item.title}`} width={1440} height={1024} loading="lazy" className="w-full aspect-[45/32] object-contain border border-border shadow-sm" /></button></div>)}
           </div>
           <p className="text-center text-xs text-muted-foreground mt-5 px-10">Clique em um modelo para ampliar · Marcas e projetos ilustrativos</p>
         </div>
@@ -88,11 +95,11 @@ export default function CriacaoDeSites() {
       <section id="modelos" className="py-24 md:py-32 bg-secondary border-y border-border">
         <div className="container max-w-6xl mx-auto px-5 sm:px-8">
           <AnimatedSection><div className="flex flex-col md:flex-row md:items-end justify-between gap-5 mb-12"><div><p className="text-xs uppercase font-semibold text-primary mb-4">Possibilidades em perspectiva</p><h2 className="font-serif text-3xl md:text-5xl text-foreground">Uma identidade.<br /><em>Muitas formas de se apresentar.</em></h2></div><p className="text-sm text-muted-foreground max-w-sm leading-relaxed">Exemplos conceituais para visualizar estilos e formatos. Não são cases de clientes ou produtos prontos.</p></div></AnimatedSection>
-          <div className="space-y-12">{websiteExamples.map((item, i) => <article key={item.name} className="grid lg:grid-cols-[1.65fr_1fr] gap-7 lg:gap-12 items-center">
-            <div><button type="button" onClick={e => openExample(i, e)} aria-label={`Ampliar modelo ${item.name}`} className="block w-full cursor-zoom-in focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"><img src={item.image} alt={`Exemplo ilustrativo de ${item.category}: ${item.name}`} width={1440} height={1024} loading="lazy" className="w-full aspect-[45/32] object-contain border border-border" /></button></div>
-            <div><p className="text-xs text-primary font-semibold uppercase mb-3">Modelo demonstrativo · 0{i + 1}</p><h3 className="font-serif text-3xl text-foreground mb-2">{item.name}</h3><p className="font-medium text-foreground mb-4">{item.category}</p><p className="text-sm text-muted-foreground leading-relaxed mb-6">{item.description}</p><ul className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-muted-foreground mb-6">{item.features.map(f => <li key={f} className="flex items-center gap-1"><Check className="w-3 h-3 text-accent" />{f}</li>)}</ul><div className="flex gap-4 text-xs text-muted-foreground mb-6"><span className="flex gap-2 items-center"><Monitor className="w-4 h-4" />Desktop</span><span className="flex gap-2 items-center"><Smartphone className="w-4 h-4" />Adaptação mobile</span></div><Button asChild variant="link" className="px-0 tracking-normal"><a href={whatsapp} target="_blank" rel="noopener noreferrer">Quero um site nessa direção<ArrowRight /></a></Button></div>
+          <div className="space-y-12">{generalExamples.map((item, i) => <article key={item.id} className="grid lg:grid-cols-[1.65fr_1fr] gap-7 lg:gap-12 items-center">
+            <div><button type="button" onClick={e => openExample(i, e, generalExamples)} aria-label={`Ampliar modelo ${item.title}`} className="block w-full cursor-zoom-in focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"><img src={publicProjectImage(item)} alt={`Exemplo ilustrativo de ${item.category}: ${item.title}`} width={1440} height={1024} loading="lazy" className="w-full aspect-[45/32] object-contain border border-border" /></button></div>
+            <div><p className="text-xs text-primary font-semibold uppercase mb-3">Modelo demonstrativo · 0{i + 1}</p><h3 className="font-serif text-3xl text-foreground mb-2">{item.title}</h3><p className="font-medium text-foreground mb-4">{item.category}</p><p className="text-sm text-muted-foreground leading-relaxed mb-6">{item.description}</p><ul className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-muted-foreground mb-6">{item.features.map(f => <li key={f} className="flex items-center gap-1"><Check className="w-3 h-3 text-accent" />{f}</li>)}</ul><div className="flex gap-4 text-xs text-muted-foreground mb-6"><span className="flex gap-2 items-center"><Monitor className="w-4 h-4" />Desktop</span><span className="flex gap-2 items-center"><Smartphone className="w-4 h-4" />Adaptação mobile</span></div><Button asChild variant="link" className="px-0 tracking-normal"><a href={whatsapp} target="_blank" rel="noopener noreferrer">Quero um site nessa direção<ArrowRight /></a></Button></div>
           </article>)}</div>
-          <div className="mt-14 border-t border-border pt-10 grid md:grid-cols-[1fr_1.6fr] gap-8 items-center"><div><h3 className="font-serif text-2xl text-foreground mb-5">A mesma marca. Uma experiência pensada para cada tela.</h3><p className="text-sm text-muted-foreground leading-relaxed">No celular, conteúdo, imagens e caminhos de contato são reorganizados para uma leitura confortável. Não é apenas diminuir o site: é adaptar a navegação ao contexto de quem acessa.</p><p className="text-xs text-muted-foreground mt-4">Clínica Aurora · Demonstração conceitual</p></div><div className="grid grid-cols-[2.4fr_1fr] gap-4 items-center"><figure><img src={websiteExamples[0].image} width={1440} height={1024} loading="lazy" alt="Modelo demonstrativo da Clínica Aurora no desktop" className="w-full border border-border" /><figcaption className="text-xs text-muted-foreground mt-3 flex gap-2 items-center"><Monitor className="w-4 h-4" />Desktop</figcaption></figure><figure><img src={clinicMobile} width={720} height={1280} loading="lazy" alt="Modelo demonstrativo da Clínica Aurora adaptado ao celular" className="w-full border border-border" /><figcaption className="text-xs text-muted-foreground mt-3 flex gap-2 items-center"><Smartphone className="w-4 h-4" />Mobile</figcaption></figure></div></div>
+          <div className="mt-14 border-t border-border pt-10 grid md:grid-cols-[1fr_1.6fr] gap-8 items-center"><div><h3 className="font-serif text-2xl text-foreground mb-5">A mesma marca. Uma experiência pensada para cada tela.</h3><p className="text-sm text-muted-foreground leading-relaxed">No celular, conteúdo, imagens e caminhos de contato são reorganizados para uma leitura confortável. Não é apenas diminuir o site: é adaptar a navegação ao contexto de quem acessa.</p><p className="text-xs text-muted-foreground mt-4">Clínica Aurora · Demonstração conceitual</p></div><div className="grid grid-cols-[2.4fr_1fr] gap-4 items-center"><figure><img src={generalExamples[0].image} width={1440} height={1024} loading="lazy" alt="Modelo demonstrativo da Clínica Aurora no desktop" className="w-full border border-border" /><figcaption className="text-xs text-muted-foreground mt-3 flex gap-2 items-center"><Monitor className="w-4 h-4" />Desktop</figcaption></figure><figure><img src={clinicMobile} width={720} height={1280} loading="lazy" alt="Modelo demonstrativo da Clínica Aurora adaptado ao celular" className="w-full border border-border" /><figcaption className="text-xs text-muted-foreground mt-3 flex gap-2 items-center"><Smartphone className="w-4 h-4" />Mobile</figcaption></figure></div></div>
         </div>
       </section>
       <section id="modelos-saude" className="py-24 md:py-32 border-b border-border">
@@ -102,9 +109,9 @@ export default function CriacaoDeSites() {
             <div role="group" aria-label="Filtrar por segmento" className="flex flex-wrap gap-2">{["Todos", ...healthSegments].map(s => <button key={s} type="button" aria-pressed={segment === s} onClick={() => setSegment(s)} className={chip(segment === s)}>{s}</button>)}</div>
             <div role="group" aria-label="Filtrar por formato" className="flex flex-wrap gap-2">{["Todos", ...healthFormats].map(f => <button key={f} type="button" aria-pressed={format === f} onClick={() => setFormat(f)} className={chip(format === f)}>{f === "Todos" ? "Todos os formatos" : f}</button>)}</div>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">{filteredHealth.map((item, i) => <article key={item.name} className="flex flex-col">
-            <button type="button" onClick={e => openExample(i, e, filteredHealth)} aria-label={`Ampliar modelo ${item.name}`} className="block w-full cursor-zoom-in focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"><img src={item.image} alt={`Modelo demonstrativo: ${item.category} — ${item.name}`} width={1440} height={1024} loading="lazy" className="w-full aspect-[45/32] object-cover object-top border border-border shadow-sm" /></button>
-            <p className="text-[11px] uppercase font-semibold text-primary mt-4 mb-1">Modelo demonstrativo · {item.format}</p><h3 className="font-serif text-2xl text-foreground">{item.name}</h3><p className="text-sm font-medium text-foreground mb-2">{item.category}</p><p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">{filteredHealth.map((item, i) => <article key={item.id} className="flex flex-col">
+            <button type="button" onClick={e => openExample(i, e, filteredHealth)} aria-label={`Ampliar modelo ${item.title}`} className="block w-full cursor-zoom-in focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"><img src={publicProjectImage(item)} alt={`Modelo demonstrativo: ${item.category} — ${item.title}`} width={1440} height={1024} loading="lazy" className="w-full aspect-[45/32] object-cover object-top border border-border shadow-sm" /></button>
+            <p className="text-[11px] uppercase font-semibold text-primary mt-4 mb-1">Modelo demonstrativo · {item.format}</p><h3 className="font-serif text-2xl text-foreground">{item.title}</h3><p className="text-sm font-medium text-foreground mb-2">{item.category}</p><p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
           </article>)}</div>
           {filteredHealth.length === 0 && <p className="text-sm text-muted-foreground">Nenhum modelo nessa combinação ainda.</p>}
         </div>
