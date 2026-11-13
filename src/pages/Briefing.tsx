@@ -24,7 +24,6 @@ const sitePages = ["Início", "Sobre", "Serviços", "Equipe", "Blog", "Depoiment
 const integrations = ["WhatsApp", "Agenda online", "Pagamento", "Nota fiscal (NFSe)", "CRM", "Planilhas / ERP", "Instagram"];
 const styles = ["Clean e minimalista", "Acolhedor e humano", "Moderno e tecnológico", "Sofisticado / premium", "Colorido e vibrante"];
 const deadlines = ["O quanto antes", "Até 1 mês", "1 a 3 meses", "Sem pressa"];
-const budgets = ["Prefiro conversar", "Até R$ 3 mil", "R$ 3 mil a R$ 8 mil", "R$ 8 mil a R$ 20 mil", "Acima de R$ 20 mil"];
 const times = ["Manhã", "Tarde", "Noite", "Qualquer horário"];
 
 type Data = Record<string, string | string[]>;
@@ -72,7 +71,7 @@ const Briefing = () => {
       sec("Escopo e conteúdo", isSite
         ? [["Páginas desejadas", data.pages], ["Integrações", data.integrations], ["Tem logo", data.hasLogo], ["Tem textos e fotos", data.hasContent], ["Estilo visual", data.style]]
         : [["Processo atual", data.currentProcess], ["Quem vai usar", data.users], ["Principais dores", data.pains], ["Integrações", data.integrations]]),
-      sec("Contato e prazo", [["Nome", data.name], ["E-mail", data.email], ["WhatsApp", data.phone], ["Prazo desejado", data.deadline], ["Investimento", data.budget], ["Melhor horário", data.contactTime]]),
+      sec("Contato e prazo", [["Nome", data.name], ["E-mail", data.email], ["WhatsApp", data.phone], ["Prazo desejado", data.deadline], ["Melhor horário", data.contactTime]]),
     ].filter(s => s.items.length);
   }, [data, isSite]);
 
@@ -229,7 +228,6 @@ const Briefing = () => {
                   <div className="grid sm:grid-cols-2 gap-4">{Text({ k: "name", l: "Seu nome *" })}{Text({ k: "email", l: "E-mail *", type: "email" })}</div>
                   {Text({ k: "phone", l: "WhatsApp *", type: "tel", ph: "(21) 9..." })}
                   {Single({ k: "deadline", l: "Prazo desejado", opts: deadlines })}
-                  {Single({ k: "budget", l: "Faixa de investimento (opcional)", opts: budgets })}
                   {Single({ k: "contactTime", l: "Melhor horário para contato", opts: times })}
                 </>}
               </div>
