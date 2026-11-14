@@ -14,6 +14,87 @@ export type Database = {
   }
   public: {
     Tables: {
+      blog_job_state: {
+        Row: {
+          id: string
+          last_error: string | null
+          last_run_at: string | null
+          locked_until: string | null
+          paused_reason: string | null
+        }
+        Insert: {
+          id: string
+          last_error?: string | null
+          last_run_at?: string | null
+          locked_until?: string | null
+          paused_reason?: string | null
+        }
+        Update: {
+          id?: string
+          last_error?: string | null
+          last_run_at?: string | null
+          locked_until?: string | null
+          paused_reason?: string | null
+        }
+        Relationships: []
+      }
+      blog_posts: {
+        Row: {
+          content: string
+          cover_path: string | null
+          created_at: string
+          created_by: string | null
+          excerpt: string
+          id: string
+          instagram_caption: string | null
+          kind: string
+          published_at: string | null
+          slug: string
+          source_key: string | null
+          sources: Json
+          status: string
+          title: string
+          topic: string
+          updated_at: string
+        }
+        Insert: {
+          content?: string
+          cover_path?: string | null
+          created_at?: string
+          created_by?: string | null
+          excerpt?: string
+          id?: string
+          instagram_caption?: string | null
+          kind?: string
+          published_at?: string | null
+          slug: string
+          source_key?: string | null
+          sources?: Json
+          status?: string
+          title: string
+          topic?: string
+          updated_at?: string
+        }
+        Update: {
+          content?: string
+          cover_path?: string | null
+          created_at?: string
+          created_by?: string | null
+          excerpt?: string
+          id?: string
+          instagram_caption?: string | null
+          kind?: string
+          published_at?: string | null
+          slug?: string
+          source_key?: string | null
+          sources?: Json
+          status?: string
+          title?: string
+          topic?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       contact_submissions: {
         Row: {
           briefing: Json | null
