@@ -1,3 +1,3 @@
 # Architecture rules
 - Public service pages use the shared Seo component and link their Service schema to the sitewide Organization; this keeps route metadata and brand identity consistent.
-- Website showcase content is stored in Lovable Cloud and managed through the authenticated admin page; the content module keeps static copy and fallback examples so the public gallery remains available during data-loading failures.
+- Website showcase content is stored in Lovable Cloud and managed through the authenticated admin page; the content module keeps static copy and fallback examples so the public gallery remains available during data-loading failures.- Blog posts live in Lovable Cloud; automated news is generated server-side on a schedule only as drafts and requires admin approval before publishing, so nothing AI-written goes live unreviewed.

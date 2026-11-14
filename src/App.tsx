@@ -12,6 +12,9 @@ import CriacaoDeSites from "./pages/CriacaoDeSites";
 import Contato from "./pages/Contato";
 import Briefing from "./pages/Briefing";
 import GerenciarModelos from "./pages/GerenciarModelos";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
+import GerenciarBlog from "./pages/GerenciarBlog";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +35,9 @@ const App = () => (
             <Route path="/contato" element={<Contato />} />
             <Route path="/briefing" element={<Briefing />} />
             <Route path="/gerenciar-modelos" element={<GerenciarModelos />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/gerenciar-blog" element={<GerenciarBlog />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
