@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import HoneypotField from "@/components/HoneypotField";
 
 const WHATSAPP = "5521981466912";
 const SITE = "https://www.nexumtec.com.br";
@@ -67,6 +68,7 @@ const Contato = () => {
   const [form, setForm] = useState<Form>(empty);
   const [errors, setErrors] = useState<Partial<Record<keyof Form, string>>>({});
   const [sending, setSending] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
   const [sent, setSent] = useState<Form | null>(null);
 
   const set = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
@@ -91,7 +93,7 @@ const Contato = () => {
     setErrors({});
     setSending(true);
     const { error } = await supabase.functions.invoke("send-contact-email", {
-      body: { ...r.data, subject: r.data.projectType || "Contato pelo site", source: "pagina-contato" },
+      body: { ...r.data, subject: r.data.projectType || "Contato pelo site", source: "pagina-contato", website: honeypot },
     });
     setSending(false);
     if (error) {
@@ -158,6 +160,7 @@ const Contato = () => {
                 </div>
               ) : (
                 <form onSubmit={submit} className="space-y-5" noValidate>
+                  <HoneypotField value={honeypot} onChange={setHoneypot} />
                   <h2 className="serif-display text-2xl md:text-3xl text-foreground">Solicite seu orçamento</h2>
                   <p className="text-sm text-muted-foreground">Prefere um briefing completo? <Link to="/briefing" className="text-primary underline underline-offset-4">Preencha o briefing do projeto</Link>.</p>
                   <div className="grid sm:grid-cols-2 gap-4">

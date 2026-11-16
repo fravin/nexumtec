@@ -2,11 +2,7 @@ import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { z } from "npm:zod@3.23.8";
 import { generateResponse } from "npm:@lovable.dev/ai-gateway";
-
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
-};
+import { clientIp, corsFor, guardRequest, rateLimited } from "../_shared/guard.ts";
 
 const schema = z.object({
   name: z.string().trim().min(1).max(100),
@@ -21,7 +17,15 @@ const schema = z.object({
     title: z.string().trim().max(80),
     items: z.array(z.object({ label: z.string().trim().max(80), value: z.string().trim().max(1500) })).max(25),
   })).max(8).optional(),
+  // Honeypot: campo invisível no formulário. Pessoas deixam vazio; robôs preenchem.
+  website: z.string().max(200).optional().default(""),
 });
+
+const MAX_BODY_CHARS = 120_000;
+// Tetos contados no banco (valem entre instâncias da função).
+const MAX_PER_EMAIL_HOUR = 3;
+const MAX_GLOBAL_10MIN = 10;
+const MAX_GLOBAL_DAY = 100;
 
 async function aiPoints(text: string): Promise<string> {
   try {
@@ -38,21 +42,48 @@ async function aiPoints(text: string): Promise<string> {
 const esc = (s: string) =>
   s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
 
-const json = (body: unknown, status = 200) =>
-  new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json", ...corsHeaders } });
-
 serve(async (req) => {
-  if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
+  const blocked = guardRequest(req);
+  if (blocked) return blocked;
+  const corsHeaders = corsFor(req);
+  const json = (body: unknown, status = 200) =>
+    new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json", ...corsHeaders } });
+  const tooMany = () => json({ error: "Muitos envios em pouco tempo. Tente novamente mais tarde ou fale pelo WhatsApp." }, 429);
+
+  const ip = clientIp(req);
+  if (rateLimited(`contact:m:${ip}`, 3, 10 * 60_000) || rateLimited(`contact:d:${ip}`, 10, 24 * 3_600_000)) return tooMany();
+
   try {
-    const parsed = schema.safeParse(await req.json());
+    const raw = await req.text();
+    if (raw.length > MAX_BODY_CHARS) return json({ error: "Dados inválidos" }, 413);
+    let payload: unknown;
+    try { payload = JSON.parse(raw); } catch { return json({ error: "Dados inválidos" }, 400); }
+    const parsed = schema.safeParse(payload);
     if (!parsed.success) return json({ error: "Dados inválidos" }, 400);
     const d = parsed.data;
 
+    // Robô caiu no honeypot: responde "sucesso" sem salvar nem enviar nada.
+    if (d.website) return json({ success: true, id: null, emailed: false });
+
     const supabase = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
+
+    const countSince = async (ms: number, email?: string) => {
+      let q = supabase.from("contact_submissions").select("id", { count: "exact", head: true })
+        .gte("created_at", new Date(Date.now() - ms).toISOString());
+      if (email) q = q.eq("email", email);
+      const { count, error } = await q;
+      if (error) throw new Error(`Rate check failed: ${error.message}`);
+      return count ?? 0;
+    };
+    const [byEmail, last10min, lastDay] = await Promise.all([
+      countSince(3_600_000, d.email), countSince(10 * 60_000), countSince(24 * 3_600_000),
+    ]);
+    if (byEmail >= MAX_PER_EMAIL_HOUR || last10min >= MAX_GLOBAL_10MIN || lastDay >= MAX_GLOBAL_DAY) return tooMany();
+
     const { data: row, error } = await supabase
       .from("contact_submissions")
       .insert({
-        name: d.name, email: d.email, phone: d.phone || null, company: d.company || null,
+        name: d.name, email: d.email.toLowerCase(), phone: d.phone || null, company: d.company || null,
         project_type: d.projectType || null, subject: d.subject || null, message: d.message, source: d.source,
         briefing: d.briefing ?? null,
       })

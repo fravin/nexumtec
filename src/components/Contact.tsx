@@ -4,10 +4,12 @@ import { Mail, Phone, MapPin, Linkedin, Github, Send, Loader2, MessageCircle } f
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import HoneypotField from "@/components/HoneypotField";
 
 const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
   const [formData, setFormData] = useState({
     name: "", email: "", company: "", subject: "", message: "",
   });
@@ -20,7 +22,7 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      const { error } = await supabase.functions.invoke("send-contact-email", { body: { ...formData, source: "home" } });
+      const { error } = await supabase.functions.invoke("send-contact-email", { body: { ...formData, source: "home", website: honeypot } });
       if (error) throw error;
       toast({ title: "Mensagem enviada com sucesso!", description: "Retornaremos em breve." });
       setFormData({ name: "", email: "", company: "", subject: "", message: "" });
@@ -144,6 +146,7 @@ const Contact = () => {
                 Envie sua mensagem
               </h3>
               <form onSubmit={handleSubmit} className="space-y-5">
+                <HoneypotField value={honeypot} onChange={setHoneypot} />
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="name" className="block font-mono text-[0.6rem] tracking-[0.18em] uppercase text-muted-foreground mb-2">

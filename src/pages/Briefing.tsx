@@ -10,6 +10,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import HoneypotField from "@/components/HoneypotField";
 import { healthExamples, websiteExamples } from "@/content/websiteCreation";
 
 const WHATSAPP = "5521981466912";
@@ -49,6 +50,7 @@ const Briefing = () => {
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [sending, setSending] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
   const [done, setDone] = useState(false);
 
   useEffect(() => {
@@ -109,7 +111,7 @@ const Briefing = () => {
       body: {
         name: str(data.name), email: str(data.email), phone: str(data.phone), company: str(data.company).slice(0, 120),
         projectType: str(data.projectType).slice(0, 60), subject: `Briefing: ${str(data.projectType)} — ${str(data.company)}`.slice(0, 150),
-        message: summaryText.slice(0, 2000), source: "briefing", briefing: sections,
+        message: summaryText.slice(0, 2000), source: "briefing", briefing: sections, website: honeypot,
       },
     });
     setSending(false);
@@ -233,6 +235,7 @@ const Briefing = () => {
               </div>
 
               <div className="mt-10 flex flex-col-reverse sm:flex-row justify-between gap-3">
+                <HoneypotField value={honeypot} onChange={setHoneypot} />
                 {step > 0 ? <Button type="button" variant="outline" size="lg" onClick={back}><ArrowLeft className="h-4 w-4" />Voltar</Button> : <span />}
                 {step < 4
                   ? <Button type="button" variant="hero" size="lg" onClick={next}>Avançar<ArrowRight className="h-4 w-4" /></Button>

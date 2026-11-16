@@ -1,19 +1,44 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-};
+import { z } from "npm:zod@3.23.8";
+import { clientIp, corsFor, guardRequest, rateLimited } from "../_shared/guard.ts";
+
+// Só papéis de conversa: o cliente não pode injetar mensagens "system".
+const bodySchema = z.object({
+  messages: z.array(z.object({
+    role: z.enum(["user", "assistant"]),
+    content: z.string().max(2000),
+  })).min(1).max(60),
+});
+
+const MAX_HISTORY = 12; // mensagens enviadas ao modelo
+const MAX_BODY_CHARS = 40_000;
 
 serve(async (req) => {
-  if (req.method === 'OPTIONS') {
-    return new Response(null, { headers: corsHeaders });
+  const blocked = guardRequest(req);
+  if (blocked) return blocked;
+  const corsHeaders = corsFor(req);
+  const json = (body: unknown, status: number) =>
+    new Response(JSON.stringify(body), { status, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+
+  const ip = clientIp(req);
+  if (rateLimited(`chat:m:${ip}`, 8, 60_000) || rateLimited(`chat:h:${ip}`, 40, 3_600_000)) {
+    return json({ error: "Muitas mensagens em pouco tempo. Tente novamente em instantes." }, 429);
   }
 
   try {
-    const { messages } = await req.json();
+    const raw = await req.text();
+    if (raw.length > MAX_BODY_CHARS) return json({ error: "Mensagem muito longa" }, 413);
+    let payload: unknown;
+    try { payload = JSON.parse(raw); } catch { return json({ error: "Dados inválidos" }, 400); }
+    const parsed = bodySchema.safeParse(payload);
+    if (!parsed.success) return json({ error: "Dados inválidos" }, 400);
+    const messages = parsed.data.messages.filter((m) => m.content.trim()).slice(-MAX_HISTORY);
+    if (!messages.length || messages[messages.length - 1].role !== "user") {
+      return json({ error: "Dados inválidos" }, 400);
+    }
+
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
-    
     if (!LOVABLE_API_KEY) {
       throw new Error("LOVABLE_API_KEY is not configured");
     }
@@ -107,7 +132,7 @@ INSTRUÇÕES:
   } catch (error) {
     console.error("chat-ai error:", error);
     return new Response(
-      JSON.stringify({ error: error instanceof Error ? error.message : "Erro desconhecido" }), 
+      JSON.stringify({ error: "Erro ao processar solicitação" }), 
       {
         status: 500,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
