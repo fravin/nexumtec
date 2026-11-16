@@ -8,6 +8,10 @@ Fundada por Flávio de Souza, a Nexum Tecnologia une 15+ anos de experiência em
 
 - [Home](/): Visão geral, serviços, projetos e diagnóstico gratuito.
 - [Sobre](/sobre): Jornada do fundador, linha do tempo profissional, competências e formação.
+- [Saúde](https://www.nexumtec.com.br/saude): Gestão de glosas, faturamento, IA no atendimento e BI para clínicas e hospitais.
+- [Negócios](https://www.nexumtec.com.br/negocios): Automação de processos, integração com a NFSe Nacional e Power BI para empresas.
+- [Blog](https://www.nexumtec.com.br/blog): Notícias e artigos sobre tecnologia, IA e saúde hospitalar privada.
+- [Contato](https://www.nexumtec.com.br/contato): Formulário, WhatsApp e e-mail para solicitar diagnóstico ou orçamento.
 - [Criação de sites](https://www.nexumtec.com.br/criacao-de-sites): Sites institucionais, landing pages, sites para clínicas, catálogos, portfólios e portais sob medida. Modelos demonstrativos, processo de trabalho e perguntas frequentes.
 
 ## Criação de sites profissionais
