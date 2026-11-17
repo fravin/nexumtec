@@ -38,7 +38,7 @@ const CallToAction = () => {
             </Button>
           </Link>
           <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-            <Button variant="hero" size="lg" className="w-full sm:w-auto">
+            <Button variant="glass" size="lg" className="w-full sm:w-auto">
               <MessageCircle className="h-4 w-4" />
               WhatsApp — resposta imediata
             </Button>
