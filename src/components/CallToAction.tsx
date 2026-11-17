@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { MessageCircle, Mail, Linkedin } from "lucide-react";
+import { MessageCircle, Mail, Linkedin, ArrowRight } from "lucide-react";
 
 const CallToAction = () => {
   const whatsappUrl =
@@ -30,6 +31,12 @@ const CallToAction = () => {
           sem enrolação. Você sai com clareza sobre onde está perdendo eficiência.
         </p>
         <div className="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-3 mb-8">
+          <Link to="/briefing" className="w-full sm:w-auto">
+            <Button variant="hero" size="lg" className="group w-full sm:w-auto">
+              Solicitar Diagnóstico Gratuito
+              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </Link>
           <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
             <Button variant="hero" size="lg" className="w-full sm:w-auto">
               <MessageCircle className="h-4 w-4" />
