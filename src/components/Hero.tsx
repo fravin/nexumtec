@@ -81,13 +81,15 @@ const Hero = () => {
         <AnimatedSection animation="slideUp" delay={300}>
           <div className="mb-20 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
             <Button
+              asChild
               variant="hero"
               size="lg"
-              onClick={() => scrollTo("#contato")}
               className="group w-full max-w-sm self-center whitespace-normal text-center leading-tight sm:w-auto"
             >
-              Diagnóstico Gratuito
-              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              <Link to="/briefing">
+                Diagnóstico Gratuito
+                <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
             </Button>
 
             <Button
