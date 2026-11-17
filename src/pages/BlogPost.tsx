@@ -42,7 +42,7 @@ export default function BlogPost() {
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
         </div>
         {sources.length > 0 && <aside className="mt-12 border-t border-border pt-6"><h2 className="text-xs uppercase font-semibold text-muted-foreground mb-3">Fontes</h2><ul className="space-y-2 text-sm">{sources.map((s) => <li key={s.url}><a href={s.url} target="_blank" rel="noopener noreferrer nofollow" className="text-primary hover:underline break-words">{s.title}</a></li>)}</ul></aside>}
-        <div className="mt-14 bg-secondary border border-border p-8"><h2 className="font-serif text-2xl text-foreground mb-3">Quer aplicar isso na sua empresa?</h2><p className="text-sm text-muted-foreground mb-6">Conte seu cenário e receba um diagnóstico gratuito da Nexum.</p><Button asChild variant="hero" className="min-h-12"><Link to="/contato">Solicitar Diagnóstico Gratuito</Link></Button></div>
+        <div className="mt-14 bg-secondary border border-border p-8"><h2 className="font-serif text-2xl text-foreground mb-3">Quer aplicar isso na sua empresa?</h2><p className="text-sm text-muted-foreground mb-6">Conte seu cenário e receba um diagnóstico gratuito da Nexum.</p><Button asChild variant="hero" className="min-h-12"><Link to="/briefing">Solicitar Diagnóstico Gratuito</Link></Button></div>
       </article>
     </main>
     <Footer />

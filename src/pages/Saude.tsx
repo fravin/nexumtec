@@ -226,7 +226,7 @@ const Saude = () => {
             </AnimatedSection>
             <AnimatedSection animation="slideUp" delay={300}>
               <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center items-center">
-                <Link to="/#contato" className="w-full sm:w-auto">
+                <Link to="/briefing" className="w-full sm:w-auto">
                   <Button variant="hero" size="lg" className="group w-full sm:w-auto">
                     Diagnóstico gratuito
                     <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -528,7 +528,7 @@ const Saude = () => {
                 "ainda não é hora".
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
-                <Link to="/#contato" className="w-full sm:w-auto">
+                <Link to="/briefing" className="w-full sm:w-auto">
                   <Button variant="hero" size="lg" className="group w-full sm:w-auto">
                     Agendar diagnóstico gratuito
                     <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
