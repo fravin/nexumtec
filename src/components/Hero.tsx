@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Bot, HeartPulse, Workflow, Users } from "lucide-react";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import heroVideo from "@/assets/videos/hero-3d-background.mp4.asset.json";
 
 const Hero = () => {
   const scrollTo = (id: string) => {
@@ -43,7 +44,18 @@ const Hero = () => {
           background: "linear-gradient(180deg, hsl(210 33% 98%) 0%, hsl(210 38% 95%) 100%)",
         }}
       />
-      <div className="absolute inset-0 hero-grid-bg pointer-events-none" />
+      <video
+        className="absolute inset-0 h-full w-full object-cover pointer-events-none motion-reduce:hidden"
+        src={heroVideo.url}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        aria-hidden="true"
+      />
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-background/70 via-background/55 to-background/90" />
+      <div className="absolute inset-0 hero-grid-bg pointer-events-none opacity-60" />
       <div
         className="absolute pointer-events-none"
         style={{
