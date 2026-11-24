@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Bot, HeartPulse, Workflow, Users } from "lucide-react";
 import { AnimatedSection } from "@/components/AnimatedSection";
-import heroVideo from "@/assets/videos/hero-3d-background.mp4.asset.json";
+import heroVideo from "@/assets/videos/healthcare-data-loop.mp4.asset.json";
+import heroPoster from "@/assets/videos/healthcare-data-poster.webp.asset.json";
 
 const Hero = () => {
   const scrollTo = (id: string) => {
@@ -47,6 +48,7 @@ const Hero = () => {
       <video
         className="absolute inset-0 h-full w-full object-cover pointer-events-none motion-reduce:hidden"
         src={heroVideo.url}
+        poster={heroPoster.url}
         autoPlay
         muted
         loop
