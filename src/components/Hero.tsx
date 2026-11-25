@@ -4,8 +4,32 @@ import { ArrowRight, Bot, HeartPulse, Workflow, Users } from "lucide-react";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import heroVideo from "@/assets/videos/healthcare-data-loop.mp4.asset.json";
 import heroPoster from "@/assets/videos/healthcare-data-poster.webp.asset.json";
+import heroVideoVertical from "@/assets/videos/healthcare-data-vertical.mp4.asset.json";
+import heroPosterVertical from "@/assets/videos/healthcare-data-vertical-poster.webp.asset.json";
+import { useEffect, useState } from "react";
+
+const useHeroMedia = () => {
+  const get = () => {
+    if (typeof window === "undefined") return { portrait: false, allowVideo: true };
+    const conn = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
+    const slow = !!conn && (conn.saveData === true || /(^|-)2g$/.test(conn.effectiveType ?? ""));
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    return { portrait: window.matchMedia("(orientation: portrait)").matches, allowVideo: !slow && !reduced };
+  };
+  const [state, setState] = useState(get);
+  useEffect(() => {
+    const mq = window.matchMedia("(orientation: portrait)");
+    const on = () => setState(get());
+    mq.addEventListener("change", on);
+    return () => mq.removeEventListener("change", on);
+  }, []);
+  return state;
+};
 
 const Hero = () => {
+  const { portrait, allowVideo } = useHeroMedia();
+  const videoSrc = portrait ? heroVideoVertical.url : heroVideo.url;
+  const posterSrc = portrait ? heroPosterVertical.url : heroPoster.url;
   const scrollTo = (id: string) => {
     document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
   };
@@ -45,27 +69,35 @@ const Hero = () => {
           background: "linear-gradient(180deg, hsl(210 33% 98%) 0%, hsl(210 38% 95%) 100%)",
         }}
       />
-      <video
-        className="absolute inset-0 h-full w-full object-cover pointer-events-none motion-reduce:hidden"
-        src={heroVideo.url}
-        poster={heroPoster.url}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        aria-hidden="true"
-      />
-      <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-background/70 via-background/55 to-background/90" />
+      {/* Media layer limited to the first screen so it never stretches over the stacked cards */}
+      <div className="absolute inset-x-0 top-0 h-[100svh] min-h-[560px] pointer-events-none overflow-hidden">
+        {allowVideo ? (
+          <video
+            key={videoSrc}
+            className="h-full w-full object-cover object-center"
+            src={videoSrc}
+            poster={posterSrc}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-hidden="true"
+          />
+        ) : (
+          <img src={posterSrc} alt="" aria-hidden="true" className="h-full w-full object-cover object-center" />
+        )}
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/65 to-background md:from-background/65 md:via-background/50 lg:from-background/55 lg:via-background/40" />
+      </div>
       <div className="absolute inset-0 hero-grid-bg pointer-events-none opacity-60" />
       <div
         className="absolute pointer-events-none"
         style={{
-          width: "900px",
-          height: "600px",
+          width: "min(900px, 110vw)",
+          height: "min(600px, 80vw)",
           borderRadius: "50%",
           background: "radial-gradient(ellipse, hsl(217 91% 60% / 0.10) 0%, transparent 65%)",
-          top: "42%",
+          top: "min(42%, 50svh)",
           left: "50%",
           transform: "translate(-50%, -50%)",
         }}
